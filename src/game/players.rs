@@ -599,8 +599,6 @@ impl Player {
         }
         return None;
     }
-
-
 }
 
 struct P {
@@ -810,16 +808,16 @@ impl TeamList {
     //     }
     // }
 
-    pub fn create_teams() -> Self {
-        let (qbs, all_qbs) = TeamList::disperse_players(load_qbs("SPFB1983/83QB.txt"));
-        let (rbs, all_rbs) = TeamList::disperse_players(load_rbs("SPFB1983/83RB.txt"));
-        let (wrs, all_wrs) = TeamList::disperse_players(load_wrs("SPFB1983/83WR.txt"));
-        let (tes, all_tes) = TeamList::disperse_players(load_tes("SPFB1983/83TE.txt"));
+    pub fn create_teams(dir: &str) -> Self {
+        let (qbs, all_qbs) = TeamList::disperse_players(load_qbs(format!("{}/83QB.txt", dir)));
+        let (rbs, all_rbs) = TeamList::disperse_players(load_rbs(format!("{}/83RB.txt", dir)));
+        let (wrs, all_wrs) = TeamList::disperse_players(load_wrs(format!("{}/83WR.txt", dir)));
+        let (tes, all_tes) = TeamList::disperse_players(load_tes(format!("{}/83TE.txt", dir)));
 
-        let (ols, all_ols) = TeamList::disperse_players(load_ols("SPFB1983/83OL.txt"));
-        let (dls, all_dls) = TeamList::disperse_players(load_dls("SPFB1983/83DL.txt"));
-        let (lbs, all_lbs) = TeamList::disperse_players(load_lbs("SPFB1983/83LB.txt"));
-        let (dbs, all_dbs) = TeamList::disperse_players(load_dbs("SPFB1983/83DB.txt"));
+        let (ols, all_ols) = TeamList::disperse_players(load_ols(format!("{}/83OL.txt", dir)));
+        let (dls, all_dls) = TeamList::disperse_players(load_dls(format!("{}/83DL.txt", dir)));
+        let (lbs, all_lbs) = TeamList::disperse_players(load_lbs(format!("{}/83LB.txt", dir)));
+        let (dbs, all_dbs) = TeamList::disperse_players(load_dbs(format!("{}/83DB.txt", dir)));
 
         // code to validate team_ids
         // for t in qbs.keys() {

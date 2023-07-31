@@ -8,7 +8,7 @@ use super::{
     stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats},
 };
 
-pub fn load_rbs(filename: &str) -> Vec<RBStats> {
+pub fn load_rbs(filename: String) -> Vec<RBStats> {
     return parse_records(filename, 35, Position::RB, parse_rb_record).unwrap();
 
     // println!("{:?}", res);
@@ -43,7 +43,7 @@ fn parse_rb_record((id, lines): (String, &[&str])) -> Option<RBStats> {
     });
 }
 
-pub fn load_qbs(filename: &str) -> Vec<QBStats> {
+pub fn load_qbs(filename: String) -> Vec<QBStats> {
     return parse_records(filename, 39, Position::QB, parse_qb_record).unwrap();
 
     // println!("{:?}", res);
@@ -83,7 +83,7 @@ fn parse_qb_record((id, lines): (String, &[&str])) -> Option<QBStats> {
     });
 }
 
-pub fn load_wrs(filename: &str) -> Vec<WRStats> {
+pub fn load_wrs(filename: String) -> Vec<WRStats> {
     return parse_records(filename, 35, Position::WR, parse_wr_record).unwrap();
 
     // println!("{:?}", res);
@@ -117,7 +117,7 @@ fn parse_wr_record((id, lines): (String, &[&str])) -> Option<WRStats> {
     })
 }
 
-pub fn load_dbs(filename: &str) -> Vec<DBStats> {
+pub fn load_dbs(filename: String) -> Vec<DBStats> {
     return parse_records(filename, 8, Position::DB, parse_db_record).unwrap();
 
     // println!("{:?}", res);
@@ -143,7 +143,7 @@ fn parse_db_record((id, lines): (String, &[&str])) -> Option<DBStats> {
     })
 }
 
-pub fn load_dls(filename: &str) -> Vec<DLStats> {
+pub fn load_dls(filename: String) -> Vec<DLStats> {
     return parse_records(filename, 7, Position::DL, parse_dl_record).unwrap();
 
     // println!("{:?}", res);
@@ -167,7 +167,7 @@ fn parse_dl_record((id, lines): (String, &[&str])) -> Option<DLStats> {
     })
 }
 
-pub fn load_lbs(filename: &str) -> Vec<LBStats> {
+pub fn load_lbs(filename: String) -> Vec<LBStats> {
     return parse_records(filename, 11, Position::LB, parse_lb_record).unwrap();
 
     // println!("{:?}", res);
@@ -195,7 +195,7 @@ fn parse_lb_record((id, lines): (String, &[&str])) -> Option<LBStats> {
     })
 }
 
-pub fn load_ols(filename: &str) -> Vec<OLStats> {
+pub fn load_ols(filename: String) -> Vec<OLStats> {
     return parse_records(filename, 7, Position::OL, parse_ol_record).unwrap();
 
     // println!("{:?}", res);
@@ -219,7 +219,7 @@ fn parse_ol_record((id, lines): (String, &[&str])) -> Option<OLStats> {
     })
 }
 
-pub fn load_tes(filename: &str) -> Vec<TEStats> {
+pub fn load_tes(filename: String) -> Vec<TEStats> {
     return parse_records(filename, 35, Position::TE, parse_te_record).unwrap();
 
     // println!("{:?}", res);
@@ -252,7 +252,7 @@ fn parse_te_record((id, lines): (String, &[&str])) -> Option<TEStats> {
 }
 
 fn parse_records<T, F>(
-    filename: &str,
+    filename: String,
     size: usize,
     pos: Position,
     parse: F,
