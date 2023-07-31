@@ -1,0 +1,374 @@
+1983
+Atlanta
+Falcons (20)
+NFC West
+Coach
+Dan Henning
+Record
+7-9-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-30
+Def.Adj: +2
+1983
+Baltimore
+Colts (21)
+AFC East
+Coach
+Frank Kush
+Record
+7-9-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-22
+Def.Adj: +3
+1983
+Buffalo
+Bills (16)
+AFC East
+Coach
+Kay Stephenson
+Record
+8-8-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-23
+Def.Adj: +5
+1983
+Chicago
+Bears (12)
+NFC Central
+Coach
+Mike Ditka
+Record
+8-8-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-25
+Def.Adj: +4
+1983
+Cincinnati
+Bengals (22)
+AFC Central
+Coach
+Forrest Gregg
+Record
+7-9-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-26
+Def.Adj: +3
+1983
+Cleveland
+Browns (11)
+AFC Central
+Coach
+Sam Rutigliano
+Record
+9-7-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-21
+Def.Adj: -3
+1983
+Dallas
+Cowboys (9)
+NFC East
+Coach
+Tom Landry
+Record
+12-4-0
+Big Plays
+Home: 1 Road: 0
+Fumbles
+Lost: 1-25
+Def.Adj: +8
+AFC Wild Card
+1983
+Denver
+Broncos (10)
+AFC West
+Coach
+Dan Reeves
+Record
+9-7-0
+Big Plays
+Home: 1 Road: 0
+Fumbles
+Lost: 1-30
+Def.Adj: +7
+AFC Wild Card
+1983
+Detroit
+Lions (8)
+NFC Central
+Coach
+Monte Clark
+Record
+9-7-0
+Big Plays
+Home: 1 Road: 1
+Fumbles
+Lost: 1-27
+Def.Adj: +2
+NFC Divisional
+1983
+Green Bay
+Packers (13)
+NFC Central
+Coach
+Bart Starr
+Record
+8-8-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-29
+Def.Adj: -1
+1983
+Houston
+Oilers (27)
+AFC Central
+Coach
+Ed Biles
+Record
+2-14-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-29
+Def.Adj: +2
+1983
+Kansas City
+Chiefs (24)
+AFC West
+Coach
+John Mackovic
+Record
+6-10-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-30
+Def.Adj: +8
+1983
+L.A
+Raiders (1)
+AFC West
+Coach
+Tom Flores
+Record
+12-4-0
+Big Plays
+Home: 4 Road: 4
+Fumbles
+Lost: 1-36
+Def.Adj: +3
+Superbowl Champions
+1983
+L.A
+Rams (7)
+NFC West
+Coach
+John Robinson
+Record
+9-7-0
+Big Plays
+Home: 1 Road: 1
+Fumbles
+Lost: 1-35
+Def.Adj: +7
+NFC Divisional
+1983
+Miami
+Dolphins (5)
+AFC East
+Coach
+Don Shula
+Record
+12-4-0
+Big Plays
+Home: 2 Road: 2
+Fumbles
+Lost: 1-27
+Def.Adj: +4
+AFC Divisional
+1983
+Minnesota
+Vikings (14)
+NFC Central
+Coach
+Bud Grant
+Record
+8-8-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-21
+Def.Adj: +10
+1983
+New England
+Patriots (15)
+AFC East
+Coach
+Ron Meyer
+Record
+8-8-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-31
+Def.Adj: +6
+1983
+New Orleans
+Saints (17)
+NFC West
+Coach
+O.A.(Bum) Phillips
+Record
+8-8-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-33
+Def.Adj: +3
+1983
+New York
+Jets (19)
+AFC East
+Coach
+Joe Walton
+Record
+7-9-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-30
+Def.Adj: +12
+1983
+New York
+Giants (26)
+NFC East
+Coach
+Bill Parcells
+Record
+3-12-1
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-38
+Def.Adj: 0
+1983
+Philadelphia
+Eagles (25)
+NFC East
+Coach
+Marion Campbell
+Record
+5-11-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-29
+Def.Adj: +2
+1983
+Pittsburgh
+Steelers (6)
+AFC Central
+Coach
+Chuck Noll
+Record
+10-6-0
+Big Plays
+Home: 2 Road: 1
+Fumbles
+Lost: 1-31
+Def.Adj: +4
+AFC Divisional
+1983
+San Diego
+Chargers (23)
+AFC West
+Coach
+Don Coryell
+Record
+6-10-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-33
+Def.Adj: +4
+1983
+San Francisco
+49ers (3)
+NFC West
+Coach
+Bill Walsh
+Record
+10-6-0
+Big Plays
+Home: 3 Road: 3
+Fumbles
+Lost: 1-30
+Def.Adj: +5
+NFC Conference
+1983
+Seattle
+Seahawks (4)
+AFC West
+Coach
+Chuck Knox
+Record
+9-7-0
+Big Plays
+Home: 3 Road: 2
+Fumbles
+Lost: 1-31
+Def.Adj: +12
+AFC Conference
+1983
+St.Louis
+Cardinals (18)
+NFC East
+Coach
+Jim Hanifan
+Record
+8-7-1
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-38
+Def.Adj: +7
+1983
+Tampa Bay
+Buccaneers (28)
+NFC Central
+Coach
+John McKay
+Record
+2-14-0
+Big Plays
+Home: 0 Road: 0
+Fumbles
+Lost: 1-24
+Def.Adj: +5
+1983
+Washington
+Redskins (2)
+NFC East
+Coach
+Joe Gibbs
+Record
+14-2-0
+Big Plays
+Home: 4 Road: 3
+Fumbles
+Lost: 1-18
+Def.Adj: +12
+NFC Champions

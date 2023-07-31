@@ -1,0 +1,15 @@
+[package]
+name = "spf"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4.3.1"
+itertools = "0.11.0"
+lazy_static = "1.4.0"
+serde = { version = "1.0.175", features = ["derive"] }
+serde_derive = "1.0.175"
+serde_json = "1.0.103"
+strum_macros = "0.25.1"

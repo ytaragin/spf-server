@@ -1,0 +1,1124 @@
+1983 Atlanta
+Defense Line
+Mike Zele
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+1983 Atlanta
+Defense Line
+Don Smith
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+1983 Atlanta
+Defense Tackle
+Dan Benish
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+1983 Atlanta
+Defense Tackle
+Andrew provence
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 Atlanta
+Defense End
+Mike Pitts
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+1983 Atlanta
+Defense End
+Jeff Merrow
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+1983 Baltimore
+Defense Tackle
+Quinton Ballard
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+1983 Baltimore
+Defense End
+Mike Bell
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+1983 Baltimore
+Defense End
+Donnell Thompson
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+1983 Baltimore
+Defense End
+Steve Parker
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 Baltimore
+Defense Tackle
+Leo Wisniewski
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+1983 Buffalo
+Defense End
+Jimmy Payne
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 Buffalo
+Defense Tackle
+Terry Junkin
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 Buffalo
+Defense End
+Scott Virkus
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+1983 Buffalo
+Defense Tackle
+Fred Smerlas
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+1983 Buffalo
+Defense End
+Ken Johnson
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 Buffalo
+Defense End
+Ben Williams
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 Chicago
+Defense End
+Mike Hartenstine
+TACKLES:
+Minus 3
+PASS RUSH:
+2
+1983 Chicago
+Defense End
+Richard Dent
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+1983 Chicago
+Defense End
+Jim Osborne
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 Chicago
+Defense Tackle
+Tyrone Keys
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 Chicago
+Defense End
+Al Harris *
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 Chicago
+Defense Tackle
+Steve McMichael
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 Chicago
+Defense Tackle
+Dan Hampton
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+1983 Cincinnati
+Defense Tackle
+Steve Krumrie
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+1983 Cincinnati
+Defense End
+Gary Burley
+TACKLES:
+Plus 2
+PASS RUSH:
+1
+1983 Cincinnati
+Defense End
+Glen Collins
+TACKLES:
+Plus 1
+PASS RUSH:
+1
+1983 Cincinnati
+Defense End
+Eddie Edwards
+TACKLES:
+Minus 4
+PASS RUSH:
+2
+1983 Cincinnati
+Defense Tackle
+Jerry Boyarsky
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+1983 Cincinnati
+Defense End
+Ross Browner
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 Cleveland
+Defense End
+Keith Baldwin
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 Cleveland
+Defense Tackle
+Dave Puzzuoli
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+1983 Cleveland
+Defense Tackle
+Bob Golic
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+1983 Cleveland
+Defense End
+Reggie Camp
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 Cleveland
+Defense End
+Elvis Franks
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 Dallas
+Defense Line
+Jim Jeffcoat
+TACKLES:
+Plus 2
+PASS RUSH:
+1
+1983 Dallas
+Defense Tackle
+Don Smerek
+TACKLES:
+Plus 0
+PASS RUSH:
+2
+1983 Dallas
+Defense Tackle
+Randy White
+TACKLES:
+Minus 4
+PASS RUSH:
+2
+1983 Dallas
+Defense End
+Harvey Martin
+TACKLES:
+Minus 3
+PASS RUSH:
+1
+1983 Dallas
+Defense End
+Ed 'Too Tall' Jones
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 Dallas
+Defense Tackle
+John Dutton
+TACKLES:
+Minus 1
+PASS RUSH:
+2
+1983 Dallas
+Defense End
+Larry Bethea
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+1983 Denver
+Defense Tackle
+Don Latimer
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 Denver
+Defense End
+Brison Manor
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+1983 Denver
+Defense End
+Barney Chavous
+TACKLES:
+Minus 3
+PASS RUSH:
+1
+1983 Denver
+Defense Tackle
+Rubin Carter
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+1983 Denver
+Defense End
+Rulon Jones
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 Detroit
+Defense Tackle
+Mike Fanning
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+1983 Detroit
+Defense End
+Martin Moss
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 Detroit
+Defense Tackle
+William Gay
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+1983 Detroit
+Defense End
+Doug English
+TACKLES:
+Minus 1
+PASS RUSH:
+2
+1983 Detroit
+Defense End
+Curtis Green
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+1983 Detroit
+Defense End
+Mike Cofer
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+1983 Green Bay
+Defense Tackle
+Daryle Skaugstad
+TACKLES:
+Plus 2
+PASS RUSH:
+1
+1983 Green Bay
+Defense End
+Ron Spears
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+1983 Green Bay
+Defense End
+Ezra Johnson
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+1983 Green Bay
+Defense Tackle
+Charlie Johnson
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 Green Bay
+Defense End
+Byron Braggs
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+1983 Houston
+Defense End
+Jerome Foster
+TACKLES:
+Plus 3
+PASS RUSH:
+2
+1983 Houston
+Defense Tackle
+Mike Stensrud
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+1983 Houston
+Defense End
+Malcolm Taylor
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 Houston
+Defense End
+Bob Hamm
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+1983 Houston
+Defense End
+Jesse Baker
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+1983 Houston
+Defense Tackle
+Brian Sochia
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 Kansas City
+Defense End
+Dave Lindstrom
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 Kansas City
+Defense Tackle
+Ken Kremer
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+1983 Kansas City
+Defense End
+Art Still
+TACKLES:
+Minus 3
+PASS RUSH:
+1
+1983 Kansas City
+Defense End
+Mike Bell
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+1983 Kansas City
+Defense Tackle
+Dino Mangiero
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 L.A. Raiders
+Defense End
+Greg Townsend
+TACKLES:
+Plus 0
+PASS RUSH:
+2
+1983 L.A. Raiders
+Defense End
+Howie Long
+TACKLES:
+Minus 3
+PASS RUSH:
+2
+1983 L.A. Raiders
+Defense Tackle
+Reggie Kinlaw
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+1983 L.A. Raiders
+Defense End
+Lyle Alzado
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 L.A. Raiders
+Defense Tackle
+Archie Reese
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 L.A. Raiders
+Defense End
+Bill Pickel *
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 L.A. Rams
+Defense Tackle
+Doug Barnett
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 L.A. Rams
+Defense End
+Charles DeJurnette
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+1983 L.A. Rams
+Defense End
+Jack Youngblood
+TACKLES:
+Minus 3
+PASS RUSH:
+2
+1983 L.A. Rams
+Defense Tackle
+Gary Jeter
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 L.A. Rams
+Defense End
+Reggie Doss
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+1983 Miami
+Defense Tackle
+Mike Charles
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+1983 Miami
+Defense End
+Steve Clark
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 Miami
+Defense End
+Doug Betters
+TACKLES:
+Minus 3
+PASS RUSH:
+2
+1983 Miami
+Defense Tackle
+Bob Baumhower
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+1983 Miami
+Defense End
+Kim Bokamper
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+1983 Minnesota
+Defense Tackle
+Randy Holloway
+TACKLES:
+Plus 2
+PASS RUSH:
+1
+1983 Minnesota
+Defense End
+Mark Mullaney
+TACKLES:
+Plus 1
+PASS RUSH:
+1
+1983 Minnesota
+Defense End
+Neil Elshire
+TACKLES:
+Plus 0
+PASS RUSH:
+2
+1983 Minnesota
+Defense Tackle
+Charles Johnson
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 Minnesota
+Defense End
+Doug Martin
+TACKLES:
+Minus 1
+PASS RUSH:
+2
+1983 N.Y. Giants
+Defense Tackle
+Richard Merrill
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+1983 N.Y. Giants
+Defense Tackle
+Jerome Sally
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 N.Y. Giants
+Defense End
+Dee Hardison
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 N.Y. Giants
+Defense End
+George Martin
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 N.Y. Giants
+Defense End
+Len Marshall
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 N.Y. Jets
+Defense End
+Abdul Salaam
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+1983 N.Y. Jets
+Defense End
+Ben Rudolph
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+1983 N.Y. Jets
+Defense Tackle
+Joe Klecko
+TACKLES:
+Minus 3
+PASS RUSH:
+1
+1983 N.Y. Jets
+Defense End
+Mark Gastineau
+TACKLES:
+Minus 2
+PASS RUSH:
+3
+1983 N.Y. Jets
+Defense Tackle
+Marty Lyons
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 N.Y. Jets
+Defense Tackle
+Kenny Neill
+TACKLES:
+Minus 1
+PASS RUSH:
+2
+1983 New England
+Defense Tackle
+Lester Williams
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 New England
+Defense End
+Kenneth Sims
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+1983 New England
+Defense End
+Julius Adams
+TACKLES:
+Minus 3
+PASS RUSH:
+2
+1983 New England
+Defense Tackle
+Dennis Owens
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 New England
+Defense End
+Toby Williamson
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 New Orleans
+Defense End
+Tony Elliott
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 New Orleans
+Defense Tackle
+Reggie Lewis
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 New Orleans
+Defense End
+Frank Warren
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+1983 New Orleans
+Defense End
+Bruce Clark
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 New Orleans
+Defense Tackle
+Derland Moore
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 New Orleans
+Defense End
+Jim Wilks
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+1983 Philadelphia
+Defense Tackle
+Harv Armstrong
+TACKLES:
+Plus 1
+PASS RUSH:
+1
+1983 Philadelphia
+Defense Tackle
+Ken Clarke
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+1983 Philadelphia
+Defense End
+Dennis Harrison
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+1983 Philadelphia
+Defense End
+Greg Brown
+TACKLES:
+Minus 1
+PASS RUSH:
+2
+1983 Philadelphia
+Defense End
+Carl Hairston
+TACKLES:
+Minus 1
+PASS RUSH:
+2
+1983 Pittsburgh
+Defense End
+Keith Willis
+TACKLES:
+Plus 3
+PASS RUSH:
+3
+1983 Pittsburgh
+Defense End
+Keith Gary
+TACKLES:
+Plus 2
+PASS RUSH:
+2
+1983 Pittsburgh
+Defense Tackle
+Edmund Nelson
+TACKLES:
+Plus 1
+PASS RUSH:
+1
+1983 Pittsburgh
+Defense End
+John Goodman
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+1983 Pittsburgh
+Defense Tackle
+Gary Dunn
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 Pittsburgh
+Defense End
+Tom Beasley
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 San Diego
+Defense End
+Chuck Ehin
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+1983 San Diego
+Defense Tackle
+Bill Elko
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 San Diego
+Defense End
+Keith Ferguson
+TACKLES:
+Minus 3
+PASS RUSH:
+1
+1983 San Diego
+Defense End
+Gary Johnson
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 San Diego
+Defense Tackle
+Rick Ackerman
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 San Francisco
+Defense End
+Fred Dean
+TACKLES:
+Plus 2
+PASS RUSH:
+4
+1983 San Francisco
+Defense Tackle
+Jim Stuckey
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+1983 San Francisco
+Defense Tackle
+Jeff Stover
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+1983 San Francisco
+Defense Tackle
+Pete Kugler
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+1983 San Francisco
+Defense End
+Dwaine Board
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+1983 San Francisco
+Defense End
+Lawrence Pillars
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 Seattle
+Defense End
+Darrell Irvin
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 Seattle
+Defense Tackle
+Manu Tuiasosopo
+TACKLES:
+Plus 1
+PASS RUSH:
+1
+1983 Seattle
+Defense Tackle
+Joe Nash
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+1983 Seattle
+Defense End
+Jeff Bryant
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 Seattle
+Defense End
+Jacob Green
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+1983 St. Louis
+Defense Line
+Rush Brown
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 St. Louis
+Defense Tackle
+Mark Duda
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+1983 St. Louis
+Defense End
+Stafford Mays
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+1983 St. Louis
+Defense End
+Al Baker
+TACKLES:
+Minus 3
+PASS RUSH:
+2
+1983 St. Louis
+Defense Tackle
+Elois Grooms
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+1983 St. Louis
+Defense Tackle
+David Galloway
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+1983 St. Louis
+Defense End
+Curtis Greer
+TACKLES:
+Minus 1
+PASS RUSH:
+2
+1983 Tampa Bay
+Defense Tackle
+John Cannon
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 Tampa Bay
+Defense End
+Brad White
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 Tampa Bay
+Defense Tackle
+Dave Logan
+TACKLES:
+Minus 3
+PASS RUSH:
+2
+1983 Tampa Bay
+Defense End
+Leeroy Selmon
+TACKLES:
+Minus 3
+PASS RUSH:
+2
+1983 Tampa Bay
+Defense End
+Booker Reese
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+1983 Washington
+Defense End
+Charles Mann
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+1983 Washington
+Defense End
+Todd Liebenstein
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+1983 Washington
+Defense Tackle
+Dave Butz *
+TACKLES:
+Minus 4
+PASS RUSH:
+2
+1983 Washington
+Defense End
+Dexter Manley
+TACKLES:
+Minus 3
+PASS RUSH:
+2
+1983 Washington
+Defense Tackle
+Daryl Grant
+TACKLES:
+Minus 3
+PASS RUSH:
+2
+1983 Washington
+Defense End
+Tony McGee
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+1983 Washington
+Defense Tackle
+Perry Brooks
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+Players Marked with * have
+been added to the set
+manually as they couldn’t
+be found in my set.
+Initially I thought my set
+was incomplete but two
+other people were missing
+the same cards so I can
+only assume that there was
+a problem with some of the
+print runs for this set.
+In any case, as a Redskins
+fan, there was no way I
+was letting Dave Butz go
+missing from the awesome
+Redskins defense of that
+year!
+[Lee Harris]

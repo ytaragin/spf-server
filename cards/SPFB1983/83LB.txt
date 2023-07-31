@@ -1,0 +1,1846 @@
+1983 Atlanta
+Linebacker
+Al Richardson
+TACKLES:
+Minus 3
+PASS RUSH:
+1
+PASS DEF:
+Plus 0
+INTERCEPTS:
+47-48
+1983 Atlanta
+Linebacker
+Fulton Kuykendall
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Atlanta
+Linebacker
+Buddy Curry
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Atlanta
+Linebacker
+John Rade
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Atlanta
+Linebacker
+Dave Levenick
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Balimore
+Linebacker
+Greg Bracelin
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+PASS DEF:
+Plus 0
+INTERCEPTS:
+46-48
+1983 Balimore
+Linebacker
+Barry Krauss
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Balimore
+Linebacker
+Vern Maxwell
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+PASS DEF:
+Plus 3
+INTERCEPTS:
+47-48
+1983 Balimore
+Linebacker
+Cliff Odom
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Balimore
+Linebacker
+Johnnie Cooks
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+PASS DEF:
+Plus 4
+INTERCEPTS:
+47-48
+1983 Balimore
+Linebacker
+Sanders Shiver
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 4
+INTERCEPTS:
+48
+1983 Buffalo
+Linebacker
+Lucius Sanford
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 1
+INTERCEPTS:
+46-48
+1983 Buffalo
+Linebacker
+Chris Keating
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Minus 2
+INTERCEPTS:
+46-48
+1983 Buffalo
+Linebacker
+Ervin Parker
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Minus 2
+INTERCEPTS:
+48
+1983 Buffalo
+Linebacker
+Eugene Marve
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Buffalo
+Linebacker
+Darryl Talley
+TACKLES:
+Plus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 4
+INTERCEPTS:
+48
+1983 Buffalo
+Linebacker
+Joey Lumpkin
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Chicago
+Linebacker
+Gary Campbell
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Minus 2
+INTERCEPTS:
+48
+1983 Chicago
+Linebacker
+Mike Singletary
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+PASS DEF:
+Minus 1
+INTERCEPTS:
+48
+1983 Chicago
+Linebacker
+Ottis Wilson
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Minus 1
+INTERCEPTS:
+48
+1983 Chicago
+Linebacker
+Brian Cabral
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Chicago
+Linebacker
+Dan Rains
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Cincinnati
+Linebacker
+Glenn Cameron
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 1
+INTERCEPTS:
+48
+1983 Cincinnati
+Linebacker
+Reggie Williams
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Minus 2
+INTERCEPTS:
+48
+1983 Cincinnati
+Linebacker
+Jim Leclair
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Minus 1
+INTERCEPTS:
+48
+1983 Cincinnati
+Linebacker
+Tom Dinkel
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Cincinnati
+Linebacker
+Guy Frazier
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Cincinnati
+Linebacker
+Rick Razzano
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 4
+INTERCEPTS:
+48
+1983 Cleveland
+Linebacker
+Chip Banks
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Minus 2
+INTERCEPTS:
+45-48
+1983 Cleveland
+Linebacker
+Tom Cousineau
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 0
+INTERCEPTS:
+44-48
+1983 Cleveland
+Linebacker
+Clay Matthews
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Cleveland
+Linebacker
+Scott Nicolas
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Cleveland
+Linebacker
+Curtis Weathers
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Cleveland
+Linebacker
+Dale Carver
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 4
+INTERCEPTS:
+48
+1983 Dallas
+Linebacker
+Bob Breunig
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 1
+INTERCEPTS:
+47-48
+1983 Dallas
+Linebacker
+Mike Hegman
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Minus 2
+INTERCEPTS:
+48
+1983 Dallas
+Linebacker
+Tony Dickerson
+TACKLES:
+Minus 1
+PASS RUSH:
+2
+PASS DEF:
+Plus 2
+INTERCEPTS:
+47-48
+1983 Dallas
+Linebacker
+Bruce Huther
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Dallas
+Linebacker
+Angelo King
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Denver
+Linebacker
+Randy Gradishar
+TACKLES:
+Minus 4
+PASS RUSH:
+1
+PASS DEF:
+Minus 2
+INTERCEPTS:
+47-48
+1983 Denver
+Linebacker
+Tom Jackson
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 0
+INTERCEPTS:
+47-48
+1983 Denver
+Linebacker
+Jim Ryan
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Denver
+Linebacker
+Steve Busick
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Denver
+Linebacker
+Darren Comeaux
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Denver
+Linebacker
+Rick Dennison
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 4
+INTERCEPTS:
+48
+1983 Detroit
+Linebacker
+Ken Fantetti
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Minus 2
+INTERCEPTS:
+48
+1983 Detroit
+Linebacker
+Jimmy Williams
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Minus 1
+INTERCEPTS:
+48
+1983 Detroit
+Linebacker
+Gary Cobb
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+44-48
+1983 Detroit
+Linebacker
+James Harrell
+TACKLES:
+Plus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Detroit
+Linebacker
+Roosevelt Barnes
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 4
+INTERCEPTS:
+46-48
+1983 Green Bay
+Linebacker
+George Cumby
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+47-48
+1983 Green Bay
+Linebacker
+Mike Douglass
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Minus 2
+INTERCEPTS:
+48
+1983 Green Bay
+Linebacker
+John Anderson
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Minus 3
+INTERCEPTS:
+43-48
+1983 Green Bay
+Linebacker
+Randy Scott
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Green Bay
+Linebacker
+Guy Prather
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Green Bay
+Linebacker
+Jim Laughlin
+TACKLES:
+Plus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Houston
+Linebacker
+Gregg Bingham
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+47-48
+1983 Houston
+Linebacker
+Robert Brazile
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Plus 1
+INTERCEPTS:
+48
+1983 Houston
+Linebacker
+Avon Riley
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+47-48
+1983 Houston
+Linebacker
+Daryl Hunt
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Houston
+Linebacker
+Tim Joiner
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Houston
+Linebacker
+Ted Thompson
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 4
+INTERCEPTS:
+47-48
+1983 Kansas City
+Linebacker
+Charles Jackson
+TACKLES:
+Minus 3
+PASS RUSH:
+1
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Kansas City
+Linebacker
+Jerry Blanton
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 0
+INTERCEPTS:
+48
+1983 Kansas City
+Linebacker
+Thomas Howard
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Kansas City
+Linebacker
+Gary Spani
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+PASS DEF:
+Minus 1
+INTERCEPTS:
+48
+1983 Kansas City
+Linebacker
+Calvin Daniels
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Kansas City
+Linebacker
+John Zamberlin
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 0
+INTERCEPTS:
+48
+1983 Kansas City
+Linebacker
+Steve Potter
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 L.A. Raiders
+Linebacker
+Matt Millen
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 1
+INTERCEPTS:
+47-48
+1983 L.A. Raiders
+Linebacker
+Ted Hendricks
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Minus 2
+INTERCEPTS:
+48
+1983 L.A. Raiders
+Linebacker
+Rod Martin
+TACKLES:
+Minus 1
+PASS RUSH:
+2
+PASS DEF:
+Plus 1
+INTERCEPTS:
+44-48
+1983 L.A. Raiders
+Linebacker
+Bob Nelson
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 L.A. Raiders
+Linebacker
+Jeff Barnes
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 L.A. Raiders
+Linebacker
+Jack Squirek
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 L.A. Rams
+Linebacker
+George Andrews
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Minus 3
+INTERCEPTS:
+47-48
+1983 L.A. Rams
+Linebacker
+Carl Ekern
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+47-48
+1983 L.A. Rams
+Linebacker
+Jim Collins
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 1
+INTERCEPTS:
+46-48
+1983 L.A. Rams
+Linebacker
+Mel Owens
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 L.A. Rams
+Linebacker
+David Lewis
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 L.A. Rams
+Linebacker
+Howard Carson
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 4
+INTERCEPTS:
+48
+1983 Miami
+Linebacker
+A.J. Duhe
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Miami
+Linebacker
+Earnest Rhone
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 2
+INTERCEPTS:
+47-48
+1983 Miami
+Linebacker
+Bob Brudzinski
+TACKLES:
+Minus 1
+PASS RUSH:
+2
+PASS DEF:
+Plus 0
+INTERCEPTS:
+48
+1983 Miami
+Linebacker
+Rodell Thomas
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Miami
+Linebacker
+Charles Bowser
+TACKLES:
+Plus 2
+PASS RUSH:
+1
+PASS DEF:
+Minus 3
+INTERCEPTS:
+48
+1983 Miami
+Linebacker
+Mark Brown
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+47-48
+1983 Minnesota
+Linebacker
+Matt Blair
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+PASS DEF:
+Minus 4
+INTERCEPTS:
+47-48
+1983 Minnesota
+Linebacker
+Scott Studwell
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 1
+INTERCEPTS:
+48
+1983 Minnesota
+Linebacker
+Fred McNeill
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 1
+INTERCEPTS:
+48
+1983 Minnesota
+Linebacker
+Ron Sendlein
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Minnesota
+Linebacker
+Dennis Johnson
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Minnesota
+Linebacker
+Walker Ashley
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 4
+INTERCEPTS:
+48
+1983 N.Y. Giants
+Linebacker
+Lawrence Taylor
+TACKLES:
+Minus 4
+PASS RUSH:
+2
+PASS DEF:
+Minus 3
+INTERCEPTS:
+46-48
+1983 N.Y. Giants
+Linebacker
+Harry Carson
+TACKLES:
+Minus 3
+PASS RUSH:
+1
+PASS DEF:
+Minus 1
+INTERCEPTS:
+48
+1983 N.Y. Giants
+Linebacker
+Brian Kelley
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 N.Y. Giants
+Linebacker
+Brad Van Pelt
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Plus 1
+INTERCEPTS:
+46-48
+1983 N.Y. Giants
+Linebacker
+Byron Hunt
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 N.Y. Giants
+Linebacker
+Frank Marion
+TACKLES:
+Plus 1
+PASS RUSH:
+1
+PASS DEF:
+Plus 4
+INTERCEPTS:
+48
+1983 N.Y. Jets
+Linebacker
+Greg Buttle
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 1
+INTERCEPTS:
+47-48
+1983 N.Y. Jets
+Linebacker
+Lance Mehl
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Minus 2
+INTERCEPTS:
+41-48
+1983 N.Y. Jets
+Linebacker
+Bob Crable
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+47-48
+1983 N.Y. Jets
+Linebacker
+John Woodring
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 N.Y. Jets
+Linebacker
+Stan Blinka
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 New England
+Linebacker
+Steve Nelson
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 0
+INTERCEPTS:
+48
+1983 New England
+Linebacker
+Larry McGrew
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+47-48
+1983 New England
+Linebacker
+Don Blackmon
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Minus 2
+INTERCEPTS:
+47-48
+1983 New England
+Linebacker
+Clayton Weishuhn
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Plus 1
+INTERCEPTS:
+48
+1983 New England
+Linebacker
+Johnny Rembert
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 New England
+Linebacker
+Andre Tippett
+TACKLES:
+Plus 2
+PASS RUSH:
+2
+PASS DEF:
+Plus 0
+INTERCEPTS:
+48
+1983 New Orleans
+Linebacker
+Dennis Winston
+TACKLES:
+Minus 3
+PASS RUSH:
+1
+PASS DEF:
+Plus 1
+INTERCEPTS:
+45-48
+1983 New Orleans
+Linebacker
+Jim Kovach
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Minus 3
+INTERCEPTS:
+48
+1983 New Orleans
+Linebacker
+Whitney Paul
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+PASS DEF:
+Plus 3
+INTERCEPTS:
+46-48
+1983 New Orleans
+Linebacker
+Rickey Jackson
+TACKLES:
+Minus 1
+PASS RUSH:
+2
+PASS DEF:
+Plus 2
+INTERCEPTS:
+47-48
+1983 New Orleans
+Linebacker
+Chris Martin
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 New Orleans
+Linebacker
+Rob Nairne
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 4
+INTERCEPTS:
+48
+1983 Philadelphia
+Linebacker
+Joel Williams
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Minus 2
+INTERCEPTS:
+48
+1983 Philadelphia
+Linebacker
+Jerry Robinson
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Philadelphia
+Linebacker
+Reggie Wilkes
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 1
+INTERCEPTS:
+48
+1983 Philadelphia
+Linebacker
+Tony Griggs
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+45-48
+1983 Philadelphia
+Linebacker
+Rich Kraynak
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Philadelphia
+Linebacker
+Bill Cowher
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Pittsburgh
+Linebacker
+Jack Lambert
+TACKLES:
+Minus 3
+PASS RUSH:
+1
+PASS DEF:
+Plus 0
+INTERCEPTS:
+46-48
+1983 Pittsburgh
+Linebacker
+Loren Toews
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 1
+INTERCEPTS:
+48
+1983 Pittsburgh
+Linebacker
+Robin Cole
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 1
+INTERCEPTS:
+48
+1983 Pittsburgh
+Linebacker
+Mike Merriweather
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+45-48
+1983 Pittsburgh
+Linebacker
+Bob Kohrs
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Pittsburgh
+Linebacker
+Bryan Hinkle
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+47-48
+1983 San Diego
+Linebacker
+Linden King
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+PASS DEF:
+Plus 2
+INTERCEPTS:
+47-48
+1983 San Diego
+Linebacker
+Woodrow Lowe
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 San Diego
+Linebacker
+Mike Green
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 San Diego
+Linebacker
+Billy Ray Smith
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 1
+INTERCEPTS:
+48
+1983 San Diego
+Linebacker
+Ray Preston
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+47-48
+1983 San Diego
+Linebacker
+Derrie Nelson
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 4
+INTERCEPTS:
+48
+1983 San Diego
+Linebacker
+Carlos Bradley
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 San Francisco
+Linebacker
+Jack Reynolds
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 0
+INTERCEPTS:
+48
+1983 San Francisco
+Linebacker
+Keena Turner
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 San Francisco
+Linebacker
+Willie Harper
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Plus 3
+INTERCEPTS:
+47-48
+1983 San Francisco
+Linebacker
+Riki Ellison
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 4
+INTERCEPTS:
+48
+1983 San Francisco
+Linebacker
+Bobby Leopold
+TACKLES:
+Plus 1
+PASS RUSH:
+1
+PASS DEF:
+Plus 2
+INTERCEPTS:
+46-48
+1983 San Francisco
+Linebacker
+Milt McColl
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Seattle
+Linebacker
+Shelton Robinson
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+47-48
+1983 Seattle
+Linebacker
+Michael Jackson
+TACKLES:
+Minus 1
+PASS RUSH:
+2
+PASS DEF:
+Minus 1
+INTERCEPTS:
+48
+1983 Seattle
+Linebacker
+Bruce Scholtz
+TACKLES:
+Minus 1
+PASS RUSH:
+1
+PASS DEF:
+Plus 3
+INTERCEPTS:
+47-48
+1983 Seattle
+Linebacker
+Keith Butler
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+PASS DEF:
+Minus 2
+INTERCEPTS:
+47-48
+1983 Seattle
+Linebacker
+Joe Norman
+TACKLES:
+Plus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Seattle
+Linebacker
+Greg Gaines
+TACKLES:
+Plus 3
+PASS RUSH:
+1
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 St.Louis
+Linebacker
+E.J.Junior
+TACKLES:
+Minus 2
+PASS RUSH:
+2
+PASS DEF:
+Minus 2
+INTERCEPTS:
+45-48
+1983 St.Louis
+Linebacker
+Charlie Baker
+TACKLES:
+Minus 2
+PASS RUSH:
+1
+PASS DEF:
+Plus 2
+INTERCEPTS:
+47-48
+1983 St.Louis
+Linebacker
+Kurt Allerman
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 1
+INTERCEPTS:
+48
+1983 St.Louis
+Linebacker
+Bob Harris
+TACKLES:
+Plus 0
+PASS RUSH:
+1
+PASS DEF:
+Plus 4
+INTERCEPTS:
+45-48
+1983 St.Louis
+Linebacker
+Dave Ahrens
+TACKLES:
+Plus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Tampa Bay
+Linebacker
+Hugh Green
+TACKLES:
+Minus 3
+PASS RUSH:
+1
+PASS DEF:
+Plus 0
+INTERCEPTS:
+47-48
+1983 Tampa Bay
+Linebacker
+Ed Judie
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+48
+1983 Tampa Bay
+Linebacker
+Scott Brantley
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+47-48
+1983 Tampa Bay
+Linebacker
+Jeff Davis
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Tampa Bay
+Linebacker
+Richard Wood
+TACKLES:
+Plus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 1
+INTERCEPTS:
+48
+1983 Tampa Bay
+Linebacker
+Hasson Arbubakrr
+TACKLES:
+Plus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 5
+INTERCEPTS:
+48
+1983 Washington
+Linebacker
+Rich Milot
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 0
+INTERCEPTS:
+46-48
+1983 Washington
+Linebacker
+Neal Olkewicz
+TACKLES:
+Minus 2
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+47-48
+1983 Washington
+Linebacker
+Mel Kaufman
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+46-48
+1983 Washington
+Linebacker
+Monte Coleman
+TACKLES:
+Minus 1
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+48
+1983 Washington
+Linebacker
+Stuart Anderson
+TACKLES:
+Plus 0
+PASS RUSH:
+0
+PASS DEF:
+Plus 4
+INTERCEPTS:
+48
+1983 Washington
+Linebacker
+Rich Milot *
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 0
+INTERCEPTS:
+46-48
+1983 Washington
+Linebacker
+Neal Olkewicz *
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 2
+INTERCEPTS:
+47-48
+1983 Washington
+Linebacker
+Mel Kaufman *
+TACKLES:
+Minus 3
+PASS RUSH:
+0
+PASS DEF:
+Plus 3
+INTERCEPTS:
+46-48
+Players marked with a *
+here are suggested
+upgrades to the cards
+shown. The Redskins
+defense allowed only 80
+rushing yards per game in
+1983, by far the best in
+the NFL. It is ridiculous
+in my opinion that their
+LB’s are listed at-2,-2
+and -1, among the worst
+groups in the whole card
+set. It’s up to you which
+you use, but I’ve listed
+them all with -3 tackle
+ratings to beef up the
+Redskins run defense to an
+appropriate level in my
+opinion
+[Lee Harris]

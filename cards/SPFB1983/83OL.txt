@@ -1,0 +1,1610 @@
+1983 Atlanta
+Offense Center
+Jeff Van Note
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Atlanta
+Offense Tackle
+Warren Bryant
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Atlanta
+Offense Guard
+R.C.Thielemann
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Atlanta
+Offense Guard
+John Scully
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Atlanta
+Offense Tackle
+Mike Kenn
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Atlanta
+Guard/Tackle
+Brett Miller
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Atlanta
+Guard/Tackle
+Ronnie Lee
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Atlanta
+Guard/Tackle
+Eric Sanders
+BLOCKS:
+Plus 0
+PASS BLOCK:
+1
+1983 Atlanta
+Center/Guard
+Dan Dufour
+BLOCKS:
+Minus 1
+PASS BLOCK:
+0
+1983 Baltimore
+Offense Center
+Ray Donaldson
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Baltimore
+Offense Guard
+Ben Utt
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Baltimore
+Offense Guard
+Chris Hinton
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Baltimore
+Offense Tackle
+Jeff Hart
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Baltimore
+Offense Tackle
+Karl Baldischwiler
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Baltimore
+Offense Tackle
+Sid Abramowitz
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Baltimore
+Offense Center
+Grant Feasel
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Baltimore
+Offense Guard
+Steve Wright
+BLOCKS:
+Plus 0
+PASS BLOCK:
+1
+1983 Baltimore
+Guard/Tackle
+Jim Mills
+BLOCKS:
+Minus 1
+PASS BLOCK:
+0
+1983 Buffalo
+Offense Tackle
+Tom Lynch
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Buffalo
+Offense Guard
+Jim Richter
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Buffalo
+Offense Tackle
+Ken Jones
+BLOCKS:
+Plus 2
+PASS BLOCK:
+2
+1983 Buffalo
+Offense Center
+Will Grant
+BLOCKS:
+Plus 2
+PASS BLOCK:
+2
+1983 Buffalo
+Offense Guard
+Jon Borchardt
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Buffalo
+Tackle/Guard
+Justin Cross
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Buffalo
+Center/Guard
+Jim Vogler
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Buffalo
+Guard/Tackle
+Darryl Caldwell
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Chicago
+Offense Tackle
+Andy Frederick
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Chicago
+Offense Tackle
+Jimbo Covert
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Chicago
+Offense Guard
+Noah Jackson
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Chicago
+Offense Center
+Jay Hilgenberg
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Chicago
+Offense Guard
+Kurt becker
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Chicago
+Offense Tackle
+Keith Van Horne
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Chicago
+Offense Tackle
+John Janata
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Chicago
+Center/Guard
+Mark Bortz
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Chicago
+Center/Guard
+Bob Fada
+BLOCKS:
+Plus 1
+PASS BLOCK:
+1
+1983 Cincinatti
+Offense Tackle
+Anthony Munoz
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Cincinatti
+Offense Guard
+Dave Lapham
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Cincinatti
+Offense Guard
+Max Montoya
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Cincinatti
+Offense Tackle
+Mike Wilson
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Cincinatti
+Offense Center
+Dave Rimington
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Cincinatti
+Offense Center
+Blake Moore
+BLOCKS:
+Plus 1
+PASS BLOCK:
+1
+1983 Cincinatti
+Offense Guard
+Jim Hannula
+BLOCKS:
+Plus 0
+PASS BLOCK:
+0
+1983 Cincinatti
+Offense Tackle
+Mike Obravac
+BLOCKS:
+Minus 2
+PASS BLOCK:
+0
+1983 Cleveland
+Offense Tackle
+Doug Dieken
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Cleveland
+Offense Guard
+J.Delamielleure
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Cleveland
+Offense Tackle
+Cody Riesen
+BLOCKS:
+Plus 2
+PASS BLOCK:
+2
+1983 Cleveland
+Offense Center
+Mike Babb
+BLOCKS:
+Plus 2
+PASS BLOCK:
+2
+1983 Cleveland
+Offense Guard
+Robert Jackson
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Cleveland
+Offense Center
+Tom DeLeone
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Cleveland
+Offense Tackle
+Bill Contz
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Cleveland
+Offense Guard
+Tom Hopkins
+BLOCKS:
+Plus 0
+PASS BLOCK:
+0
+1983 Dallas
+Offense Center
+Tom Rafferty
+BLOCKS:
+Plus 3
+PASS BLOCK:
+2
+1983 Dallas
+Offense Guard
+Herbert Scott
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Dallas
+Offense Tackle
+Jim Cooper
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Dallas
+Offense Guard
+Kurt Petersen
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Dallas
+Offense Tackle
+Pat Donovan
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Dallas
+Offense Center
+Howard Richards
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Dallas
+Offense Guard
+Brian Baldinger
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Dallas
+Offense Tackle
+Phil Pozderac
+BLOCKS:
+Plus 1
+PASS BLOCK:
+1
+1983 Denver
+Offense Guard
+Paul Howard
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Denver
+Offense Center
+Bill Bryan
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Denver
+Offense Tackle
+Dave Studdard
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Denver
+Offense Guard
+Keith Bishop
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Denver
+Offense Tackle
+Ken Lanier
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Denver
+Offense Guard
+Tom Glassic
+BLOCKS:
+Plus 0
+PASS BLOCK:
+0
+1983 Denver
+Offense Tackle
+Jerry Baker
+BLOCKS:
+Minus 1
+PASS BLOCK:
+0
+1983 Denver
+Offense Center
+Mark Cooper
+BLOCKS:
+Minus 2
+PASS BLOCK:
+0
+1983 Detroit
+Offense Tackle
+Chris Dieterich
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Detroit
+Offense Guard
+Don Greco
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Detroit
+Offense Tackle
+Keith Dorney
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Detroit
+Offense Guard
+Homer Elias
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Detroit
+Offense Center
+Steve Mott
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Detroit
+Offense Center
+Amos Fowler
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Detroit
+Offense Guard
+Larry Lee
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Detroit
+Offense Tackle
+Rich Stenger
+BLOCKS:
+Minus 1
+PASS BLOCK:
+0
+1983 Green Bay
+Offense Tackle
+Greg Koch
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Green Bay
+Offense Tackle
+Karl Swankle
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Green Bay
+Offense Center
+Larry McCracken
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Green Bay
+Offense Guard
+Dave Dreschler
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Green Bay
+Offense Tackle
+Ron Hallstrom
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Green Bay
+Offense Guard
+Syd Kitson
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Green Bay
+Center/Guard
+Larry Rubens
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Green Bay
+Guard/Center
+Tim Huffman
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Green Bay
+Offense Tackle
+Charlie Getty
+BLOCKS:
+Plus 0
+PASS BLOCK:
+2
+1983 Houston
+Offense Guard
+Mike Munchak
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Houston
+Offense Tackle
+Doug France
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Houston
+Offense Tackle
+Harvey Salem
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Houston
+Offense Center
+David Carter
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Houston
+Offense Guard
+Bruce Matthews
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Houston
+Offense Guard
+Al Steinfeld
+BLOCKS:
+Minus 1
+PASS BLOCK:
+1
+1983 Houston
+Offense Center
+Les Studdard
+BLOCKS:
+Minus 2
+PASS BLOCK:
+0
+1983 Houston
+Offense Tackle
+Morris Towns
+BLOCKS:
+Minus 2
+PASS BLOCK:
+0
+1983 Kansas City
+Offense Guard
+Tom Condon
+BLOCKS:
+Plus 3
+PASS BLOCK:
+2
+1983 Kansas City
+Offense Guard
+Bob Simmons
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Kansas City
+Offense Tackle
+David Lutz
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Kansas City
+Offense Tackle
+Matt Herkenhoff
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Kansas City
+Offense Center
+Bob Rush
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Kansas City
+Offense Tackle
+Jim Rourke
+BLOCKS:
+Minus 1
+PASS BLOCK:
+0
+1983 Kansas City
+Offense Center
+Adam Lingner
+BLOCKS:
+Minus 2
+PASS BLOCK:
+1
+1983 Kansas City
+Offense Guard
+Ellis Gardner
+BLOCKS:
+Minus 2
+PASS BLOCK:
+0
+1983 L.A.Raiders
+Offense Center
+Dave Dalby
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 L.A.Raiders
+Offense Guard
+Mickey Marvin
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 L.A.Raiders
+Offense Guard
+Charley Hannah
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 L.A.Raiders
+Offense Tackle
+Henry Lawrence
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 L.A.Raiders
+Offense Tackle
+Bruce Davis
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 L.A.Raiders
+Center/Guard
+Steve Sylvester
+BLOCKS:
+Plus 1
+PASS BLOCK:
+1
+1983 L.A.Raiders
+Offense Tackle
+Don Mosebar
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 L.A.Raiders
+Tackle/Guard
+Ed Muransky
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 L.A.Rams
+Offense Tackle
+Bill Bain
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 L.A.Rams
+Offense Guard
+Dennis Harrah
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 L.A.Rams
+Offense Guard
+Kent Hill
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 L.A.Rams
+Offense Center
+Doug Smith
+BLOCKS:
+Plus 2
+PASS BLOCK:
+2
+1983 L.A.Rams
+Offense Tackle
+Jackie Slater
+BLOCKS:
+Plus 2
+PASS BLOCK:
+2
+1983 L.A.Rams
+Offense Tackle
+Russ Bolinger
+BLOCKS:
+Plus 0
+PASS BLOCK:
+0
+1983 L.A.Rams
+Offense Center
+Joe Shearin
+BLOCKS:
+Minus 1
+PASS BLOCK:
+0
+1983 L.A.Rams
+Offense Guard
+Gary Kowalski
+BLOCKS:
+Minus 2
+PASS BLOCK:
+1
+1983 Miami
+Offense Guard
+Ed Newman
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Miami
+Offense Tackle
+Jon Giesler
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Miami
+Offense Guard
+Bob Kuechenberg
+BLOCKS:
+Plus 2
+PASS BLOCK:
+2
+1983 Miami
+Offense Center
+Dwight Stephenson
+BLOCKS:
+Plus 2
+PASS BLOCK:
+2
+1983 Miami
+Offense Tackle
+Eric Laasko
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Miami
+Offense Tackle
+Cleveland Green
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Miami
+Offense Center
+Jeff Teows
+BLOCKS:
+Minus 1
+PASS BLOCK:
+1
+1983 Miami
+Offense Guard
+Roy Foster
+BLOCKS:
+Minus 2
+PASS BLOCK:
+0
+1983 Minnesota
+Offense Tackle
+Steve Riley
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Minnesota
+Offense Tackle
+Tim Irwin
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Minnesota
+Offense Guard
+Wes Hamilton
+BLOCKS:
+Plus 2
+PASS BLOCK:
+2
+1983 Minnesota
+Offense Center
+Dennis Swilley
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Minnesota
+Offense Guard
+Jim Hough
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Minnesota
+Offense Center
+David Huffman
+BLOCKS:
+Plus 1
+PASS BLOCK:
+1
+1983 Minnesota
+Offense Guard
+Brent Boyd
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Minnesota
+Offense Tackle
+Terry Tausch
+BLOCKS:
+Plus 0
+PASS BLOCK:
+1
+1983 N.Y.Giants
+Offense Guard
+Billy Ard
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 N.Y.Giants
+Offense Guard
+J.T.Turner
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 N.Y.Giants
+Offense Tackle
+John Tautolo
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 N.Y.Giants
+Offense Tackle
+Brad Benson
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 N.Y.Giants
+Offense Center
+Ernie Hughes
+BLOCKS:
+Plus 1
+PASS BLOCK:
+1
+1983 N.Y.Giants
+Guard/Tackle
+Gordon King
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 N.Y.Giants
+Guard/Tackle
+Kevin Belcher
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 N.Y.Giants
+Center/Guard
+Chris Foote
+BLOCKS:
+Plus 0
+PASS BLOCK:
+1
+1983 N.Y.Jets
+Offense Tackle
+Chris Ward
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 N.Y.Jets
+Offense Guard
+Guy Bingham
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 N.Y.Jets
+Offense Center
+Joe Fields
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 N.Y.Jets
+Offense Tackle
+Marvin Powell
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 N.Y.Jets
+Offense Guard
+Dan Alexander
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 N.Y.Jets
+Offense Center
+George Lilija
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 N.Y.Jets
+Offense Tackle
+Reggie McElroy
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 N.Y.Jets
+Offense Guard
+Joe Pellegrini
+BLOCKS:
+Minus 1
+PASS BLOCK:
+1
+1983 New England
+Offense Guard
+John Hannah
+BLOCKS:
+Plus 4
+PASS BLOCK:
+1
+1983 New England
+Offense Guard
+Ron Wooten
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 New England
+Offense Tackle
+Bob Cryder
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 New England
+Offense Tackle
+Brian Holloway
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 New England
+Offense Center
+Pete Brock
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 New England
+Offense Tackle
+Darryl Haley
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 New England
+Offense Guard
+Steve Moore
+BLOCKS:
+Plus 0
+PASS BLOCK:
+0
+1983 New England
+Offense Center
+Dwight Wheeler
+BLOCKS:
+Minus 1
+PASS BLOCK:
+1
+1983 New Orleans
+Offense Guard
+Brad Edelman
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 New Orleans
+Offense Tackle
+Stan Brock
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 New Orleans
+Offense Center
+John Hill
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 New Orleans
+Offense Guard
+Louis Oubre
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 New Orleans
+Offense Tackle
+Dave Lafary
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 New Orleans
+Offense Tackle
+Leon Gray
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 New Orleans
+Offense Guard
+Steve Korte
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 New Orleans
+Offense Center
+Jim Pietrzak
+BLOCKS:
+Plus 0
+PASS BLOCK:
+1
+1983 Philadelphia
+Offense Tackle
+Jerry Sisemore
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Philadelphia
+Offense Tackle
+Dean Miraldi
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Philadelphia
+Offense Center
+Guy Morriss
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Philadelphia
+Offense Guard
+Ron Baker
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Philadelphia
+Guard/Tackle
+Len Mitchell
+BLOCKS:
+Plus 1
+PASS BLOCK:
+1
+1983 Philadelphia
+Offense Center
+Mark Slater
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Philadelphia
+Offense Tackle
+Stan Walters
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Philadelphia
+Offense Guard
+Steve Kenney
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Philadelphia
+Offense Guard
+Jim Fritzsche
+BLOCKS:
+Plus 0
+PASS BLOCK:
+1
+1983 Pittsburgh
+Offense Guard
+Craig Wolfley
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Pittsburgh
+Offense Tackle
+Larry Brown
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Pittsburgh
+Offense Guard
+Steve Courson
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Pittsburgh
+Offense Center
+Mike Webster
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Pittsburgh
+Offense Tackle
+Tunch Ilkin
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Pittsburgh
+Guard/Tackle
+Emil Boures
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Pittsburgh
+Center/Guard
+Rick Donnalley
+BLOCKS:
+Minus 1
+PASS BLOCK:
+0
+1983 San Diego
+Offense Guard
+Doug Wilkerson
+BLOCKS:
+Plus 3
+PASS BLOCK:
+2
+1983 San Diego
+Offense Guard
+Ed White
+BLOCKS:
+Plus 3
+PASS BLOCK:
+2
+1983 San Diego
+Offense Tackle
+Billy Shields
+BLOCKS:
+Plus 2
+PASS BLOCK:
+2
+1983 San Diego
+Offense Tackle
+Andy Gissinger
+BLOCKS:
+Plus 1
+PASS BLOCK:
+1
+1983 San Diego
+Offense Center
+Dennis McKnight
+BLOCKS:
+Plus 1
+PASS BLOCK:
+1
+1983 San Diego
+Offense Center
+Don Macek
+BLOCKS:
+Plus 0
+PASS BLOCK:
+0
+1983 San Diego
+Offense Guard
+Derrel Gofourth
+BLOCKS:
+Minus 1
+PASS BLOCK:
+2
+1983 San Diego
+Offense Tackle
+Sam Clapham
+BLOCKS:
+Minus 2
+PASS BLOCK:
+0
+1983 San Francisco
+Offense Guard
+John Ayers
+BLOCKS:
+Plus 3
+PASS BLOCK:
+2
+1983 San Francisco
+Offense Tackle
+Bubba Paris
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 San Francisco
+Offense Center
+Fred Quillan
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 San Francisco
+Offense Tackle
+Keith Fahnhorst
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 San Francisco
+Offense Guard
+Randy Cross
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 San Francisco
+Offense Tackle
+Allan Kennedy
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 San Francisco
+Offense Center
+Walt Downing
+BLOCKS:
+Plus 0
+PASS BLOCK:
+1
+1983 San Francisco
+Offense Guard
+Jesse Sapolu
+BLOCKS:
+Minus 1
+PASS BLOCK:
+0
+1983 Seattle
+Offense Guard
+Reggie McKenzie
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Seattle
+Offense Center
+Blair Bush
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Seattle
+Offense Tackle
+Steve August
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Seattle
+Offense Tackle
+Ron Essink
+BLOCKS:
+Plus 2
+PASS BLOCK:
+2
+1983 Seattle
+Offense Guard
+Robert Pratt
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Seattle
+Guard/Tackle
+Bill Dugan
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Seattle
+Center/Guard
+Kani Kauahi
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Seattle
+Offense Tackle
+Matt Hernandez
+BLOCKS:
+Plus 0
+PASS BLOCK:
+0
+1983 Seattle
+Offense Guard
+Edwin Bailey
+BLOCKS:
+Minus 1
+PASS BLOCK:
+1
+1983 St.Louis
+Offense Guard
+Joe Bostic
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 St.Louis
+Offense Tackle
+Luis Sharpe
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 St.Louis
+Offense Center
+Randy Clark
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 St.Louis
+Offense Guard
+Terry Stieve
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 St.Louis
+Offense Tackle
+Tootie Robbins
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 St.Louis
+Offense Guard
+Dan Audick
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 St.Louis
+Offense Tackle
+Art Plunkett
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 St.Louis
+Offense Center
+Carlos Scott
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Tampa Bay
+Offense Guard
+Sean Farrell
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Tampa Bay
+Offense Guard
+George Yarno
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Tampa Bay
+Offense Tackle
+Gene Danders
+BLOCKS:
+Plus 2
+PASS BLOCK:
+0
+1983 Tampa Bay
+Offense Center
+Randy Grimes
+BLOCKS:
+Plus 1
+PASS BLOCK:
+1
+1983 Tampa Bay
+Offense Tackle
+Kelly Thomas
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0
+1983 Tampa Bay
+Offense Center
+Steve Wilson
+BLOCKS:
+Plus 0
+PASS BLOCK:
+0
+1983 Tampa Bay
+Offense Guard
+Glenn Bujnoch
+BLOCKS:
+Minus 1
+PASS BLOCK:
+1
+1983 Tampa Bay
+Offense Tackle
+Dave Reavis
+BLOCKS:
+Minus 1
+PASS BLOCK:
+0
+1983 Tampa Bay
+Guard/Tackle
+Jim Leonard
+BLOCKS:
+Minus 2
+PASS BLOCK:
+0
+1983 Washington
+Offense Tackle
+Joe Jacoby
+BLOCKS:
+Plus 4
+PASS BLOCK:
+2
+1983 Washington
+Offense Tackle
+George Starke
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Washington
+Offense Center
+Jeff Bostic
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Washington
+Offense Guard
+Russ Grimm
+BLOCKS:
+Plus 3
+PASS BLOCK:
+1
+1983 Washington
+Offense Guard
+Mark May
+BLOCKS:
+Plus 3
+PASS BLOCK:
+0
+1983 Washington
+Offense Tackle
+Bruce Kimball
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Washington
+Offense Center
+Ken Huff
+BLOCKS:
+Plus 2
+PASS BLOCK:
+1
+1983 Washington
+Offense Guard
+Roy Simmons
+BLOCKS:
+Plus 1
+PASS BLOCK:
+0

@@ -1,0 +1,1417 @@
+1983 Atlanta
+Cornerback
+Bobby Butler
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Atlanta
+Cornerback
+Bob Glazebrook
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Atlanta
+Cornerback
+Kenny Johnson
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Atlanta
+Safety
+James Britt
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Atlanta
+Safety
+Blane Gaison
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Atlanta
+Safety
+Tom Pridemore
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Baltimore
+Cornerback
+Derrick Hattchett
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Baltimore
+Cornerback
+Kim Anderson
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Baltimore
+Cornerback
+James Burroughs
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Baltimore
+Safety
+Nesby Glasgow
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Baltimore
+Safety
+Jeff Delaney
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Baltimore
+Safety
+Larry Anderson
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Buffalo
+Cornerback
+Gary Thompson
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Buffalo
+Cornerback
+Chris Williams
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Buffalo
+Cornerback
+Charles Romes
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Buffalo
+Safety
+Mario Clark
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Buffalo
+Safety
+Steve Freeman
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Buffalo
+Safety
+Mike Kennedy
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Chicago
+Cornerback
+Walt Williams
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Chicago
+Cornerback
+Leslie Frazier
+PASS DEF:
+Plus 1
+PASS RUSH:
+INTERCEPTS:
+41-48
+1983 Chicago
+Cornerback
+Mike Richardson
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 Chicago
+Safety
+Gary Fencik
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Chicago
+Safety
+Todd Bell
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Chicago
+Safety
+Terry Schmidt
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 Cincinnati
+Cornerback
+Ken Riley
+PASS DEF:
+Minus 5
+PASS RUSH:
+INTERCEPTS:
+40-48
+1983 Cincinnati
+Cornerback
+Louis Breeden
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Cincinnati
+Cornerback
+Ray Griffin
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Cincinnati
+Safety
+Ray Horton
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 Cincinnati
+Safety
+Bobby Kemp
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Cincinnati
+Safety
+Robert Jackson
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Cleveland
+Cornerback
+Hanford Dixon
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Cleveland
+Cornerback
+Larry Johnson
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Cleveland
+Cornerback
+Lawrence Johnson
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Cleveland
+Cornerback
+Rod Perry
+PASS DEF:
+Plus 4
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Cleveland
+Safety
+Larry Braziel
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Cleveland
+Safety
+Mike Whitwell
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Cleveland
+Safety
+Clarence Scott
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Cleveland
+Safety
+Clinton Burrell
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Dallas
+Cornerback
+Bill Bates
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Dallas
+Cornerback
+Dennis Thurman
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+42-48
+1983 Dallas
+Cornerback
+Everson Walls
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Dallas
+Safety
+Ron Fellows
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 Dallas
+Safety
+Michael Downs
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Dallas
+Safety
+Dexter Clinkscales
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Dallas
+Safety
+Dexter Clinkscale
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Denver
+Cornerback
+Louis Wright
+PASS DEF:
+Minus 5
+PASS RUSH:
+INTERCEPTS:
+42-48
+1983 Denver
+Cornerback
+Steve Wilson
+PASS DEF:
+Plus 1
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 Denver
+Cornerback
+Mike Harden
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Denver
+Safety
+Steve Trimble
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Denver
+Safety
+Steve Foley
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 Denver
+Safety
+Dennis Smith
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Detroit
+Cornerback
+Danny Wagoner
+PASS DEF:
+Plus 4
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Detroit
+Cornerback
+Bruce McNorton
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+41-48
+1983 Detroit
+Cornerback
+Bobby Watkins
+PASS DEF:
+Plus 1
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Detroit
+Safety
+William Graham
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Detroit
+Safety
+Alvin Hall
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Detroit
+Safety
+Albert Latimer
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Detroit
+Safety
+Al Latimer
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Green Bay
+Cornerback
+Estus Hood
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Green Bay
+Cornerback
+Tim Lewis
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 Green Bay
+Cornerback
+Mark lee
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Green Bay
+Safety
+Mike Jolly
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Green Bay
+Safety
+Johnnie Gray
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Green Bay
+Safety
+Mark Murphy
+PASS DEF:
+Plus 1
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Houston
+Cornerback
+Willie Tullis
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 Houston
+Cornerback
+Mike Reinfeldt
+PASS DEF:
+Plus 1
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Houston
+Cornerback
+Steve Brown
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Houston
+Safety
+Carter Hartwig
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Houston
+Safety
+Keith Bostic
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Houston
+Safety
+Bill Kay
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Kansas City
+Cornerback
+Gary Green
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+42-48
+1983 Kansas City
+Cornerback
+Albert Lewis
+PASS DEF:
+Plus 1
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Kansas City
+Cornerback
+Lucious Smith
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Kansas City
+Safety
+Deron Cherry
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+41-48
+1983 Kansas City
+Safety
+Lloyd Burruss
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Kansas City
+Safety
+Dur Rocquemore
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 L.A. Raiders
+Cornerback
+Lester Hayes
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 L.A. Raiders
+Cornerback
+Mike haynes
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 L.A. Raiders
+Cornerback
+James Davis
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 L.A. Raiders
+Safety
+Vann McElroy
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+40-48
+1983 L.A. Raiders
+Safety
+Mike Davis
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 L.A. Raiders
+Safety
+Odis McKinney
+PASS DEF:
+Plus 1
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 L.A. Rams
+Cornerback
+Vince Newsome
+PASS DEF:
+Plus 5
+PASS RUSH:
+INTERCEPTS:
+48
+1983 L.A. Rams
+Cornerback
+Kirk Collins
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 L.A. Rams
+Cornerback
+Leroy Irvin
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 L.A. Rams
+Cornerback
+Eric Harris
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 L.A. Rams
+DB
+Ivory Sully
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+48
+1983 L.A. Rams
+Safety
+Johnnie Johnson
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 L.A. Rams
+Safety
+Nolan Cromwell
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Miami
+Cornerback
+William Judson
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+42-48
+1983 Miami
+Cornerback
+Gerald Small
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 Miami
+Cornerback
+Mike Kozlowski
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Miami
+Cornerback
+Fulton Walker
+PASS DEF:
+Plus 4
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Miami
+Safety
+Lyle Blackwood
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Miami
+Safety
+Glenn Blackwood
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Miami
+Safety
+Paul Lankford
+PASS DEF:
+Plus 4
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Minnesota
+Cornerback
+John Swain
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+42-48
+1983 Minnesota
+Cornerback
+Willie Teal
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Minnesota
+Cornerback
+Rufus Bess
+PASS DEF:
+Plus 4
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Minnesota
+Safety
+Carl Lee
+PASS DEF:
+Plus 4
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Minnesota
+Safety
+John Turner
+PASS DEF:
+Minus 4
+PASS RUSH:
+INTERCEPTS:
+42-48
+1983 Minnesota
+Safety
+Tom Hannon
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 N.Y. Giants
+Cornerback
+Mike Dennis
+PASS DEF:
+Plus 4
+PASS RUSH:
+INTERCEPTS:
+48
+1983 N.Y. Giants
+Cornerback
+Terry Jackson
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+42-48
+1983 N.Y. Giants
+Cornerback
+Mark Haynes
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 N.Y. Giants
+Safety
+Larry Flowers
+PASS DEF:
+Plus 4
+PASS RUSH:
+INTERCEPTS:
+48
+1983 N.Y. Giants
+Safety
+Terry Kinard
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 N.Y. Giants
+Safety
+Bill Currier
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 N.Y. Jets
+Cornerback
+Davlin Mullen
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+48
+1983 N.Y. Jets
+Cornerback
+Johnny Lynn
+PASS DEF:
+Plus 1
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 N.Y. Jets
+Cornerback
+Jerry Holmes
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 N.Y. Jets
+Cornerback
+Bobby Jackson
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 N.Y. Jets
+Safety
+Kirk Springs
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+48
+1983 N.Y. Jets
+Safety
+Darrol Ray
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 N.Y. Jets
+Safety
+Ken Schroy
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 New England
+Cornerback
+Ronnie Lippett
+PASS DEF:
+Plus 1
+PASS RUSH:
+INTERCEPTS:
+48
+1983 New England
+Cornerback
+Raymond Clayborn
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+48
+1983 New England
+Cornerback
+Fre Marion
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 New England
+Cornerback
+Fred Marion
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 New England
+Safety
+Keith Lee
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+48
+1983 New England
+Safety
+Rick Sanford
+PASS DEF:
+Minus 5
+PASS RUSH:
+INTERCEPTS:
+41-48
+1983 New England
+Safety
+Roland James
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 New Orleans
+Cornerback
+Johnnie Poe
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+41-48
+1983 New Orleans
+Cornerback
+Dave Waymer
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 New Orleans
+Cornerback
+Greg Stemrick
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 New Orleans
+Safety
+Russell Gary
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 New Orleans
+Safety
+Frank Wattelet
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 New Orleans
+Safety
+Bobby Johnson
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Philadelphia
+Cornerback
+Bernard Wilson
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Philadelphia
+Cornerback
+Herman Edwards
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Philadelphia
+Cornerback
+Roynell Young
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Philadelphia
+Safety
+Wes Hopkins
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Philadelphia
+Safety
+Ray Ellis
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Philadelphia
+Safety
+Randy Logan
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Pittsburgh
+Cornerback
+Mel Blount
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Pittsburgh
+Cornerback
+Dwayne Woodruff
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Pittsburgh
+Cornerback
+Harvey Clayton
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Pittsburgh
+Safety
+Donnie Shell
+PASS DEF:
+Minus 4
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 Pittsburgh
+Safety
+Rick Woods
+PASS DEF:
+Plus 1
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 Pittsburgh
+Safety
+Ron Johnson
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 San Diego
+Cornerback
+Reuben Henderson
+PASS DEF:
+Plus 4
+PASS RUSH:
+INTERCEPTS:
+48
+1983 San Diego
+Cornerback
+Danny Walters
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+41-48
+1983 San Diego
+Cornerback
+Gill Byrd
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 San Diego
+Safety
+Tim Fox
+PASS DEF:
+Plus 1
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 San Diego
+Safety
+Andre Young
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 San Diego
+Safety
+Ken Greene
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 San Francisco
+Cornerback
+Dana McLemore
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+48
+1983 San Francisco
+Cornerback
+Eric Wright
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+41-48
+1983 San Francisco
+Cornerback
+Ronnie Lott
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 San Francisco
+Safety
+Carlton Williamson
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 San Francisco
+Safety
+Tim Collier
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 San Francisco
+Safety
+Dwight Hicks
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Seattle
+Cornerback
+Dave Brown
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+42-48
+1983 Seattle
+Cornerback
+Keith Simpson
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Seattle
+Cornerback
+Kerry Justin
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Seattle
+Safety
+Kenny Easley
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+41-48
+1983 Seattle
+Safety
+John Harris
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Seattle
+Safety
+Paul Moyer
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 St. Louis
+Cornerback
+Lionel Washington
+PASS DEF:
+Minus 5
+PASS RUSH:
+INTERCEPTS:
+40-48
+1983 St. Louis
+Cornerback
+Cedric Mack
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 St. Louis
+Cornerback
+Wayne Smith
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 St. Louis
+Safety
+Lee Nelson
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+48
+1983 St. Louis
+Safety
+George Schmitt
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+48
+1983 St. Louis
+Safety
+Benny Perrin
+PASS DEF:
+Minus 1
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Tampa Bay
+Cornerback
+Johnnie Ray Smith
+PASS DEF:
+Plus 4
+PASS RUSH:
+INTERCEPTS:
+48
+1983 Tampa Bay
+Cornerback
+John Holt
+PASS DEF:
+Plus 0
+PASS RUSH:
+INTERCEPTS:
+45-48
+1983 Tampa Bay
+Cornerback
+Jeremiah Castille
+PASS DEF:
+Plus 2
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Tampa Bay
+Safety
+Beasley Reece
+PASS DEF:
+Minus 4
+PASS RUSH:
+INTERCEPTS:
+40-48
+1983 Tampa Bay
+Safety
+Cedric Brown
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Tampa Bay
+Safety
+Mark Cotney
+PASS DEF:
+Plus 3
+PASS RUSH:
+INTERCEPTS:
+47-48
+1983 Washington
+Cornerback
+Vernon Dean
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+43-48
+1983 Washington
+Cornerback
+Tony Washington
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+44-48
+1983 Washington
+Cornerback
+Darrell Green
+PASS DEF:
+Minus 3
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Washington
+Safety
+Mark Murphy
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+39-48
+1983 Washington
+Safety
+Ken Coffey
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+46-48
+1983 Washington
+Safety
+Curtis Jordan
+PASS DEF:
+Minus 2
+PASS RUSH:
+INTERCEPTS:
+47-48
+Many thanks to DiceQ and
+to Dan Manning for their
+assistance in tracking
+down a number of cards in
+this set, particularly
+some of the DBs and RBs
+that went AWOL somewhere
+at Avalon Hill!
+[Lee Harris]

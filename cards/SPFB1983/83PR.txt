@@ -1,0 +1,588 @@
+1983 Atlanta
+Punt Return Unit
+PR1: Billy Johnson
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 19* - - -
+2: 16 - - -
+3: 15 - - -
+4: 14 - - -
+5: 12 - - -
+6: 11 - - -
+7: 9 - - -
+8: 8 - - -
+9: 7 - - -
+10: 6 - - -
+11: 5 - - -
+12: 4f - - -
+RN #1 Breakaway Return
+* TD - - -
+1983 Baltimore
+Punt Return Unit
+PR1: Larry Anderson
+PR2: Rick Porter
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 20 15* - -
+2: 12 12 - -
+3: 11 11 - -
+4: 10 10 - -
+5: 8 8 - -
+6: 7 7 - -
+7: 6 6 - -
+8: 5 5 - -
+9: 4 4 - -
+10: 3 3 - -
+11: 2 2 - -
+12: 1f 1f - -
+RN #1 Breakaway Return
+* - 50 - -
+1983 Buffalo
+Punt Return Unit
+PR1: Robb Riddick
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 14* - - -
+2: 11 - - -
+3: 10 - - -
+4: 9 - - -
+5: 7 - - -
+6: 6 - - -
+7: 5 - - -
+8: 4 - - -
+9: 3 - - -
+10: 2 - - -
+11: 1 - - -
+12: 0f - - -
+RN #1 Breakaway Return
+* 24 - - -
+1983 Chicago
+Punt Return Unit
+PR1: Dennis McKinnon
+PR2: Same as PR-1
+PR3: Jeff Fisher
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 17* - 11 -
+2: 14 - 10 -
+3: 13 - 9 -
+4: 12 - 8 -
+5: 10 - 7 -
+6: 9 - 6 -
+7: 8 - 5 -
+8: 7 - 4 -
+9: 6 - 3 -
+10: 5 - 2 -
+11: 4 - 1 -
+12: 3f - 0f -
+RN #1 Breakaway Return
+* TD - - -
+1983 Cincinnati
+Punt Return Unit
+PR1: Mike Martin
+PR2: John Simmons
+PR3: Same as PR-2
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 19 15* - -
+2: 14 12 - -
+3: 13 11 - -
+4: 12 10 - -
+5: 10 8 - -
+6: 9 7 - -
+7: 8 6 - -
+8: 7 5 - -
+9: 6 4 - -
+10: 5 3 - -
+11: 4 2 - -
+12: 3f 1f - -
+RN #1 Breakaway Return
+* - 43 - -
+1983 Cleveland
+Punt Return Unit
+PR1: Dino Hall
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 19 - - -
+2: 12 - - -
+3: 11 - - -
+4: 10 - - -
+5: 8 - - -
+6: 7 - - -
+7: 6 - - -
+8: 5 - - -
+9: 4 - - -
+10: 3 - - -
+11: 2 - - -
+12: 1f - - -
+RN #1 Breakaway Return
+* - - - -
+1983 Dallas
+Punt Return Unit
+PR1: Rod Hill
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Ron Fellows
+No PR1 PR2 PR3 PR4
+1: 16* - - 14
+2: 13 - - 13
+3: 12 - - 12
+4: 11 - - 11
+5: 9 - - 9
+6: 8 - - 8
+7: 7 - - 7
+8: 6 - - 6
+9: 5 - - 5
+10: 4 - - 4
+11: 3 - - 3
+12: 2f - - 2f
+RN #1 Breakaway Return
+* 37 - - -
+1983 Denver
+Punt Return Unit
+PR1: Zack Thomas
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 19* - - -
+2: 16 - - -
+3: 15 - - -
+4: 14 - - -
+5: 12 - - -
+6: 11 - - -
+7: 10 - - -
+8: 9 - - -
+9: 8 - - -
+10: 7 - - -
+11: 6 - - -
+12: 5f - - -
+RN #1 Breakaway Return
+* TD - - -
+1983 Detroit
+Punt Return Unit
+PR1: Joe Jenkins
+PR2: Same as PR-1
+PR3: Robbie Martin
+PR4: Alvin Hall
+No PR1 PR2 PR3 PR4
+1: 18* - 20* 22*
+2: 15 - 17 19
+3: 14 - 16 18
+4: 13 - 15 17
+5: 11 - 13 15
+6: 10 - 12 14
+7: 9 - 11 13
+8: 8 - 10 12
+9: 7 - 9 11
+10: 6 - 8 10
+11: 5 - 7 9
+12: 4f - 6f 8f
+RN #1 Breakaway Return
+* 43 - TD 66
+1983 Green Bay
+Punt Return Unit
+PR1: Phillip Epps
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 17* - - -
+2: 14 - - -
+3: 13 - - -
+4: 12 - - -
+5: 10 - - -
+6: 9 - - -
+7: 8 - - -
+8: 7 - - -
+9: 6 - - -
+10: 5 - - -
+11: 4 - - -
+12: 3f - - -
+RN #1 Breakaway Return
+* TD - - -
+1983 Houston
+Punt Return Unit
+PR1: Carl Roaches
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 23 - - -
+2: 13 - - -
+3: 12 - - -
+4: 11 - - -
+5: 9 - - -
+6: 8 - - -
+7: 7 - - -
+8: 6 - - -
+9: 5 - - -
+10: 4 - - -
+11: 3 - - -
+12: 2f - - -
+RN #1 Breakaway Return
+* - - - -
+1983 Kansas City
+Punt Return Unit
+PR1: J.T.Smith
+PR2: Same as PR-1
+PR3: Anthony Hancock
+PR4: Same as PR-3
+No PR1 PR2 PR3 PR4
+1: 19 - 18 -
+2: 13 - 11 -
+3: 12 - 10 -
+4: 11 - 9 -
+5: 9 - 7 -
+6: 8 - 6 -
+7: 7 - 5 -
+8: 6 - 4 -
+9: 5 - 3 -
+10: 4 - 2 -
+11: 3 - 1 -
+12: 2f - 0f -
+RN #1 Breakaway Return
+* - - - -
+1983 L.A.Raiders
+Punt Return Unit
+PR1: Greg Pruitt
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 20* - - -
+2: 17 - - -
+3: 16 - - -
+4: 15 - - -
+5: 13 - - -
+6: 12 - - -
+7: 11 - - -
+8: 10 - - -
+9: 9 - - -
+10: 8 - - -
+11: 7 - - -
+12: 6f - - -
+RN #1 Breakaway Return
+* TD - - -
+1983 L.A.Rams
+Punt Return Unit
+PR1: Leroy Irvin
+PR2: Henry Ellard
+PR3: Johnnie Johnson
+PR4: Same as PR-2
+No PR1 PR2 PR3 PR4
+1: 20 22* 26 -
+2: 14 19 13 -
+3: 13 18 12 -
+4: 12 17 11 -
+5: 10 15 9 -
+6: 9 14 8 -
+7: 8 13 7 -
+8: 7 12 6 -
+9: 6 11 5 -
+10: 5 10 4 -
+11: 4 9 3 -
+12: 3f 8f 2f -
+RN #1 Breakaway Return
+* - TD - -
+1983 Miami
+Punt Return Unit
+PR1: Mark Clayton
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Fulton Walker
+No PR1 PR2 PR3 PR4
+1: 18* - - 23
+2: 15 - - 16
+3: 14 - - 15
+4: 13 - - 14
+5: 11 - - 12
+6: 10 - - 11
+7: 9 - - 10
+8: 8 - - 9
+9: 7 - - 8
+10: 6 - - 7
+11: 5 - - 6
+12: 4f - - 5f
+RN #1 Breakaway Return
+* 60 - - -
+1983 Minnesota
+Punt Return Unit
+PR1: Rufus Bess
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Leo Lewis
+No PR1 PR2 PR3 PR4
+1: 34 - - 17
+2: 22 - - 13
+3: 21 - - 12
+4: 20 - - 11
+5: 18 - - 9
+6: 17 - - 8
+7: 16 - - 7
+8: 15 - - 6
+9: 14 - - 5
+10: 13 - - 4
+11: 5 - - 3
+12: 3f - - 2f
+RN #1 Breakaway Return
+* - - - -
+1983 New England
+Punt Return Unit
+PR1: Ricky Smith
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 19* - - -
+2: 16 - - -
+3: 15 - - -
+4: 14 - - -
+5: 12 - - -
+6: 11 - - -
+7: 10 - - -
+8: 9 - - -
+9: 8 - - -
+10: 7 - - -
+11: 6 - - -
+12: 5f - - -
+RN #1 Breakaway Return
+* 55 - - -
+1983 New Orleans
+Punt Return Unit
+PR1: Jeff Groth
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 15* - - -
+2: 12 - - -
+3: 11 - - -
+4: 10 - - -
+5: 8 - - -
+6: 7 - - -
+7: 6 - - -
+8: 5 - - -
+9: 4 - - -
+10: 3 - - -
+11: 2 - - -
+12: 1f - - -
+RN #1 Breakaway Return
+* 31 - - -
+1983 New York G
+Punt Return Unit
+PR1: Pete Shaw
+PR2: Leon Bright
+PR3: Same as PR-1
+PR4: Beasley Reece
+No PR1 PR2 PR3 PR4
+1: 16* 15* - 11
+2: 13 12 - 8
+3: 12 11 - 7
+4: 11 10 - 6
+5: 9 8 - 4
+6: 8 7 - 3
+7: 7 6 - 2
+8: 6 5 - 1
+9: 5 4 - 0
+10: 4 3 - -1
+11: 3 2 - -3f
+12: 2f 1f -
+RN #1 Breakaway Return
+* 27 20 - -
+1983 New York J
+Punt Return Unit
+PR1: Kirk Springs
+PR2: Same as PR-1
+PR3: Mark Harmon
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 21* - 21 -
+2: 18 - 14 -
+3: 17 - 13 -
+4: 16 - 12 -
+5: 14 - 10 -
+6: 13 - 9 -
+7: 12 - 8 -
+8: 11 - 7 -
+9: 10 - 6 -
+10: 9 - 5 -
+11: 8 - 4 -
+12: 7f - 3f -
+RN #1 Breakaway Return
+* TD - - -
+1983 Philadelphia
+Punt Return Unit
+PR1: John Sciarra
+PR2: Same as PR-1
+PR3: Glen Young
+PR4: Same as PR-3
+No PR1 PR2 PR3 PR4
+1: 14 - 23 -
+2: 10 - 12 -
+3: 9 - 11 -
+4: 8 - 10 -
+5: 7 - 8 -
+6: 6 - 7 -
+7: 5 - 6 -
+8: 4 - 5 -
+9: 3 - 4 -
+10: 2 - 3 -
+11: 0 - 2 -
+12: -1f - 1f -
+RN #1 Breakaway Return
+* - - - -
+1983 Pittsburgh
+Punt Return Unit
+PR1: Paul Skansi
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 16* - - -
+2: 13 - - -
+3: 12 - - -
+4: 11 - - -
+5: 9 - - -
+6: 8 - - -
+7: 7 - - -
+8: 6 - - -
+9: 5 - - -
+10: 4 - - -
+11: 3 - - -
+12: 2f - - -
+RN #1 Breakaway Return
+* 57 - - -
+1983 San Diego
+Punt Return Unit
+PR1: James Brooks
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Wes Chandler
+No PR1 PR2 PR3 PR4
+1: 16* - - 11
+2: 13 - - 8
+3: 12 - - 7
+4: 11 - - 6
+5: 9 - - 4
+6: 8 - - 3
+7: 7 - - 2
+8: 6 - - 1
+9: 5 - - 0
+10: 4 - - -1
+11: 3 - - -2
+12: 2f - - -3f
+RN #1 Breakaway Return
+* 30 - - -
+1983 San Francisco
+Punt Return Unit
+PR1: Dana McLemore
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 19* - - -
+2: 16 - - -
+3: 15 - - -
+4: 14 - - -
+5: 12 - - -
+6: 11 - - -
+7: 10 - - -
+8: 9 - - -
+9: 8 - - -
+10: 7 - - -
+11: 6 - - -
+12: 5f - - -
+RN #1 Breakaway Return
+* TD - - -
+1983 Seattle
+Punt Return Unit
+PR1: Paul Johns
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 19* - - -
+2: 16 - - -
+3: 15 - - -
+4: 14 - - -
+5: 12 - - -
+6: 11 - - -
+7: 10 - - -
+8: 9 - - -
+9: 8 - - -
+10: 7 - - -
+11: 6 - - -
+12: 5f - - -
+RN #1 Breakaway Return
+* TD - - -
+1983 St.Louis
+Punt Return Unit
+PR1: Stump Mitchell
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Steve Bird
+No PR1 PR2 PR3 PR4
+1: 17* - - 16
+2: 14 - - 10
+3: 13 - - 9
+4: 12 - - 8
+5: 10 - - 6
+6: 9 - - 5
+7: 8 - - 4
+8: 7 - - 3
+9: 6 - - 2
+10: 5 - - 1
+11: 4 - - 0
+12: 3f - - -1f
+RN #1 Breakaway Return
+* 34 - - -
+1983 Tampa Bay
+Punt Return Unit
+PR1: Andre Tyler
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: John Holt
+No PR1 PR2 PR3 PR4
+1: 16 - - 17
+2: 13 - - 14
+3: 12 - - 13
+4: 11 - - 12
+5: 9 - - 10
+6: 8 - - 9
+7: 7 - - 8
+8: 6 - - 7
+9: 5 - - 6
+10: 4 - - 5
+11: 3 - - 4
+12: 2f - - 3f
+RN #1 Breakaway Return
+* - - - -
+1983 Washington
+Punt Return Unit
+PR1: Mike Nelms
+PR2: Same as PR-1
+PR3: Same as PR-1
+PR4: Same as PR-1
+No PR1 PR2 PR3 PR4
+1: 16* - - -
+2: 13 - - -
+3: 12 - - -
+4: 11 - - -
+5: 9 - - -
+6: 8 - - -
+7: 7 - - -
+8: 6 - - -
+9: 5 - - -
+10: 4 - - -
+11: 3 - - -
+12: 2f - - -
+RN #1 Breakaway Return
+* 35 - - -

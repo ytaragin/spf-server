@@ -1,0 +1,4695 @@
+1983 Atlanta
+Running Back - 0
+William Andrews
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+O
+Blocks:
+Plus 3
+Pass Gain
+Q/S/L
+1: 15/26
+2: 12/26
+3: 8/25
+4: 7/24
+5: 6/23
+6: 5/22
+7: 4/19
+8: 3/15
+9: 2/14
+10:1/9
+11:0/6
+12:-1/5
+1983 Atlanta
+Running Back - 1
+Gerald Riggs
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+L
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 21/25
+2: 15/24
+3: 9/23
+4: 6/21
+5: 5/18
+6: 4/17
+7: 3/15
+8: 2/11
+9: 1/10
+10:0/9
+11:-1/8
+12:-2/7
+1983 Atlanta
+Running Back - 2
+Lynn Cain
+Rushing
+N/SG/LG
+1: Sg
+2: 7
+3: 5
+4: 4
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-2
+Long Gain:
+R
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 11
+2: 8
+3: 5
+4: 5
+5: 4
+6: 4
+7: 3
+8: 3
+9: 2
+10:2
+11:2
+12:1
+1983 Atlanta
+Running Back - 3
+Richard Williams
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 8
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+1983 Baltimore
+Running Back - 0
+Curtis Dickey
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+I
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: Lg/Lg/TD
+2: 19/23/53
+3: 11/22/42
+4: 10/21/31
+5: 10/20/28
+6: 9/19/25
+7: 9/10/20
+8: 8/17
+9: 8/16
+10:7/15
+11:7/14
+12:6/13
+1983 Baltimore
+Running Back - 1
+Randy McMillan
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+L
+Blocks:
+Plus 3
+Pass Gain
+Q/S/L
+1: 25/25
+2: 8/12
+3: 5/11
+4: 5/10
+5: 4/9
+6: 4/9
+7: 4/8
+8: 3/7
+9: 3/7
+10:2/6
+11:2/5
+12:1/4
+1983 Baltimore
+Running Back - 3
+Alvin Moore
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+Q
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 16
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:0
+1983 Baltimore
+Running Back - 3
+Newton Williams
+Rushing
+N/SG/LG
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 4
+6: 3
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+Q
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 19/19
+2: 10/18
+3: 9/17
+4: 8/16
+5: 7/15
+6: 6/14
+7: 5/13
+8: 4/12
+9: 3/10
+10:2/8
+11:1/7
+12:0/6
+1983 Buffalo
+Running Back - 0
+Joe Cribbs
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+K
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: Lg/Lg/33
+2: 12/15/32
+3: 6/12/31
+4: 5/11/30
+5: 5/10/29
+6: 4/9/28
+7: 4/8/27
+8: 3/7/26
+9: 3/6/25
+10:2/5/24
+11:2/4/23
+12:1/3/21
+1983 Buffalo
+Running Back - 2
+Booker Moore
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+P
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 11/21
+2: 10/20
+3: 9/19
+4: 8/18
+5: 7/17
+6: 6/16
+7: 5/15
+8: 4/14
+9: 3/13
+10:2/11
+11:1/10
+12:0/9
+1983 Buffalo
+Running Back - 3
+Robb Riddick
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: 11/23
+2: 9/18
+3: 8/17
+4: 8/16
+5: 7/15
+6: 7/14
+7: 6
+8: 6
+9: 5
+10:5
+11:4
+12:4
+1983 Buffalo
+Running Back - 3
+Roosevelt Leaks
+Rushing
+N/SG/LG
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 3
+6: 2
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-2
+Long Gain:
+R
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 11
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:1
+1983 Buffalo
+Running Back - 3
+Van Williams
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+Q
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 8
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+1983 Chicago
+Running Back - 0
+Walter Payton
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+J
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: Lg/Lg/73
+2: 11/15/62
+3: 7/14/28
+4: 6/13/26
+5: 6/12/24
+6: 6/11/23
+7: 5/11/22
+8: 5/10/20
+9: 4/9/20
+10:4/8/20
+11:3/7/20
+12:3/6/20
+1983 Chicago
+Running Back - 1
+Matt Suhey
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+L
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/52
+2: 9/13/38
+3: 6/12/27
+4: 5/11/24
+5: 5/10/23
+6: 4/9/22
+7: 4/8/21
+8: 3/7
+9: 3/6
+10:2/5
+11:2/4
+12:1/3
+1983 Chicago
+Running Back - 3
+Calvin Thomas
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+O
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: 10
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 3
+9: 2
+10:1
+11:0
+12:-1
+1983 Chicago
+Running Back - 3
+Dennis Gentry
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+Q
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 11
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:0
+1983 Chicago
+Running Back - 3
+Tony Hutchinson
+Rushing
+N/SG/LG
+1: Sg
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 8
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+1983 Cincinnati
+Running Back - 0
+Pete Johnson
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+Q
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 18/18
+2: 9/17
+3: 8/16
+4: 7/15
+5: 6/14
+6: 5/13
+7: 4/12
+8: 3/11
+9: 2/10
+10:1/8
+11:0/7
+12:-1/5
+1983 Cincinnati
+Running Back - 2
+Charles Alexander
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 14/14
+2: 9/13
+3: 8/12
+4: 7/11
+5: 6/10
+6: 5/9
+7: 4/8
+8: 3/8
+9: 2/7
+10:1/7
+11:0/6
+12:-1/5
+1983 Cincinnati
+Running Back - 3
+Larry Kinnebrew
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+Q
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 8
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+1983 Cincinnati
+Running Back - 3
+Rodney Tate
+Rushing
+N/SG/LG
+1: Sg
+2: 7
+3: 5
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+Q
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 25/25
+2: 8/20
+3: 7/15
+4: 6/14
+5: 5/12
+6: 4/10
+7: 3/9
+8: 2/8
+9: 1/6
+10:0/5
+11:0/4
+12:-1/3
+1983 Cincinnati
+Running Back - 3
+Stanley Wilson
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+P
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 14/14
+2: 9/13
+3: 8/12
+4: 7/11
+5: 6/10
+6: 5/9
+7: 4/8
+8: 3/7
+9: 2/6
+10:1/5
+11:0/4
+12:-1/3
+1983 Cleveland
+Running Back - 0
+Mike Pruitt
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 0
+10:0
+11:-1
+12:-1
+Long Gain:
+N
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 18/21
+2: 12/20
+3: 8/18
+4: 7/16
+5: 6/15
+6: 5/14
+7: 4/13
+8: 3/12
+9: 2/11
+10:1/10
+11:0/9
+12:0/8
+1983 Cleveland
+Running Back - 1
+Boyce Green
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+N
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: Lg/Lg/33
+2: 7/11/32
+3: 5/10/21
+4: 4/9/20
+5: 4/8/20
+6: 3/7/20
+7: 3/6/20
+8: 2/5/20
+9: 2/4
+10:1/3
+11:1/3
+12:0/3
+1983 Cleveland
+Running Back - 3
+Dwight Walker
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+Q
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: Lg/Lg/35
+2: 9/13/31
+3: 6/12/30
+4: 5/11/27
+5: 5/10/25
+6: 4/9/23
+7: 4/8/22
+8: 4/7/21
+9: 3/6/20
+10:3/5
+11:2/4
+12:1/3
+1983 Cleveland
+Running Back - 3
+Johnny Davis
+Rushing
+N/SG/LG
+1: Sg
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+Q
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 10
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 3
+9: 2
+10:1
+11:0
+12:-1
+1983 Dallas
+Running Back - 0
+Tony Dorsett
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+E
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: 12/19
+2: 11/18
+3: 10/17
+4: 9/16
+5: 8/15
+6: 7/14
+7: 6/13
+8: 5/12
+9: 4/11
+10:3/10
+11:2/9
+12:1/8
+1983 Dallas
+Running Back - 1
+Ron Springs
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+P
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/TD
+2: 8/12/53
+3: 5/11/46
+4: 5/10/41
+5: 4/9/39
+6: 4/8/36
+7: 3/7/32
+8: 3/6/31
+9: 2/5/28
+10:2/4/27
+11:1/3/21
+12:0/3/20
+1983 Dallas
+Running Back - 2
+Timmy Newsome
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+P
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: Lg/Lg/TD
+2: 14/18/34
+3: 8/17/31
+4: 8/16/28
+5: 7/15/24
+6: 7/14/23
+7: 6/13/20
+8: 6/12
+9: 5/11
+10:5/10
+11:4/9
+12:4/8
+1983 Dallas
+Running Back - 3
+Robert Newhouse
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Plus 3
+Pass Gain
+Q/S/L
+1:
+2:
+3:
+4:
+5:
+6:
+7:
+8:
+9:
+10:
+11:
+12:
+1983 Denver
+Running Back - 0
+Sammy Winder
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+J
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 17
+2: 15
+3: 13
+4: 11
+5: 10
+6: 9
+7: 8
+8: 7
+9: 6
+10:5
+11:3
+12:2
+1983 Denver
+Running Back - 2
+Dave Preston
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+N
+Blocks:
+Plus 3
+Pass Gain
+Q/S/L
+1: 25/25
+2: 8/18
+3: 8/17
+4: 7/15
+5: 6/13
+6: 5/11
+7: 5/10
+8: 4/8
+9: 3/6
+10:2/5
+11:1/4
+12:0/3
+1983 Denver
+Running Back - 2
+Gerald Willhite
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+O
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/TD
+2: 11/15/30
+3: 7/14/28
+4: 6/13/23
+5: 6/12/21
+6: 5/11/20
+7: 5/10
+8: 4/9
+9: 4/8
+10:3/7
+11:3/6
+12:2/5
+1983 Denver
+Running Back - 2
+Nathan Poole
+Rushing
+N/SG/LG
+1: Sg
+2: 7
+3: 5
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+P
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 23/23
+2: 9/18
+3: 8/17
+4: 7/15
+5: 6/13
+6: 5/12
+7: 4/11
+8: 3/10
+9: 2/9
+10:1/8
+11:0/7
+12:0/5
+1983 Denver
+Running Back - 2
+Rick Parros
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+N
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/TD
+2: 11/15/29
+3: 7/14/25
+4: 6/13/23
+5: 6/12/21
+6: 5/11/20
+7: 5/10
+8: 4/9
+9: 4/8
+10:3/7
+11:3/6
+12:2/5
+1983 Detroit
+Running Back - 0
+Billy Sims
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-2
+12:-2
+Long Gain:
+L
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: Lg/Lg/41
+2: 7/14/35
+3: 6/13/32
+4: 6/12/30
+5: 5/11/30
+6: 5/10/26
+7: 4/9/25
+8: 4/8/24
+9: 3/7/23
+10:3/6/22
+11:2/5/21
+12:2/4/20
+1983 Detroit
+Running Back - 1
+James Jones
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-3
+Long Gain:
+P
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/46
+2: 10/14/34
+3: 6/13/30
+4: 6/12/29
+5: 5/11/27
+6: 5/10/26
+7: 4/9/25
+8: 4/8/24
+9: 4/7/23
+10:3/6/22
+11:3/5/21
+12:2/4/20
+1983 Detroit
+Running Back - 2
+Vince Thompson
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 9
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+1983 Detroit
+Running Back - 3
+Dexter Bussey
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+0
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 14
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:0
+1983 Detroit
+Running Back - 3
+Horace King
+Rushing
+N/SG/LG
+1: Sg
+2: 5
+3: 4
+4: 3
+5: 2
+6: 1
+7: 1
+8: 0
+9: -1
+10:-2
+11:-3
+12:-4
+Long Gain:
+R
+Blocks:
+Plus 3
+Pass Gain
+Q/S/L
+1: 14
+2: 13
+3: 12
+4: 10
+5: 8
+6: 7
+7: 6
+8: 5
+9: 3
+10:2
+11:1
+12:0
+1983 Detroit
+Running Back - 3
+Rich Kane
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 9
+2: 9
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 2
+10:1
+11:0
+12:0
+1983 Green Bay
+Running Back - 1
+Gerry Ellis
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+F
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: Lg/Lg/56
+2: 12/16/51
+3: 7/15/41
+4: 7/14/30
+5: 6/13/28
+6: 6/12/27
+7: 5/11/26
+8: 5/10/25
+9: 4/9/23
+10:4/8/22
+11:4/7/21
+12:3/6/20
+1983 Green Bay
+Running Back - 2
+Eddie Lee Ivery
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+P
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 17/15
+2: 6/14
+3: 6/13
+4: 6/12
+5: 5/11
+6: 5/10
+7: 4/9
+8: 3/8
+9: 3/7
+10:2/6
+11:2/5
+12:2/4
+1983 Green Bay
+Running Back - 3
+Harlan Huckleby
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+P
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 10
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 3
+9: 2
+10:1
+11:0
+12:-1
+1983 Green Bay
+Running Back - 3
+Jessie Clark
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+K
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 18/21
+2: 17/19
+3: 7/15
+4: 7/14
+5: 6/13
+6: 6/12
+7: 5/11
+8: 5
+9: 4
+10:3
+11:2
+12:1
+1983 Green Bay
+Running Back - 3
+Mike Meade
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+Q
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 11
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:0
+1983 Houston
+Running Back - 2
+Dwayne Crutchfield
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+P
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 15/15
+2: 8/14
+3: 7/13
+4: 6/12
+5: 5/11
+6: 5/10
+7: 4/9
+8: 4/8
+9: 3/7
+10:3/6
+11:2/5
+12:2/4
+1983 Houston
+Running Back - 2
+Larry Moriarty
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+D
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 6/12
+2: 6/12
+3: 5/11
+4: 5/10
+5: 4/9
+6: 4/8
+7: 3/7
+8: 3/6
+9: 3/5
+10:2/4
+11:2/3
+12:1/3
+1983 Houston
+Running Back - 3
+Donnie Craft
+Rushing
+N/SG/LG
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 3
+6: 2
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 12/14
+2: 8/12
+3: 7/11
+4: 6/10
+5: 5/9
+6: 5/8
+7: 4/7
+8: 4/6
+9: 3/6
+10:2/5
+11:2/5
+12:1/4
+1983 Houston
+Running Back - 3
+Stan Edwards
+Rushing
+N/SG/LG
+1: Sg
+2: 5
+3: 4
+4: 4
+5: 3
+6: 2
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: 15/20
+2: 9/13
+3: 6/12
+4: 5/11
+5: 5/10
+6: 4/9
+7: 4/8
+8: 4/7
+9: 4/6
+10:3/5
+11:3/4
+12:2/4
+1983 Kansas City
+Running Back - 0
+Billy Jackson
+Rushing
+N/SG/LG
+1: Sg
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-2
+Long Gain:
+P
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: Lg/Lg/29
+2: 8/14/28
+3: 7/13/27
+4: 6/12/27
+5: 6/12/26
+6: 5/11/26
+7: 5/10/25
+8: 4/9/24
+9: 3/8/23
+10:2/6/22
+11:0/4/20
+12:-1/3/20
+1983 Kansas City
+Running Back - 1
+Theotis Brown
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+J
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: Lg/Lg/53
+2: 9/16/37
+3: 8/16/34
+4: 7/15/33
+5: 6/14/31
+6: 5/13/28
+7: 4/12/27
+8: 3/11/26
+9: 2/10/24
+10:1/9/22
+11:0/8/21
+12:0/7/20
+1983 Kansas City
+Running Back - 3
+Jewerl Thomas
+Rushing
+N/SG/LG
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 3
+6: 2
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 7
+2: 7
+3: 6
+4: 6
+5: 5
+6: 4
+7: 4
+8: 3
+9: 3
+10:2
+11:2
+12:1
+1983 Kansas City
+Running Back - 3
+Ken Thomas
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+N
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 25/25
+2: 9/15
+3: 8/14
+4: 7/13
+5: 6/12
+6: 5/11
+7: 4/10
+8: 3/9
+9: 2/8
+10:1/7
+11:0/6
+12:0/5
+1983 Kansas City
+Running Back - 3
+Lawrence Ricks
+Rushing
+N/SG/LG
+1: Sg
+2: 4
+3: 3
+4: 2
+5: 1
+6: 0
+7: 0
+8: 0
+9: -2
+10:-3
+11:-4
+12:-5
+Long Gain:
+R
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 7
+2: 7
+3: 6
+4: 6
+5: 5
+6: 5
+7: 4
+8: 4
+9: 3
+10:2
+11:1
+12:0
+1983 L.A.Raiders
+Running Back - 0
+Marcus Allen
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+P
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/36
+2: 9/13/35
+3: 9/12/34
+4: 8/11/33
+5: 7/10/31
+6: 6/9/30
+7: 5/8/29
+8: 4/7/28
+9: 3/6/25
+10:2/5/23
+11:1/4/22
+12:0/3/20
+1983 L.A.Raiders
+Running Back - 2
+Frank Hawkins
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+M
+Blocks:
+Plus 3
+Pass Gain
+Q/S/L
+1: 28/28
+2: 10/22
+3: 9/20
+4: 8/19
+5: 7/17
+6: 6/16
+7: 5/15
+8: 4/14
+9: 3/13
+10:2/12
+11:1/10
+12:0/8
+1983 L.A.Raiders
+Running Back - 2
+Greg Pruitt
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:-1
+Long Gain:
+P
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 6
+2: 6
+3: 6
+4: 5
+5: 5
+6: 5
+7: 4
+8: 3
+9: 2
+10:1
+11:1
+12:0
+1983 L.A.Raiders
+Running Back - 2
+Kenny King
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+P
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/34
+2: 11/16/28
+3: 7/15/25
+4: 7/14/23
+5: 6/13/21
+6: 6/12/20
+7: 5/11
+8: 5/10
+9: 4/9
+10:4/8
+11:4/7
+12:3/6
+1983 L.A.Raiders
+Running Back - 3
+Cle Montgomery
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 15
+2: 14
+3: 13
+4: 11
+5: 10
+6: 9
+7: 9
+8: 8
+9: 7
+10:6
+11:3
+12:1
+1983 L.A.Rams
+Running Back - 0
+Eric Dickerson
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+C
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/37
+2: 8/12/35
+3: 7/11/33
+4: 6/10/32
+5: 5/7/30
+6: 3/5/29
+7: 2/4/28
+8: 1/4/25
+9: 0/3/24
+10:0/3/23
+11:0/2/22
+12:-1/2/20
+1983 L.A.Rams
+Running Back - 2
+Barry Redden
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+L
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 9
+2: 8
+3: 7
+4: 6
+5: 5
+6: 5
+7: 4
+8: 4
+9: 3
+10:2
+11:1
+12:0
+1983 L.A.Rams
+Running Back - 3
+Mike Guman
+Rushing
+N/SG/LG
+1: Sg
+2: 11
+3: 10
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:-1
+Long Gain:
+Q
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/60
+2: 10/14/35
+3: 7/13/29
+4: 6/12/28
+5: 5/11/27
+6: 4/10/26
+7: 3/9/25
+8: 3/8/24
+9: 3/7/23
+10:3/6/22
+11:2/5/21
+12:1/4/20
+1983 L.A.Rams
+Running Back - 4
+Robert Alexander
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 10
+2: 10
+3: 9
+4: 9
+5: 8
+6: 8
+7: 7
+8: 7
+9: 6
+10:6
+11:5
+12:3
+1983 Miami
+Running Back - 0
+Andra Franklin
+Rushing
+N/SG/LG
+1: Sg
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-2
+Long Gain:
+P
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1:
+2:
+3:
+4:
+5:
+6:
+7:
+8:
+9:
+10:
+11:
+12:
+1983 Miami
+Running Back - 1
+David Overstreet
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 3
+9: 2
+10:1
+11:0
+12:-1
+Long Gain:
+K
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 20/20
+2: 14/19
+3: 10/18
+4: 9/17
+5: 8/16
+6: 7/15
+7: 6/14
+8: 5/13
+9: 4/9
+10:3/6
+11:2/5
+12:1/3
+1983 Miami
+Running Back - 1
+Tony Nathan
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+L
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 25/25
+2: 9/21
+3: 8/20
+4: 7/19
+5: 6/18
+6: 5/17
+7: 4/16
+8: 3/15
+9: 2/14
+10:1/13
+11:0/12
+12:-1/10
+1983 Miami
+Running Back - 2
+Woody Bennett
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+O
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 9
+2: 9
+3: 8
+4: 8
+5: 7
+6: 7
+7: 6
+8: 6
+9: 5
+10:4
+11:3
+12:1
+1983 Minnesota
+Running Back - 0
+Darrin Nelson
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+I
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/68
+2: 12/16/61
+3: 7/15/53
+4: 7/14/43
+5: 6/13/31
+6: 6/12/30
+7: 5/11/29
+8: 5/10/26
+9: 4/9/24
+10:4/8/22
+11:3/7/21
+12:3/6/20
+1983 Minnesota
+Running Back - 1
+Ted Brown
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+K
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 25/25
+2: 9/13
+3: 6/12
+4: 5/11
+5: 5/10
+6: 4/9
+7: 4/8
+8: 4/7
+9: 3/6
+10:3/5
+11:2/4
+12:1/3
+1983 Minnesota
+Running Back - 1
+Tony Galbreath
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+J
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 23/23
+2: 11/12
+3: 5/11
+4: 5/10
+5: 4/9
+6: 4/8
+7: 3/7
+8: 3/6
+9: 3/5
+10:2/4
+11:1/3
+12:0/3
+1983 Minnesota
+Running Back - 3
+Jarvis Redwine
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+P
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 10
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 3
+9: 2
+10:1
+11:0
+12:-1
+1983 Minnesota
+Running Back - 3
+Rickey Young
+Rushing
+N/SG/LG
+1: Sg
+2: 5
+3: 4
+4: 3
+5: 3
+6: 2
+7: 1
+8: 0
+9: -1
+10:-2
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: Lg/Lg/48
+2: 12/13/31
+3: 6/12/26
+4: 5/11/23
+5: 5/10/22
+6: 4/9/20
+7: 4/8/20
+8: 3/7/20
+9: 3/6
+10:2/5
+11:2/4
+12:1/3
+1983 N.Y. Giants
+Running Back - 1
+Rob Carpenter
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+M
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: Lg/Lg/37
+2: 10/14/31
+3: 6/13/28
+4: 6/12/26
+5: 5/11/21
+6: 5/10/20
+7: 4/9/20
+8: 4/8/20
+9: 3/7
+10:3/6
+11:2/5
+12:2/4
+1983 N.Y. Giants
+Running Back - 3
+Billy Campfield
+Rushing
+N/SG/LG
+1: Sg
+2: 11
+3: 10
+4: 9
+5: 8
+6: 7
+7: 6
+8: 5
+9: 3
+10:2
+11:1
+12:1
+Long Gain:
+Q
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 9
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+1983 N.Y. Giants
+Running Back - 3
+Joe Morris
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+Q
+Blocks:
+Minus 3
+Pass Gain
+Q/S/L
+1: 10
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 3
+9: 2
+10:1
+11:0
+12:-1
+1983 N.Y. Giants
+Running Back - 3
+John Tuggle
+Rushing
+N/SG/LG
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 4
+6: 3
+7: 2
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 10
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 3
+9: 2
+10:1
+11:0
+12:-1
+1983 N.Y. Jets
+Running Back - 0
+Freeman McNeil
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+P
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: 21/21
+2: 8/20
+3: 7/15
+4: 6/14
+5: 5/13
+6: 4/12
+7: 3/11
+8: 2/10
+9: 1/9
+10:0/8
+11:0/7
+12:-1/6
+1983 N.Y. Jets
+Running Back - 1
+Bruce Harper
+Rushing
+N/SG/LG
+1: Sg
+2: 12
+3: 10
+4: 9
+5: 8
+6: 7
+7: 6
+8: 5
+9: 4
+10:3
+11:2
+12:0
+Long Gain:
+F
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/33
+2: 9/15/32
+3: 8/14/30
+4: 7/13/28
+5: 6/12/27
+6: 5/11/26
+7: 4/10/25
+8: 3/9/24
+9: 2/8/23
+10:1/7/22
+11:0/6/21
+12:-1/4/20
+1983 N.Y. Jets
+Running Back - 2
+Scott Dierking
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+N
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 19/19
+2: 10/18
+3: 9/17
+4: 8/16
+5: 7/15
+6: 6/13
+7: 5/10
+8: 4/9
+9: 3/8
+10:2/7
+11:1/6
+12:0/5
+1983 N.Y. Jets
+Running Back - 3
+Johnny Hector
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+L
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 22/22
+2: 12/21
+3: 11/20
+4: 9/18
+5: 8/17
+6: 7/16
+7: 7/16
+8: 6/15
+9: 4/10
+10:3/8
+11:2/3
+12:1/3
+1983 N.Y. Jets
+Running Back - 3
+Marion Barber
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+Q
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 12
+2: 11
+3: 10
+4: 10
+5: 9
+6: 8
+7: 7
+8: 6
+9: 5
+10:4
+11:3
+12:2
+1983 N.Y. Jets
+Running Back - 3
+Mike Augustyniak
+Rushing
+N/SG/LG
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 4
+6: 3
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 17/17
+2: 7/16
+3: 7/15
+4: 6/14
+5: 6/13
+6: 5/12
+7: 5/11
+8: 4/10
+9: 3/9
+10:2/8
+11:1/7
+12:0/5
+1983 New England
+Running Back - 0
+Tony Collins
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+G
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 20/20
+2: 10/14
+3: 6/13
+4: 6/12
+5: 5/11
+6: 5/10
+7: 4/9
+8: 4/8
+9: 3/7
+10:3/6
+11:2/5
+12:2/4
+1983 New England
+Running Back - 1
+Mosi Tatupu
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:0
+11:-1
+12:-1
+Long Gain:
+I
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 17/17
+2: 10/14
+3: 6/13
+4: 6/12
+5: 5/11
+6: 5/10
+7: 4/9
+8: 4/8
+9: 3/7
+10:3/6
+11:2/5
+12:2/4
+1983 New England
+Running Back - 2
+Mark van Eeghen
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 23/23
+2: 10/14
+3: 6/13
+4: 6/12
+5: 5/11
+6: 5/10
+7: 4/9
+8: 4/8
+9: 3/7
+10:3/6
+11:2/5
+12:2/4
+1983 New England
+Running Back - 2
+Robert Weathers
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:0
+12:-1
+Long Gain:
+D
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 19/19
+2: 9/13
+3: 6/12
+4: 5/11
+5: 5/10
+6: 4/9
+7: 4/8
+8: 4/7
+9: 3/7
+10:3/6
+11:2/5
+12:2/4
+1983 New Orleans
+Running Back - 0
+Earl Campbell
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+L
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: Lg/Lg/66
+2: 11/15/43
+3: 7/14/38
+4: 6/13/32
+5: 6/12/21
+6: 5/11/20
+7: 5/10
+8: 4/9
+9: 4/8
+10:3/7
+11:3/6
+12:2/5
+1983 New Orleans
+Running Back - 0
+George Rogers
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+E
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 22
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:0
+1983 New Orleans
+Running Back - 2
+Wayne Wilson
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+N
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 24
+2: 11
+3: 6
+4: 5
+5: 4
+6: 4
+7: 3
+8: 3
+9: 2
+10:1
+11:0
+12:-1
+1983 New Orleans
+Running Back - 3
+Hokie Gajan
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+H
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 17
+2: 7
+3: 6
+4: 5
+5: 4
+6: 4
+7: 3
+8: 3
+9: 2
+10:2
+11:1
+12:0
+1983 New Orleans
+Running Back - 3
+Jimmy Rogers
+Rushing
+N/SG/LG
+1: Sg
+2: 7
+3: 5
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+Q
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: 8
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+1983 New Orleans
+Running Back - 3
+Tim Wilson
+Rushing
+N/SG/LG
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 3
+6: 2
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Plus 3
+Pass Gain
+Q/S/L
+1: 8
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+1983 Philadelphia
+Running Back - 1
+Hubie Oliver
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+O
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: Lg/Lg/25
+2: 9/13/24
+3: 6/12/23
+4: 5/11/22
+5: 5/10/21
+6: 4/9/20
+7: 4/8/20
+8: 3/7/20
+9: 3/6/20
+10:2/5/20
+11:2/4/20
+12:1/3/20
+1983 Philadelphia
+Running Back - 2
+Mike Williams
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+M
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: Lg/Lg/29
+2: 8/12/27
+3: 5/11/24
+4: 5/10/22
+5: 4/9/21
+6: 4/8/20
+7: 3/7
+8: 3/6
+9: 2/5
+10:2/4
+11:1/3
+12:0/3
+1983 Philadelphia
+Running Back - 3
+Perry Harrington
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+M
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 19
+2: 12
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:0
+1983 Philadelphia
+Running Back - 3
+Wil Montgomery
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+M
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 13
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:0
+1983 Philadelphia
+Running Back - 2
+Michael Haddix
+Rushing
+N/SG/LG
+1: Sg
+2: 5
+3: 4
+4: 3
+5: 3
+6: 2
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: Lg/lg/34
+2: 11/15/31
+3: 7/14/30
+4: 6/13/28
+5: 6/12/23
+6: 5/11/21
+7: 5/10/20
+8: 4/9
+9: 4/8
+10:3/7
+11:3/6
+12:2/5
+1983 Pittsburgh
+Running Back - 0
+Franco Harris
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-1
+Long Gain:
+P
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/TD
+2: 8/13/31
+3: 7/12/29
+4: 6/11/28
+5: 5/10/27
+6: 5/9/26
+7: 4/8/25
+8: 3/7/24
+9: 2/6/23
+10:2/5/22
+11:1/4/21
+12:0/3/20
+1983 Pittsburgh
+Running Back - 1
+Frank Pollard
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+M
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 17/17
+2: 8/15
+3: 7/14
+4: 6/13
+5: 5/12
+6: 4/11
+7: 3/10
+8: 2/9
+9: 1/8
+10:0/7
+11:0/6
+12:-1/5
+1983 Pittsburgh
+Running Back - 1
+Walt Abercrombie
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+G
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/TD
+2: 15/19/51
+3: 9/18/35
+4: 9/17/33
+5: 8/16/32
+6: 7/15/29
+7: 7/14/26
+8: 6/13/26
+9: 6/12/25
+10:5/11/25
+11:5/10/21
+12:4/9/20
+1983 Pittsburgh
+Running Back - 3
+Russell Davis
+Rushing
+N/SG/LG
+1: Sg
+2: 5
+3: 4
+4: 3
+5: 2
+6: 2
+7: 1
+8: 0
+9: -1
+10:-2
+11:-3
+12:-4
+Long Gain:
+R
+Blocks:
+Plus 3
+Pass Gain
+Q/S/L
+1:
+2:
+3:
+4:
+5:
+6:
+7:
+8:
+9:
+10:
+11:
+12:
+1983 San Diego
+Running Back - 0
+Chuck Muncie
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+L
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 27/27
+2: 13/23
+3: 9/21
+4: 8/20
+5: 7/19
+6: 6/18
+7: 5/15
+8: 4/13
+9: 3/10
+10:2/8
+11:1/6
+12:0/5
+1983 San Diego
+Running Back - 1
+James Brooks
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+H
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/36
+2: 9/18/35
+3: 8/17/34
+4: 7/15/32
+5: 6/14/31
+6: 5/13/30
+7: 4/12/28
+8: 3/11/26
+9: 2/10/24
+10:1/8/22
+11:0/6/21
+12:-1/5/20
+1983 San Diego
+Running Back - 3
+Earnest Jackson
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 10
+2: 10
+3: 9
+4: 9
+5: 8
+6: 8
+7: 7
+8: 7
+9: 6
+10:4
+11:2
+12:1
+1983 San Diego
+Running Back - 3
+Sherman Smith
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+P
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 21/21
+2: 11/19
+3: 9/18
+4: 8/17
+5: 7/15
+6: 6/13
+7: 5/10
+8: 4/9
+9: 3/8
+10:2/7
+11:1/6
+12:0/5
+1983 San Francisco
+Running Back - 1
+Roger Craig
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+F
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 23/23
+2: 12/20
+3: 11/18
+4: 10/16
+5: 9/15
+6: 8/14
+7: 7/13
+8: 6/12
+9: 5/11
+10:4/10
+11:3/9
+12:2/8
+1983 San Francisco
+Running Back - 1
+Wendell Tyler
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+M
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 26/26
+2: 16/20
+3: 10/15
+4: 9/14
+5: 8/13
+6: 7/12
+7: 6/11
+8: 5/10
+9: 4/9
+10:3/8
+11:2/7
+12:1/6
+1983 San Francisco
+Running Back - 3
+Bill Ring
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+O
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 24/24
+2: 10/18
+3: 9/16
+4: 8/15
+5: 7/13
+6: 6/12
+7: 5/11
+8: 4/10
+9: 3/9
+10:2/8
+11:1/7
+12:0/5
+1983 San Francisco
+Running Back - 3
+Carl Monroe
+Rushing
+N/SG/LG
+1: Sg
+2: 5
+3: 4
+4: 3
+5: 3
+6: 2
+7: 1
+8: 0
+9: -1
+10:-2
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/50
+2: 31/31/40
+3: 25/19/35
+4: 20/16/31
+5: 12/14/23
+6: 8/10/20
+7: 7/9
+8: 6/8
+9: 5/7
+10:3/6
+11:2/5
+12:1/4
+1983 San Francisco
+Running Back - 3
+Jeff Moore
+Rushing
+N/SG/LG
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 4
+6: 3
+7: 2
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+Q
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: Lg/Lg/34
+2: 11/15/29
+3: 7/14/28
+4: 6/13/24
+5: 6/12/22
+6: 5/11/20
+7: 5/10
+8: 4/9
+9: 4/8
+10:3/7
+11:3/6
+12:2/5
+1983 Seattle
+Running Back - 0
+Curt Warner
+Rushing
+N/SG/LG
+1: Sg
+2: 11
+3: 10
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:-1
+Long Gain:
+H
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 28/28
+2: 14/22
+3: 5/21
+4: 5/18
+5: 4/17
+6: 3/16
+7: 3/15
+8: 3/14
+9: 2/11
+10:2/10
+11:2/9
+12:1/8
+1983 Seattle
+Running Back - 2
+David Hughes
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+O
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: Lg/Lg/33
+2: 15/15/32
+3: 6/13/26
+4: 6/12/24
+5: 5/11/22
+6: 5/10/20
+7: 4/9
+8: 4/8
+9: 4/7
+10:3/7
+11:2/6
+12:2/5
+1983 Seattle
+Running Back - 3
+Cullen Bryant
+Rushing
+N/SG/LG
+1: Sg
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 8
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+1983 Seattle
+Running Back - 3
+Dan Doornink
+Rushing
+N/SG/LG
+1: Sg
+2: 5
+3: 4
+4: 4
+5: 3
+6: 2
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/47
+2: 14/18/46
+3: 8/17/34
+4: 8/16/32
+5: 7/15/30
+6: 7/14/28
+7: 6/13/26
+8: 6/12/24
+9: 5/11
+10:5/10
+11:4/9
+12:3/8
+1983 Seattle
+Running Back - 3
+Eric Lane
+Rushing
+N/SG/LG
+1: Sg
+2: 4
+3: 3
+4: 3
+5: 2
+6: 1
+7: 0
+8: 0
+9: -1
+10:-2
+11:-3
+12:-4
+Long Gain:
+R
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: 10
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 3
+9: 2
+10:1
+11:0
+12:-1
+1983 St.Louis
+Running Back - 0
+Ottis Anderson
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+K
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: Lg/Lg/40
+2: 9/13/36
+3: 8/12/35
+4: 7/11/33
+5: 6/10/32
+6: 5/9/31
+7: 5/8/28
+8: 4/7/25
+9: 3/7/23
+10:3/6/22
+11:2/5/21
+12:1/4/20
+1983 St.Louis
+Running Back - 1
+Stump Mitchell
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:0
+11:-1
+12:-1
+Long Gain:
+K
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: 17/17
+2: 8/16
+3: 7/15
+4: 6/14
+5: 5/13
+6: 4/12
+7: 3/11
+8: 3/10
+9: 2/9
+10:1/6
+11:0/5
+12:-1/3
+1983 St.Louis
+Running Back - 3
+Earl Ferrell
+Rushing
+N/SG/LG
+1: Sg
+2: 12
+3: 11
+4: 10
+5: 9
+6: 8
+7: 7
+8: 6
+9: 5
+10:4
+11:3
+12:0
+Long Gain:
+P
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1:
+2:
+3:
+4:
+5:
+6:
+7:
+8:
+9:
+10:
+11:
+12:
+1983 St.Louis
+Running Back - 3
+Randy Love
+Rushing
+N/SG/LG
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 4
+6: 3
+7: 2
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+Q
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1: 16/16
+2: 9/15
+3: 8/14
+4: 7/13
+5: 6/12
+6: 5/11
+7: 4/10
+8: 3/9
+9: 2/8
+10:1/7
+11:0/5
+12:-1/3
+1983 St.Louis
+Running Back - 1
+Wayne Morris
+Rushing
+N/SG/LG
+1: Sg
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-2
+Long Gain:
+Q
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: 11
+2: 11
+3: 10
+4: 10
+5: 9
+6: 9
+7: 8
+8: 7
+9: 6
+10:5
+11:4
+12:3
+1983 Tampa Bay
+Running Back - 0
+James Wilder
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+E
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: Lg/Lg/47
+2: 7/11/46
+3: 5/10/43
+4: 4/9/31
+5: 4/8/28
+6: 4/7/26
+7: 3/6/25
+8: 3/5/24
+9: 3/4/23
+10:2/3/22
+11:2/3/21
+12:1/3/20
+1983 Tampa Bay
+Running Back - 2
+James Owens
+Rushing
+N/SG/LG
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 4
+6: 3
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+Q
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: 11
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 3
+9: 2
+10:1
+11:0
+12:-1
+1983 Tampa Bay
+Running Back - 2
+Melvin Carver
+Rushing
+N/SG/LG
+1: Sg
+2: 7
+3: 5
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+Q
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 16/16
+2: 8/12
+3: 5/11
+4: 5/10
+5: 4/9
+6: 4/8
+7: 4/7
+8: 3/6
+9: 3/6
+10:2/5
+11:2/4
+12:1/3
+1983 Tampa Bay
+Running Back - 3
+Adger Armstrong
+Rushing
+N/SG/LG
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: 10
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 3
+9: 2
+10:0
+11:0
+12:-1
+1983 Tampa Bay
+Running Back - 3
+Terdell Middleton
+Rushing
+N/SG/LG
+1: Sg
+2: 4
+3: 3
+4: 3
+5: 2
+6: 1
+7: 0
+8: 0
+9: -1
+10:-2
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Plus 1
+Pass Gain
+Q/S/L
+1: 9
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+1983 Washington
+Running Back - 0
+John Riggins
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 2
+8: 1
+9: 0
+10:0
+11:0
+12:-1
+Long Gain:
+K
+Blocks:
+Plus 3
+Pass Gain
+Q/S/L
+1: 14
+2: 13
+3: 21
+4: 11
+5: 10
+6: 9
+7: 8
+8: 7
+9: 6
+10:5
+11:4
+12:3
+1983 Washington
+Running Back - 1
+Joe Washington
+Rushing
+N/SG/LG
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 1
+10:0
+11:-1
+12:-1
+Long Gain:
+L
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: Lg/Lg/67
+2: 10/14/46
+3: 9/13/41
+4: 8/12/35
+5: 7/11/33
+6: 6/10/31
+7: 59/28
+8: 5/8/25
+9: 4/8/23
+10:3/7/22
+11:3/6/21
+12:2/5/20
+1983 Washington
+Running Back - 3
+Nick Giaquinto
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Plus 0
+Pass Gain
+Q/S/L
+1: Lg/Lg/35
+2: 9/14/33
+3: 8/13/31
+4: 8/12/28
+5: 7/11/27
+6: 7/10/26
+7: 6/9/25
+8: 6/8/24
+9: 5/7/23
+10:4/7/22
+11:3/7/21
+12:3/6/20
+1983 Washington
+Running Back - 3
+Otis Wonsley
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+R
+Blocks:
+Plus 2
+Pass Gain
+Q/S/L
+1:
+2:
+3:
+4:
+5:
+6:
+7:
+8:
+9:
+10:
+11:
+12:
+1983 Washington
+Running Back - 3
+Reggie Evans
+Rushing
+N/SG/LG
+1: Sg
+2: 4
+3: 3
+4: 2
+5: 1
+6: 0
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Gain:
+R
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1:
+2:
+3:
+4:
+5:
+6:
+7:
+8:
+9:
+10:
+11:
+12:
+1983 Atlanta
+Running Back - 3
+Bo Robinson
+Rushing
+N/SG/LG
+1: Sg
+2: 7
+3: 5
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+Long Gain:
+R
+Blocks:
+Minus 1
+Pass Gain
+Q/S/L
+1: 7
+2: 6
+3: 5
+4: 4
+5: 4
+6: 3
+7: 3
+8: 2
+9: 2
+10:1
+11:1
+12:0
+1983 N.Y. Giants
+Running Back - 0
+Butch Woolfolk
+Rushing
+N/SG/LG
+1: Sg
+2: 8
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Gain:
+P
+Blocks:
+Minus 2
+Pass Gain
+Q/S/L
+1: Lg/Lg/44
+2: 13/17/40
+3: 8/16/37
+4: 7/15/35
+5: 7/14/32
+6: 6/13/30
+7: 6/12/28
+8: 5/11/26
+9: 5/10/25
+10:4/9
+11:4/8
+12:3/7
+Once again, many thanks to
+Dan Manning and DiceQ for
+providing me with some
+missing RB cards that I
+seem to have misplaced!

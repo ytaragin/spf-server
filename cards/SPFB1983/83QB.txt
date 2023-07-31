@@ -1,0 +1,2496 @@
+1983 Atlanta
+Quarterback
+Steve Bartkowski
+Endurance: A
+Passing
+Quick
+Com: 1-39
+Inc: 40-48
+Int:
+Short
+Com: 1-31
+Inc: 32-48
+Int:
+Long
+Com: 1-21
+Inc: 22-47
+Int: 48
+Pass Rush
+Sack: 1-15
+Runs: 16-30
+Com: 31-43
+Inc: 44-48
+Rushing
+1: Sg
+2: 5
+3: 4
+4: 3
+5: 3
+6: 2
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Atlanta
+Quarterback
+Mike Moroski
+Endurance: B
+Passing
+Quick
+Com: 1-39
+Inc: 40-47
+Int: 48
+Short
+Com: 1-31
+Inc: 32-45
+Int: 46-48
+Long
+Com: 1-18
+Inc: 19-42
+Int: 43-48
+Pass Rush
+Sack: 1-17
+Runs: 18-30
+Com: 31-44
+Inc: 45-48
+Rushing
+1: Sg
+2: 11
+3: 10
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:-1
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Baltimore
+Quarterback
+Mike Pagel
+Endurance: A
+Passing
+Quick
+Com: 1-32
+Inc: 33-47
+Int: 48
+Short
+Com: 1-24
+Inc: 25-45
+Int: 46-48
+Long
+Com: 1-15
+Inc: 16-43
+Int: 44-48
+Pass Rush
+Sack: 1-16
+Runs: 17-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 13
+3: 12
+4: 11
+5: 10
+6: 8
+7: 7
+8: 6
+9: 5
+10:4
+11:3
+12:3
+Long Run
+Lg: M
+Endurance
+Rushing: 4
+1983 Baltimore
+Quarterback
+Mark Hermann
+Endurance: B
+Passing
+Quick
+Com: 1-32
+Inc: 33-46
+Int: 47-48
+Short
+Com: 1-26
+Inc: 27-44
+Int: 45-48
+Long
+Com: 1-11
+Inc: 12-40
+Int: 41-48
+Pass Rush
+Sack: 1-21
+Runs: 22-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: 5
+2: 3
+3: 2
+4: 1
+5: 0
+6: 0
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Buffalo
+Quarterback
+Joe Ferguson
+Endurance: A
+Passing
+Quick
+Com: 1-34
+Inc: 35-47
+Int: 48
+Short
+Com: 1-26
+Inc: 27-45
+Int: 46-48
+Long
+Com: 1-15
+Inc: 16-43
+Int: 44-48
+Pass Rush
+Sack: 1-9
+Runs: 10-30
+Com: 31-41
+Inc: 42-48
+Rushing
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Run
+Lg: P
+Endurance
+Rushing: 4
+1983 Buffalo
+Quarterback
+Matt Kofler
+Endurance: B
+Passing
+Quick
+Com: 1-33
+Inc: 34-47
+Int: 48
+Short
+Com: 1-23
+Inc: 24-45
+Int: 46-48
+Long
+Com: 1-9
+Inc: 10-42
+Int: 43-48
+Pass Rush
+Sack: 1-12
+Runs: 13-30
+Com: 31-41
+Inc: 42-48
+Rushing
+1: 11
+2: 10
+3: 8
+4: 7
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:0
+Long Run
+Lg: P
+Endurance
+Rushing: 4
+1983 Chicago
+Quarterback
+Jim McMahon
+Endurance: A
+Passing
+Quick
+Com: 1-37
+Inc: 38-47
+Int: 48
+Short
+Com: 1-29
+Inc: 30-46
+Int: 47-48
+Long
+Com: 1-19
+Inc: 20-44
+Int: 45-48
+Pass Rush
+Sack: 1-18
+Runs: 19-30
+Com: 31-40
+Inc: 43-48
+Rushing
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:1
+11:-1
+12:-1
+Long Run
+Lg: M
+Endurance
+Rushing: 4
+1983 Chicago
+Quarterback
+Vince Evans
+Endurance: A
+Passing
+Quick
+Com: 1-33
+Inc: 34-47
+Int: 48
+Short
+Com: 1-25
+Inc: 26-45
+Int: 46-48
+Long
+Com: 1-14
+Inc: 15-43
+Int: 44-48
+Pass Rush
+Sack: 1-13
+Runs: 14-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 11
+3: 10
+4: 9
+5: 8
+6: 7
+7: 6
+8: 5
+9: 4
+10:2
+11:1
+12:-1
+Long Run
+Lg: O
+Endurance
+Rushing: 4
+1983 Cincinnati
+Quarterback
+Ken Anderson
+Endurance: A
+Passing
+Quick
+Com: 1-40
+Inc: 41-47
+Int: 48
+Short
+Com: 1-32
+Inc: 33-46
+Int: 47-48
+Long
+Com: 1-22
+Inc: 23-44
+Int: 45-48
+Pass Rush
+Sack: 1-12
+Runs: 13-30
+Com: 31-43
+Inc: 45-48
+Rushing
+1: Sg
+2: 11
+3: 10
+4: 9
+5: 8
+6: 7
+7: 6
+8: 5
+9: 4
+10:3
+11:2
+12:1
+Long Run
+Lg: N
+Endurance
+Rushing: 4
+1983 Cincinnati
+Quarterback
+Turk Schonert
+Endurance: B
+Passing
+Quick
+Com: 1-37
+Inc: 38-48
+Int:
+Short
+Com: 1-29
+Inc: 30-47
+Int: 48
+Long
+Com: 1-19
+Inc: 20-45
+Int: 46-48
+Pass Rush
+Sack: 1-15
+Runs: 16-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 0
+10:0
+11:-1
+12:-2
+Long Run
+Lg: Q
+Endurance
+Rushing: 4
+1983 Cleveland
+Quarterback
+Brian Sipe
+Endurance: A
+Passing
+Quick
+Com: 1-35
+Inc: 36-47
+Int: 48
+Short
+Com: 1-27
+Inc: 28-45
+Int: 46-48
+Long
+Com: 1-16
+Inc: 17-43
+Int: 44-48
+Pass Rush
+Sack: 1-10
+Runs: 11-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 5
+3: 4
+4: 3
+5: 3
+6: 2
+7: 1
+8: 0
+9: -1
+10:-2
+11:-2
+12:-3
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Cleveland
+Quarterback
+Paul McDonald
+Endurance: A
+Passing
+Quick
+Com: 1-31
+Inc: 32-47
+Int: 48
+Short
+Com: 1-23
+Inc: 24-45
+Int: 46-48
+Long
+Com: 1-15
+Inc: 16-42
+Int: 43-48
+Pass Rush
+Sack: 1-8
+Runs: 9-30
+Com: 31-39
+Inc: 40-48
+Rushing
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:0
+12:-1
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Dallas
+Quarterback
+Danny White
+Endurance: A
+Passing
+Quick
+Com: 1-39
+Inc: 40-47
+Int: 48
+Short
+Com: 1-31
+Inc: 32-46
+Int: 47-48
+Long
+Com: 1-21
+Inc: 22-44
+Int: 45-48
+Pass Rush
+Sack: 1-10
+Runs: 11-30
+Com: 31-43
+Inc: 44-48
+Rushing
+1: Sg
+2: 4
+3: 3
+4: 3
+5: 2
+6: 2
+7: 1
+8: 0
+9: -1
+10:-2
+11:-3
+12:-4
+Long Run
+Lg: P
+Endurance
+Rushing: 4
+1983 Dallas
+Quarterback
+Gary Hogeboom
+Endurance: B
+Passing
+Quick
+Com: 1-39
+Inc: 40-47
+Int: 48
+Short
+Com: 1-31
+Inc: 32-45
+Int: 46-48
+Long
+Com: 1-20
+Inc: 21-42
+Int: 43-48
+Pass Rush
+Sack: 1-10
+Runs: 11-30
+Com: 31-43
+Inc: 44-48
+Rushing
+1: 5
+2: 3
+3: 2
+4: 1
+5: 0
+6: 0
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Denver
+Quarterback
+John Elway
+Endurance: A
+Passing
+Quick
+Com: 1-32
+Inc: 33-47
+Int: 48
+Short
+Com: 1-24
+Inc: 25-45
+Int: 46-48
+Long
+Com: 1-16
+Inc: 17-43
+Int: 44-48
+Pass Rush
+Sack: 1-15
+Runs: 16-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 3
+9: 1
+10:0
+11:-1
+12:-1
+Long Run
+Lg: O
+Endurance
+Rushing: 4
+1983 Denver
+Quarterback
+Gary Kubiak
+Endurance: B
+Passing
+Quick
+Com: 1-34
+Inc: 35-47
+Int: 48
+Short
+Com: 1-26
+Inc: 27-45
+Int: 46-48
+Long
+Com: 1-13
+Inc: 14-43
+Int: 44-48
+Pass Rush
+Sack: 1-19
+Runs: 20-30
+Com: 31-41
+Inc: 42-48
+Rushing
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Denver
+Quarterback
+Steve DeBerg
+Endurance: A
+Passing
+Quick
+Com: 1-34
+Inc: 35-48
+Int:
+Short
+Com: 1-26
+Inc: 27-47
+Int: 48
+Long
+Com: 1-17
+Inc: 18-45
+Int: 46-48
+Pass Rush
+Sack: 1-16
+Runs: 17-30
+Com: 31-41
+Inc: 42-48
+Rushing
+1: Sg
+2: 5
+3: 4
+4: 3
+5: 3
+6: 2
+7: 1
+8: 0
+9: -1
+10:-2
+11:-2
+12:-3
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Detroit
+Quarterback
+Eric Hipple
+Endurance: A
+Passing
+Quick
+Com: 1-33
+Inc: 34-47
+Int: 48
+Short
+Com: 1-25
+Inc: 26-45
+Int: 46-48
+Long
+Com: 1-16
+Inc: 17-43
+Int: 44-48
+Pass Rush
+Sack: 1-13
+Runs: 14-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 9
+3: 7
+4: 6
+5: 5
+6: 4
+7: 3
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Run
+Lg: O
+Endurance
+Rushing: 4
+1983 Detroit
+Quarterback
+Gary Danielson
+Endurance: A
+Passing
+Quick
+Com: 1-33
+Inc: 34-48
+Int:
+Short
+Com: 1-25
+Inc: 26-47
+Int: 48
+Long
+Com: 1-14
+Inc: 15-45
+Int: 46-48
+Pass Rush
+Sack: 1-17
+Runs: 18-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 4
+3: 3
+4: 3
+5: 2
+6: 1
+7: 0
+8: 0
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Green Bay
+Quarterback
+Lynn Dickey
+Endurance: A
+Passing
+Quick
+Com: 1-37
+Inc: 38-47
+Int: 48
+Short
+Com: 1-29
+Inc: 30-45
+Int: 46-48
+Long
+Com: 1-15
+Inc: 16-42
+Int: 43-48
+Pass Rush
+Sack: 1-12
+Runs: 13-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 4
+3: 3
+4: 3
+5: 2
+6: 1
+7: 0
+8: 0
+9: -1
+10:-2
+11:-3
+12:-4
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Green Bay
+Quarterback
+David Whitehurst
+Endurance: B
+Passing
+Quick
+Com: 1-33
+Inc: 34-46
+Int: 47-48
+Short
+Com: 1-25
+Inc: 26-44
+Int: 45-48
+Long
+Com: 1-14
+Inc: 15-41
+Int: 42-48
+Pass Rush
+Sack: 1-10
+Runs: 11-30
+Com: 31-40
+Inc: 42-48
+Rushing
+1: Sg
+2: 5
+3: 4
+4: 4
+5: 3
+6: 2
+7: 0
+8: 0
+9: -1
+10:-1
+11:-2
+12:-2
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Houston
+Quarterback
+Oliver Luck
+Endurance: A
+Passing
+Quick
+Com: 1-35
+Inc: 36-47
+Int: 48
+Short
+Com: 1-27
+Inc: 28-45
+Int: 46-48
+Long
+Com: 1-15
+Inc: 16-42
+Int: 43-48
+Pass Rush
+Sack: 1-14
+Runs: 15-30
+Com: 31-42
+Inc: 42-48
+Rushing
+1: Sg
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-3
+Long Run
+Lg: Q
+Endurance
+Rushing: 4
+1983 Houston
+Quarterback
+Gifford Nielson
+Endurance: A
+Passing
+Quick
+Com: 1-33
+Inc: 34-47
+Int: 48
+Short
+Com: 1-25
+Inc: 26-45
+Int: 46-48
+Long
+Com: 1-16
+Inc: 17-43
+Int: 44-48
+Pass Rush
+Sack: 1-10
+Runs: 11-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 2
+10:0
+11:-1
+12:-1
+Long Run
+Lg: P
+Endurance
+Rushing: 4
+1983 KansasCity
+Quarterback
+Bill Kenney
+Endurance: A
+Passing
+Quick
+Com: 1-35
+Inc: 36-48
+Int:
+Short
+Com: 1-27
+Inc: 28-47
+Int: 48
+Long
+Com: 1-18
+Inc: 19-45
+Int: 46-48
+Pass Rush
+Sack: 1-10
+Runs: 11-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 3
+6: 2
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 KansasCity
+Quarterback
+Todd Blackledge
+Endurance: B
+Passing
+Quick
+Com: 1-35
+Inc: 36-48
+Int:
+Short
+Com: 1-26
+Inc: 27-48
+Int:
+Long
+Com: 1-19
+Inc: 20-48
+Int:
+Pass Rush
+Sack: 1-11
+Runs: 12-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 4
+3: 3
+4: 3
+5: 2
+6: 2
+7: 1
+8: 0
+9: -1
+10:-2
+11:-3
+12:-4
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 L.A. Raiders
+Quarterback
+Jim Plunkett
+Endurance: A
+Passing
+Quick
+Com: 1-37
+Inc: 38-47
+Int: 48
+Short
+Com: 1-29
+Inc: 30-45
+Int: 46-48
+Long
+Com: 1-21
+Inc: 22-43
+Int: 44-48
+Pass Rush
+Sack: 1-14
+Runs: 15-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 8
+3: 6
+4: 4
+5: 4
+6: 4
+7: 4
+8: 3
+9: 2
+10:1
+11:-2
+12:-3
+Long Run
+Lg: P
+Endurance
+Rushing: 4
+1983 L.A. Raiders
+Quarterback
+Marc Wilson
+Endurance: A
+Passing
+Quick
+Com: 1-35
+Inc: 36-47
+Int: 48
+Short
+Com: 1-27
+Inc: 28-45
+Int: 46-48
+Long
+Com: 1-19
+Inc: 20-42
+Int: 43-48
+Pass Rush
+Sack: 1-12
+Runs: 13-30
+Com: 31-41
+Inc: 42-48
+Rushing
+1: Sg
+2: 8
+3: 7
+4: 6
+5: 3
+6: 1
+7: 0
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 L.A. Raiders
+Quarterback
+David Humm
+Endurance: B
+Passing
+Quick
+Com: 1-32
+Inc: 33-47
+Int: 48
+Short
+Com: 1-24
+Inc: 25-45
+Int: 46-48
+Long
+Com: 1-10
+Inc: 11-41
+Int: 42-48
+Pass Rush
+Sack: 1-18
+Runs: 19-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 4
+3: 4
+4: 3
+5: 2
+6: 1
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 L.A. Rams
+Quarterback
+Vince Ferragamo
+Endurance: A
+Passing
+Quick
+Com: 1-37
+Inc: 38-47
+Int: 48
+Short
+Com: 1-29
+Inc: 30-45
+Int: 46-48
+Long
+Com: 1-19
+Inc: 20-43
+Int: 44-48
+Pass Rush
+Sack: 1-8
+Runs: 9-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: 5
+2: 3
+3: 2
+4: 1
+5: 0
+6: 0
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 L.A. Rams
+Quarterback
+Jeff Kemp
+Endurance: B
+Passing
+Quick
+Com: 1-32
+Inc: 33-48
+Int:
+Short
+Com: 1-24
+Inc: 25-48
+Int:
+Long
+Com: 1-15
+Inc: 16-48
+Int:
+Pass Rush
+Sack: 1-7
+Runs: 8-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: 5
+2: 3
+3: 2
+4: 1
+5: 0
+6: 0
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Miami
+Quarterback
+Dan Marino
+Endurance: A
+Passing
+Quick
+Com: 1-35
+Inc: 36-48
+Int:
+Short
+Com: 1-27
+Inc: 28-47
+Int: 48
+Long
+Com: 1-19
+Inc: 20-46
+Int: 47-48
+Pass Rush
+Sack: 1-9
+Runs: 10-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 4
+3: 3
+4: 3
+5: 2
+6: 1
+7: 0
+8: 0
+9: -1
+10:-2
+11:-3
+12:-4
+Long Run
+Lg: Q
+Endurance
+Rushing: 4
+1983 Miami
+Quarterback
+David Woodley
+Endurance: B
+Passing
+Quick
+Com: 1-32
+Inc: 33-47
+Int: 48
+Short
+Com: 1-24
+Inc: 25-45
+Int: 46-48
+Long
+Com: 1-15
+Inc: 16-43
+Int: 44-48
+Pass Rush
+Sack: 1-8
+Runs: 9-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 10
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Run
+Lg: Q
+Endurance
+Rushing: 4
+1983 Minnesota
+Quarterback
+Steve Dils
+Endurance: A
+Passing
+Quick
+Com: 1-34
+Inc: 35-47
+Int: 48
+Short
+Com: 1-26
+Inc: 27-46
+Int: 47-48
+Long
+Com: 1-12
+Inc: 13-44
+Int: 45-48
+Pass Rush
+Sack: 1-12
+Runs: 13-30
+Com: 31-41
+Inc: 45-48
+Rushing
+1: 4
+2: 4
+3: 3
+4: 2
+5: 1
+6: 1
+7: 0
+8: 0
+9: -1
+10:-2
+11:-2
+12:-3
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Minnesota
+Quarterback
+Tommy Kramer
+Endurance: B
+Passing
+Quick
+Com: 1-40
+Inc: 41-47
+Int: 48
+Short
+Com: 1-32
+Inc: 33-45
+Int: 46-48
+Long
+Com: 1-17
+Inc: 18-43
+Int: 44-48
+Pass Rush
+Sack: 1-13
+Runs: 14-30
+Com: 31-43
+Inc: 44-48
+Rushing
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 4
+6: 3
+7: 2
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Minnesota
+Quarterback
+Archie Manning
+Endurance: B
+Passing
+Quick
+Com: 1-32
+Inc: 33-46
+Int: 47-48
+Short
+Com: 1-24
+Inc: 25-43
+Int: 44-48
+Long
+Com: 1-15
+Inc: 16-39
+Int: 40-48
+Pass Rush
+Sack: 1-14
+Runs: 15-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 5
+3: 4
+4: 3
+5: 2
+6: 1
+7: 1
+8: 0
+9: -1
+10:-2
+11:-3
+12:-4
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Minnesota
+Quarterback
+Wade Wilson
+Endurance: C
+Passing
+Quick
+Com: 1-38
+Inc: 39-45
+Int: 46-48
+Short
+Com: 1-28
+Inc: 29-42
+Int: 43-48
+Long
+Com: 1-15
+Inc: 16-37
+Int: 38-48
+Pass Rush
+Sack: 1-15
+Runs: 16-30
+Com: 31-41
+Inc: 42-48
+Rushing
+1: Sg
+2: 3
+3: 2
+4: 2
+5: 1
+6: 1
+7: 0
+8: 0
+9: -1
+10:-2
+11:-3
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 N.Y.Giants
+Quarterback
+Scott Brunner
+Endurance: A
+Passing
+Quick
+Com: 1-32
+Inc: 33-47
+Int: 48
+Short
+Com: 1-24
+Inc: 25-45
+Int: 46-48
+Long
+Com: 1-12
+Inc: 13-42
+Int: 43-48
+Pass Rush
+Sack: 1-13
+Runs: 14-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 5
+3: 4
+4: 4
+5: 3
+6: 2
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 N.Y.Giants
+Quarterback
+Jeff Rutledge
+Endurance: B
+Passing
+Quick
+Com: 1-32
+Inc: 33-47
+Int: 48
+Short
+Com: 1-25
+Inc: 26-45
+Int: 46-48
+Long
+Com: 1-11
+Inc: 12-43
+Int: 44-48
+Pass Rush
+Sack: 1-12
+Runs: 13-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 4
+3: 3
+4: 2
+5: 1
+6: 0
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 N.Y.Giants
+Quarterback
+Phil Simms
+Endurance: C
+Passing
+Quick
+Com: 1-32
+Inc: 34-47
+Int: 48
+Short
+Com: 1-26
+Inc: 27-44
+Int: 45-48
+Long
+Com: 1-21
+Inc: 22-40
+Int: 41-48
+Pass Rush
+Sack: 1-24
+Runs: 25-30
+Com: 31-41
+Inc: 42-48
+Rushing
+1: Sg
+2: 2
+3: 2
+4: 1
+5: 1
+6: 0
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 N.Y.Jets
+Quarterback
+Richard Todd
+Endurance: A
+Passing
+Quick
+Com: 1-37
+Inc: 38-47
+Int: 48
+Short
+Com: 1-29
+Inc: 30-45
+Int: 46-48
+Long
+Com: 1-20
+Inc: 21-43
+Int: 44-48
+Pass Rush
+Sack: 1-12
+Runs: 13-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 4
+6: 3
+7: 2
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Run
+Lg: Q
+Endurance
+Rushing: 4
+1983 N.Y.Jets
+Quarterback
+Pat Ryan
+Endurance: B
+Passing
+Quick
+Com: 1-33
+Inc: 34-47
+Int: 48
+Short
+Com: 1-25
+Inc: 26-45
+Int: 46-48
+Long
+Com: 1-16
+Inc: 17-43
+Int: 44-48
+Pass Rush
+Sack: 1-11
+Runs: 12-30
+Com: 31-41
+Inc: 42-48
+Rushing
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:-1
+Long Run
+Lg: O
+Endurance
+Rushing: 4
+1983 NewEngland
+Quarterback
+Steve Grogan
+Endurance: A
+Passing
+Quick
+Com: 1-31
+Inc: 32-47
+Int: 48
+Short
+Com: 1-23
+Inc: 24-45
+Int: 46-48
+Long
+Com: 1-15
+Inc: 16-43
+Int: 44-48
+Pass Rush
+Sack: 1-10
+Runs: 11-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Run
+Lg: Q
+Endurance
+Rushing: 4
+1983 NewEngland
+Quarterback
+Tony Eason
+Endurance: A
+Passing
+Quick
+Com: 1-34
+Inc: 35-47
+Int: 48
+Short
+Com: 1-26
+Inc: 27-46
+Int: 47-48
+Long
+Com: 1-18
+Inc: 19-44
+Int: 45-48
+Pass Rush
+Sack: 1-15
+Runs: 16-30
+Com: 31-41
+Inc: 42-48
+Rushing
+1: Sg
+2: 5
+3: 4
+4: 3
+5: 2
+6: 2
+7: 1
+8: 0
+9: -1
+10:-2
+11:-2
+12:-3
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 NewEngland
+Quarterback
+Mike Kerrigan
+Endurance: B
+Passing
+Quick
+Com: 1-30
+Inc: 31-46
+Int: 47-48
+Short
+Com: 1-21
+Inc: 22-44
+Int: 45-48
+Long
+Com: 1-13
+Inc: 14-41
+Int: 42-48
+Pass Rush
+Sack: 1-18
+Runs: 19-30
+Com: 31-38
+Inc: 39-48
+Rushing
+1: Sg
+2: 16
+3: 15
+4: 14
+5: 13
+6: 12
+7: 9
+8: 7
+9: 6
+10:5
+11:4
+12:3
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 NewOrleans
+Quarterback
+Dave Wilson
+Endurance: A
+Passing
+Quick
+Com: 1-37
+Inc: 38-47
+Int: 48
+Short
+Com: 1-29
+Inc: 30-45
+Int: 46-48
+Long
+Com: 1-18
+Inc: 19-42
+Int: 43-48
+Pass Rush
+Sack: 1-12
+Runs: 13-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: 5
+2: 4
+3: 3
+4: 2
+5: 1
+6: 0
+7: 0
+8: 0
+9: -1
+10:-2
+11:-2
+12:-3
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 NewOrleans
+Quarterback
+Kenny Stabler
+Endurance: A
+Passing
+Quick
+Com: 1-35
+Inc: 36-47
+Int: 48
+Short
+Com: 1-27
+Inc: 28-45
+Int: 46-48
+Long
+Com: 1-9
+Inc: 10-42
+Int: 43-48
+Pass Rush
+Sack: 1-12
+Runs: 13-30
+Com: 31-41
+Inc: 42-48
+Rushing
+1: 5
+2: 4
+3: 3
+4: 2
+5: 1
+6: 0
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Philadelphia
+Quarterback
+Ron Jaworski
+Endurance: A
+Passing
+Quick
+Com: 1-33
+Inc: 34-47
+Int: 48
+Short
+Com: 1-25
+Inc: 26-46
+Int: 47-48
+Long
+Com: 1-16
+Inc: 17-44
+Int: 45-48
+Pass Rush
+Sack: 1-16
+Runs: 17-30
+Com: 31-41
+Inc: 42-48
+Rushing
+1: Sg
+2: 10
+3: 9
+4: 8
+5: 7
+6: 6
+7: 5
+8: 3
+9: 1
+10:0
+11:-1
+12:-1
+Long Run
+Lg: N
+Endurance
+Rushing: 4
+1983 Philadelphia
+Quarterback
+Joe Pisarcik
+Endurance: B
+Passing
+Quick
+Com: 1-30
+Inc: 31-48
+Int:
+Short
+Com: 1-21
+Inc: 22-48
+Int:
+Long
+Com: 1-11
+Inc: 12-47
+Int: 48
+Pass Rush
+Sack: 1-17
+Runs: 18-30
+Com: 31-37
+Inc: 38-48
+Rushing
+1: 5
+2: 3
+3: 2
+4: 1
+5: 0
+6: 0
+7: -1
+8: -2
+9: -3
+10:-4
+11:-5
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Pittsburgh
+Quarterback
+Cliff Stoudt
+Endurance: A
+Passing
+Quick
+Com: 1-33
+Inc: 34-47
+Int: 48
+Short
+Com: 1-25
+Inc: 26-45
+Int: 46-48
+Long
+Com: 1-14
+Inc: 15-42
+Int: 43-48
+Pass Rush
+Sack: 1-15
+Runs: 16-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 11
+3: 10
+4: 9
+5: 8
+6: 6
+7: 5
+8: 4
+9: 3
+10:2
+11:1
+12:-1
+Long Run
+Lg: O
+Endurance
+Rushing: 3
+1983 Pittsburgh
+Quarterback
+Terry Bradshaw
+Endurance: B
+Passing
+Quick
+Com: 1-39
+Inc: 40-48
+Int:
+Short
+Com: 1-31
+Inc: 32-48
+Int:
+Long
+Com: 1-8
+Inc: 9-48
+Int:
+Pass Rush
+Sack: 1-18
+Runs: 19-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 6
+3: 5
+4: 4
+5: 4
+6: 3
+7: 2
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Pittsburgh
+Quarterback
+Greg Malone
+Endurance: C
+Passing
+Quick
+Com: 1-30
+Inc: 31-46
+Int: 47-48
+Short
+Com: 1-22
+Inc: 23-43
+Int: 44-48
+Long
+Com: 1-17
+Inc: 18-38
+Int: 39-48
+Pass Rush
+Sack: 1-17
+Runs: 18-30
+Com: 31-39
+Inc: 40-48
+Rushing
+1: Sg
+2: 4
+3: 3
+4: 2
+5: 2
+6: 1
+7: 0
+8: -1
+9: -1
+10:-2
+11:-3
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 SanDiego
+Quarterback
+Dan Fouts
+Endurance: A
+Passing
+Quick
+Com: 1-39
+Inc: 40-47
+Int: 48
+Short
+Com: 1-31
+Inc: 32-46
+Int: 47-48
+Long
+Com: 1-21
+Inc: 22-44
+Int: 45-48
+Pass Rush
+Sack: 1-8
+Runs: 9-30
+Com: 31-43
+Inc: 44-48
+Rushing
+1: 5
+2: 3
+3: 2
+4: 1
+5: 0
+6: 0
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 SanDiego
+Quarterback
+Ed Luther
+Endurance: B
+Passing
+Quick
+Com: 1-33
+Inc: 34-47
+Int: 48
+Short
+Com: 1-25
+Inc: 26-45
+Int: 46-48
+Long
+Com: 1-14
+Inc: 15-42
+Int: 43-48
+Pass Rush
+Sack: 1-6
+Runs: 7-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: 5
+2: 3
+3: 2
+4: 1
+5: 0
+6: 0
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 SanFran
+Quarterback
+Joe Montana
+Endurance: A
+Passing
+Quick
+Com: 1-40
+Inc: 41-48
+Int:
+Short
+Com: 1-32
+Inc: 33-47
+Int: 48
+Long
+Com: 1-21
+Inc: 22-46
+Int: 47-48
+Pass Rush
+Sack: 1-9
+Runs: 10-30
+Com: 31-43
+Inc: 44-48
+Rushing
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-1
+Long Run
+Lg: P
+Endurance
+Rushing: 4
+1983 SanFran
+Quarterback
+Guy Benjamin
+Endurance: B
+Passing
+Quick
+Com: 1-35
+Inc: 36-48
+Int:
+Short
+Com: 1-27
+Inc: 28-48
+Int:
+Long
+Com: 1-19
+Inc: 20-48
+Int:
+Pass Rush
+Sack: 1-10
+Runs: 11-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 4
+3: 3
+4: 2
+5: 1
+6: 0
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Seattle
+Quarterback
+Dave Krieg
+Endurance: A
+Passing
+Quick
+Com: 1-37
+Inc: 38-47
+Int: 48
+Short
+Com: 1-29
+Inc: 30-45
+Int: 46-48
+Long
+Com: 1-14
+Inc: 15-43
+Int: 44-48
+Pass Rush
+Sack: 1-15
+Runs: 16-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 8
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:0
+11:-1
+12:-2
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Seattle
+Quarterback
+Jim Zorn
+Endurance: A
+Passing
+Quick
+Com: 1-32
+Inc: 33-48
+Int:
+Short
+Com: 1-24
+Inc: 25-47
+Int: 48
+Long
+Com: 1-16
+Inc: 17-45
+Int: 46-48
+Pass Rush
+Sack: 1-9
+Runs: 10-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 5
+3: 4
+4: 3
+5: 3
+6: 2
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Run
+Lg: P
+Endurance
+Rushing: 4
+1983 St.Louis
+Quarterback
+Neil Lomax
+Endurance: A
+Passing
+Quick
+Com: 1-37
+Inc: 38-48
+Int:
+Short
+Com: 1-29
+Inc: 30-47
+Int: 48
+Long
+Com: 1-20
+Inc: 21-45
+Int: 46-48
+Pass Rush
+Sack: 1-17
+Runs: 18-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 4
+8: 2
+9: 1
+10:0
+11:-1
+12:-2
+Long Run
+Lg: M
+Endurance
+Rushing: 4
+1983 St.Louis
+Quarterback
+Jim Hart
+Endurance: B
+Passing
+Quick
+Com: 1-34
+Inc: 35-46
+Int: 47-48
+Short
+Com: 1-26
+Inc: 27-43
+Int: 44-48
+Long
+Com: 1-18
+Inc: 19-39
+Int: 40-48
+Pass Rush
+Sack: 1-22
+Runs: 23-30
+Com: 31-41
+Inc: 42-48
+Rushing
+1: Sg
+2: 5
+3: 4
+4: 3
+5: 3
+6: 2
+7: 1
+8: 0
+9: 0
+10:-1
+11:-2
+12:-3
+Long Run
+Lg: Q
+Endurance
+Rushing: 4
+1983 St.Louis
+Quarterback
+Rusty Lisch
+Endurance: C
+Passing
+Quick
+Com: 1-31
+Inc: 32-45
+Int: 46-48
+Short
+Com: 1-23
+Inc: 24-41
+Int: 42-48
+Long
+Com: 1-15
+Inc: 16-36
+Int: 37-48
+Pass Rush
+Sack: 1-24
+Runs: 25-30
+Com: 31-39
+Inc: 40-48
+Rushing
+1: Sg
+2: 9
+3: 8
+4: 7
+5: 6
+6: 5
+7: 2
+8: 1
+9: 1
+10:0
+11:0
+12:-1
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Tampa Bay
+Quarterback
+Jack Thompson
+Endurance: A
+Passing
+Quick
+Com: 1-37
+Inc: 38-47
+Int: 48
+Short
+Com: 1-29
+Inc: 30-45
+Int: 46-48
+Long
+Com: 1-15
+Inc: 16-43
+Int: 44-48
+Pass Rush
+Sack: 1-13
+Runs: 14-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 4
+3: 3
+4: 3
+5: 2
+6: 1
+7: 0
+8: 0
+9: -1
+10:-2
+11:-3
+12:-4
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Tampa Bay
+Quarterback
+Jerry Golsteyn
+Endurance: B
+Passing
+Quick
+Com: 1-32
+Inc: 33-48
+Int:
+Short
+Com: 1-24
+Inc: 25-47
+Int: 48
+Long
+Com: 1-11
+Inc: 12-45
+Int: 46-48
+Pass Rush
+Sack: 1-16
+Runs: 17-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: 5
+2: 3
+3: 2
+4: 1
+5: 0
+6: 0
+7: 0
+8: -1
+9: -2
+10:-3
+11:-4
+12:-5
+Long Run
+Lg: R
+Endurance
+Rushing: 4
+1983 Washington
+Quarterback
+Joe Theismann
+Endurance: A
+Passing
+Quick
+Com: 1-37
+Inc: 38-48
+Int:
+Short
+Com: 1-29
+Inc: 30-47
+Int: 48
+Long
+Com: 1-20
+Inc: 21-46
+Int: 47-48
+Pass Rush
+Sack: 1-12
+Runs: 13-30
+Com: 31-42
+Inc: 43-48
+Rushing
+1: Sg
+2: 11
+3: 10
+4: 9
+5: 8
+6: 7
+7: 6
+8: 4
+9: 3
+10:2
+11:1
+12:-1
+Long Run
+Lg: O
+Endurance
+Rushing: 4
+1983 Washington
+Quarterback
+Bob Holly
+Endurance: B
+Passing
+Quick
+Com: 1-31
+Inc: 32-47
+Int: 48
+Short
+Com: 1-23
+Inc: 24-46
+Int: 47-48
+Long
+Com: 1-15
+Inc: 16-45
+Int: 46-48
+Pass Rush
+Sack: 1-15
+Runs: 16-30
+Com: 31-40
+Inc: 41-48
+Rushing
+1: Sg
+2: 7
+3: 6
+4: 5
+5: 4
+6: 3
+7: 2
+8: 1
+9: 0
+10:-1
+11:-2
+12:-2
+Long Run
+Lg: Q
+Endurance
+Rushing: 4

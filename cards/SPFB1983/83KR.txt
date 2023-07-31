@@ -1,0 +1,588 @@
+1983 Atlanta
+Kick Return Unit
+KR1: Richard Williams
+KR2: Kenny Johnson
+KR3: Gerald Riggs
+KR4: Same as KR-1
+No KR1 KR2 KR3 KR4
+1: 34 28 35 -
+2: 33 27 34 -
+3: 30 26 26 -
+4: 28 25 24 -
+5: 25 22 21 -
+6: 24 21 20 -
+7: 23 20 19 -
+8: 21 18 17 -
+9: 15 12 11 -
+10: 13 10 9 -
+11: 10 7 6 -
+12: 8f 5f 4f -
+RN #1 Breakaway Return
+* - - - -
+1983 Baltimore
+Kick Return Unit
+KR1: Kendall Williams
+KR2: Rick Porter
+KR3: Larry Anderson
+KR4: Same as KR-1
+No KR1 KR2 KR3 KR4
+1: 43* 28 26 -
+2: 40 27 25 -
+3: 32 25 24 -
+4: 30 23 22 -
+5: 27 20 19 -
+6: 26 19 18 -
+7: 25 18 17 -
+8: 23 16 15 -
+9: 17 10 9 -
+10: 15 8 7 -
+11: 12 5 4 -
+12: 10f 3f 2f -
+RN #1 Breakaway Return
+* 90 - - -
+1983 Buffalo
+Kick Return Unit
+KR1: Robb Riddick
+KR2: Van Williams
+KR3: Same as KR-1
+KR4: Mike Mosley
+No KR1 KR2 KR3 KR4
+1: 37* 41* - 33
+2: 34 38 - 32
+3: 26 30 - 31
+4: 24 28 - 30
+5: 21 25 - 28
+6: 20 24 - 27
+7: 19 23 - 26
+8: 17 21 - 24
+9: 11 15 - 18
+10: 9 13 - 16
+11: 6 10 - 13
+12: 4f 8f - 11f
+RN #1 Breakaway Return
+* 49 60 - -
+1983 Chicago
+Kick Return Unit
+KR1: T.Hutchinson
+KR2: Same as KR-1
+KR3: Willie Gault
+KR4: Same as KR-3
+No KR1 KR2 KR3 KR4
+1: 28 - 38 -
+2: 27 - 36 -
+3: 22 - 28 -
+4: 20 - 26 -
+5: 17 - 23 -
+6: 16 - 22 -
+7: 15 - 21 -
+8: 13 - 19 -
+9: 7 - 13 -
+10: 5 - 11 -
+11: 2 - 8 -
+12: 0f - 6f -
+RN #1 Breakaway Return
+* - - - -
+1983 Cincinnati
+Kick Return Unit
+KR1: John Simmons
+KR2: David Verser
+KR3: Rodney Tate
+KR4: Same as KR-1
+No KR1 KR2 KR3 KR4
+1: 36 25 23 -
+2: 35 24 22 -
+3: 30 23 21 -
+4: 28 22 20 -
+5: 25 21 19 -
+6: 24 20 18 -
+7: 23 19 17 -
+8: 21 17 15 -
+9: 15 11 9 -
+10: 13 9 7 -
+11: 10 6 4 -
+12: 8f 4f 2f -
+RN #1 Breakaway Return
+* - - - -
+1983 Cleveland
+Kick Return Unit
+KR1: Dwight Walker
+KR2: Boyce Green
+KR3: Dino Hall
+KR4: Same as KR-1
+No KR1 KR2 KR3 KR4
+1: 38 30 28 -
+2: 37 29 27 -
+3: 29 28 26 -
+4: 27 26 25 -
+5: 24 23 24 -
+6: 23 22 23 -
+7: 22 21 22 -
+8: 20 19 10 -
+9: 14 13 14 -
+10: 12 11 12 -
+11: 9 8 9 -
+12: 7f 6f 7f -
+RN #1 Breakaway Return
+* - - - -
+1983 Dallas
+Kick Return Unit
+KR1: Ron Fellows
+KR2: Same as KR-1
+KR3: Same as KR-1
+KR4: Rod Hill
+No KR1 KR2 KR3 KR4
+1: 38* - - 40
+2: 35 - - 33
+3: 27 - - 25
+4: 25 - - 23
+5: 22 - - 20
+6: 21 - - 19
+7: 20 - - 18
+8: 18 - - 16
+9: 12 - - 10
+10: 10 - - 8
+11: 7 - - 6
+12: 5f - - 5f
+RN #1 Breakaway Return
+* 53 - - -
+1983 Denver
+Kick Return Unit
+KR1: Zack Thomas
+KR2: Rick Upchurch
+KR3: Same as KR-2
+KR4: Same as KR-1
+No KR1 KR2 KR3 KR4
+1: 42 32 - -
+2: 36 31 - -
+3: 28 27 - -
+4: 26 25 - -
+5: 23 22 - -
+6: 22 21 - -
+7: 21 20 - -
+8: 19 18 - -
+9: 13 12 - -
+10: 11 10 - -
+11: 8 7 - -
+12: 6f 5f - -
+RN #1 Breakaway Return
+* - - - -
+1983 Detroit
+Kick Return Unit
+KR1: Alvin Hall
+KR2: Joe Jenkins
+KR3: Same as KR-2
+KR4: Same as KR-1
+No KR1 KR2 KR3 KR4
+1: 32 30 - -
+2: 31 29 - -
+3: 28 28 - -
+4: 26 26 - -
+5: 23 23 - -
+6: 22 22 - -
+7: 21 21 - -
+8: 19 19 - -
+9: 13 13 - -
+10: 11 11 - -
+11: 8 8 - -
+12: 6f 6f - -
+RN #1 Breakaway Return
+* - - - -
+1983 Green Bay
+Kick Return Unit
+KR1: Harlan Huckleby
+KR2: Same as KR-1
+KR3: Tim Lewis
+KR4: Same as KR-3
+No KR1 KR2 KR3 KR4
+1: 37* - 30 -
+2: 34 - 29 -
+3: 26 - 25 -
+4: 24 - 23 -
+5: 21 - 20 -
+6: 20 - 19 -
+7: 19 - 18 -
+8: 17 - 16 -
+9: 11 - 10 -
+10: 9 - 8 -
+11: 6 - 5 -
+12: 4f - 3f -
+RN #1 Breakaway Return
+* 57 - - -
+1983 Houston
+Kick Return Unit
+KR1: Steve Brown
+KR2: Carl Roaches
+KR3: Same as KR-1
+KR4: Same as KR-2
+No KR1 KR2 KR3 KR4
+1: 44* 37* - -
+2: 41 34 - -
+3: 33 26 - -
+4: 31 24 - -
+5: 28 21 - -
+6: 27 20 - -
+7: 26 19 - -
+8: 24 17 - -
+9: 18 11 - -
+10: 16 9 - -
+11: 13 6 - -
+12: 11f 4f - -
+RN #1 Breakaway Return
+* TD TD - -
+1983 Kansas City
+Kick Return Unit
+KR1: Anthony Hancock
+KR2: Same as KR-1
+KR3: Theotis Brown
+KR4: Same as KR-3
+No KR1 KR2 KR3 KR4
+1: 33 - 46 -
+2: 32 - 35 -
+3: 25 - 27 -
+4: 23 - 25 -
+5: 20 - 22 -
+6: 19 - 21 -
+7: 18 - 20 -
+8: 16 - 18 -
+9: 10 - 12 -
+10: 8 - 10 -
+11: 5 - 7 -
+12: 3f - 5f -
+RN #1 Breakaway Return
+* - - - -
+1983 L.A.Raiders
+Kick Return Unit
+KR1: Greg Pruitt
+KR2: Cle Montgomery
+KR3: Same as KR-2
+KR4: Same as KR-1
+No KR1 KR2 KR3 KR4
+1: 42 48 - -
+2: 35 37 - -
+3: 27 29 - -
+4: 25 27 - -
+5: 22 24 - -
+6: 21 23 - -
+7: 20 22 - -
+8: 18 20 - -
+9: 12 14 - -
+10: 10 12 - -
+11: 7 9 - -
+12: 5f 7f - -
+RN #1 Breakaway Return
+* - - - -
+1983 L.A.Rams
+Kick Return Unit
+KR1: Barry Redden
+KR2: Henry Ellard
+KR3: Robert Alexander
+KR4: Same as KR-1
+No KR1 KR2 KR3 KR4
+1: 43 44 30 -
+2: 34 36 29 -
+3: 26 28 24 -
+4: 24 26 22 -
+5: 21 23 19 -
+6: 20 22 18 -
+7: 19 21 17 -
+8: 17 19 15 -
+9: 11 13 9 -
+10: 9 11 7 -
+11: 6 8 4 -
+12: 4f 6f 2f -
+RN #1 Breakaway Return
+* - - - -
+1983 Miami
+Kick Return Unit
+KR1: Fulton Walker
+KR2: Same as KR-1
+KR3: Same as KR-1
+KR4: Mike Kozlowski
+No KR1 KR2 KR3 KR4
+1: 45* - - 23
+2: 42 - - 22
+3: 34 - - 20
+4: 32 - - 18
+5: 29 - - 15
+6: 28 - - 14
+7: 27 - - 13
+8: 25 - - 11
+9: 19 - - 5
+10: 17 - - 3
+11: 14 - - 0
+12: 12f - - 0f
+RN #1 Breakaway Return
+* 78 - - -
+1983 Minnesota
+Kick Return Unit
+KR1: Jarvis Redwin
+KR2: Darrin Nelson
+KR3: Same as KR-1
+KR4: Same as KR-2
+No KR1 KR2 KR3 KR4
+1: 50 41 - -
+2: 40 37 - -
+3: 32 29 - -
+4: 27 27 - -
+5: 26 24 - -
+6: 25 23 - -
+7: 23 22 - -
+8: 17 20 - -
+9: 15 14 - -
+10: 12 12 - -
+11: 0 9 - -
+12: 7f - -
+RN #1 Breakaway Return
+* - - - -
+1983 New England
+Kick Return Unit
+KR1: Ricky Smith
+KR2: Same as KR-1
+KR3: Same as KR-1
+KR4: Same as KR-1
+No KR1 KR2 KR3 KR4
+1: 40* - - -
+2: 37 - - -
+3: 29 - - -
+4: 27 - - -
+5: 24 - - -
+6: 23 - - -
+7: 22 - - -
+8: 20 - - -
+9: 14 - - -
+10: 12 - - -
+11: 9 - - -
+12: 7f - - -
+RN #1 Breakaway Return
+* 53 - - -
+1983 New Orleans
+Kick Return Unit
+KR1: Ken Duckett
+KR2: Same as KR-1
+KR3: Wayne Wilson
+KR4: Cliff Austin
+No KR1 KR2 KR3 KR4
+1: 40* - 52 35
+2: 37 - 42 31
+3: 29 - 34 23
+4: 27 - 32 21
+5: 24 - 29 18
+6: 23 - 28 17
+7: 22 - 27 16
+8: 20 - 25 14
+9: 14 - 19 8
+10: 12 - 17 6
+11: 9 - 14 3
+12: 7f - 12f 1f
+RN #1 Breakaway Return
+* - - - -
+1983 New York G
+Kick Return Unit
+KR1: Leon Bright
+KR2: Joe Morris
+KR3: John Tuggle
+KR4: Billy Campfield
+No KR1 KR2 KR3 KR4
+1: 36 26 28 23
+2: 35 25 27 22
+3: 30 24 24 21
+4: 28 23 22 20
+5: 25 22 19 19
+6: 24 21 18 18
+7: 23 20 17 17
+8: 21 19 15 15
+9: 15 18 9 9
+10: 13 16 7 7
+11: 10 13 4 4
+12: 8f 11f 2f 2f
+RN #1 Breakaway Return
+* - - - -
+1983 New York J
+Kick Return Unit
+KR1: Preston Brown
+KR2: Kirk Springs
+KR3: Johnny Hector
+KR4: Same as KR-1
+No KR1 KR2 KR3 KR4
+1: 30* 31* 28* -
+2: 27 28 25 -
+3: 26 27 24 -
+4: 25 26 23 -
+5: 23 24 21 -
+6: 22 23 20 -
+7: 21 22 19 -
+8: 20 21 18 -
+9: 19 20 17 -
+10: 18 19 16 -
+11: 17 18 15 -
+12: 16f 17f 14f -
+RN #1 Breakaway Return
+* 46 64 45 -
+1983 Philadelphia
+Kick Return Unit
+KR1: Glen Young
+KR2: Same as KR-1
+KR3: Major Everett
+KR4: Same as KR-1
+No KR1 KR2 KR3 KR4
+1: 39* - 38* -
+2: 36 - 35 -
+3: 28 - 27 -
+4: 26 - 25 -
+5: 23 - 22 -
+6: 22 - 21 -
+7: 21 - 20 -
+8: 19 - 18 -
+9: 13 - 12 -
+10: 11 - 10 -
+11: 8 - 7 -
+12: 6f - 3f -
+RN #1 Breakaway Return
+* 52 - 46 -
+1983 Pittsburgh
+Kick Return Unit
+KR1: Henry Odom
+KR2: Same as KR-1
+KR3: Tim Harris
+KR4: Same as KR-3
+No KR1 KR2 KR3 KR4
+1: 35 - 32 -
+2: 34 - 31 -
+3: 26 - 23 -
+4: 24 - 21 -
+5: 21 - 18 -
+6: 20 - 17 -
+7: 19 - 16 -
+8: 17 - 14 -
+9: 11 - 8 -
+10: 9 - 6 -
+11: 6 - 3 -
+12: 4f - 1f -
+RN #1 Breakaway Return
+* - - - -
+1983 San Diego
+Kick Return Unit
+KR1: Bruce Laird
+KR2: James Brooks
+KR3: Same as KR-2
+KR4: Earnest Jackson
+No KR1 KR2 KR3 KR4
+1: 41 34 - 32
+2: 38 33 - 31
+3: 30 26 - 24
+4: 28 24 - 22
+5: 25 21 - 19
+6: 24 20 - 18
+7: 23 19 - 17
+8: 21 17 - 15
+9: 15 11 - 9
+10: 13 9 - 7
+11: 10 6 - 4
+12: 8f 4f - 2f
+RN #1 Breakaway Return
+* - - - -
+1983 San Francisco
+Kick Return Unit
+KR1: Dana McLemore
+KR2: Same as KR-1
+KR3: Carl Monroe
+KR4: Jeff Moore
+No KR1 KR2 KR3 KR4
+1: 39 - 32 46
+2: 34 - 31 32
+3: 26 - 26 24
+4: 24 - 24 22
+5: 21 - 21 19
+6: 20 - 20 18
+7: 19 - 19 17
+8: 17 - 17 15
+9: 11 - 11 9
+10: 9 - 9 7
+11: 6 - 6 4
+12: 4f - 4f 2f
+RN #1 Breakaway Return
+* - - - -
+1983 Seattle
+Kick Return Unit
+KR1: Zack Dison
+KR2: David Hughes
+KR3: Same as KR-1
+KR4: Eric Lane
+No KR1 KR2 KR3 KR4
+1: 41* 35 - 18
+2: 38 34 - 17
+3: 30 31 - 16
+4: 28 29 - 15
+5: 25 26 - 14
+6: 24 25 - 13
+7: 23 24 - 12
+8: 21 22 - 11
+9: 15 16 - 10
+10: 13 14 - 7
+11: 10 11 - 5
+12: 8f 9f - 2f
+RN #1 Breakaway Return
+* TD - - -
+1983 St.Louis
+Kick Return Unit
+KR1: Stump Mitchell
+KR2: Same as KR-1
+KR3: Earl Ferrell
+KR4: Steve Bird
+No KR1 KR2 KR3 KR4
+1: 40* - 28 33
+2: 37 - 27 32
+3: 29 - 26 29
+4: 27 - 25 27
+5: 24 - 22 24
+6: 23 - 21 23
+7: 22 - 20 22
+8: 10 - 18 20
+9: 14 - 12 14
+10: 12 - 10 12
+11: 9 - 7 9
+12: 7f - 5f 7f
+RN #1 Breakaway Return
+* 66 - - -
+1983 Tampa Bay
+Kick Return Unit
+KR1: Michael Morton
+KR2: James Owens
+KR3: Same as KR-1
+KR4: Same as KR-2
+No KR1 KR2 KR3 KR4
+1: 41* 31 - -
+2: 38 30 - -
+3: 30 26 - -
+4: 28 24 - -
+5: 25 21 - -
+6: 24 20 - -
+7: 23 19 - -
+8: 21 17 - -
+9: 15 11 - -
+10: 13 9 - -
+11: 10 6 - -
+12: 8f 4f - -
+RN #1 Breakaway Return
+* 50 - - -
+1983 Washington
+Kick Return Unit
+KR1: Mike Nelms
+KR2: Same as KR-1
+KR3: Virgil Seay
+KR4: Reggie Evans
+No KR1 KR2 KR3 KR4
+1: 41 - 50 28
+2: 37 - 41 27
+3: 29 - 33 21
+4: 27 - 31 19
+5: 24 - 28 16
+6: 23 - 27 15
+7: 22 - 26 14
+8: 20 - 24 12
+9: 14 - 18 6
+10: 12 - 16 4
+11: 9 - 13 1
+12: 7f - 11f -1f
+RN #1 Breakaway Return
+* - - - -

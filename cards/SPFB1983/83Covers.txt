@@ -1,0 +1,140 @@
+1983
+Atlanta
+Falcons (20)
+7-9-0
+NFC West
+1983
+Baltimore
+Colts (21)
+7-9-0
+AFC East
+1983
+Buffalo
+Bills (16)
+8-8-0
+AFC East
+1983
+Chicago
+Bears (12)
+8-8-0
+NFC Central
+1983
+Cincinnati
+Bengals (22)
+7-9-0
+AFC Central
+1983
+Cleveland
+Browns (11)
+9-7-0
+AFC Central
+1983
+Dallas
+Cowboys (9)
+12-4-0
+NFC East
+1983
+Denver
+Broncos (10)
+9-7-0
+AFC West
+1983
+Detroit
+Lions (8)
+9-7-0
+NFC Central
+1983
+Green Bay
+Packers (13)
+8-8-0
+NFC Central
+1983
+Houston
+Oilers (27)
+2-14-0
+AFC Central
+1983
+Kansas City
+Chiefs (24)
+6-10-0
+AFC West
+1983
+L.A
+Raiders (1)
+12-4-0
+AFC West
+1983
+L.A
+Rams (7)
+9-7-0
+NFC West
+1983
+Miami
+Dolphins (5)
+12-4-0
+AFC East
+1983
+Minnesota
+Vikings (14)
+8-8-0
+NFC Central
+1983
+New England
+Patriots (15)
+8-8-0
+AFC East
+1983
+New Orleans
+Saints (17)
+8-8-0
+NFC West
+1983
+New York
+Jets (19)
+7-9-0
+AFC East
+1983
+New York
+Giants (26)
+3-12-1
+NFC East
+1983
+Philadelphia
+Eagles (25)
+5-11-0
+NFC East
+1983
+Pittsburgh
+Steelers (6)
+10-6-0
+AFC Central
+1983
+San Diego
+Chargers (23)
+6-10-0
+AFC West
+1983
+San Francisco
+49ers (3)
+10-6-0
+NFC West
+1983
+Seattle
+Seahawks (4)
+9-7-0
+AFC West
+1983
+St.Louis
+Cardinals (18)
+8-7-1
+NFC East
+1983
+Tampa Bay
+Buccaneers (28)
+2-14-0
+NFC Central
+1983
+Washington
+Redskins (2)
+14-2-0
+NFC East
