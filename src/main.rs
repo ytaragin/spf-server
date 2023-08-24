@@ -1,8 +1,11 @@
 mod game;
 mod webendpoint;
 
+extern crate spf_macros;
+
+
 use game::*;
-use players::{Player, Position};
+// use lazy_static::lazy_static;
 
 use crate::{
     game::{
@@ -11,17 +14,23 @@ use crate::{
     },
     webendpoint::runserver,
 };
+// let static league: TeamList;
 
+// lazy_static! {
+//     static ref THE_GAME: Game = {
+//         let league: TeamList = TeamList::create_teams("cards/SPFB1983");
+//         Game::create_game(wash, dallas)
+//     };
+// }
 
 fn main() {
-    println!("Hello, world!");
 
     //     load_rbs("SPFB1983/83RB.txt");
     //     load_qbs("SPFB1983/83QB.txt");
     //     load_wrs("SPFB1983/83WR.txt");
     //     load_dbs("SPFB1983/83DB.txt");
-    let league = TeamList::create_teams();
-    let wash = league
+    let league: TeamList = TeamList::create_teams("cards/SPFB1983");
+    let wash = (&league)
         .teams
         .get(&TeamID {
             name: "Washington".to_string(),
@@ -37,15 +46,13 @@ fn main() {
             year: "1983".to_string(),
         })
         .unwrap();
-    wash.print_team();
+    dallas.print_team();
 
-    let g = Game::create_game(wash, dallas);
-
-    println!("{:?}", g);
+    let g = Game::create_game(wash.clone(), dallas.clone());
 
     //     for v in league.teams.values() {
     //         v.print_team()
     //     }
 
-    runserver(g, league);
+    runserver(g);
 }

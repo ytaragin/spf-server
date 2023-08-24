@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "5232b026-5a8b-4043-97d1-ad91e660171a",
+		"name": "spf",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get State",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getstate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getstate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Player",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{spf_host}}/getplayer/QB-12",
+					"host": [
+						"{{spf_host}}"
+					],
+					"path": [
+						"getplayer",
+						"QB-12"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "spf_host",
+			"value": "http://localhost:8080"
+		}
+	]
+}

@@ -1,5 +1,8 @@
+use dyn_clone::{clone_trait_object, DynClone};
 // use itertools::Itertools;
 use serde::{Deserialize, Serialize};
+use serde_json::{json, Value};
+use spf_macros::ImplBasePlayer;
 use std::collections::HashMap;
 use strum_macros::Display;
 
@@ -49,16 +52,21 @@ impl TeamID {
     }
 }
 
-pub trait BasePlayer {
+pub trait ToBasePlayer {
+    fn get_player(&self) -> &dyn BasePlayer;
+}
+
+pub trait BasePlayer: Sync + Send + DynClone {
     fn get_id(&self) -> String;
     fn get_team(&self) -> TeamID;
     fn get_name(&self) -> String;
-    fn get_json(&self) -> String;
+    fn get_json(&self) -> Value;
     fn get_pos(&self) -> Position;
     fn get_full_player(&self) -> Player;
 }
+clone_trait_object!(BasePlayer);
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct QBStats {
     pub team: TeamID,
     pub name: String,
@@ -75,32 +83,8 @@ pub struct QBStats {
     pub rushing: TwelveStats<NumStat>,
 }
 
-impl BasePlayer for QBStats {
-    fn get_team(&self) -> TeamID {
-        self.team.clone()
-    }
-    fn get_id(&self) -> String {
-        self.id.clone()
-    }
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_pos(&self) -> Position {
-        return self.position;
-    }
-    fn get_json(&self) -> String {
-        let res = serde_json::to_string(self);
-        match res {
-            Ok(js) => js,
-            Err(_) => "".to_string(),
-        }
-    }
-    fn get_full_player(&self) -> Player {
-        return Player::QB(*self);
-    }
-}
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct RBStats {
     pub team: TeamID,
     pub name: String,
@@ -113,32 +97,7 @@ pub struct RBStats {
     pub blocks: i32,
 }
 
-impl BasePlayer for RBStats {
-    fn get_team(&self) -> TeamID {
-        self.team.clone()
-    }
-    fn get_id(&self) -> String {
-        self.id.clone()
-    }
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_pos(&self) -> Position {
-        return self.position;
-    }
-    fn get_json(&self) -> String {
-        let res = serde_json::to_string(self);
-        match res {
-            Ok(js) => js,
-            Err(_) => "".to_string(),
-        }
-    }
-    fn get_full_player(&self) -> Player {
-        return Player::RB(*self);
-    }
-}
-
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct WRStats {
     pub team: TeamID,
     pub name: String,
@@ -152,32 +111,7 @@ pub struct WRStats {
     pub blocks: i32,
 }
 
-impl BasePlayer for WRStats {
-    fn get_team(&self) -> TeamID {
-        self.team.clone()
-    }
-    fn get_id(&self) -> String {
-        self.id.clone()
-    }
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_pos(&self) -> Position {
-        return self.position;
-    }
-    fn get_json(&self) -> String {
-        let res = serde_json::to_string(self);
-        match res {
-            Ok(js) => js,
-            Err(_) => "".to_string(),
-        }
-    }
-    fn get_full_player(&self) -> Player {
-        return Player::WR(*self);
-    }
-}
-
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct DBStats {
     pub team: TeamID,
     pub name: String,
@@ -189,32 +123,7 @@ pub struct DBStats {
     pub intercepts: Range,
 }
 
-impl BasePlayer for DBStats {
-    fn get_team(&self) -> TeamID {
-        self.team.clone()
-    }
-    fn get_id(&self) -> String {
-        self.id.clone()
-    }
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_pos(&self) -> Position {
-        return self.position;
-    }
-    fn get_json(&self) -> String {
-        let res = serde_json::to_string(self);
-        match res {
-            Ok(js) => js,
-            Err(_) => "".to_string(),
-        }
-    }
-    fn get_full_player(&self) -> Player {
-        return Player::DB(*self);
-    }
-}
-
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct LBStats {
     pub team: TeamID,
     pub name: String,
@@ -227,32 +136,7 @@ pub struct LBStats {
     pub intercepts: Range,
 }
 
-impl BasePlayer for LBStats {
-    fn get_team(&self) -> TeamID {
-        self.team.clone()
-    }
-    fn get_id(&self) -> String {
-        self.id.clone()
-    }
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_pos(&self) -> Position {
-        return self.position;
-    }
-    fn get_json(&self) -> String {
-        let res = serde_json::to_string(self);
-        match res {
-            Ok(js) => js,
-            Err(_) => "".to_string(),
-        }
-    }
-    fn get_full_player(&self) -> Player {
-        return Player::LB(*self);
-    }
-}
-
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct DLStats {
     pub team: TeamID,
     pub name: String,
@@ -263,32 +147,7 @@ pub struct DLStats {
     pub pass_rush: i32,
 }
 
-impl BasePlayer for DLStats {
-    fn get_team(&self) -> TeamID {
-        self.team.clone()
-    }
-    fn get_id(&self) -> String {
-        self.id.clone()
-    }
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_pos(&self) -> Position {
-        return self.position;
-    }
-    fn get_json(&self) -> String {
-        let res = serde_json::to_string(self);
-        match res {
-            Ok(js) => js,
-            Err(_) => "".to_string(),
-        }
-    }
-    fn get_full_player(&self) -> Player {
-        return Player::DL(*self);
-    }
-}
-
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct TEStats {
     pub team: TeamID,
     pub name: String,
@@ -301,32 +160,7 @@ pub struct TEStats {
     pub long_rush: char,
 }
 
-impl BasePlayer for TEStats {
-    fn get_team(&self) -> TeamID {
-        self.team.clone()
-    }
-    fn get_id(&self) -> String {
-        self.id.clone()
-    }
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_pos(&self) -> Position {
-        return self.position;
-    }
-    fn get_json(&self) -> String {
-        let res = serde_json::to_string(self);
-        match res {
-            Ok(js) => js,
-            Err(_) => "".to_string(),
-        }
-    }
-    fn get_full_player(&self) -> Player {
-        return Player::TE(*self);
-    }
-}
-
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct OLStats {
     pub team: TeamID,
     pub name: String,
@@ -337,32 +171,7 @@ pub struct OLStats {
     pub pass_block: i32,
 }
 
-impl BasePlayer for OLStats {
-    fn get_team(&self) -> TeamID {
-        self.team.clone()
-    }
-    fn get_id(&self) -> String {
-        self.id.clone()
-    }
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_pos(&self) -> Position {
-        return self.position;
-    }
-    fn get_json(&self) -> String {
-        let res = serde_json::to_string(self);
-        match res {
-            Ok(js) => js,
-            Err(_) => "".to_string(),
-        }
-    }
-    fn get_full_player(&self) -> Player {
-        return Player::OL(*self);
-    }
-}
-
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct KStats {
     pub team: TeamID,
     pub name: String,
@@ -371,32 +180,7 @@ pub struct KStats {
     pub position: Position,
 }
 
-impl BasePlayer for KStats {
-    fn get_team(&self) -> TeamID {
-        self.team.clone()
-    }
-    fn get_id(&self) -> String {
-        self.id.clone()
-    }
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_pos(&self) -> Position {
-        return self.position;
-    }
-    fn get_json(&self) -> String {
-        let res = serde_json::to_string(self);
-        match res {
-            Ok(js) => js,
-            Err(_) => "".to_string(),
-        }
-    }
-    fn get_full_player(&self) -> Player {
-        return Player::K(*self);
-    }
-}
-
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct PStats {
     pub team: TeamID,
     pub name: String,
@@ -405,32 +189,7 @@ pub struct PStats {
     pub position: Position,
 }
 
-impl BasePlayer for PStats {
-    fn get_team(&self) -> TeamID {
-        self.team.clone()
-    }
-    fn get_id(&self) -> String {
-        self.id.clone()
-    }
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_pos(&self) -> Position {
-        return self.position;
-    }
-    fn get_json(&self) -> String {
-        let res = serde_json::to_string(self);
-        match res {
-            Ok(js) => js,
-            Err(_) => "".to_string(),
-        }
-    }
-    fn get_full_player(&self) -> Player {
-        return Player::P(*self);
-    }
-}
-
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct KRStats {
     pub team: TeamID,
     pub name: String,
@@ -439,63 +198,13 @@ pub struct KRStats {
     pub position: Position,
 }
 
-impl BasePlayer for KRStats {
-    fn get_team(&self) -> TeamID {
-        self.team.clone()
-    }
-    fn get_id(&self) -> String {
-        self.id.clone()
-    }
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_pos(&self) -> Position {
-        return self.position;
-    }
-    fn get_json(&self) -> String {
-        let res = serde_json::to_string(self);
-        match res {
-            Ok(js) => js,
-            Err(_) => "".to_string(),
-        }
-    }
-    fn get_full_player(&self) -> Player {
-        return Player::KR(*self);
-    }
-}
-
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct PRStats {
     pub team: TeamID,
     pub name: String,
     pub id: String,
 
     pub position: Position,
-}
-
-impl BasePlayer for PRStats {
-    fn get_team(&self) -> TeamID {
-        self.team.clone()
-    }
-    fn get_id(&self) -> String {
-        self.id.clone()
-    }
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_pos(&self) -> Position {
-        return self.position;
-    }
-    fn get_json(&self) -> String {
-        let res = serde_json::to_string(self);
-        match res {
-            Ok(js) => js,
-            Err(_) => "".to_string(),
-        }
-    }
-    fn get_full_player(&self) -> Player {
-        return Player::PR(*self);
-    }
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -507,27 +216,6 @@ pub struct TeamStats {
     pub fumbles_lost: Range,
     pub def_adj: i32,
 }
-// impl BasePlayer for TeamStats {
-//     fn get_team(&self) -> TeamID {
-//         self.team.clone()
-//     }
-//     fn get_id(&self) -> String {
-//         self.team.to_string()
-//     }
-//     fn get_name(&self) -> String {
-//         self.team.name.clone()
-//     }
-//     fn get_json(&self) -> String {
-//         let res = serde_json::to_string(self);
-//         match res {
-//             Ok(js) => js,
-//             Err(_) => "".to_string(),
-//         }
-//     }
-//     fn get_full_player(&self) -> Player {
-//         return Player::T(*self);
-//     }
-// }
 
 #[derive(Debug, Clone, Serialize)]
 pub enum Player {
@@ -601,12 +289,12 @@ impl Player {
     }
 }
 
-struct P {
-    pla: Player,
-    base: dyn BasePlayer,
-}
+// struct P {
+//     pla: Player,
+//     base: dyn BasePlayer,
+// }
 
-#[derive(Debug, Copy, Clone, Deserialize, Serialize, Display)]
+#[derive(Debug, Copy, Clone, Deserialize, Serialize, Display, PartialEq)]
 pub enum Position {
     QB,
     RB,
@@ -633,20 +321,44 @@ pub enum DBPosition {
     Safety,
 }
 
+#[derive(Clone, Serialize)]
+pub struct Serializable_Roster {
+    team: TeamID,
+    players: HashMap<String, Value>,
+}
+
+impl Serializable_Roster {
+    pub fn from_roster(roster: &Roster) -> Self {
+        let players: HashMap<String, Value> =
+            (&roster.players)
+                .into_iter()
+                .fold(HashMap::new(), |mut acc, p| {
+                    acc.insert(p.get_id(), p.get_json());
+                    acc
+                });
+
+        Self {
+            team: roster.team_name.clone(),
+            players,
+        }
+    }
+}
+
+#[derive(Clone)]
 pub struct Roster {
     team_name: TeamID,
     players: Vec<Box<dyn BasePlayer>>,
     // player_by_pos: HashMap<Position, Vec<Player>>,
 
     // team: TeamStats,
-    qb: Vec<QBStats>,
-    rb: Vec<RBStats>,
-    wr: Vec<WRStats>,
-    te: Vec<TEStats>,
-    db: Vec<DBStats>,
-    lb: Vec<LBStats>,
-    dl: Vec<DLStats>,
-    ol: Vec<OLStats>,
+    // qb: Vec<QBStats>,
+    // rb: Vec<RBStats>,
+    // wr: Vec<WRStats>,
+    // te: Vec<TEStats>,
+    // db: Vec<DBStats>,
+    // lb: Vec<LBStats>,
+    // dl: Vec<DLStats>,
+    // ol: Vec<OLStats>,
     // k: Vec<KStats>,
     // p: Vec<PStats>,
     // kr: Vec<KRStats>,
@@ -690,28 +402,33 @@ impl Roster {
             Self {
                 players,
                 team_name,
-                qb,
-                rb,
-                wr,
-                te,
-                db,
-                lb,
-                dl,
-                ol,
+                // qb,
+                // rb,
+                // wr,
+                // te,
+                // db,
+                // lb,
+                // dl,
+                // ol,
             }
         }
     }
 
-    pub fn get_player(&self, id: String) -> Option<&Box<dyn BasePlayer>> {
-        return self.players.iter().find(|&x| x.get_id() == id);
+    pub fn get_player(&self, id: &String) -> Option<&Box<dyn BasePlayer>> {
+        return self.players.iter().find(|&x| x.get_id() == *id);
     }
 
-    fn print_pos<T>(pos: &str, players: &Vec<T>)
-    where
-        T: BasePlayer,
-    {
+    pub fn get_players(&self, pos: Position) -> Vec<&Box<dyn BasePlayer>> {
+        return self
+            .players
+            .iter()
+            .filter(|&x| x.get_pos() == pos)
+            .collect::<Vec<&Box<dyn BasePlayer>>>();
+    }
+
+    fn print_pos(&self, pos: Position) {
         print!("{}: ", pos);
-        for p in players {
+        for p in self.get_players(pos) {
             print!("{} ({}) ", p.get_name(), p.get_id());
         }
         println!("");
@@ -720,15 +437,15 @@ impl Roster {
     pub fn print_team(&self) {
         println!("Team: {} ({})", self.team_name.name, self.team_name.year);
         println!("*** Offense ***");
-        Roster::print_pos("QB", &self.qb);
-        Roster::print_pos("RB", &self.rb);
-        Roster::print_pos("WR", &self.wr);
-        Roster::print_pos("TE", &self.te);
-        Roster::print_pos("OL", &self.ol);
+        self.print_pos(Position::QB);
+        self.print_pos(Position::RB);
+        self.print_pos(Position::WR);
+        self.print_pos(Position::TE);
+        self.print_pos(Position::OL);
         println!("*** Defense ***");
-        Roster::print_pos("DL", &self.dl);
-        Roster::print_pos("LB", &self.lb);
-        Roster::print_pos("DB", &self.db);
+        self.print_pos(Position::DL);
+        self.print_pos(Position::LB);
+        self.print_pos(Position::DB);
     }
 }
 
