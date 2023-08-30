@@ -3,8 +3,7 @@ mod webendpoint;
 
 extern crate spf_macros;
 
-
-use game::*;
+use game::{fac::read_csv_file, *};
 // use lazy_static::lazy_static;
 
 use crate::{
@@ -24,7 +23,6 @@ use crate::{
 // }
 
 fn main() {
-
     //     load_rbs("SPFB1983/83RB.txt");
     //     load_qbs("SPFB1983/83QB.txt");
     //     load_wrs("SPFB1983/83WR.txt");

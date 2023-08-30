@@ -1,11 +1,8 @@
-﻿RUN#,PASS#,SL,IL,SR,IR,ER,Qk,Sh,Lg,Sc,Zresult,Solitaire
+﻿run_num,pass_num,sl,il,sr,ir,er,qk,sh,lg,sc,z_result,solitaire
 6,26,A,B,D,C,-4,Orig,Orig,Orig,Inc,Pen: 1.D7 /2.O8 /3.R13 /4.K5,1.P(x2)/2.R(NK)/3.R(NK)/4.PR/5.P
 10(OB),40,LE vs F,CN vs C,RE vs J,CN vs C,OK,Orig,Orig,Orig,Com x ½,Inj: C,1.R(NK)/2.R(BC)/3.P/4.BLZ/5.R(NK)
 6,26,A,B,D,C,-3,Orig,Orig,Orig,Inc,Pen: 1.O3 /2.O3 /3.R11 /4.R11,1.PR/2.R(NK)/3.R(BC)/4.BLZ/5.R(NK)
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 9,36,LG vs F,CN vs H,RG vs J,CN vs H,-3,Orig,Orig,Orig,Com x 2,Pen: 1.O1 /2.O1 /3.R11 /4.R11,1.PR(x2)/2.R(NK)/3.R(BC)/4.PR/5.PR
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 6,27,BK vs G,BK vs H,BK vs I,BK vs H,-2,Orig,Orig,Orig,Com x 2,Fumble(s),1.PR/2.R(NK)/3.R(BC)/4.BLZ/5.R(NK)
 8,32,A,B,D,C,OK,Orig,Orig,Orig,Int,Inj: E,1.P/2.R(NK)/3.R(NK)/4.PR/5.R(NK)
 5,15,LE vs F,CN vs C,RE vs J,CN vs C,OK,BK2,BK2,BK2,Com,Inj: BC,1.R(NK)/2.P(x2)/3.PR/4.P/5.R(NK)
@@ -13,7 +10,6 @@ Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 7,22,LT vs A,LG vs B,RT vs E,RG vs D,OK,LE,LE,LE,Com,Inj: BC,1.R(BC)/2.R(NK)/3.R(NK)/4.PR/5.R(NK)
 5,15,LT,CN,RT,CN,-6,FL,FL,FL,Com,Pen: 1.O3 /2.O7 /3.R11 /4.R11,1.R(NK)/2.P(x2)/3.PR/4.P/5.R(NK)
 5(OB),19,LT vs A,LG vs B,RT vs E,RG vs D,OK,Orig,Orig,Orig,Com,Pen: 1.O4 /2.O4 /3.R11 /4.R11,1.P/2.R(NK)/3.R(NK)/4.PR/5.R(BC)
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 1,2,LG + LT,LG,RG + RT,RG,OK,RE,RE,RE,Com,Inj: RT,1.R(NK)/2.P/3.P/4.P/5.R(NK)
 4,14,LT,CN,RT,CN,OK,LE,LE,LE,Com,Inj: LT,1.R(BC)/2.R(NK)/3.R(NK)/4.PR/5.R(NK)
 4(OB),12,LG,LT,RG,RT,-6,BK2,BK2,BK2,Com,Pen: 1.D1 /2.O7 /3.R11 /4.R11,1.R(NK)/2.P/3.PR/4.R(NK)/5.R(NK)
@@ -22,12 +18,10 @@ Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 12,47,B + G,C + H,E + J,D + I,OK,RE,PassRush,PassRush,Inc,Inj: L,1.P/2.R(NK)/3.R(NK)/4.PR/5.R(BC)
 5,19,LT vs A,LG vs B,RT vs E,RG vs D,OK,LE,LE,LE,Com,Inj: QB,1.R(BC)/2.R(NK)/3.R(NK)/4.PR/5.R(NK)
 9,36,B,C,E,D,-2,Orig,Orig,Orig,Inc,Fumble(s),1.PR/2.R(NK)/3.P/4.BLZ/5.R(NK)
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 8,29,LT vs A,LG vs B,RT vs E,RG vs D,-2,Orig,Orig,Orig,Com x 2,Pen: 1.O1 /2.O1 /3.R11 /4.R11,1.PR/2.R(NK)/3.P/4.BLZ/5.R(NK)
 4,13,LE vs F,CN vs C,RE vs J,CN vs C,OK,LE,LE,LE,Com,Inj: BC,1.R(NK)/2.PR/3.PR(x2)/4.PR(x2)/5.R(NK)
 11(OB),41,A + F,B + G,D + I,C + H,OK,Orig,Orig,Orig,Com,Inj: LT,1.R(NK)/2.R(BC)/3.P/4.PR(x2)/5.R(NK)
 9,33,LE vs F,CN vs C,RE vs J,CN vs C,-4,Orig,Orig,Orig,Com x 2,Pen: 1.D1 /2.D7 /3.R11 /4.R11,1.P(x2)/2.R(NK)/3.R(NK)/4.PR/5.PR(x2)
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 7,21,LE,BK,RE,BK,OK,LE,LE,LE,Com,Inj: LG,1.R(BC)/2.R(BC)/3.P(x2)/4.PR(x2)/5.R(NK)
 12,46,B + G,C + H,E + J,D + I,OK,LE,PassRush,PassRush,Inc,Inj: E,1.P/2.R(NK)/3.R(NK)/4.PR/5.R(BC)
 5,16,LE vs F,CN vs C,RE vs J,CN vs C,OK,LE,LE,LE,Com,Inj: BC,1.R(BC)/2.R(NK)/3.R(NK)/4.PR/5.R(NK)
@@ -41,19 +35,15 @@ Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 1,2,LG + LT,LG,RG + RT,RG,-6,FL,FL,FL,Com,Pen: 1.O2 /2.O2 /3.K1 /4.R11,1.R(NK)/2.PR(x2)/3.BLZ/4.P(x2)/5.R(NK)
 1,3,LG + LT,LG,RG + RT,RG,OK,Orig,Orig,Orig,Com,Inj: BC,1.R(BC)/2.R(BC)/3.P/4.PR(x2)/5.R(NK)
 7,25,A,B,D,C,-1,Orig,Orig,Orig,Inc,Fumble,1.BLZ/2.R(NK)/3.R(BC)/4.BLZ/5.R(NK)
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 7(OB),24,Break,Break,Break,Break,-5,BK2,BK2,BK2,Com,Pen: 1.O6 /2.O10 /3.K9 /4.K9,1.R(NK)/2.P/3.PR/4.P/5.R(NK)
 2(OB),6,LG + LE,CN + LG,RG + RE,CN + RG,-3,BK1,BK1,BK1,Com,Pen: 1.O1 /2.O1 /3.R11 /4.R11,1.R(NK)/2.P/3.PR/4.R(NK)/5.R(NK)
 8,31,LT vs A,LG vs B,RT vs E,RG vs D,-5,Orig,Orig,Orig,Com x 2,Pen: 1.O1 /2.D5 /3.K5 /4.R11,1.P/2.R(NK)/3.R(NK)/4.PR/5.R(NK)
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 6,11,LT vs B,LG vs B,RT vs D,RG vs I,OK,BK1,BK1,BK1,Com,Pen: 1.D1 /2.D7 /3.R11 /4.R11,1.P/2.R(NK)/3.R(NK)/4.P/5.R(BC)
 8,32,LE vs H,LT vs G,RE vs H,RT vs I,-4,Orig,Orig,Orig,Com x ½,Pen: 1.D2 /2.O5 /3.K5 /4.R11,1.P(x2)/2.R(NK)/3.R(NK)/4.PR/5.R(BC)
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 4(OB),13,LT,LT,RT,RT,-1,BK1,BK1,BK1,Com,Fumble,1.R(NK)/2.P/3.PR/4.R(NK)/5.R(NK)
 3,8,LG vs F,CN vs H,RG vs J,CN vs H,OK,LE,LE,LE,Com,Inj: BC,1.R(BC)/2.R(NK)/3.R(NK)/4.PR/5.R(NK)
 9(OB),35,LT vs A,LG vs B,RT vs E,RG vs D,OK,Orig,Orig,Orig,Com x ½,Inj: C,1.R(NK)/2.R(BC)/3.P/4.BLZ/5.R(NK)
 10,38,B,C,E,D,-1,Orig,Orig,Orig,Inc,Fumble,1.BLZ/2.R(NK)/3.R(BC)/4.BLZ/5.R(NK)
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 11(OB),42,A + F,B + G,D + I,C + H,-4,RE,RE,PassRush,Com x 3,Pen: 1.D2 /2.D2 /3.R1 /4.R11,1.P(x2)/2.R(NK)/3.R(NK)/4.PR/5.R(BC)
 3,8,BK vs F,BK vs G,BK vs J,BK vs I,OK,RE,RE,RE,Int,Inj: D,1.R(NK)/2.PR(x2)/3.BLZ/4.P(x2)/5.R(NK)
 3,9,LG vs F,CN vs H,RG vs J,CN vs H,OK,LE,LE,LE,Com,Inj: BC,1.R(BC)/2.R(NK)/3.R(NK)/4.PR/5.R(NK)
@@ -73,9 +63,7 @@ Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 9(OB),34,LT vs B,LG vs G,RT vs D,RG vs I,OK,Orig,Orig,Orig,Com x 2,Inj: A,1.R(NK)/2.R(BC)/3.P/4.BLZ/5.R(NK)
 7,24,Break,Break,Break,Break,OK,RE,RE,RE,Com,Inj: RG,1.R(NK)/2.PR/3.PR(x2)/4.PR(x2)/5.R(NK)
 6,10,LT vs G,BK vs I,RT vs I,BK vs G,OK,Orig,Orig,Orig,Com,Pen: 1.D1 /2.O7 /3.R11 /4.R11,1.P/2.R(NK)/3.R(NK)/4.PR/5.R(BC)
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 11,41,A + F,B + G,D + I,C + H,OK,Orig,Orig,Orig,Com x ½,Inj: B,1.P/2.R(NK)/3.R(NK)/4.PR/5.R(BC)
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 12,47,B + G,C + H,E + J,D + I,-4,RE,PassRush,PassRush,Com x 3,Pen: 1.O1 /2.O7 /3.R5 /4.R11,1.P(x2)/2.R(NK)/3.R(NK)/4.PR/5.R(BC)
 11,44,A + F,B + G,D + I,C + H,-4,FL,FL,PassRush,Inc,Pen: 1.D1 /2.D1 /3.R1 /4.K15,1.P/2.R(NK)/3.R(NK)/4.PR/5.P(x2)
 10,40,LT vs B,LG vs G,RT vs D,RG vs I,-2,Orig,Orig,Orig,Com x 2,Fumble(s),1.PR/2.R(NK)/3.P/4.BLZ/5.R(NK)
@@ -107,4 +95,3 @@ Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z
 7,21,LE,BK,RE,BK,OK,LE,LE,LE,Com,Inj: LG,1.R(BC)/2.R(BC)/3.P(x2)/4.PR(x2)/5.R(NK)
 12(OB),48,B + G,C + H,E + J,D + I,OK,PassRush,PassRush,PassRush,Inc,Inj: M,1.R(NK)/2.PR/3.PR(x2)/4.PR(x2)/5.R(NK)
 5,18,LE vs F,CN vs C,RE vs J,CN vs C,OK,Orig,Orig,Orig,Com,Pen: 1.D1 /2.O7 /3.R11 /4.R11,1.P/2.R(NK)/3.R(NK)/4.PR/5.R(BC)
-Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z,Z

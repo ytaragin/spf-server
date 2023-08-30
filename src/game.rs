@@ -1,4 +1,5 @@
 pub mod engine;
+pub mod fac;
 pub mod lineup;
 pub mod loader;
 pub mod players;
@@ -7,9 +8,12 @@ pub mod stats;
 use serde::{Deserialize, Serialize};
 
 use self::{
-    engine::{DefensivePlay, Down, OffensivePlayInfo, Play, PlayResult, Validatable, Yard, OffenseCall, DefenseCall},
+    engine::{
+        DefenseCall, DefensivePlay, Down, OffenseCall, OffensivePlayInfo, Play, PlayResult,
+        Validatable, Yard,
+    },
     lineup::{DefensiveLineup, IDBasedDefensiveLineup, IDBasedOffensiveLineup, OffensiveLineup},
-    players::Roster,
+    players::Roster, fac::FacManager,
 };
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
@@ -69,6 +73,7 @@ pub struct Game {
     pub state: GameState,
     pub past_plays: Vec<PlayAndState>,
     pub current_play: Play,
+    pub fac_deck: FacManager,
 }
 
 impl Game {
@@ -79,6 +84,7 @@ impl Game {
             state: GameState::start_state(),
             past_plays: vec![],
             current_play: Play::new(),
+            fac_deck: FacManager::new("cards/fac_cards.csv"),
         };
     }
 
@@ -177,7 +183,7 @@ impl Game {
     }
 
     pub fn run_play(&mut self) -> Result<PlayAndState, String> {
-        let play_result = self.current_play.run_play(&self.state)?;
+        let play_result = self.current_play.run_play(&self.state, & mut self.fac_deck)?;
 
         // let new_state = Game::gen_new_state(&self.state, &self.current_play, &play_result);
         // let pands = PlayAndState {

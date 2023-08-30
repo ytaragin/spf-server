@@ -42,10 +42,8 @@ impl FlankerPlayer {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct IDBasedOffensiveLineup {
-    LE_split: Option<String>,
-    LE_tight: Option<String>,
-    RE_split: Option<String>,
-    RE_tight: Option<String>,
+    LE: Option<String>,
+    RE: Option<String>,
     FL1: Option<String>,
     FL2: Option<String>,
     QB: Option<String>,
@@ -61,10 +59,8 @@ pub struct IDBasedOffensiveLineup {
 
 #[derive(Debug, Clone, Serialize)]
 pub struct OffensiveLineup {
-    le_split: Option<EndPlayer>,
-    le_tight: Option<EndPlayer>,
-    re_split: Option<EndPlayer>,
-    re_tight: Option<EndPlayer>,
+    le: Option<EndPlayer>,
+    re: Option<EndPlayer>,
     fl1: Option<FlankerPlayer>,
     fl2: Option<FlankerPlayer>,
     qb: QBStats,
@@ -86,28 +82,16 @@ impl OffensiveLineup {
         let qb =
             LineupUtilities::get_player_from_id_or_err(&id_lineup.QB, "QB", &team, Player::is_qb)?;
 
-        let le_split = LineupUtilities::get_option_player_from_id(
-            &id_lineup.LE_split,
-            "LE_split",
-            &team,
-            EndPlayer::gen_from_player,
-        )?;
-        let le_tight = LineupUtilities::get_option_player_from_id(
-            &id_lineup.LE_tight,
-            "LE_tight",
+        let le = LineupUtilities::get_option_player_from_id(
+            &id_lineup.LE,
+            "LE",
             &team,
             EndPlayer::gen_from_player,
         )?;
 
-        let re_split = LineupUtilities::get_option_player_from_id(
-            &id_lineup.RE_split,
-            "RE_split",
-            &team,
-            EndPlayer::gen_from_player,
-        )?;
-        let re_tight = LineupUtilities::get_option_player_from_id(
-            &id_lineup.RE_tight,
-            "RE_tight",
+        let re = LineupUtilities::get_option_player_from_id(
+            &id_lineup.RE,
+            "RE",
             &team,
             EndPlayer::gen_from_player,
         )?;
@@ -144,10 +128,8 @@ impl OffensiveLineup {
             LineupUtilities::get_player_from_id_or_err(&id_lineup.RT, "RT", &team, Player::is_ol)?;
 
         return Ok(Self {
-            le_split,
-            le_tight,
-            re_split,
-            re_tight,
+            le,
+            re,
             fl1,
             fl2,
             qb,
@@ -164,10 +146,8 @@ impl OffensiveLineup {
 
     pub fn convert_to_id_lineup(&self) -> IDBasedOffensiveLineup {
         return IDBasedOffensiveLineup {
-            LE_split: LineupUtilities::get_id_from_player(&self.le_split),
-            LE_tight: LineupUtilities::get_id_from_player(&self.le_tight),
-            RE_split: LineupUtilities::get_id_from_player(&self.re_split),
-            RE_tight: LineupUtilities::get_id_from_player(&self.re_tight),
+            LE: LineupUtilities::get_id_from_player(&self.le),
+            RE: LineupUtilities::get_id_from_player(&self.re),
             FL1: LineupUtilities::get_id_from_player(&self.fl1),
             FL2: LineupUtilities::get_id_from_player(&self.fl2),
             QB: Some(self.qb.get_id()),
@@ -187,10 +167,10 @@ impl OffensiveLineup {
         println!("Backs: {}", b_count);
         LineupUtilities::validate_count(b_count, 1, 3, "Invalid number of Backs")?;
 
-        let left_end_count = LineupUtilities::count_spots(vec![&self.le_split, &self.le_tight]);
+        let left_end_count = LineupUtilities::count_spots(vec![&self.le]);
         LineupUtilities::validate_count(left_end_count, 1, 1, "Only one Left End")?;
 
-        let right_end_count = LineupUtilities::count_spots(vec![&self.re_split, &self.re_tight]);
+        let right_end_count = LineupUtilities::count_spots(vec![&self.re]);
         LineupUtilities::validate_count(right_end_count, 1, 1, "Only one Right End")?;
 
         let flanker_count = LineupUtilities::count_spots(vec![&self.fl1, &self.fl2]);
@@ -509,7 +489,9 @@ impl LineupUtilities {
             Some(val) => val,
         };
 
-        let p = team.get_player(id).ok_or(format!("No Such {}", pos_str))?;
+        let p = team
+            .get_player(id)
+            .ok_or(format!("No Such {} from {}", pos_str, id))?;
         let t =
             transform(p.get_full_player()).ok_or(format!("Not a valid type for {}", pos_str))?;
         return Ok(Some(t));
@@ -526,7 +508,9 @@ impl LineupUtilities {
     {
         let id = &id_opt.ok_or(format!("Missing {}", pos_str))?;
 
-        let p = team.get_player(id).ok_or(format!("No Such {}", pos_str))?;
+        let p = team
+            .get_player(id)
+            .ok_or(format!("No Such {} with id {}", pos_str, id))?;
         let t =
             transform(p.get_full_player()).ok_or(format!("Not a valid type for {}", pos_str))?;
         return Ok(t);

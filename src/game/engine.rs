@@ -7,6 +7,7 @@ use spf_macros::ToBasePlayer;
 use lazy_static::lazy_static;
 
 use super::{
+    fac::FacManager,
     lineup::{DefensiveLineup, OffensiveLineup},
     GameState, PlayAndState,
 };
@@ -251,11 +252,15 @@ impl Play {
         });
     }
 
-    pub fn run_play(&self, curr_state: &GameState) -> Result<PlayAndState, String> {
+    pub fn run_play(
+        &self,
+        curr_state: &GameState,
+        fac_deck: &mut FacManager,
+    ) -> Result<PlayAndState, String> {
         let details = self.play_ready()?;
 
         let info = getOffensivePlayInfo(&details.offense_call.play_type);
-        let result = (info.handler)(&details, curr_state);        
+        let result = (info.handler)(&details, curr_state);
 
         let new_state = GameState {
             down: Down::Second,
@@ -272,15 +277,16 @@ impl Play {
 }
 
 fn run_run_play(details: &PlaySetup, curr_state: &GameState) -> PlayResult {
-
-
-
-
-    return PlayResult { result:10, time: 10 }
+    return PlayResult {
+        result: 10,
+        time: 10,
+    };
 }
 fn run_pass_play(details: &PlaySetup, curr_state: &GameState) -> PlayResult {
-
-    return PlayResult { result:10, time: 10 }
+    return PlayResult {
+        result: 10,
+        time: 10,
+    };
 }
 
 #[derive(Debug, Copy, Clone)]
