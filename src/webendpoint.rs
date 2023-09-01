@@ -5,6 +5,7 @@ use actix_web::{http::header, web, App, HttpResponse, HttpServer, Responder};
 use serde_json::json;
 
 use crate::game::{
+    engine::OffenseCall,
     lineup::{IDBasedDefensiveLineup, IDBasedOffensiveLineup},
     players::Serializable_Roster,
     Game,
@@ -63,13 +64,21 @@ async fn set_defensive_lineup(
     }
 }
 
-async fn set_offensive_play(data: web::Json<(String, String)>) -> impl Responder {
-    let (play1, play2) = data.into_inner();
-    println!("Play 1: {}, Play 2: {}", play1, play2); // Do something with the plays
-    HttpResponse::Ok().body("Offensive play set.")
+async fn set_offense_call(
+    appstate: web::Data<AppState>,
+    data: web::Json<OffenseCall>,
+) -> impl Responder {
+    let call = data.into_inner();
+    println!("Offense Play:  {:?}", call); // Do something with the plays
+    let mut game = appstate.game.lock().unwrap();
+
+    match game.set_offense_call(call) {
+        Ok(_) => HttpResponse::Ok().body("Offense play set."),
+        Err(msg) => HttpResponse::BadRequest().body(msg),
+    }
 }
 
-async fn set_defensive_play(data: web::Json<(String, String)>) -> impl Responder {
+async fn set_defense_call(data: web::Json<(String, String)>) -> impl Responder {
     let (play1, play2) = data.into_inner();
     println!("Play 1: {}, Play 2: {}", play1, play2); // Do something with the plays
     HttpResponse::Ok().body("Defensive play set.")
@@ -174,7 +183,7 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
             .route("/getoffenselineup", web::get().to(get_offensive_lineup))
             .route("/getdefenselineup", web::get().to(get_defensive_lineup))
             .route("/setdefenselineup", web::post().to(set_defensive_lineup))
-            // .route("/setoffensiveplay", web::post().to(set_offensive_play))
+            .route("/offense/call", web::post().to(set_offense_call))
             // .route("/setdefensiveplay", web::post().to(set_defensive_play))
             .route("/getstate", web::get().to(get_game_state))
             .route("/getplayer/{id}", web::get().to(get_player))

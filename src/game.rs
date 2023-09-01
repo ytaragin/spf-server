@@ -160,7 +160,7 @@ impl Game {
         return self.set_play_field(off_call, |p, in_p| p.offense_call = Some(in_p));
     }
 
-    pub fn set_defense_play(&mut self, def_call: DefenseCall) -> Result<(), String> {
+    pub fn set_defense_call(&mut self, def_call: DefenseCall) -> Result<(), String> {
         return self.set_play_field(def_call, |p, in_p| p.defense_call = Some(in_p));
     }
 

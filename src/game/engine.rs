@@ -8,7 +8,7 @@ use lazy_static::lazy_static;
 
 use super::{
     fac::FacManager,
-    lineup::{DefensiveLineup, OffensiveLineup},
+    lineup::{DefensiveLineup, OffensiveBox, OffensiveLineup},
     GameState, PlayAndState,
 };
 
@@ -32,21 +32,22 @@ pub struct IDOffensivePlay {
     pub target_id: String,
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub enum OffensivePlayCategory {
     Run,
     Pass,
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone)]
 pub struct OffensivePlayInfo {
     pub play_type: OffensivePlayCategory,
     pub name: &'static str,
     pub code: &'static str,
+    pub allowed_targets: Vec<OffensiveBox>,
     pub handler: PlayRunner,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize, Eq, Hash, PartialEq)]
 pub enum OffensivePlayType {
     SL,
     SR,
@@ -59,7 +60,16 @@ pub enum OffensivePlayType {
     SC,
 }
 
-#[derive(Debug, Clone)]
+// impl OffensivePlayType {
+//     fn validate(&self, lineup: &OffensiveLineup) -> Result<(), String> {
+//         match self {
+//             OffensivePlayType::SL |
+//             OffensivePlayType::SR
+//         }
+//     }
+// }
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum OffensiveStrategy {
     Sneak,
     Flop,
@@ -67,101 +77,150 @@ pub enum OffensiveStrategy {
     PlayAction,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct OffenseCall {
     play_type: OffensivePlayType,
     strategy: OffensiveStrategy,
-    target: String,
+    target: OffensiveBox,
 }
+
 impl Validatable for OffenseCall {
     fn validate(&self, play: &Play) -> Result<(), String> {
+        let meta = get_offensive_play_info(&self.play_type);
+        if !meta.allowed_targets.contains(&self.target) {
+            return Err(format!(
+                "{:?} is not a valid target for {:?}",
+                self.target, self.play_type
+            ));
+        }
+
+        let off: &OffensiveLineup = play.offense.as_ref().unwrap();
+        let player = off
+            .get_player_in_pos(&self.target)
+            .ok_or(format!("No player in {:?}", self.target))?;
+
+        // use player for further validations
         return Ok(());
     }
 }
 
 type PlayRunner = fn(&PlaySetup, &GameState) -> PlayResult;
+type OffenseCallValidator = fn(&OffenseCall, &OffensiveLineup) -> Result<(), String>;
 
 lazy_static! {
-    static ref OFFENSIVE_PLAYS_LIST: HashMap<&'static str, OffensivePlayInfo> = {
+    static ref OFFENSIVE_PLAYS_LIST: HashMap<OffensivePlayType, OffensivePlayInfo> = {
         let mut map = HashMap::new();
         map.insert(
-            "SL",
+            OffensivePlayType::SL,
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Run,
                 name: "Sweep Left",
                 code: "SL",
+                allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
                 handler: run_run_play,
             },
         );
         map.insert(
-            "SR",
+            OffensivePlayType::SR,
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Run,
                 name: "Sweep Right",
                 code: "SR",
+                allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
                 handler: run_run_play,
             },
         );
         map.insert(
-            "IL",
+            OffensivePlayType::IL,
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Run,
                 name: "Inside Left",
                 code: "IL",
+                allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
                 handler: run_run_play,
             },
         );
         map.insert(
-            "IR",
+            OffensivePlayType::IR,
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Run,
                 name: "Inside Right",
                 code: "IR",
+                allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
                 handler: run_run_play,
             },
         );
         map.insert(
-            "ER",
+            OffensivePlayType::ER,
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Run,
                 name: "End Around",
                 code: "ER",
+                allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
                 handler: run_run_play,
             },
         );
         map.insert(
-            "QK",
+            OffensivePlayType::QK,
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Pass,
                 name: "Quick",
                 code: "QK",
+                allowed_targets: vec![
+                    OffensiveBox::B1,
+                    OffensiveBox::B2,
+                    OffensiveBox::B3,
+                    OffensiveBox::RE,
+                    OffensiveBox::LE,
+                    OffensiveBox::FL1,
+                    OffensiveBox::FL2,
+                ],
                 handler: run_pass_play,
             },
         );
         map.insert(
-            "SH",
+            OffensivePlayType::SH,
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Pass,
                 name: "Short",
                 code: "SH",
+                allowed_targets: vec![
+                    OffensiveBox::B1,
+                    OffensiveBox::B2,
+                    OffensiveBox::B3,
+                    OffensiveBox::RE,
+                    OffensiveBox::LE,
+                    OffensiveBox::FL1,
+                    OffensiveBox::FL2,
+                ],
                 handler: run_pass_play,
             },
         );
         map.insert(
-            "LG",
+            OffensivePlayType::LG,
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Pass,
                 name: "Long",
                 code: "LG",
+                allowed_targets: vec![
+                    OffensiveBox::B1,
+                    OffensiveBox::B2,
+                    OffensiveBox::B3,
+                    OffensiveBox::RE,
+                    OffensiveBox::LE,
+                    OffensiveBox::FL1,
+                    OffensiveBox::FL2,
+                ],
                 handler: run_pass_play,
             },
         );
         map.insert(
-            "SC",
+            OffensivePlayType::SC,
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Pass,
                 name: "Screen",
                 code: "SC",
+                allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
                 handler: run_pass_play,
             },
         );
@@ -169,18 +228,19 @@ lazy_static! {
     };
 }
 
-pub fn getOffensivePlayInfo(play: &OffensivePlayType) -> OffensivePlayInfo {
-    return match play {
-        OffensivePlayType::ER => OFFENSIVE_PLAYS_LIST["ER"],
-        OffensivePlayType::SL => OFFENSIVE_PLAYS_LIST["SL"],
-        OffensivePlayType::SR => OFFENSIVE_PLAYS_LIST["SR"],
-        OffensivePlayType::IL => OFFENSIVE_PLAYS_LIST["IL"],
-        OffensivePlayType::IR => OFFENSIVE_PLAYS_LIST["IR"],
-        OffensivePlayType::QK => OFFENSIVE_PLAYS_LIST["QK"],
-        OffensivePlayType::SH => OFFENSIVE_PLAYS_LIST["SH"],
-        OffensivePlayType::LG => OFFENSIVE_PLAYS_LIST["LG"],
-        OffensivePlayType::SC => OFFENSIVE_PLAYS_LIST["SC"],
-    };
+pub fn get_offensive_play_info(play: &OffensivePlayType) -> &OffensivePlayInfo {
+    return &OFFENSIVE_PLAYS_LIST[play];
+    // return match play {
+    //     OffensivePlayType::ER => OFFENSIVE_PLAYS_LIST["ER"],
+    //     OffensivePlayType::SL => OFFENSIVE_PLAYS_LIST["SL"],
+    //     OffensivePlayType::SR => OFFENSIVE_PLAYS_LIST["SR"],
+    //     OffensivePlayType::IL => OFFENSIVE_PLAYS_LIST["IL"],
+    //     OffensivePlayType::IR => OFFENSIVE_PLAYS_LIST["IR"],
+    //     OffensivePlayType::QK => OFFENSIVE_PLAYS_LIST["QK"],
+    //     OffensivePlayType::SH => OFFENSIVE_PLAYS_LIST["SH"],
+    //     OffensivePlayType::LG => OFFENSIVE_PLAYS_LIST["LG"],
+    //     OffensivePlayType::SC => OFFENSIVE_PLAYS_LIST["SC"],
+    // };
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -202,6 +262,7 @@ pub enum DefensiveStrategy {
 pub struct DefenseCall {
     play: DefensivePlay,
     strategy: DefensiveStrategy,
+    targets: Vec<String>,
 }
 impl Validatable for DefenseCall {
     fn validate(&self, play: &Play) -> Result<(), String> {
@@ -259,7 +320,7 @@ impl Play {
     ) -> Result<PlayAndState, String> {
         let details = self.play_ready()?;
 
-        let info = getOffensivePlayInfo(&details.offense_call.play_type);
+        let info = get_offensive_play_info(&details.offense_call.play_type);
         let result = (info.handler)(&details, curr_state);
 
         let new_state = GameState {

@@ -7,6 +7,23 @@ use super::players::{
     ToBasePlayer, WRStats,
 };
 
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub enum OffensiveBox {
+    QB,
+    B1,
+    B2,
+    B3,
+    RE,
+    LE,
+    FL1,
+    FL2,
+    LT,
+    LG,
+    C,
+    RG,
+    RT,
+}
+
 #[derive(Debug, Clone, Serialize, ToBasePlayer)]
 enum EndPlayer {
     TE(TEStats),
@@ -183,6 +200,25 @@ impl OffensiveLineup {
         )?;
 
         return Ok(());
+    }
+
+    pub fn get_player_in_pos(&self, spot: &OffensiveBox) -> Option<&dyn BasePlayer> {
+        // Use match to compare the field name with each possible option
+        match spot {
+            OffensiveBox::QB => Some(&self.qb),
+            OffensiveBox::B1 => LineupUtilities::get_player_from_option(&self.b1),
+            OffensiveBox::B2 => LineupUtilities::get_player_from_option(&self.b2),
+            OffensiveBox::B3 => LineupUtilities::get_player_from_option(&self.b3),
+            OffensiveBox::RE => LineupUtilities::get_player_from_option(&self.re),
+            OffensiveBox::LE => LineupUtilities::get_player_from_option(&self.le),
+            OffensiveBox::FL1 => LineupUtilities::get_player_from_option(&self.fl1),
+            OffensiveBox::FL2 => LineupUtilities::get_player_from_option(&self.fl2),
+            OffensiveBox::LT => Some(self.lt.get_player()),
+            OffensiveBox::LG => Some(self.lg.get_player()),
+            OffensiveBox::C => Some(self.c.get_player()),
+            OffensiveBox::RG => Some(self.rg.get_player()),
+            OffensiveBox::RT => Some(self.rt.get_player()),
+        }
     }
 }
 
@@ -448,6 +484,13 @@ impl LineupUtilities {
         match player {
             None => None,
             Some(p) => Some(p.get_player().get_id()),
+        }
+    }
+
+    fn get_player_from_option<'a, T: ToBasePlayer>(player: &'a Option<T>) -> Option<&'a dyn BasePlayer> {
+        match player {
+            None => None,
+            Some(p) => Some(p.get_player()),
         }
     }
 
