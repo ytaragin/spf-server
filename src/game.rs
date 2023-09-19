@@ -9,7 +9,7 @@ use serde::{Deserialize, Serialize};
 
 use self::{
     engine::{
-        DefenseCall, DefensivePlay, Down, OffenseCall, OffensivePlayInfo, Play, PlayResult,
+        DefenseCall, DefensivePlay, Down, OffenseCall, Play, PlayResult,
         Validatable, Yard,
     },
     lineup::{DefensiveLineup, IDBasedDefensiveLineup, IDBasedOffensiveLineup, OffensiveLineup},

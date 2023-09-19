@@ -5,7 +5,7 @@ use actix_web::{http::header, web, App, HttpResponse, HttpServer, Responder};
 use serde_json::json;
 
 use crate::game::{
-    engine::OffenseCall,
+    engine::{DefenseCall, OffenseCall},
     lineup::{IDBasedDefensiveLineup, IDBasedOffensiveLineup},
     players::Serializable_Roster,
     Game,
@@ -78,10 +78,18 @@ async fn set_offense_call(
     }
 }
 
-async fn set_defense_call(data: web::Json<(String, String)>) -> impl Responder {
-    let (play1, play2) = data.into_inner();
-    println!("Play 1: {}, Play 2: {}", play1, play2); // Do something with the plays
-    HttpResponse::Ok().body("Defensive play set.")
+async fn set_defense_call(
+    appstate: web::Data<AppState>,
+    data: web::Json<DefenseCall>,
+) -> impl Responder {
+    let call = data.into_inner();
+    println!("Defense Play:  {:?}", call); // Do something with the plays
+    let mut game = appstate.game.lock().unwrap();
+
+    match game.set_defense_call(call) {
+        Ok(_) => HttpResponse::Ok().body("Defense play set."),
+        Err(msg) => HttpResponse::BadRequest().body(msg),
+    }
 }
 
 async fn get_team_players(
@@ -184,6 +192,7 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
             .route("/getdefenselineup", web::get().to(get_defensive_lineup))
             .route("/setdefenselineup", web::post().to(set_defensive_lineup))
             .route("/offense/call", web::post().to(set_offense_call))
+            .route("/defense/call", web::post().to(set_defense_call))
             // .route("/setdefensiveplay", web::post().to(set_defensive_play))
             .route("/getstate", web::get().to(get_game_state))
             .route("/getplayer/{id}", web::get().to(get_player))

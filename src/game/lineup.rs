@@ -24,6 +24,25 @@ pub enum OffensiveBox {
     RT,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub enum DefensiveBox {
+    box_a,
+    box_b,
+    box_c,
+    box_d,
+    box_e,
+    box_f,
+    box_g,
+    box_h,
+    box_i,
+    box_j,
+    box_k,
+    box_l,
+    box_m,
+    box_n,
+    box_o,
+}
+
 #[derive(Debug, Clone, Serialize, ToBasePlayer)]
 enum EndPlayer {
     TE(TEStats),
@@ -461,6 +480,57 @@ impl DefensiveLineup {
 
         return Ok(());
     }
+
+    pub fn find_player(&self, id: &String) -> Option<DefensiveBox> {
+        if LineupUtilities::is_player_in_vec(&self.box_a, id) {
+            return Some(DefensiveBox::box_a);
+        }
+        if LineupUtilities::is_player_in_vec(&self.box_b, id) {
+            return Some(DefensiveBox::box_b);
+        }
+        if LineupUtilities::is_player_in_vec(&self.box_c, id) {
+            return Some(DefensiveBox::box_c);
+        }
+        if LineupUtilities::is_player_in_vec(&self.box_d, id) {
+            return Some(DefensiveBox::box_d);
+        }
+        if LineupUtilities::is_player_in_vec(&self.box_e, id) {
+            return Some(DefensiveBox::box_e);
+        }
+
+        if LineupUtilities::is_same_player(&self.box_f, id) {
+            return Some(DefensiveBox::box_f);
+        }
+        if LineupUtilities::is_same_player(&self.box_g, id) {
+            return Some(DefensiveBox::box_g);
+        }
+        if LineupUtilities::is_same_player(&self.box_h, id) {
+            return Some(DefensiveBox::box_h);
+        }
+        if LineupUtilities::is_same_player(&self.box_i, id) {
+            return Some(DefensiveBox::box_i);
+        }
+        if LineupUtilities::is_same_player(&self.box_j, id) {
+            return Some(DefensiveBox::box_j);
+        }
+        if LineupUtilities::is_same_player(&self.box_k, id) {
+            return Some(DefensiveBox::box_k);
+        }
+        if LineupUtilities::is_player_in_vec(&self.box_l, id) {
+            return Some(DefensiveBox::box_l);
+        }
+        if LineupUtilities::is_same_player(&self.box_m, id) {
+            return Some(DefensiveBox::box_m);
+        }
+        if LineupUtilities::is_same_player(&self.box_n, id) {
+            return Some(DefensiveBox::box_n);
+        }
+        if LineupUtilities::is_same_player(&self.box_o, id) {
+            return Some(DefensiveBox::box_o);
+        }
+
+        return None;
+    }
 }
 
 // impl Validatable for DefensiveLineup {
@@ -487,11 +557,25 @@ impl LineupUtilities {
         }
     }
 
-    fn get_player_from_option<'a, T: ToBasePlayer>(player: &'a Option<T>) -> Option<&'a dyn BasePlayer> {
+    fn get_player_from_option<'a, T: ToBasePlayer>(
+        player: &'a Option<T>,
+    ) -> Option<&'a dyn BasePlayer> {
         match player {
             None => None,
             Some(p) => Some(p.get_player()),
         }
+    }
+
+    fn is_same_player<T: ToBasePlayer>(player: &Option<T>, id: &String) -> bool {
+        match player {
+            None => false,
+            Some(p) => (p.get_player().get_id() == *id),
+        }
+    }
+
+    fn is_player_in_vec<T: ToBasePlayer>(players: &Vec<T>, id: &String) -> bool {
+        let ids = LineupUtilities::get_ids_for_vec(players);
+        return ids.contains(id);
     }
 
     fn get_player_from_id_or_err<T, F>(

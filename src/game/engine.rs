@@ -1,3 +1,5 @@
+pub mod runplay;
+
 use std::collections::HashMap;
 
 use itertools::Itertools;
@@ -6,9 +8,12 @@ use spf_macros::ToBasePlayer;
 
 use lazy_static::lazy_static;
 
+use crate::game::engine::runplay::RunUtils;
+
 use super::{
-    fac::FacManager,
-    lineup::{DefensiveLineup, OffensiveBox, OffensiveLineup},
+    fac::{FacCard, FacData, FacManager, RunResult, RunResultActual},
+    lineup::{DefensiveBox, DefensiveLineup, OffensiveBox, OffensiveLineup},
+    players::{BasePlayer, Player},
     GameState, PlayAndState,
 };
 
@@ -38,13 +43,15 @@ pub enum OffensivePlayCategory {
     Pass,
 }
 
+type CreateStartState = fn() -> Box<dyn PlayLogicState>;
+
 #[derive(Debug, Clone)]
-pub struct OffensivePlayInfo {
-    pub play_type: OffensivePlayCategory,
-    pub name: &'static str,
-    pub code: &'static str,
-    pub allowed_targets: Vec<OffensiveBox>,
-    pub handler: PlayRunner,
+struct OffensivePlayInfo {
+    play_type: OffensivePlayCategory,
+    name: &'static str,
+    code: &'static str,
+    allowed_targets: Vec<OffensiveBox>,
+    handler: CreateStartState,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Eq, Hash, PartialEq)]
@@ -80,7 +87,7 @@ pub enum OffensiveStrategy {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct OffenseCall {
     play_type: OffensivePlayType,
-    strategy: OffensiveStrategy,
+    strategy: Option<OffensiveStrategy>,
     target: OffensiveBox,
 }
 
@@ -94,7 +101,10 @@ impl Validatable for OffenseCall {
             ));
         }
 
-        let off: &OffensiveLineup = play.offense.as_ref().unwrap();
+        let off: &OffensiveLineup = play
+            .offense
+            .as_ref()
+            .ok_or("Set Lineup before setting Call")?;
         let player = off
             .get_player_in_pos(&self.target)
             .ok_or(format!("No player in {:?}", self.target))?;
@@ -104,8 +114,7 @@ impl Validatable for OffenseCall {
     }
 }
 
-type PlayRunner = fn(&PlaySetup, &GameState) -> PlayResult;
-type OffenseCallValidator = fn(&OffenseCall, &OffensiveLineup) -> Result<(), String>;
+// type PlayRunner = fn(&PlaySetup, &GameState, &mut FacManager) -> PlayResult;
 
 lazy_static! {
     static ref OFFENSIVE_PLAYS_LIST: HashMap<OffensivePlayType, OffensivePlayInfo> = {
@@ -117,7 +126,7 @@ lazy_static! {
                 name: "Sweep Left",
                 code: "SL",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: run_run_play,
+                handler: RunUtils::create_run_play,
             },
         );
         map.insert(
@@ -127,7 +136,7 @@ lazy_static! {
                 name: "Sweep Right",
                 code: "SR",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: run_run_play,
+                handler: RunUtils::create_run_play,
             },
         );
         map.insert(
@@ -137,7 +146,7 @@ lazy_static! {
                 name: "Inside Left",
                 code: "IL",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: run_run_play,
+                handler: RunUtils::create_run_play,
             },
         );
         map.insert(
@@ -147,7 +156,7 @@ lazy_static! {
                 name: "Inside Right",
                 code: "IR",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: run_run_play,
+                handler: RunUtils::create_run_play,
             },
         );
         map.insert(
@@ -157,7 +166,7 @@ lazy_static! {
                 name: "End Around",
                 code: "ER",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: run_run_play,
+                handler: RunUtils::create_run_play,
             },
         );
         map.insert(
@@ -175,7 +184,7 @@ lazy_static! {
                     OffensiveBox::FL1,
                     OffensiveBox::FL2,
                 ],
-                handler: run_pass_play,
+                handler: create_pass_play,
             },
         );
         map.insert(
@@ -193,7 +202,7 @@ lazy_static! {
                     OffensiveBox::FL1,
                     OffensiveBox::FL2,
                 ],
-                handler: run_pass_play,
+                handler: create_pass_play,
             },
         );
         map.insert(
@@ -211,7 +220,7 @@ lazy_static! {
                     OffensiveBox::FL1,
                     OffensiveBox::FL2,
                 ],
-                handler: run_pass_play,
+                handler: create_pass_play,
             },
         );
         map.insert(
@@ -221,29 +230,18 @@ lazy_static! {
                 name: "Screen",
                 code: "SC",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: run_pass_play,
+                handler: create_pass_play,
             },
         );
         map
     };
 }
 
-pub fn get_offensive_play_info(play: &OffensivePlayType) -> &OffensivePlayInfo {
+fn get_offensive_play_info(play: &OffensivePlayType) -> &OffensivePlayInfo {
     return &OFFENSIVE_PLAYS_LIST[play];
-    // return match play {
-    //     OffensivePlayType::ER => OFFENSIVE_PLAYS_LIST["ER"],
-    //     OffensivePlayType::SL => OFFENSIVE_PLAYS_LIST["SL"],
-    //     OffensivePlayType::SR => OFFENSIVE_PLAYS_LIST["SR"],
-    //     OffensivePlayType::IL => OFFENSIVE_PLAYS_LIST["IL"],
-    //     OffensivePlayType::IR => OFFENSIVE_PLAYS_LIST["IR"],
-    //     OffensivePlayType::QK => OFFENSIVE_PLAYS_LIST["QK"],
-    //     OffensivePlayType::SH => OFFENSIVE_PLAYS_LIST["SH"],
-    //     OffensivePlayType::LG => OFFENSIVE_PLAYS_LIST["LG"],
-    //     OffensivePlayType::SC => OFFENSIVE_PLAYS_LIST["SC"],
-    // };
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub enum DefensivePlay {
     RunDefense,
     PassDefense,
@@ -251,22 +249,31 @@ pub enum DefensivePlay {
     Blitz,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum DefensiveStrategy {
     DoubleCover,
     TripleCover,
     DoubleCoverX2,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DefenseCall {
-    play: DefensivePlay,
-    strategy: DefensiveStrategy,
-    targets: Vec<String>,
+    defense_type: DefensivePlay,
+    strategy: Option<DefensiveStrategy>,
+    key: Option<OffensiveBox>,
+    def_players: Vec<String>,
 }
 impl Validatable for DefenseCall {
     fn validate(&self, play: &Play) -> Result<(), String> {
-        return Ok(());
+        let lineup = play.defense.as_ref().ok_or("Set lineup before Call")?;
+        let res = self
+            .def_players
+            .iter()
+            .try_for_each(|id| match lineup.find_player(&id) {
+                Some(_) => return Ok(()),
+                None => return Err(format!("{} is not in lineup", id)),
+            });
+        return res;
     }
 }
 
@@ -315,19 +322,40 @@ impl Play {
 
     pub fn run_play(
         &self,
-        curr_state: &GameState,
+        game_state: &GameState,
         fac_deck: &mut FacManager,
     ) -> Result<PlayAndState, String> {
         let details = self.play_ready()?;
 
         let info = get_offensive_play_info(&details.offense_call.play_type);
-        let result = (info.handler)(&details, curr_state);
 
-        let new_state = GameState {
-            down: Down::Second,
-            yardline: 19,
-            ..curr_state.clone()
-        };
+        let mut play_state = (info.handler)();
+
+        let mut cards_flipped = 0;
+        let mut had_a_z = false;
+
+        while play_state.get_result().is_none() {
+            let card = fac_deck.get_fac(false);
+            cards_flipped += 1;
+            match card {
+                FacCard::Z => {
+                    if cards_flipped < 3 {
+                        had_a_z = true;
+                    }
+                }
+                FacCard::Data(c) => {
+                    play_state = play_state.handle_card(game_state, &details, &c);
+                }
+            };
+        }
+
+        let mut result = play_state.get_result().unwrap();
+
+        if had_a_z {
+            Play::handle_z(&mut result);
+        }
+
+        let new_state = Play::create_new_state(game_state, &result);
 
         return Ok(PlayAndState {
             play: self.clone(),
@@ -335,23 +363,62 @@ impl Play {
             new_state,
         });
     }
+
+    fn handle_z(result: &mut PlayResult) {}
+
+    fn create_new_state(old_state: &GameState, result: &PlayResult) -> GameState {
+        GameState {
+            down: Down::Second,
+            yardline: 19,
+            ..old_state.clone()
+        }
+    }
 }
 
-fn run_run_play(details: &PlaySetup, curr_state: &GameState) -> PlayResult {
-    return PlayResult {
-        result: 10,
-        time: 10,
-    };
-}
-fn run_pass_play(details: &PlaySetup, curr_state: &GameState) -> PlayResult {
-    return PlayResult {
-        result: 10,
-        time: 10,
-    };
+fn create_pass_play() -> Box<dyn PlayLogicState> {
+    let data = PassPlayData { details: vec![] };
+    // return Box::new(p);
+    return Box::new(PassStateStart { data });
 }
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Clone)]
+pub struct PassPlayData {
+    details: Vec<String>,
+}
+
+#[derive(Debug, Clone)]
 pub struct PlayResult {
     pub result: Yard,
     pub time: i32,
+    pub details: Vec<String>,
+    pub extra: Option<String>,
+}
+
+trait PlayLogicState {
+    fn handle_card(
+        &self,
+        state: &GameState,
+        play: &PlaySetup,
+        card: &FacData,
+    ) -> Box<dyn PlayLogicState>;
+    fn get_result(&self) -> Option<PlayResult> {
+        None
+    }
+}
+
+struct PassStateStart {
+    data: PassPlayData,
+}
+
+impl PlayLogicState for PassStateStart {
+    fn handle_card(
+        &self,
+        state: &GameState,
+        play: &PlaySetup,
+        card: &FacData,
+    ) -> Box<dyn PlayLogicState> {
+        return Box::new(PassStateStart {
+            data: self.data.clone(),
+        });
+    }
 }

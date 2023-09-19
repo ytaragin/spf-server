@@ -8,9 +8,9 @@ use rand::seq::SliceRandom;
 use rand::thread_rng;
 
 #[derive(Debug, Clone)]
-struct RunNum {
-    num: i32,
-    ob: bool,
+pub struct RunNum {
+    pub num: i32,
+    pub ob: bool,
 }
 
 impl<'de> Deserialize<'de> for RunNum {
@@ -19,7 +19,7 @@ impl<'de> Deserialize<'de> for RunNum {
         D: Deserializer<'de>,
     {
         let instr = String::deserialize(deserializer)?;
-        println!("Attempting to parse: {}", instr);
+        // println!("Attempting to parse: {}", instr);
 
         let re = Regex::new(r"^(\d+)(\(OB\))?$").unwrap();
         if let Some(caps) = re.captures(instr.as_str()) {
@@ -37,13 +37,13 @@ impl<'de> Deserialize<'de> for RunNum {
 }
 
 #[derive(Debug, Clone)]
-struct RunResultActual {
+pub struct RunResultActual {
     offensive_boxes: Vec<String>,
     defensive_boxes: Vec<String>,
 }
 
 #[derive(Debug, Clone)]
-enum RunResult {
+pub enum RunResult {
     Actual(RunResultActual),
     Break,
 }
@@ -88,7 +88,7 @@ impl<'de> Deserialize<'de> for RunResult {
 }
 
 #[derive(Debug, Clone)]
-enum PassResult {
+pub enum PassResult {
     Orig,
     PassRush,
     Actual(String),
@@ -117,19 +117,19 @@ impl<'de> Deserialize<'de> for PassResult {
 
 #[derive(Debug, Deserialize, Clone)]
 pub struct FacData {
-    run_num: RunNum,
-    pass_num: i32,
-    sl: RunResult,
-    il: RunResult,
-    ir: RunResult,
-    sr: RunResult,
-    er: String,
-    sc: String,
-    sh: PassResult,
-    qk: PassResult,
-    lg: PassResult,
-    z_result: String,
-    solitaire: String,
+    pub run_num: RunNum,
+    pub pass_num: i32,
+    pub sl: RunResult,
+    pub il: RunResult,
+    pub ir: RunResult,
+    pub sr: RunResult,
+    pub er: String,
+    pub sc: String,
+    pub sh: PassResult,
+    pub qk: PassResult,
+    pub lg: PassResult,
+    pub z_result: String,
+    pub solitaire: String,
 }
 
 #[derive(Debug, Clone)]
@@ -160,13 +160,13 @@ impl FacManager {
         return Self { facs, deck };
     }
 
-    pub fn get_fac(&mut self, force_shuffle: bool) -> FacCard{
+    pub fn get_fac(&mut self, force_shuffle: bool) -> FacCard {
         if force_shuffle || self.deck.is_empty() {
             self.deck = self.facs.clone();
             self.deck.shuffle(&mut thread_rng());
         }
 
-        let c = self.deck.pop().unwrap_or(FacCard::Z); 
+        let c = self.deck.pop().unwrap_or(FacCard::Z);
 
         return c;
     }

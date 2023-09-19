@@ -1,5 +1,6 @@
 use dyn_clone::{clone_trait_object, DynClone};
 // use itertools::Itertools;
+use enum_as_inner::EnumAsInner;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use spf_macros::ImplBasePlayer;
@@ -82,7 +83,6 @@ pub struct QBStats {
     pub endurance_rushing: i32,
     pub rushing: TwelveStats<NumStat>,
 }
-
 
 #[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct RBStats {
@@ -217,7 +217,7 @@ pub struct TeamStats {
     pub def_adj: i32,
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, EnumAsInner)]
 pub enum Player {
     QB(QBStats),
     RB(RBStats),
@@ -232,6 +232,7 @@ pub enum Player {
     P(PStats),
     PR(PRStats),
 }
+/*
 
 impl Player {
     // fn get_struct_from_enum<T>(val: Player) -> Option<T> {
@@ -288,6 +289,7 @@ impl Player {
         return None;
     }
 }
+*/
 
 // struct P {
 //     pla: Player,

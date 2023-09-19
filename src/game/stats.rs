@@ -100,10 +100,14 @@ impl NumStat {
 
 #[derive(Debug, Clone, Serialize)]
 pub struct TwelveStats<T> {
-    stats: Vec<T>,
+    pub stats: Vec<T>,
 }
 
 impl<T> TwelveStats<T> {
+    pub fn get_stat(&self, num: usize) -> &T {
+        return &self.stats[num-1];
+    }
+
     pub fn create_from_strs<F>(vals: &[&str], item_generator: F) -> Self
     where
         F: Fn(&str) -> T,
