@@ -1,11 +1,16 @@
-use crate::game::{players::BasePlayer, fac::{FacData, RunResult, RunResultActual}, GameState, stats};
+use crate::game::{
+    fac::{FacData, RunResult, RunResultActual},
+    players::{BasePlayer, Player, PlayerUtils},
+    stats, GameState,
+};
+use itertools::fold;
 
-use super::{PlaySetup, PlayLogicState, PlayResult, OffensivePlayType};
+use super::{OffensivePlayType, PlayLogicState, PlayResult, PlaySetup};
 
 #[derive(Clone)]
 pub struct RunPlayData {
     details: Vec<String>,
-    block_val: i32,
+    modifier: i32,
     yardage: i32,
     result: Option<PlayResult>,
     ob: bool,
@@ -16,19 +21,19 @@ impl RunPlayData {
         return Self {
             details: vec![],
             result: None,
-            block_val: 0,
+            modifier: 0,
             yardage: 0,
             ob: false,
         };
     }
 
-    fn get_fac_result(play_type: &OffensivePlayType, card: &FacData) -> RunResult {
+    fn get_fac_result<'a>(play_type: &OffensivePlayType, card: &'a FacData) -> &'a RunResult {
         match play_type {
-            OffensivePlayType::SL => card.sl,
-            OffensivePlayType::SR => card.sr,
-            OffensivePlayType::IL => card.il,
-            OffensivePlayType::IR => card.ir,
-            _ => RunResult::Break,
+            OffensivePlayType::SL => &card.sl,
+            OffensivePlayType::SR => &card.sr,
+            OffensivePlayType::IL => &card.il,
+            OffensivePlayType::IR => &card.ir,
+            _ => &RunResult::Break,
         }
     }
 }
@@ -42,8 +47,46 @@ impl RunUtils {
         return Box::new(RunStateStart { data });
     }
 
-    fn calculate_block_vals(result: &RunResultActual) -> i32 {
-        return 0;
+    fn calculate_run_yardage_modifier(
+        result: &RunResultActual,
+        play: &PlaySetup,
+    ) -> (i32, Vec<String>) {
+        let mut logs: Vec<String> = Vec::new();
+        logs.push(format!(
+            "It's {:?} against {:?}",
+            result.offensive_boxes, result.defensive_boxes
+        ));
+
+        let tackles: i32 = result
+            .defensive_boxes
+            .iter()
+            .flat_map(|s| play.defense.get_players_in_pos(s))
+            // .flatten()
+            .fold(0, |acc, ele| acc + PlayerUtils::get_tackles(ele));
+
+        let blocks = result
+            .offensive_boxes
+            .iter()
+            .map(|s| play.offense.get_player_in_pos(s))
+            // .flatten()
+            .fold(0, |acc, ele| acc + PlayerUtils::get_blocks(ele));
+
+        let modifier = match tackles.cmp(&blocks) {
+            std::cmp::Ordering::Less => {
+                logs.push(format!(
+                    "Block spring the runner for an extra {} yards",
+                    blocks
+                ));
+                blocks
+            }
+            std::cmp::Ordering::Equal => 0,
+            std::cmp::Ordering::Greater => {
+                logs.push(format!("Big tackle to save {} yards", tackles));
+                -tackles
+            }
+        };
+
+        return (modifier, logs);
     }
 
     fn handle_bad_play(mut data: RunPlayData, error: String) -> Box<dyn PlayLogicState> {
@@ -51,22 +94,23 @@ impl RunUtils {
         data.result = Some(PlayResult {
             result: 0,
             time: 10,
-            details: data.details,
+            details: data.details.clone(),
             extra: None,
         });
         return Box::new(RunStateEnd { data: data });
     }
 
     fn finalize_yardage(mut data: RunPlayData) -> Box<dyn PlayLogicState> {
+        data.yardage += data.modifier;
         data.details.push(format!("Gain of {} yards", data.yardage));
         data.result = Some(PlayResult {
             result: data.yardage,
             time: 10,
-            details: data.details,
+            details: data.details.clone(),
             extra: None,
         });
 
-        return Box::new(RunStateEnd { data });
+        return Box::new(RunStateEnd { data: data });
     }
 
     fn get_lg_yardage(c: char) -> i32 {
@@ -106,13 +150,17 @@ impl RunStateStart {
         player: &dyn BasePlayer,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
+        // println!("RunStateStart::get_run_block");
+
         data.details
             .push(format!("Handoff to {}", player.get_name()));
 
         let res = RunPlayData::get_fac_result(&play.offense_call.play_type, card);
         match res {
             RunResult::Actual(actual) => {
-                data.block_val = RunUtils::calculate_block_vals(&actual);
+                let (modifier, mut logs) = RunUtils::calculate_run_yardage_modifier(&actual, play);
+                data.modifier = modifier;
+                data.details.append(&mut logs);
                 return Box::new(RunStateYardage { data });
             }
             RunResult::Break => {
@@ -130,6 +178,8 @@ impl PlayLogicState for RunStateStart {
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
+        println!("RunStateStart::handle_card");
+
         let mut data = self.data.clone();
         let player = play.offense.get_player_in_pos(&play.offense_call.target);
         match player {
@@ -149,6 +199,7 @@ impl PlayLogicState for RunStateStart {
         };
     }
     fn get_result(&self) -> Option<PlayResult> {
+        println!("RunStateStart::get_result");
         self.data.result.clone()
     }
 }
@@ -165,12 +216,14 @@ impl PlayLogicState for RunStateYardage {
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
+        println!("RunStateYardage::handle_card");
+
         let player = play
             .offense
             .get_player_in_pos(&play.offense_call.target)
             .unwrap()
             .get_full_player();
-        let rb = player.as_rb().unwrap();
+        let rb = Player::is_rb(player).unwrap();
         let mut data = self.data.clone();
 
         //  { return RunUtils::handle_bad_play(self.data.clone(), "Player not a running back".to_string());}
@@ -186,7 +239,7 @@ impl PlayLogicState for RunStateYardage {
                 return Box::new(RunStateSGYardage { data });
             }
             stats::NumStat::Val(num) => {
-                data.yardage = num + data.block_val;
+                data.yardage = *num;
                 data.ob = card.run_num.ob;
                 return RunUtils::finalize_yardage(data);
             }
@@ -206,12 +259,14 @@ impl PlayLogicState for RunStateBreakawayBase {
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
+        println!("RunStateBreakawayBase::handle_card");
+
         let player = play
             .offense
             .get_player_in_pos(&play.offense_call.target)
             .unwrap()
             .get_full_player();
-        let rb = player.as_rb().unwrap();
+        let rb = Player::is_rb(player).unwrap();
         let yardage = RunUtils::get_lg_yardage(rb.lg);
 
         let mut data = self.data.clone();
@@ -233,6 +288,8 @@ impl PlayLogicState for RunStateBreakawayYardage {
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
+        println!("RunStateBreakawayYardage::handle_card");
+
         let mut data = self.data.clone();
 
         data.ob = card.run_num.ob;
@@ -254,6 +311,8 @@ impl PlayLogicState for RunStateSGYardage {
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
+        println!("RunStateSGYardage::handle_card");
+
         let mut data = self.data.clone();
         let rn = card.run_num.num;
         data.yardage = rn + 5;
@@ -275,8 +334,13 @@ impl PlayLogicState for RunStateEnd {
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
+        println!("RunStateEnd::handle_card");
+
         return Box::new(RunStateEnd {
             data: self.data.clone(),
         });
+    }
+    fn get_result(&self) -> Option<PlayResult> {
+        return self.data.result.clone();
     }
 }

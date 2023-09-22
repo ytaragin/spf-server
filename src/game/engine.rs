@@ -386,7 +386,7 @@ pub struct PassPlayData {
     details: Vec<String>,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct PlayResult {
     pub result: Yard,
     pub time: i32,
@@ -394,7 +394,7 @@ pub struct PlayResult {
     pub extra: Option<String>,
 }
 
-trait PlayLogicState {
+pub trait PlayLogicState {
     fn handle_card(
         &self,
         state: &GameState,

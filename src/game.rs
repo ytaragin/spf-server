@@ -8,12 +8,10 @@ pub mod stats;
 use serde::{Deserialize, Serialize};
 
 use self::{
-    engine::{
-        DefenseCall, DefensivePlay, Down, OffenseCall, Play, PlayResult,
-        Validatable, Yard,
-    },
+    engine::{DefenseCall, DefensivePlay, Down, OffenseCall, Play, PlayResult, Validatable, Yard},
+    fac::FacManager,
     lineup::{DefensiveLineup, IDBasedDefensiveLineup, IDBasedOffensiveLineup, OffensiveLineup},
-    players::Roster, fac::FacManager,
+    players::Roster,
 };
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
@@ -49,9 +47,9 @@ impl GameState {
 
 #[derive(Debug, Clone)]
 pub struct PlayAndState {
-    play: Play,
-    result: PlayResult,
-    new_state: GameState,
+    pub play: Play,
+    pub result: PlayResult,
+    pub new_state: GameState,
 }
 
 // // #[derive(Debug, Clone)]
@@ -183,7 +181,9 @@ impl Game {
     }
 
     pub fn run_play(&mut self) -> Result<PlayAndState, String> {
-        let play_result = self.current_play.run_play(&self.state, & mut self.fac_deck)?;
+        let play_result = self
+            .current_play
+            .run_play(&self.state, &mut self.fac_deck)?;
 
         // let new_state = Game::gen_new_state(&self.state, &self.current_play, &play_result);
         // let pands = PlayAndState {

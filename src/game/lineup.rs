@@ -1,3 +1,5 @@
+use std::str::FromStr;
+
 use itertools::Itertools;
 use serde::{Deserialize, Serialize};
 use spf_macros::ToBasePlayer;
@@ -24,6 +26,29 @@ pub enum OffensiveBox {
     RT,
 }
 
+impl FromStr for OffensiveBox {
+    type Err = String; // you can use any type that implements std::error::Error
+
+    fn from_str(input: &str) -> Result<OffensiveBox, String> {
+        match input {
+            "qb" => Ok(OffensiveBox::QB),
+            "bk" | "bk1" | "b1" => Ok(OffensiveBox::B1),
+            "bk2" | "b2" => Ok(OffensiveBox::B2),
+            "bk3" | "b3" => Ok(OffensiveBox::B3),
+            "re" => Ok(OffensiveBox::RE),
+            "le" => Ok(OffensiveBox::LE),
+            "fl" | "fl1 " => Ok(OffensiveBox::FL1),
+            "fl2" => Ok(OffensiveBox::FL2),
+            "lt" => Ok(OffensiveBox::LT),
+            "lg" => Ok(OffensiveBox::LG),
+            "c" | "cn" => Ok(OffensiveBox::C),
+            "rg" => Ok(OffensiveBox::RG),
+            "rt" => Ok(OffensiveBox::RT),
+            _ => Err(format!("Invalid OffensiveBox: {}", input)), // return an error if the input does not match any variant
+        }
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DefensiveBox {
     box_a,
@@ -41,6 +66,31 @@ pub enum DefensiveBox {
     box_m,
     box_n,
     box_o,
+}
+
+impl FromStr for DefensiveBox {
+    type Err = String; // you can use any type that implements std::error::Error
+
+    fn from_str(input: &str) -> Result<DefensiveBox, String> {
+        match input {
+            "a" => Ok(DefensiveBox::box_a),
+            "b" => Ok(DefensiveBox::box_b),
+            "c" => Ok(DefensiveBox::box_c),
+            "d" => Ok(DefensiveBox::box_d),
+            "e" => Ok(DefensiveBox::box_e),
+            "f" => Ok(DefensiveBox::box_f),
+            "g" => Ok(DefensiveBox::box_g),
+            "h" => Ok(DefensiveBox::box_h),
+            "i" => Ok(DefensiveBox::box_i),
+            "j" => Ok(DefensiveBox::box_j),
+            "k" => Ok(DefensiveBox::box_k),
+            "l" => Ok(DefensiveBox::box_l),
+            "m" => Ok(DefensiveBox::box_m),
+            "n" => Ok(DefensiveBox::box_n),
+            "o" => Ok(DefensiveBox::box_o),
+            _ => Err(format!("Invalid DefensiveBox: {}", input)), // return an error if the input does not match any variant
+        }
+    }
 }
 
 #[derive(Debug, Clone, Serialize, ToBasePlayer)]
@@ -531,6 +581,27 @@ impl DefensiveLineup {
 
         return None;
     }
+
+    pub fn get_players_in_pos(&self, spot: &DefensiveBox) -> Vec<&dyn BasePlayer> {
+        // Use match to compare the field name with each possible option
+        match spot {
+            DefensiveBox::box_a => LineupUtilities::convert_vec_to_base_player(&self.box_a),
+            DefensiveBox::box_b => LineupUtilities::convert_vec_to_base_player(&self.box_b),
+            DefensiveBox::box_c => LineupUtilities::convert_vec_to_base_player(&self.box_c),
+            DefensiveBox::box_d => LineupUtilities::convert_vec_to_base_player(&self.box_d),
+            DefensiveBox::box_e => LineupUtilities::convert_vec_to_base_player(&self.box_e),
+            DefensiveBox::box_f => LineupUtilities::convert_option_to_vec(&self.box_f),
+            DefensiveBox::box_g => LineupUtilities::convert_option_to_vec(&self.box_g),
+            DefensiveBox::box_h => LineupUtilities::convert_option_to_vec(&self.box_h),
+            DefensiveBox::box_i => LineupUtilities::convert_option_to_vec(&self.box_i),
+            DefensiveBox::box_j => LineupUtilities::convert_option_to_vec(&self.box_j),
+            DefensiveBox::box_k => LineupUtilities::convert_option_to_vec(&self.box_k),
+            DefensiveBox::box_l => LineupUtilities::convert_vec_to_base_player(&self.box_l),
+            DefensiveBox::box_m => LineupUtilities::convert_option_to_vec(&self.box_m),
+            DefensiveBox::box_n => LineupUtilities::convert_option_to_vec(&self.box_n),
+            DefensiveBox::box_o => LineupUtilities::convert_option_to_vec(&self.box_o),
+        }
+    }
 }
 
 // impl Validatable for DefensiveLineup {
@@ -665,6 +736,17 @@ impl LineupUtilities {
             .collect::<Result<Vec<T>, String>>();
 
         return v;
+    }
+
+    fn convert_vec_to_base_player<'a, T: ToBasePlayer>(v: &'a Vec<T>) -> Vec<&'a dyn BasePlayer> {
+        v.iter().map(ToBasePlayer::get_player).collect()
+    }
+
+    fn convert_option_to_vec<'a, T: ToBasePlayer>(o: &'a Option<T>) -> Vec<&'a dyn BasePlayer> {
+        match o {
+            Some(p) => vec![p.get_player()],
+            None => vec![],
+        }
     }
 
     fn validate_count(actual: i32, low: i32, high: i32, msg: &str) -> Result<(), String> {

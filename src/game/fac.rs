@@ -3,9 +3,12 @@ use regex::Regex;
 use serde::{Deserialize, Deserializer};
 use std::error::Error;
 use std::fs::File;
+use std::str::FromStr;
 
 use rand::seq::SliceRandom;
 use rand::thread_rng;
+
+use super::lineup::{DefensiveBox, OffensiveBox};
 
 #[derive(Debug, Clone)]
 pub struct RunNum {
@@ -21,7 +24,7 @@ impl<'de> Deserialize<'de> for RunNum {
         let instr = String::deserialize(deserializer)?;
         // println!("Attempting to parse: {}", instr);
 
-        let re = Regex::new(r"^(\d+)(\(OB\))?$").unwrap();
+        let re = Regex::new(r"^(\d+) ?(\(OB\))?$").unwrap();
         if let Some(caps) = re.captures(instr.as_str()) {
             // parse the number as an i32
             let num = caps[1].parse::<i32>().unwrap_or(-1);
@@ -30,7 +33,7 @@ impl<'de> Deserialize<'de> for RunNum {
             // return a new RunNum instance
             Ok(RunNum { num, ob })
         } else {
-            println!("Errpr with {}", instr);
+            println!("Fac Error with {}", instr);
             Ok(RunNum { num: -1, ob: false })
         }
     }
@@ -38,8 +41,8 @@ impl<'de> Deserialize<'de> for RunNum {
 
 #[derive(Debug, Clone)]
 pub struct RunResultActual {
-    offensive_boxes: Vec<String>,
-    defensive_boxes: Vec<String>,
+    pub offensive_boxes: Vec<OffensiveBox>,
+    pub defensive_boxes: Vec<DefensiveBox>,
 }
 
 #[derive(Debug, Clone)]
@@ -67,15 +70,17 @@ impl<'de> Deserialize<'de> for RunResult {
         let re = Regex::new(r"[A-Z]{1,2}").unwrap();
 
         // create an empty vector to store the matches
-        let mut def_list: Vec<String> = Vec::new();
-        let mut off_list: Vec<String> = Vec::new();
+        let mut def_list: Vec<DefensiveBox> = Vec::new();
+        let mut off_list: Vec<OffensiveBox> = Vec::new();
 
         // iterate over the matches and push them to the vector
         for m in re.find_iter(instr.as_str()) {
             let s = m.as_str();
             match s.len() {
-                1 => def_list.push(format!("box_{}", s.to_lowercase())),
-                2 => off_list.push(s.to_lowercase()),
+                1 => def_list.push(
+                    DefensiveBox::from_str(format!("{}", s.to_lowercase()).as_str()).unwrap(),
+                ),
+                2 => off_list.push(OffensiveBox::from_str(s.to_lowercase().as_str()).unwrap()),
                 _ => println!("Error {}", instr),
             };
         }
@@ -91,7 +96,7 @@ impl<'de> Deserialize<'de> for RunResult {
 pub enum PassResult {
     Orig,
     PassRush,
-    Actual(String),
+    Actual(OffensiveBox),
 }
 
 impl From<String> for PassResult {
@@ -99,7 +104,7 @@ impl From<String> for PassResult {
         match s.as_str() {
             "Orig" => PassResult::Orig,
             "PassRush" => PassResult::PassRush,
-            _ => PassResult::Actual(s.to_lowercase()),
+            _ => PassResult::Actual(OffensiveBox::from_str(s.to_lowercase().as_str()).unwrap()),
         }
     }
 }
@@ -117,6 +122,7 @@ impl<'de> Deserialize<'de> for PassResult {
 
 #[derive(Debug, Deserialize, Clone)]
 pub struct FacData {
+    pub id: i32,
     pub run_num: RunNum,
     pub pass_num: i32,
     pub sl: RunResult,

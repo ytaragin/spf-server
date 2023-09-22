@@ -92,6 +92,20 @@ async fn set_defense_call(
     }
 }
 
+async fn run_play(appstate: web::Data<AppState>) -> impl Responder {
+    println!("Running Play..."); // Do something with the plays
+    let mut game = appstate.game.lock().unwrap();
+
+    match game.run_play() {
+        Ok(res) => {
+            let json_data =
+                serde_json::to_string(&res.result).expect("Error while serializing State to JSON.");
+            HttpResponse::Ok().body(json_data)
+        }
+        Err(msg) => HttpResponse::BadRequest().body(msg),
+    }
+}
+
 async fn get_team_players(
     team: web::Path<String>,
     appstate: web::Data<AppState>,
@@ -193,6 +207,7 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
             .route("/setdefenselineup", web::post().to(set_defensive_lineup))
             .route("/offense/call", web::post().to(set_offense_call))
             .route("/defense/call", web::post().to(set_defense_call))
+            .route("/game/play", web::post().to(run_play))
             // .route("/setdefensiveplay", web::post().to(set_defensive_play))
             .route("/getstate", web::get().to(get_game_state))
             .route("/getplayer/{id}", web::get().to(get_player))

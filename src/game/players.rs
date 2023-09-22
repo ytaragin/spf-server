@@ -3,7 +3,7 @@ use dyn_clone::{clone_trait_object, DynClone};
 use enum_as_inner::EnumAsInner;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
-use spf_macros::ImplBasePlayer;
+use spf_macros::{ImplBasePlayer, IsBlocker};
 use std::collections::HashMap;
 use strum_macros::Display;
 
@@ -53,6 +53,10 @@ impl TeamID {
     }
 }
 
+pub trait Blocker {
+    fn get_blocks(&self) -> i32;
+}
+
 pub trait ToBasePlayer {
     fn get_player(&self) -> &dyn BasePlayer;
 }
@@ -84,7 +88,7 @@ pub struct QBStats {
     pub rushing: TwelveStats<NumStat>,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer, IsBlocker)]
 pub struct RBStats {
     pub team: TeamID,
     pub name: String,
@@ -97,7 +101,7 @@ pub struct RBStats {
     pub blocks: i32,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer, IsBlocker)]
 pub struct WRStats {
     pub team: TeamID,
     pub name: String,
@@ -147,7 +151,7 @@ pub struct DLStats {
     pub pass_rush: i32,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer, IsBlocker)]
 pub struct TEStats {
     pub team: TeamID,
     pub name: String,
@@ -160,7 +164,7 @@ pub struct TEStats {
     pub long_rush: char,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
+#[derive(Debug, Clone, Serialize, ImplBasePlayer, IsBlocker)]
 pub struct OLStats {
     pub team: TeamID,
     pub name: String,
@@ -217,7 +221,7 @@ pub struct TeamStats {
     pub def_adj: i32,
 }
 
-#[derive(Debug, Clone, Serialize, EnumAsInner)]
+#[derive(Debug, Clone, Serialize)]
 pub enum Player {
     QB(QBStats),
     RB(RBStats),
@@ -232,7 +236,6 @@ pub enum Player {
     P(PStats),
     PR(PRStats),
 }
-/*
 
 impl Player {
     // fn get_struct_from_enum<T>(val: Player) -> Option<T> {
@@ -268,8 +271,26 @@ impl Player {
         }
         return None;
     }
+    pub fn is_wr(val: Player) -> Option<WRStats> {
+        if let Player::WR(v) = val {
+            return Some(v);
+        }
+        return None;
+    }
+    pub fn is_te(val: Player) -> Option<TEStats> {
+        if let Player::TE(v) = val {
+            return Some(v);
+        }
+        return None;
+    }
     pub fn is_ol(val: Player) -> Option<OLStats> {
         if let Player::OL(v) = val {
+            return Some(v);
+        }
+        return None;
+    }
+    pub fn is_dl(val: Player) -> Option<DLStats> {
+        if let Player::DL(v) = val {
             return Some(v);
         }
         return None;
@@ -289,7 +310,32 @@ impl Player {
         return None;
     }
 }
-*/
+
+pub struct PlayerUtils {}
+impl PlayerUtils {
+    pub fn get_blocks(player: Option<&dyn BasePlayer>) -> i32 {
+        // let p = player.get_full_player();
+        match player {
+            Some(p) => match p.get_full_player() {
+                Player::OL(ol) => ol.blocks,
+                Player::RB(rb) => rb.blocks,
+                Player::WR(wr) => wr.blocks,
+                Player::TE(te) => te.blocks,
+                _ => 0,
+            },
+            None => 0,
+        }
+    }
+
+    pub fn get_tackles(player: &dyn BasePlayer) -> i32 {
+        let p = player.get_full_player();
+        match p {
+            Player::DL(dl) => dl.tackles,
+            Player::LB(lb) => lb.tackles,
+            _ => 0,
+        }
+    }
+}
 
 // struct P {
 //     pla: Player,
