@@ -241,7 +241,7 @@ fn get_offensive_play_info(play: &OffensivePlayType) -> &OffensivePlayInfo {
     return &OFFENSIVE_PLAYS_LIST[play];
 }
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq)]
 pub enum DefensivePlay {
     RunDefense,
     PassDefense,
@@ -340,15 +340,18 @@ impl Play {
             match card {
                 FacCard::Z => {
                     if cards_flipped < 3 {
+                        println!("Z Event");
                         had_a_z = true;
                     }
                 }
                 FacCard::Data(c) => {
+                    println!("State: {}, Card: {}", play_state.get_name(), c.id);
                     play_state = play_state.handle_card(game_state, &details, &c);
                 }
             };
         }
 
+        println!("Final State: {}", play_state.get_name());
         let mut result = play_state.get_result().unwrap();
 
         if had_a_z {
@@ -404,6 +407,7 @@ pub trait PlayLogicState {
     fn get_result(&self) -> Option<PlayResult> {
         None
     }
+    fn get_name(&self) -> &str;
 }
 
 struct PassStateStart {
@@ -420,5 +424,8 @@ impl PlayLogicState for PassStateStart {
         return Box::new(PassStateStart {
             data: self.data.clone(),
         });
+    }
+    fn get_name(&self) -> &str {
+        return "PassStateStart";
     }
 }

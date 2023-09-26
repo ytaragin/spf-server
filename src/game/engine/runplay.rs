@@ -1,11 +1,14 @@
+use std::cmp::min;
+
 use crate::game::{
     fac::{FacData, RunResult, RunResultActual},
     players::{BasePlayer, Player, PlayerUtils},
     stats, GameState,
 };
 use itertools::fold;
+use option_ext::OptionExt;
 
-use super::{OffensivePlayType, PlayLogicState, PlayResult, PlaySetup};
+use super::{DefensivePlay, OffensivePlayType, PlayLogicState, PlayResult, PlaySetup};
 
 #[derive(Clone)]
 pub struct RunPlayData {
@@ -46,97 +49,116 @@ impl RunUtils {
         // return Box::new(p);
         return Box::new(RunStateStart { data });
     }
+}
 
-    fn calculate_run_yardage_modifier(
-        result: &RunResultActual,
-        play: &PlaySetup,
-    ) -> (i32, Vec<String>) {
-        let mut logs: Vec<String> = Vec::new();
-        logs.push(format!(
-            "It's {:?} against {:?}",
-            result.offensive_boxes, result.defensive_boxes
-        ));
+fn calculate_run_yardage_modifier(
+    result: &RunResultActual,
+    play: &PlaySetup,
+) -> (i32, Vec<String>) {
+    let mut logs: Vec<String> = Vec::new();
+    logs.push(format!(
+        "It's {:?} against {:?}",
+        result.offensive_boxes, result.defensive_boxes
+    ));
 
-        let tackles: i32 = result
-            .defensive_boxes
-            .iter()
-            .flat_map(|s| play.defense.get_players_in_pos(s))
-            // .flatten()
-            .fold(0, |acc, ele| acc + PlayerUtils::get_tackles(ele));
+    let tackles: i32 = result
+        .defensive_boxes
+        .iter()
+        .flat_map(|s| play.defense.get_players_in_pos(s))
+        // .flatten()
+        .fold(0, |acc, ele| acc + PlayerUtils::get_tackles(ele));
 
-        let blocks = result
-            .offensive_boxes
-            .iter()
-            .map(|s| play.offense.get_player_in_pos(s))
-            // .flatten()
-            .fold(0, |acc, ele| acc + PlayerUtils::get_blocks(ele));
+    let blocks = result
+        .offensive_boxes
+        .iter()
+        .map(|s| play.offense.get_player_in_pos(s))
+        // .flatten()
+        .fold(0, |acc, ele| acc + PlayerUtils::get_blocks(ele));
 
-        let modifier = match tackles.cmp(&blocks) {
-            std::cmp::Ordering::Less => {
-                logs.push(format!(
-                    "Block spring the runner for an extra {} yards",
-                    blocks
-                ));
+    let modifier = match tackles.cmp(&blocks) {
+        std::cmp::Ordering::Less => {
+            logs.push(format!(
+                "Block spring the runner for an extra {} yards",
                 blocks
+            ));
+            blocks
+        }
+        std::cmp::Ordering::Equal => 0,
+        std::cmp::Ordering::Greater => {
+            logs.push(format!("Big tackle to save {} yards", tackles));
+            -tackles
+        }
+    };
+
+    return (modifier, logs);
+}
+
+fn handle_bad_play(mut data: RunPlayData, error: String) -> Box<dyn PlayLogicState> {
+    data.details.push(error);
+    data.result = Some(PlayResult {
+        result: 0,
+        time: 10,
+        details: data.details.clone(),
+        extra: None,
+    });
+    return Box::new(RunStateEnd { data: data });
+}
+
+fn finalize_yardage(mut data: RunPlayData) -> Box<dyn PlayLogicState> {
+    data.yardage += data.modifier;
+    data.details.push(format!("Gain of {} yards", data.yardage));
+    data.result = Some(PlayResult {
+        result: data.yardage,
+        time: 10,
+        details: data.details.clone(),
+        extra: None,
+    });
+
+    return Box::new(RunStateEnd { data: data });
+}
+
+fn get_lg_yardage(c: char) -> i32 {
+    match c {
+        'A' => 100,
+        'B' => 95,
+        'C' => 90,
+        'D' => 85,
+        'E' => 80,
+        'F' => 75,
+        'G' => 70,
+        'H' => 65,
+        'I' => 60,
+        'J' => 55,
+        'K' => 50,
+        'L' => 45,
+        'M' => 40,
+        'N' => 35,
+        'O' => 30,
+        'P' => 25,
+        'Q' => 20,
+        'R' => 15,
+        // Use an underscore to handle any other char values and return a default value
+        _ => 0,
+    }
+}
+
+fn get_run_modifier(play: &PlaySetup) -> (i32, Vec<String>) {
+    let mut modifier = 0;
+    let mut logs: Vec<String> = Vec::new();
+    if play.defense_call.defense_type == DefensivePlay::RunDefense {
+        logs.push("The run defense focuses on the run".to_string());
+        modifier = 2;
+        if let Some(pos) = &play.defense_call.key {
+            if *pos == play.offense_call.target {
+                logs.push("They key on the right back".to_string());
+                modifier += 2;
+            } else {
+                logs.push("But they focus on the wrong back".to_string());
+                modifier -= 2;
             }
-            std::cmp::Ordering::Equal => 0,
-            std::cmp::Ordering::Greater => {
-                logs.push(format!("Big tackle to save {} yards", tackles));
-                -tackles
-            }
-        };
-
-        return (modifier, logs);
-    }
-
-    fn handle_bad_play(mut data: RunPlayData, error: String) -> Box<dyn PlayLogicState> {
-        data.details.push(error);
-        data.result = Some(PlayResult {
-            result: 0,
-            time: 10,
-            details: data.details.clone(),
-            extra: None,
-        });
-        return Box::new(RunStateEnd { data: data });
-    }
-
-    fn finalize_yardage(mut data: RunPlayData) -> Box<dyn PlayLogicState> {
-        data.yardage += data.modifier;
-        data.details.push(format!("Gain of {} yards", data.yardage));
-        data.result = Some(PlayResult {
-            result: data.yardage,
-            time: 10,
-            details: data.details.clone(),
-            extra: None,
-        });
-
-        return Box::new(RunStateEnd { data: data });
-    }
-
-    fn get_lg_yardage(c: char) -> i32 {
-        match c {
-            'A' => 100,
-            'B' => 95,
-            'C' => 90,
-            'D' => 85,
-            'E' => 80,
-            'F' => 75,
-            'G' => 70,
-            'H' => 65,
-            'I' => 60,
-            'J' => 55,
-            'K' => 50,
-            'L' => 45,
-            'M' => 40,
-            'N' => 35,
-            'O' => 30,
-            'P' => 25,
-            'Q' => 20,
-            'R' => 15,
-            // Use an underscore to handle any other char values and return a default value
-            _ => 0,
         }
     }
+    return (modifier, logs);
 }
 
 struct RunStateStart {
@@ -158,7 +180,7 @@ impl RunStateStart {
         let res = RunPlayData::get_fac_result(&play.offense_call.play_type, card);
         match res {
             RunResult::Actual(actual) => {
-                let (modifier, mut logs) = RunUtils::calculate_run_yardage_modifier(&actual, play);
+                let (modifier, mut logs) = calculate_run_yardage_modifier(&actual, play);
                 data.modifier = modifier;
                 data.details.append(&mut logs);
                 return Box::new(RunStateYardage { data });
@@ -172,14 +194,16 @@ impl RunStateStart {
 }
 
 impl PlayLogicState for RunStateStart {
+    fn get_name(&self) -> &str {
+        return "RunStateStart";
+    }
+
     fn handle_card(
         &self,
         _state: &GameState,
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
-        println!("RunStateStart::handle_card");
-
         let mut data = self.data.clone();
         let player = play.offense.get_player_in_pos(&play.offense_call.target);
         match player {
@@ -188,7 +212,7 @@ impl PlayLogicState for RunStateStart {
             }
             None => {
                 // this should really never happen
-                return RunUtils::handle_bad_play(
+                return handle_bad_play(
                     data,
                     format!(
                         "Handoff to nobody in position {:?}",
@@ -210,14 +234,16 @@ struct RunStateYardage {
 }
 
 impl PlayLogicState for RunStateYardage {
+    fn get_name(&self) -> &str {
+        return "RunStateYardage";
+    }
+
     fn handle_card(
         &self,
         state: &GameState,
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
-        println!("RunStateYardage::handle_card");
-
         let player = play
             .offense
             .get_player_in_pos(&play.offense_call.target)
@@ -226,10 +252,14 @@ impl PlayLogicState for RunStateYardage {
         let rb = Player::is_rb(player).unwrap();
         let mut data = self.data.clone();
 
+        let (modifier, mut logs) = get_run_modifier(play);
+        data.details.append(&mut logs);
+        let run_num = min(card.run_num.num + modifier, 12);
+
         //  { return RunUtils::handle_bad_play(self.data.clone(), "Player not a running back".to_string());}
         let stat = rb
             .rushing
-            .get_stat(card.run_num.num.try_into().unwrap())
+            .get_stat(run_num.try_into().unwrap())
             .get_val("N".to_string())
             .unwrap();
         match stat {
@@ -241,7 +271,7 @@ impl PlayLogicState for RunStateYardage {
             stats::NumStat::Val(num) => {
                 data.yardage = *num;
                 data.ob = card.run_num.ob;
-                return RunUtils::finalize_yardage(data);
+                return finalize_yardage(data);
             }
         }
     }
@@ -253,21 +283,23 @@ struct RunStateBreakawayBase {
 }
 
 impl PlayLogicState for RunStateBreakawayBase {
+    fn get_name(&self) -> &str {
+        return "RunStateBreakawayBase";
+    }
+
     fn handle_card(
         &self,
         state: &GameState,
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
-        println!("RunStateBreakawayBase::handle_card");
-
         let player = play
             .offense
             .get_player_in_pos(&play.offense_call.target)
             .unwrap()
             .get_full_player();
         let rb = Player::is_rb(player).unwrap();
-        let yardage = RunUtils::get_lg_yardage(rb.lg);
+        let yardage = get_lg_yardage(rb.lg);
 
         let mut data = self.data.clone();
         return Box::new(RunStateEnd {
@@ -282,20 +314,22 @@ struct RunStateBreakawayYardage {
 }
 
 impl PlayLogicState for RunStateBreakawayYardage {
+    fn get_name(&self) -> &str {
+        return "RunStateBreakawayYardage";
+    }
+
     fn handle_card(
         &self,
         state: &GameState,
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
-        println!("RunStateBreakawayYardage::handle_card");
-
         let mut data = self.data.clone();
 
         data.ob = card.run_num.ob;
 
         data.yardage = data.yardage - (5 * card.run_num.num);
-        return RunUtils::finalize_yardage(data);
+        return finalize_yardage(data);
     }
 }
 
@@ -305,20 +339,22 @@ struct RunStateSGYardage {
 }
 
 impl PlayLogicState for RunStateSGYardage {
+    fn get_name(&self) -> &str {
+        return "RunStateSGYardage";
+    }
+
     fn handle_card(
         &self,
         state: &GameState,
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
-        println!("RunStateSGYardage::handle_card");
-
         let mut data = self.data.clone();
         let rn = card.run_num.num;
         data.yardage = rn + 5;
         data.ob = card.run_num.ob;
 
-        return RunUtils::finalize_yardage(data);
+        return finalize_yardage(data);
     }
 }
 
@@ -328,14 +364,16 @@ struct RunStateEnd {
 }
 
 impl PlayLogicState for RunStateEnd {
+    fn get_name(&self) -> &str {
+        return "RunStateEnd";
+    }
+
     fn handle_card(
         &self,
         state: &GameState,
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
-        println!("RunStateEnd::handle_card");
-
         return Box::new(RunStateEnd {
             data: self.data.clone(),
         });
