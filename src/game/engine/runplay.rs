@@ -1,4 +1,4 @@
-use std::cmp::min;
+use std::cmp::{max, min};
 
 use crate::game::{
     fac::{FacData, RunResult, RunResultActual},
@@ -8,7 +8,10 @@ use crate::game::{
 use itertools::fold;
 use option_ext::OptionExt;
 
-use super::{DefensivePlay, OffensivePlayType, PlayLogicState, PlayResult, PlaySetup};
+use super::{
+    DefensivePlay, OffenseCall, OffensivePlayInfo, OffensivePlayType, PlayLogicState, PlayResult,
+    PlaySetup, RunMetaData,
+};
 
 #[derive(Clone)]
 pub struct RunPlayData {
@@ -17,37 +20,53 @@ pub struct RunPlayData {
     yardage: i32,
     result: Option<PlayResult>,
     ob: bool,
+    md: RunMetaData,
 }
 
 impl RunPlayData {
-    fn new() -> Self {
+    fn new(playinfo: &OffensivePlayInfo) -> Self {
+        // playinfo.play_type.
+        // let run_data = playinfo.play_type.as_run().unwrap();
         return Self {
             details: vec![],
             result: None,
             modifier: 0,
             yardage: 0,
             ob: false,
+            md: playinfo.play_type.as_run().unwrap().clone(),
         };
     }
 
-    fn get_fac_result<'a>(play_type: &OffensivePlayType, card: &'a FacData) -> &'a RunResult {
-        match play_type {
-            OffensivePlayType::SL => &card.sl,
-            OffensivePlayType::SR => &card.sr,
-            OffensivePlayType::IL => &card.il,
-            OffensivePlayType::IR => &card.ir,
-            _ => &RunResult::Break,
-        }
-    }
+    // fn get_fac_result<'a>(play_type: &OffensivePlayType, card: &'a FacData) -> &'a RunResult {
+    //     match play_type {
+    //         OffensivePlayType::SL => &card.sl,
+    //         OffensivePlayType::SR => &card.sr,
+    //         OffensivePlayType::IL => &card.il,
+    //         OffensivePlayType::IR => &card.ir,
+    //         _ => &RunResult::Break,
+    //     }
+    // }
 }
 
 pub struct RunUtils {}
 impl RunUtils {
     // fn create_run_play<'a>(setup: &'a PlaySetup) ->  Box<dyn PlayRunner2+'a> {
-    pub fn create_run_play() -> Box<dyn PlayLogicState> {
-        let data = RunPlayData::new();
+    pub fn create_run_play(playinfo: &OffensivePlayInfo) -> Box<dyn PlayLogicState> {
+        let data = RunPlayData::new(playinfo);
         // return Box::new(p);
         return Box::new(RunStateStart { data });
+    }
+    pub fn get_sl_fac_result<'a>(card: &'a FacData) -> &'a RunResult {
+        &card.sl
+    }
+    pub fn get_sr_fac_result<'a>(card: &'a FacData) -> &'a RunResult {
+        &card.sr
+    }
+    pub fn get_il_fac_result<'a>(card: &'a FacData) -> &'a RunResult {
+        &card.il
+    }
+    pub fn get_ir_fac_result<'a>(card: &'a FacData) -> &'a RunResult {
+        &card.ir
     }
 }
 
@@ -106,6 +125,9 @@ fn handle_bad_play(mut data: RunPlayData, error: String) -> Box<dyn PlayLogicSta
 
 fn finalize_yardage(mut data: RunPlayData) -> Box<dyn PlayLogicState> {
     data.yardage += data.modifier;
+
+    data.yardage = max(data.yardage, data.md.max_loss);
+
     data.details.push(format!("Gain of {} yards", data.yardage));
     data.result = Some(PlayResult {
         result: data.yardage,
@@ -150,7 +172,7 @@ fn get_run_modifier(play: &PlaySetup) -> (i32, Vec<String>) {
         modifier = 2;
         if let Some(pos) = &play.defense_call.key {
             if *pos == play.offense_call.target {
-                logs.push("They key on the right back".to_string());
+                logs.push(" and they key on the right back".to_string());
                 modifier += 2;
             } else {
                 logs.push("But they focus on the wrong back".to_string());
@@ -177,7 +199,10 @@ impl RunStateStart {
         data.details
             .push(format!("Handoff to {}", player.get_name()));
 
-        let res = RunPlayData::get_fac_result(&play.offense_call.play_type, card);
+        // play.offense_metadata.play_type
+
+        // let res = RunPlayData::get_fac_result(&play.offense_call.play_type, card);
+        let res = (data.md.card_val)(card);
         match res {
             RunResult::Actual(actual) => {
                 let (modifier, mut logs) = calculate_run_yardage_modifier(&actual, play);
