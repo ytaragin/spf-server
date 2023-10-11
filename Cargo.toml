@@ -26,5 +26,6 @@ regex = "1.9.4"
 rand = "0.8.5"
 enum-as-inner = "0.6.0"
 option-ext = "0.2.0"
+strum = "0.25.0"
 
 

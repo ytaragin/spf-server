@@ -9,13 +9,15 @@ use serde::{Deserialize, Serialize};
 use spf_macros::ToBasePlayer;
 
 use lazy_static::lazy_static;
+use strum_macros::EnumString;
 
 use crate::game::engine::{passplay::PassUtils, runplay::RunUtils};
 
 use super::{
-    fac::{FacCard, FacData, FacManager, RunResult, RunResultActual},
+    fac::{FacCard, FacData, FacManager, PassTarget, RunResult, RunResultActual},
     lineup::{DefensiveBox, DefensiveLineup, OffensiveBox, OffensiveLineup},
-    players::{BasePlayer, Player},
+    players::{BasePlayer, Player, QBStats},
+    stats::RangedStats,
     GameState, PlayAndState,
 };
 
@@ -42,22 +44,26 @@ pub struct IDOffensivePlay {
 #[derive(Debug, Clone, Copy, EnumAsInner)]
 pub enum OffensivePlayCategory {
     Run(RunMetaData),
-    Pass,
+    Pass(PassMetaData),
 }
 
 type RunGetCardVal = for<'a> fn(card: &'a FacData) -> &'a RunResult;
+type PassGetPassVal = for<'a> fn(card: &'a FacData) -> &'a PassTarget;
+type QBGetPassRange = for<'a> fn(qb: &'a QBStats) -> &'a RangedStats<PassResult>;
 
 #[derive(Debug, Clone, Copy)]
-struct RunMetaData {
+pub struct RunMetaData {
     max_loss: i32,
     can_go_ob: bool,
     card_val: RunGetCardVal,
 }
 
 #[derive(Debug, Clone, Copy)]
-struct PassMetaData {
-    max_loss: i32,
-    can_go_ob: bool,
+pub struct PassMetaData {
+    // max_loss: i32,
+    // can_go_ob: bool,
+    target: PassGetPassVal,
+    complete: QBGetPassRange,
 }
 
 // #[derive(Debug, Clone)]
@@ -68,6 +74,16 @@ struct PassMetaData {
 // }
 
 type CreateStartState = fn(&OffensivePlayInfo) -> Box<dyn PlayLogicState>;
+
+#[derive(Debug, PartialEq, Eq, Hash, Copy, Clone, Serialize, EnumString)]
+pub enum PassResult {
+    #[strum(serialize = "Com")]
+    Complete,
+    #[strum(serialize = "Inc")]
+    Incomplete,
+    #[strum(serialize = "Int")]
+    Interception,
+}
 
 #[derive(Debug, Clone)]
 pub struct OffensivePlayInfo {
@@ -142,7 +158,20 @@ impl Validatable for OffenseCall {
 
 // type PlayRunner = fn(&PlaySetup, &GameState, &mut FacManager) -> PlayResult;
 
+struct TimeTable {
+    run_play: i32,
+    run_play_ob: i32,
+    pass_play_complete: i32,
+    pass_play_incomplete: i32,
+}
+
 lazy_static! {
+    static ref TIMES: TimeTable = TimeTable {
+        run_play: 40,
+        run_play_ob: 10,
+        pass_play_complete: 40,
+        pass_play_incomplete: 10,
+    };
     static ref OFFENSIVE_PLAYS_LIST: HashMap<OffensivePlayType, OffensivePlayInfo> = {
         let mut map = HashMap::new();
         map.insert(
@@ -218,7 +247,10 @@ lazy_static! {
         map.insert(
             OffensivePlayType::QK,
             OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Pass,
+                play_type: OffensivePlayCategory::Pass(PassMetaData {
+                    target: PassUtils::get_qk_fac_target,
+                    complete: PassUtils::get_qk_qb_range,
+                }),
                 name: "Quick",
                 code: "QK",
                 allowed_targets: vec![
@@ -236,7 +268,10 @@ lazy_static! {
         map.insert(
             OffensivePlayType::SH,
             OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Pass,
+                play_type: OffensivePlayCategory::Pass(PassMetaData {
+                    target: PassUtils::get_sh_fac_target,
+                    complete: PassUtils::get_sh_qb_range,
+                }),
                 name: "Short",
                 code: "SH",
                 allowed_targets: vec![
@@ -254,7 +289,10 @@ lazy_static! {
         map.insert(
             OffensivePlayType::LG,
             OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Pass,
+                play_type: OffensivePlayCategory::Pass(PassMetaData {
+                    target: PassUtils::get_lg_fac_target,
+                    complete: PassUtils::get_lg_qb_range,
+                }),
                 name: "Long",
                 code: "LG",
                 allowed_targets: vec![
@@ -272,7 +310,10 @@ lazy_static! {
         map.insert(
             OffensivePlayType::SC,
             OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Pass,
+                play_type: OffensivePlayCategory::Pass(PassMetaData {
+                    target: PassUtils::get_qk_fac_target,
+                    complete: PassUtils::get_qk_qb_range,
+                }),
                 name: "Screen",
                 code: "SC",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],

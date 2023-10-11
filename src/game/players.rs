@@ -9,7 +9,7 @@ use strum_macros::Display;
 
 use super::{
     loader::{load_dbs, load_dls, load_lbs, load_ols, load_qbs, load_rbs, load_tes, load_wrs},
-    stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats},
+    stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats}, engine::PassResult,
 };
 
 #[derive(Debug, Eq, Hash, PartialEq, Clone, Serialize)]
@@ -79,11 +79,11 @@ pub struct QBStats {
 
     pub position: Position,
     pub endurance: char,
-    pub quick: RangedStats,
-    pub short: RangedStats,
-    pub long: RangedStats,
+    pub quick: RangedStats<PassResult>,
+    pub short: RangedStats<PassResult>,
+    pub long: RangedStats<PassResult>,
     pub long_run: char,
-    pub pass_rush: RangedStats,
+    pub pass_rush: RangedStats<PassResult>,
     pub endurance_rushing: i32,
     pub rushing: TwelveStats<NumStat>,
 }

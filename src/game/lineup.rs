@@ -9,7 +9,7 @@ use super::players::{
     ToBasePlayer, WRStats,
 };
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OffensiveBox {
     QB,
     B1,

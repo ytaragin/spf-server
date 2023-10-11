@@ -1,6 +1,7 @@
-use std::collections::HashMap;
-
 use serde_derive::Serialize;
+use std::fmt::Debug;
+use std::hash::Hash;
+use std::{collections::HashMap, str::FromStr};
 
 #[derive(Debug, Clone, Copy, Serialize)]
 pub struct Range {
@@ -105,7 +106,7 @@ pub struct TwelveStats<T> {
 
 impl<T> TwelveStats<T> {
     pub fn get_stat(&self, num: usize) -> &T {
-        return &self.stats[num-1];
+        return &self.stats[num - 1];
     }
 
     pub fn create_from_strs<F>(vals: &[&str], item_generator: F) -> Self
@@ -123,22 +124,58 @@ impl<T> TwelveStats<T> {
 }
 
 #[derive(Debug, Clone, Serialize)]
-pub struct RangedStats {
+pub struct RangedStats<T: FromStr + Eq + PartialEq + Hash> {
     // pub com: Range,
     // pub inc: Range,
     // pub int: Range,
-    stats: HashMap<String, Range>,
+    stats: HashMap<T, Range>,
 }
 
-impl RangedStats {
-    pub fn create_from_strs(vals: &[&str]) -> Self {
-        let mut stats: HashMap<String, Range> = HashMap::new();
+impl<T: FromStr + Eq + PartialEq + Hash> RangedStats<T> {
+    pub fn create_from_strs<F>(vals: &[&str]) -> Self {
+        let mut stats: HashMap<T, Range> = HashMap::new();
 
         for v in vals {
             let p = Range::get_tag_and_range(v);
-            stats.insert(p.0.to_string(), p.1);
+            if let Ok(k) = T::from_str(p.0) {
+                stats.insert(k, p.1);
+            } else {
+                println!("Invalid type {:?}", v)
+            }
         }
 
         Self { stats }
     }
+
+    pub fn get_category(&self, val: i32) -> &T {
+        let res = self
+            .stats
+            .iter()
+            .find_map(|(key, r)| if r.in_range(val) { Some(key) } else { None });
+        return res.unwrap();
+    }
 }
+
+// pub struct RangedStats {
+//     // pub com: Range,
+//     // pub inc: Range,
+//     // pub int: Range,
+//     stats: HashMap<String, Range>,
+// }
+
+// impl RangedStats {
+//     pub fn create_from_strs(vals: &[&str]) -> Self {
+//         let mut stats: HashMap<String, Range> = HashMap::new();
+
+//         for v in vals {
+//             let p = Range::get_tag_and_range(v);
+//             stats.insert(p.0.to_string(), p.1);
+//         }
+
+//         Self { stats }
+//     }
+
+//     pub fn get_category(&self, val: i32) -> String {
+//         return "ZZZ".to_string();
+//     }
+// }

@@ -93,30 +93,30 @@ impl<'de> Deserialize<'de> for RunResult {
 }
 
 #[derive(Debug, Clone)]
-pub enum PassResult {
+pub enum PassTarget {
     Orig,
     PassRush,
     Actual(OffensiveBox),
 }
 
-impl From<String> for PassResult {
+impl From<String> for PassTarget {
     fn from(s: String) -> Self {
         match s.as_str() {
-            "Orig" => PassResult::Orig,
-            "PassRush" => PassResult::PassRush,
-            _ => PassResult::Actual(OffensiveBox::from_str(s.to_lowercase().as_str()).unwrap()),
+            "Orig" => PassTarget::Orig,
+            "PassRush" => PassTarget::PassRush,
+            _ => PassTarget::Actual(OffensiveBox::from_str(s.to_lowercase().as_str()).unwrap()),
         }
     }
 }
 
-impl<'de> Deserialize<'de> for PassResult {
-    fn deserialize<D>(deserializer: D) -> Result<PassResult, D::Error>
+impl<'de> Deserialize<'de> for PassTarget {
+    fn deserialize<D>(deserializer: D) -> Result<PassTarget, D::Error>
     where
         D: Deserializer<'de>,
     {
         let instr = String::deserialize(deserializer)?;
 
-        Ok(PassResult::from(instr))
+        Ok(PassTarget::from(instr))
     }
 }
 
@@ -131,9 +131,9 @@ pub struct FacData {
     pub sr: RunResult,
     pub er: String,
     pub sc: String,
-    pub sh: PassResult,
-    pub qk: PassResult,
-    pub lg: PassResult,
+    pub sh: PassTarget,
+    pub qk: PassTarget,
+    pub lg: PassTarget,
     pub z_result: String,
     pub solitaire: String,
 }

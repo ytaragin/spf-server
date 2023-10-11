@@ -102,7 +102,10 @@ fn calculate_run_yardage_modifier(
             ));
             blocks
         }
-        std::cmp::Ordering::Equal => 0,
+        std::cmp::Ordering::Equal => {
+            logs.push("Runner gets by blocks and tackles".to_string());
+            0
+        }
         std::cmp::Ordering::Greater => {
             logs.push(format!("Big tackle to save {} yards", tackles));
             -tackles
@@ -124,14 +127,19 @@ fn handle_bad_play(mut data: RunPlayData, error: String) -> Box<dyn PlayLogicSta
 }
 
 fn finalize_yardage(mut data: RunPlayData) -> Box<dyn PlayLogicState> {
-    data.yardage += data.modifier;
+    let result = max(data.yardage + data.modifier, data.md.max_loss);
 
-    data.yardage = max(data.yardage, data.md.max_loss);
+    let mut time = 40;
+
+    if data.ob && data.md.can_go_ob {
+        data.details.push("Play ends out of bounds".to_string());
+        time = 10;
+    }
 
     data.details.push(format!("Gain of {} yards", data.yardage));
     data.result = Some(PlayResult {
-        result: data.yardage,
-        time: 10,
+        result,
+        time,
         details: data.details.clone(),
         extra: None,
     });
