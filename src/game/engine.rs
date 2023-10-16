@@ -11,7 +11,10 @@ use spf_macros::ToBasePlayer;
 use lazy_static::lazy_static;
 use strum_macros::EnumString;
 
-use crate::game::engine::{passplay::PassUtils, runplay::RunUtils};
+use crate::game::{
+    engine::{passplay::PassUtils, runplay::RunUtils},
+    fac,
+};
 
 use super::{
     fac::{FacCard, FacData, FacManager, PassTarget, RunResult, RunResultActual},
@@ -51,6 +54,9 @@ type RunGetCardVal = for<'a> fn(card: &'a FacData) -> &'a RunResult;
 type PassGetPassVal = for<'a> fn(card: &'a FacData) -> &'a PassTarget;
 type QBGetPassRange = for<'a> fn(qb: &'a QBStats) -> &'a RangedStats<PassResult>;
 
+type PlayRunner =
+    for<'a> fn(&'a GameState, &'a PlaySetup<'a>, &'a mut CardStreamer<'a>) -> PlayResult;
+
 #[derive(Debug, Clone, Copy)]
 pub struct RunMetaData {
     max_loss: i32,
@@ -65,15 +71,6 @@ pub struct PassMetaData {
     target: PassGetPassVal,
     complete: QBGetPassRange,
 }
-
-// #[derive(Debug, Clone)]
-// enum PlayMetaData {
-//     Run(run_meta_data),
-//     Pass(pass_meta_data)
-
-// }
-
-type CreateStartState = fn(&OffensivePlayInfo) -> Box<dyn PlayLogicState>;
 
 #[derive(Debug, PartialEq, Eq, Hash, Copy, Clone, Serialize, EnumString)]
 pub enum PassResult {
@@ -91,7 +88,7 @@ pub struct OffensivePlayInfo {
     name: &'static str,
     code: &'static str,
     allowed_targets: Vec<OffensiveBox>,
-    handler: CreateStartState,
+    handler: PlayRunner,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Eq, Hash, PartialEq)]
@@ -106,15 +103,6 @@ pub enum OffensivePlayType {
     LG,
     SC,
 }
-
-// impl OffensivePlayType {
-//     fn validate(&self, lineup: &OffensiveLineup) -> Result<(), String> {
-//         match self {
-//             OffensivePlayType::SL |
-//             OffensivePlayType::SR
-//         }
-//     }
-// }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum OffensiveStrategy {
@@ -154,10 +142,6 @@ impl Validatable for OffenseCall {
     }
 }
 
-// type RunGetCardVal = for<'a> fn(card: &'a FacData) -> &'a RunResult;
-
-// type PlayRunner = fn(&PlaySetup, &GameState, &mut FacManager) -> PlayResult;
-
 struct TimeTable {
     run_play: i32,
     run_play_ob: i32,
@@ -185,7 +169,7 @@ lazy_static! {
                 name: "Sweep Left",
                 code: "SL",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: RunUtils::create_run_play,
+                handler: RunUtils::handle_run_play,
             },
         );
         map.insert(
@@ -199,7 +183,7 @@ lazy_static! {
                 name: "Sweep Right",
                 code: "SR",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: RunUtils::create_run_play,
+                handler: RunUtils::handle_run_play,
             },
         );
         map.insert(
@@ -213,7 +197,7 @@ lazy_static! {
                 name: "Inside Left",
                 code: "IL",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: RunUtils::create_run_play,
+                handler: RunUtils::handle_run_play,
             },
         );
         map.insert(
@@ -227,7 +211,7 @@ lazy_static! {
                 name: "Inside Right",
                 code: "IR",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: RunUtils::create_run_play,
+                handler: RunUtils::handle_run_play,
             },
         );
         map.insert(
@@ -241,7 +225,7 @@ lazy_static! {
                 name: "End Around",
                 code: "ER",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: RunUtils::create_run_play,
+                handler: RunUtils::handle_run_play,
             },
         );
         map.insert(
@@ -262,7 +246,7 @@ lazy_static! {
                     OffensiveBox::FL1,
                     OffensiveBox::FL2,
                 ],
-                handler: PassUtils::create_pass_play,
+                handler: PassUtils::handle_pass_play,
             },
         );
         map.insert(
@@ -283,7 +267,7 @@ lazy_static! {
                     OffensiveBox::FL1,
                     OffensiveBox::FL2,
                 ],
-                handler: PassUtils::create_pass_play,
+                handler: PassUtils::handle_pass_play,
             },
         );
         map.insert(
@@ -304,7 +288,7 @@ lazy_static! {
                     OffensiveBox::FL1,
                     OffensiveBox::FL2,
                 ],
-                handler: PassUtils::create_pass_play,
+                handler: PassUtils::handle_pass_play,
             },
         );
         map.insert(
@@ -317,7 +301,7 @@ lazy_static! {
                 name: "Screen",
                 code: "SC",
                 allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: PassUtils::create_pass_play,
+                handler: PassUtils::handle_pass_play,
             },
         );
         map
@@ -361,6 +345,57 @@ impl Validatable for DefenseCall {
                 None => return Err(format!("{} is not in lineup", id)),
             });
         return res;
+    }
+}
+
+#[derive(Debug, Clone, Serialize)]
+pub struct CardResults {
+    had_z: bool,
+    cards_flipped: Vec<i32>,
+}
+
+pub struct CardStreamer<'a> {
+    fac_deck: &'a mut FacManager,
+    cards_flipped: Vec<i32>,
+    had_z: bool,
+}
+
+impl<'a> CardStreamer<'a> {
+    fn new(fac_deck: &'a mut FacManager) -> Self {
+        return Self {
+            fac_deck,
+            cards_flipped: vec![],
+            had_z: false,
+        };
+    }
+
+    fn get_fac(&mut self) -> FacData {
+        let mut ret_data: Option<FacData> = None;
+        while ret_data.is_none() {
+            let card = self.fac_deck.get_fac(false);
+            match card {
+                FacCard::Z => {
+                    if self.cards_flipped.len() <= 3 {
+                        println!("Z Event");
+                        self.had_z = true;
+                    }
+                }
+                FacCard::Data(c) => {
+                    self.cards_flipped.push(c.id);
+
+                    ret_data = Some(c);
+                }
+            };
+        }
+
+        return ret_data.unwrap();
+    }
+
+    fn get_results(&self) -> CardResults {
+        CardResults {
+            had_z: self.had_z,
+            cards_flipped: self.cards_flipped.clone(),
+        }
     }
 }
 
@@ -418,35 +453,12 @@ impl Play {
     ) -> Result<PlayAndState, String> {
         let details = self.play_ready()?;
 
-        // let info = get_offensive_play_info(&details.offense_call.play_type);
+        let mut card_streamer = CardStreamer::new(fac_deck);
 
-        let mut play_state = (details.offense_metadata.handler)(details.offense_metadata);
+        let result = (details.offense_metadata.handler)(game_state, &details, &mut card_streamer);
 
-        let mut cards_flipped = 0;
-        let mut had_a_z = false;
-
-        while play_state.get_result().is_none() {
-            let card = fac_deck.get_fac(false);
-            cards_flipped += 1;
-            match card {
-                FacCard::Z => {
-                    if cards_flipped < 3 {
-                        println!("Z Event");
-                        had_a_z = true;
-                    }
-                }
-                FacCard::Data(c) => {
-                    println!("State: {}, Card: {}", play_state.get_name(), c.id);
-                    play_state = play_state.handle_card(game_state, &details, &c);
-                }
-            };
-        }
-
-        println!("Final State: {}", play_state.get_name());
-        let mut result = play_state.get_result().unwrap();
-
-        if had_a_z {
-            Play::handle_z(&mut result);
+        if result.cards.had_z {
+            Play::handle_z(&result);
         }
 
         let new_state = Play::create_new_state(game_state, &result);
@@ -458,7 +470,9 @@ impl Play {
         });
     }
 
-    fn handle_z(result: &mut PlayResult) {}
+    fn handle_z(result: &PlayResult) -> PlayResult {
+        return result.clone();
+    }
 
     fn create_new_state(old_state: &GameState, result: &PlayResult) -> GameState {
         GameState {
@@ -475,6 +489,7 @@ pub struct PlayResult {
     pub time: i32,
     pub details: Vec<String>,
     pub extra: Option<String>,
+    pub cards: CardResults,
 }
 
 pub trait PlayLogicState {

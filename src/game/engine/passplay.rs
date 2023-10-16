@@ -1,10 +1,15 @@
 use crate::game::{
     fac::{FacData, PassTarget},
     lineup::OffensiveBox,
-    GameState, players::{Player, QBStats}, stats::RangedStats,
+    players::{Player, QBStats},
+    stats::RangedStats,
+    GameState,
 };
 
-use super::{OffensivePlayInfo, PassMetaData, PlayLogicState, PlayResult, PlaySetup, TIMES, PassResult};
+use super::{
+    CardStreamer, OffensivePlayInfo, PassMetaData, PassResult, PlayLogicState, PlayResult,
+    PlaySetup, TIMES,
+};
 
 pub struct PassUtils {}
 impl PassUtils {
@@ -13,6 +18,33 @@ impl PassUtils {
         let data = PassPlayData::new(playinfo);
         // return Box::new(p);
         return Box::new(PassStateDetermineTarget { data });
+    }
+
+    // pub fn handle_pass_play<'a>(
+    //     state: &GameState,
+    //     play: &PlaySetup,
+    //     cards: &mut CardStreamer,
+    pub fn handle_pass_play<'a>(
+        state: &'a GameState,
+        play: &'a PlaySetup<'a>,
+        cards: &'a mut CardStreamer<'a>,
+    ) -> PlayResult {
+        let mut data = PassPlayData::new(play.offense_metadata);
+        // let context = RunContext {
+        //     state,
+        //     play,
+        //     cards,
+        //     data: &mut data,
+        // };
+        // return start_run(&context);
+        return 
+            PlayResult {
+                result: 0,
+                time: 0,
+                details: vec![],
+                extra: None,
+                cards: cards.get_results(),
+            };
     }
 
     pub fn get_qk_fac_target<'a>(card: &'a FacData) -> &'a PassTarget {
@@ -34,7 +66,6 @@ impl PassUtils {
     pub fn get_lg_qb_range<'a>(qb: &'a QBStats) -> &'a RangedStats<PassResult> {
         &qb.long
     }
-
 }
 
 #[derive(Clone)]
@@ -58,12 +89,13 @@ impl PassPlayData {
 
 fn incomplete_pass(mut data: PassPlayData) -> Box<dyn PlayLogicState> {
     data.details.push("The pass falls incomplete".to_string());
-    data.result = Some(PlayResult {
-        result: 0,
-        time: TIMES.pass_play_incomplete,
-        details: data.details.clone(),
-        extra: None,
-    });
+    // data.result = Some(PlayResult {
+    //     result: 0,
+    //     time: TIMES.pass_play_incomplete,
+    //     details: data.details.clone(),
+    //     extra: None,
+
+    // });
 
     return Box::new(PassStateEnd { data });
 }
@@ -101,15 +133,12 @@ impl PlayLogicState for PassStateDetermineTarget {
             }
         }
 
-        return Box::new(PassCheckResultState {
-            data,
-        });
+        return Box::new(PassCheckResultState { data });
     }
     fn get_name(&self) -> &str {
         return "PassStateDetermineTarget";
     }
 }
-
 
 #[derive(Clone)]
 struct PassRushState {
@@ -152,17 +181,17 @@ impl PlayLogicState for PassCheckResultState {
         play: &PlaySetup,
         card: &FacData,
     ) -> Box<dyn PlayLogicState> {
-
         let pass_num = card.pass_num;
-        let qb = Player::is_qb(play.offense.get_player_in_pos(&OffensiveBox::QB).unwrap().get_full_player()).unwrap();
+        let qb = Player::is_qb(
+            play.offense
+                .get_player_in_pos(&OffensiveBox::QB)
+                .unwrap()
+                .get_full_player(),
+        )
+        .unwrap();
 
         let range = (self.data.md.complete)(&qb);
         let res = range.get_category(pass_num);
-
-
-        
-        
-
 
         return Box::new(PassStateEnd {
             data: self.data.clone(),
@@ -172,9 +201,6 @@ impl PlayLogicState for PassCheckResultState {
         return self.data.result.clone();
     }
 }
-
-
-
 
 #[derive(Clone)]
 struct PassStateEnd {

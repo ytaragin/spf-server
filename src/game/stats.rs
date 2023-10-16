@@ -132,7 +132,7 @@ pub struct RangedStats<T: FromStr + Eq + PartialEq + Hash> {
 }
 
 impl<T: FromStr + Eq + PartialEq + Hash> RangedStats<T> {
-    pub fn create_from_strs<F>(vals: &[&str]) -> Self {
+    pub fn create_from_strs(vals: &[&str]) -> Self {
         let mut stats: HashMap<T, Range> = HashMap::new();
 
         for v in vals {
