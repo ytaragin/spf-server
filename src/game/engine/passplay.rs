@@ -1,8 +1,10 @@
+use std::cmp::min;
+
 use crate::game::{
     fac::{FacData, PassTarget},
     lineup::OffensiveBox,
-    players::{Player, QBStats},
-    stats::RangedStats,
+    players::{Player, PlayerUtils, QBStats},
+    stats::{NumStat, RangedStats, TripleStat, TwelveStats},
     GameState,
 };
 
@@ -11,40 +13,32 @@ use super::{
     PlaySetup, TIMES,
 };
 
+// use macro_rules! <name of macro> {<Body>}
+macro_rules! mechanic {
+    // match like arm for macro
+    ($ctxt:expr, $msg:expr, $val:expr) => {
+        // macro expands to this code
+        // $msg and $val will be templated using the value/variable provided to macro
+        $ctxt.data.mechanic.push(format!($msg, $val));
+    };
+}
+
 pub struct PassUtils {}
 impl PassUtils {
-    // fn create_run_play<'a>(setup: &'a PlaySetup) ->  Box<dyn PlayRunner2+'a> {
-    pub fn create_pass_play(playinfo: &OffensivePlayInfo) -> Box<dyn PlayLogicState> {
-        let data = PassPlayData::new(playinfo);
-        // return Box::new(p);
-        return Box::new(PassStateDetermineTarget { data });
-    }
-
-    // pub fn handle_pass_play<'a>(
-    //     state: &GameState,
-    //     play: &PlaySetup,
-    //     cards: &mut CardStreamer,
     pub fn handle_pass_play<'a>(
         state: &'a GameState,
         play: &'a PlaySetup<'a>,
         cards: &'a mut CardStreamer<'a>,
     ) -> PlayResult {
         let mut data = PassPlayData::new(play.offense_metadata);
-        // let context = RunContext {
-        //     state,
-        //     play,
-        //     cards,
-        //     data: &mut data,
-        // };
-        // return start_run(&context);
-        return 
-            PlayResult {
-                result: 0,
-                time: 0,
-                details: vec![],
-                extra: None,
-                cards: cards.get_results(),
-            };
+
+        let mut context = PassContext {
+            state,
+            play,
+            cards,
+            data,
+        };
+        return context.start_pass();
     }
 
     pub fn get_qk_fac_target<'a>(card: &'a FacData) -> &'a PassTarget {
@@ -71,7 +65,9 @@ impl PassUtils {
 #[derive(Clone)]
 pub struct PassPlayData {
     details: Vec<String>,
+    mechanic: Vec<String>,
     target: OffensiveBox,
+
     md: PassMetaData,
     result: Option<PlayResult>,
 }
@@ -80,6 +76,7 @@ impl PassPlayData {
     fn new(playinfo: &OffensivePlayInfo) -> Self {
         return Self {
             details: vec![],
+            mechanic: vec![],
             target: OffensiveBox::QB,
             md: playinfo.play_type.as_pass().unwrap().clone(),
             result: None,
@@ -87,142 +84,181 @@ impl PassPlayData {
     }
 }
 
-fn incomplete_pass(mut data: PassPlayData) -> Box<dyn PlayLogicState> {
-    data.details.push("The pass falls incomplete".to_string());
-    // data.result = Some(PlayResult {
-    //     result: 0,
-    //     time: TIMES.pass_play_incomplete,
-    //     details: data.details.clone(),
-    //     extra: None,
-
-    // });
-
-    return Box::new(PassStateEnd { data });
-}
-
-struct PassStateDetermineTarget {
+struct PassContext<'a> {
+    state: &'a GameState,
+    play: &'a PlaySetup<'a>,
+    cards: &'a mut CardStreamer<'a>,
     data: PassPlayData,
 }
+impl<'a> PassContext<'a> {
+    fn start_pass(&mut self) -> PlayResult {
+        let card = self.get_fac();
+        let target = (self.data.md.target)(&card);
 
-impl PlayLogicState for PassStateDetermineTarget {
-    fn handle_card(
-        &self,
-        state: &GameState,
-        play: &PlaySetup,
-        card: &FacData,
-    ) -> Box<dyn PlayLogicState> {
-        let mut data = self.data.clone();
-
-        let target = (self.data.md.target)(card);
+        mechanic!(self, "Target card returned: {:?}", target);
 
         match target {
+            PassTarget::PassRush => return self.handle_pass_rush(),
             PassTarget::Orig => {
-                data.target = play.offense_call.target;
+                self.data.target = self.play.offense_call.target;
             }
-            PassTarget::PassRush => return Box::new(PassRushState { data }),
             PassTarget::Actual(target) => {
-                data.target = *target;
-                data.details.push(format!(
-                    "The QB adjusts and throws it towards the {:?}",
-                    target
+                self.data.target = *target;
+                self.data.details.push(format!(
+                    "The QB adjusts and throws it towards the {:?} ",
+                    self.data.target
                 ));
-                if play.offense.get_player_in_pos(&data.target).is_none() {
-                    data.details.push("But no one is there".to_string());
-                    return incomplete_pass(data);
+                if self
+                    .play
+                    .offense
+                    .get_player_in_pos(&self.data.target)
+                    .is_none()
+                {
+                    mechanic!(self, "{:?} is empty", self.data.target);
+                    self.data.details.push("But no one is there".to_string());
+                    return self.incomplete_pass();
                 }
             }
         }
 
-        return Box::new(PassCheckResultState { data });
-    }
-    fn get_name(&self) -> &str {
-        return "PassStateDetermineTarget";
-    }
-}
-
-#[derive(Clone)]
-struct PassRushState {
-    data: PassPlayData,
-}
-
-impl PlayLogicState for PassRushState {
-    fn get_name(&self) -> &str {
-        return "PassRushState";
+        return self.handle_check_result();
     }
 
-    fn handle_card(
-        &self,
-        state: &GameState,
-        play: &PlaySetup,
-        card: &FacData,
-    ) -> Box<dyn PlayLogicState> {
-        return Box::new(PassStateEnd {
-            data: self.data.clone(),
-        });
-    }
-    fn get_result(&self) -> Option<PlayResult> {
-        return self.data.result.clone();
-    }
-}
+    fn handle_check_result(&mut self) -> PlayResult {
+        let pass_num = self.get_pass_num();
 
-#[derive(Clone)]
-struct PassCheckResultState {
-    data: PassPlayData,
-}
+        let qb = PassContext::get_qb_stats(self.play);
 
-impl PlayLogicState for PassCheckResultState {
-    fn get_name(&self) -> &str {
-        return "PassCheckResultState";
+        let shift = self.calculate_pass_shift();
+
+        let range = (self.data.md.completion_range)(&qb);
+        mechanic!(self, "Completion Range: {:?}", range);
+        let res = range.get_category(pass_num, shift);
+        mechanic!(self, "Pass Result: {:?} ", res);
+
+        match res {
+            PassResult::Complete => self.complete_pass(),
+            PassResult::Incomplete => self.incomplete_pass(),
+            PassResult::Interception => self.interception(),
+        }
     }
 
-    fn handle_card(
-        &self,
-        state: &GameState,
-        play: &PlaySetup,
-        card: &FacData,
-    ) -> Box<dyn PlayLogicState> {
+    fn handle_pass_rush(&mut self) -> PlayResult {
+        self.data.details.push("The pass rush gets in".to_string());
+        self.incomplete_pass()
+    }
+
+    fn complete_pass(&mut self) -> PlayResult {
+        self.data.details.push("Pass Complete".to_string());
+
+        let gain = self.get_pass_gain();
+        match gain {
+            None => self.incomplete_pass(),
+            Some(ns) => match ns {
+                NumStat::Sg => self.short_gain(),
+                NumStat::Lg => self.long_gain(),
+                NumStat::Val(v) => self.finalize_pass(v),
+            },
+        }
+    }
+
+    fn incomplete_pass(&mut self) -> PlayResult {
+        self.data
+            .details
+            .push("The pass falls incomplete".to_string());
+
+        return PlayResult {
+            result: 0,
+            time: TIMES.pass_play_incomplete,
+            details: self.data.details.clone(),
+            mechanic: vec![],
+            extra: None,
+            cards: self.cards.get_results(),
+        };
+    }
+
+    fn short_gain(&mut self) -> PlayResult {
+        self.finalize_pass(15)
+    }
+
+    fn long_gain(&mut self) -> PlayResult {
+        self.data.details.push("It's a long gain".to_string());
+        let yards = min(30, self.get_run_num() * 4);
+        self.finalize_pass(yards)
+    }
+
+    fn finalize_pass(&mut self, yards: i32) -> PlayResult {
+        self.data
+            .details
+            .push(format!("Pass complete for {} yards", yards));
+
+        return PlayResult {
+            result: yards,
+            time: 10,
+            details: self.data.details.clone(),
+            mechanic: self.data.mechanic.clone(),
+            extra: None,
+            cards: self.cards.get_results(),
+        };
+    }
+
+    fn interception(&mut self) -> PlayResult {
+        self.data.details.push("It's intercepted".to_string());
+        self.incomplete_pass()
+    }
+
+    fn calculate_pass_shift(&mut self) -> i32 {
+        0
+    }
+
+    fn get_pass_num(&mut self) -> i32 {
+        let card = self.get_fac();
         let pass_num = card.pass_num;
-        let qb = Player::is_qb(
+        mechanic!(self, "Pass Num: {}", pass_num);
+        pass_num
+    }
+
+    fn get_run_num(&mut self) -> i32 {
+        let card = self.get_fac();
+        let run_num = card.run_num.num;
+        mechanic!(self, "Run Num: {}", run_num);
+        run_num
+    }
+
+    fn get_qb_stats(play: &PlaySetup) -> QBStats {
+        Player::is_qb(
             play.offense
                 .get_player_in_pos(&OffensiveBox::QB)
                 .unwrap()
                 .get_full_player(),
         )
-        .unwrap();
-
-        let range = (self.data.md.complete)(&qb);
-        let res = range.get_category(pass_num);
-
-        return Box::new(PassStateEnd {
-            data: self.data.clone(),
-        });
-    }
-    fn get_result(&self) -> Option<PlayResult> {
-        return self.data.result.clone();
-    }
-}
-
-#[derive(Clone)]
-struct PassStateEnd {
-    data: PassPlayData,
-}
-
-impl PlayLogicState for PassStateEnd {
-    fn get_name(&self) -> &str {
-        return "PassStateEnd";
+        .unwrap()
     }
 
-    fn handle_card(
-        &self,
-        state: &GameState,
-        play: &PlaySetup,
-        card: &FacData,
-    ) -> Box<dyn PlayLogicState> {
-        return Box::new(PassStateEnd {
-            data: self.data.clone(),
-        });
+    fn get_pass_gain(&mut self) -> Option<NumStat> {
+        let pass_gain =
+            PlayerUtils::get_pass_gain(self.play.offense.get_player_in_pos(&self.data.target))
+                .unwrap();
+        // mechanic!(self, "Full Pass Chart {:?}", pass_gain);
+
+        let run_num = self.get_run_num();
+
+        let gain = pass_gain
+            .get_stat(run_num as usize)
+            .get_val(self.data.md.pass_gain.clone());
+        mechanic!(self, "Assigned gain: {:?}", gain);
+
+        match gain {
+            Some(n) => Some(*n),
+            None => None,
+        }
     }
-    fn get_result(&self) -> Option<PlayResult> {
-        return self.data.result.clone();
+
+    fn get_fac(&mut self) -> FacData {
+        let card = self.cards.get_fac();
+        self.data
+            .mechanic
+            .push(format!("Card Flipped: {}", (card.id)));
+        card
     }
 }

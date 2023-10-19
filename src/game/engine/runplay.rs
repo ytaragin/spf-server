@@ -207,6 +207,7 @@ fn handle_bad_play(ctxt: &RunContext) -> PlayResult {
         result: 0,
         time: 10,
         details: ctxt.data.details.clone(),
+        mechanic: vec![],
         extra: None,
         cards: ctxt.cards.get_results(),
     };
@@ -229,6 +230,7 @@ fn finalize_yardage(ctxt: &mut RunContext) -> PlayResult {
         result,
         time,
         details: data.details.clone(),
+        mechanic: vec![],
         extra: None,
         cards: ctxt.cards.get_results(),
     };

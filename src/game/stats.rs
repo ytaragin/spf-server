@@ -1,7 +1,10 @@
 use serde_derive::Serialize;
+use std::cmp::min;
 use std::fmt::Debug;
 use std::hash::Hash;
 use std::{collections::HashMap, str::FromStr};
+
+use super::engine::Shiftable;
 
 #[derive(Debug, Clone, Copy, Serialize)]
 pub struct Range {
@@ -124,14 +127,14 @@ impl<T> TwelveStats<T> {
 }
 
 #[derive(Debug, Clone, Serialize)]
-pub struct RangedStats<T: FromStr + Eq + PartialEq + Hash> {
+pub struct RangedStats<T> {
     // pub com: Range,
     // pub inc: Range,
     // pub int: Range,
     stats: HashMap<T, Range>,
 }
 
-impl<T: FromStr + Eq + PartialEq + Hash> RangedStats<T> {
+impl<T: FromStr + Eq + Clone + PartialEq + Hash + Shiftable<T> + Debug> RangedStats<T> {
     pub fn create_from_strs(vals: &[&str]) -> Self {
         let mut stats: HashMap<T, Range> = HashMap::new();
 
@@ -147,11 +150,36 @@ impl<T: FromStr + Eq + PartialEq + Hash> RangedStats<T> {
         Self { stats }
     }
 
-    pub fn get_category(&self, val: i32) -> &T {
-        let res = self
-            .stats
-            .iter()
-            .find_map(|(key, r)| if r.in_range(val) { Some(key) } else { None });
+    pub fn get_category(&self, val: i32, shift: i32) -> T {
+        let first = T::get_first();
+        let second = T::get_second();
+
+        let first_range = self.stats.get(&first).unwrap();
+        let second_range = self.stats.get(&second).unwrap();
+
+        let new_first = Range {
+            start: first_range.start,
+            end: min(first_range.end + shift, second_range.end),
+        };
+        let new_second = Range {
+            start: min(second_range.start + shift, second_range.end),
+            end: second_range.end,
+            // end: min(second_range.end, second_range.start + shift),
+        };
+
+        let mut new_stats = self.stats.clone();
+        new_stats.insert(first, new_first);
+        new_stats.insert(second, new_second);
+
+        println!("Stats for category: {:?}", new_stats);
+
+        let res = new_stats.iter().find_map(|(key, r)| {
+            if r.in_range(val) {
+                Some(key.clone())
+            } else {
+                None
+            }
+        });
         return res.unwrap();
     }
 }

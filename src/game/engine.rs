@@ -19,8 +19,8 @@ use crate::game::{
 use super::{
     fac::{FacCard, FacData, FacManager, PassTarget, RunResult, RunResultActual},
     lineup::{DefensiveBox, DefensiveLineup, OffensiveBox, OffensiveLineup},
-    players::{BasePlayer, Player, QBStats},
-    stats::RangedStats,
+    players::{BasePlayer, PassGain, Player, QBStats},
+    stats::{NumStat, RangedStats, TripleStat},
     GameState, PlayAndState,
 };
 
@@ -44,7 +44,7 @@ pub struct IDOffensivePlay {
     pub target_id: String,
 }
 
-#[derive(Debug, Clone, Copy, EnumAsInner)]
+#[derive(Debug, Clone, EnumAsInner)]
 pub enum OffensivePlayCategory {
     Run(RunMetaData),
     Pass(PassMetaData),
@@ -53,6 +53,7 @@ pub enum OffensivePlayCategory {
 type RunGetCardVal = for<'a> fn(card: &'a FacData) -> &'a RunResult;
 type PassGetPassVal = for<'a> fn(card: &'a FacData) -> &'a PassTarget;
 type QBGetPassRange = for<'a> fn(qb: &'a QBStats) -> &'a RangedStats<PassResult>;
+type GetPassGain = for<'a> fn(pg: &'a TripleStat) -> &'a NumStat;
 
 type PlayRunner =
     for<'a> fn(&'a GameState, &'a PlaySetup<'a>, &'a mut CardStreamer<'a>) -> PlayResult;
@@ -64,12 +65,18 @@ pub struct RunMetaData {
     card_val: RunGetCardVal,
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone)]
 pub struct PassMetaData {
     // max_loss: i32,
     // can_go_ob: bool,
     target: PassGetPassVal,
-    complete: QBGetPassRange,
+    completion_range: QBGetPassRange,
+    pass_gain: String,
+}
+
+pub trait Shiftable<T> {
+    fn get_first() -> T;
+    fn get_second() -> T;
 }
 
 #[derive(Debug, PartialEq, Eq, Hash, Copy, Clone, Serialize, EnumString)]
@@ -80,6 +87,38 @@ pub enum PassResult {
     Incomplete,
     #[strum(serialize = "Int")]
     Interception,
+}
+
+impl Shiftable<PassResult> for PassResult {
+    fn get_first() -> PassResult {
+        PassResult::Complete
+    }
+
+    fn get_second() -> PassResult {
+        PassResult::Incomplete
+    }
+}
+
+#[derive(Debug, PartialEq, Eq, Hash, Copy, Clone, Serialize, EnumString)]
+pub enum PassRushResult {
+    #[strum(serialize = "Sack")]
+    Sack,
+    #[strum(serialize = "Runs")]
+    Runs,
+    #[strum(serialize = "Com")]
+    Complete,
+    #[strum(serialize = "Inc")]
+    Incomplete,
+}
+
+impl Shiftable<PassRushResult> for PassRushResult {
+    fn get_first() -> PassRushResult {
+        PassRushResult::Sack
+    }
+
+    fn get_second() -> PassRushResult {
+        PassRushResult::Runs
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -233,7 +272,8 @@ lazy_static! {
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Pass(PassMetaData {
                     target: PassUtils::get_qk_fac_target,
-                    complete: PassUtils::get_qk_qb_range,
+                    completion_range: PassUtils::get_qk_qb_range,
+                    pass_gain: "Q".to_string(),
                 }),
                 name: "Quick",
                 code: "QK",
@@ -254,7 +294,8 @@ lazy_static! {
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Pass(PassMetaData {
                     target: PassUtils::get_sh_fac_target,
-                    complete: PassUtils::get_sh_qb_range,
+                    completion_range: PassUtils::get_sh_qb_range,
+                    pass_gain: "S".to_string(),
                 }),
                 name: "Short",
                 code: "SH",
@@ -275,7 +316,8 @@ lazy_static! {
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Pass(PassMetaData {
                     target: PassUtils::get_lg_fac_target,
-                    complete: PassUtils::get_lg_qb_range,
+                    completion_range: PassUtils::get_lg_qb_range,
+                    pass_gain: "L".to_string(),
                 }),
                 name: "Long",
                 code: "LG",
@@ -296,7 +338,8 @@ lazy_static! {
             OffensivePlayInfo {
                 play_type: OffensivePlayCategory::Pass(PassMetaData {
                     target: PassUtils::get_qk_fac_target,
-                    complete: PassUtils::get_qk_qb_range,
+                    completion_range: PassUtils::get_qk_qb_range,
+                    pass_gain: "Q".to_string(),
                 }),
                 name: "Screen",
                 code: "SC",
@@ -488,6 +531,8 @@ pub struct PlayResult {
     pub result: Yard,
     pub time: i32,
     pub details: Vec<String>,
+    pub mechanic: Vec<String>,
+
     pub extra: Option<String>,
     pub cards: CardResults,
 }

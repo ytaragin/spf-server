@@ -3,14 +3,17 @@ use dyn_clone::{clone_trait_object, DynClone};
 use enum_as_inner::EnumAsInner;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
-use spf_macros::{ImplBasePlayer, IsBlocker};
+use spf_macros::{ImplBasePlayer, IsBlocker, IsReceiver};
 use std::collections::HashMap;
 use strum_macros::Display;
 
 use super::{
+    engine::{PassResult, PassRushResult},
     loader::{load_dbs, load_dls, load_lbs, load_ols, load_qbs, load_rbs, load_tes, load_wrs},
-    stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats}, engine::PassResult,
+    stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats},
 };
+
+pub type PassGain = TwelveStats<TripleStat>;
 
 #[derive(Debug, Eq, Hash, PartialEq, Clone, Serialize)]
 pub struct TeamID {
@@ -57,6 +60,10 @@ pub trait Blocker {
     fn get_blocks(&self) -> i32;
 }
 
+pub trait Receiver {
+    fn get_pass_gain(&self) -> TwelveStats<TripleStat>;
+}
+
 pub trait ToBasePlayer {
     fn get_player(&self) -> &dyn BasePlayer;
 }
@@ -83,7 +90,7 @@ pub struct QBStats {
     pub short: RangedStats<PassResult>,
     pub long: RangedStats<PassResult>,
     pub long_run: char,
-    pub pass_rush: RangedStats<PassResult>,
+    pub pass_rush: RangedStats<PassRushResult>,
     pub endurance_rushing: i32,
     pub rushing: TwelveStats<NumStat>,
 }
@@ -96,7 +103,7 @@ pub struct RBStats {
 
     pub position: Position,
     pub rushing: TwelveStats<TripleStat>,
-    pub pass_gain: TwelveStats<TripleStat>,
+    pub pass_gain: PassGain,
     pub lg: char,
     pub blocks: i32,
 }
@@ -109,7 +116,7 @@ pub struct WRStats {
 
     pub position: Position,
     pub rushing: TwelveStats<TripleStat>,
-    pub pass_gain: TwelveStats<TripleStat>,
+    pub pass_gain: PassGain,
     pub end: i32,
     pub lg: char,
     pub blocks: i32,
@@ -159,7 +166,7 @@ pub struct TEStats {
 
     pub position: Position,
     pub rushing: TwelveStats<TripleStat>,
-    pub pass_gain: TwelveStats<TripleStat>,
+    pub pass_gain: PassGain,
     pub blocks: i32,
     pub long_rush: char,
 }
@@ -333,6 +340,19 @@ impl PlayerUtils {
             Player::DL(dl) => dl.tackles,
             Player::LB(lb) => lb.tackles,
             _ => 0,
+        }
+    }
+
+    pub fn get_pass_gain(player: Option<&dyn BasePlayer>) -> Option<PassGain> {
+        // let p = player.get_full_player();
+        match player {
+            Some(p) => match p.get_full_player() {
+                Player::RB(rb) => Some(rb.pass_gain),
+                Player::WR(wr) => Some(wr.pass_gain),
+                Player::TE(te) => Some(te.pass_gain),
+                _ => None,
+            },
+            None => None,
         }
     }
 }
