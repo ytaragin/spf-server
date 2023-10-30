@@ -355,6 +355,14 @@ impl PlayerUtils {
             None => None,
         }
     }
+
+    pub fn get_pass_defense(player: &dyn BasePlayer) -> i32 {
+        match player.get_full_player() {
+            Player::DB(db) => db.pass_def,
+            Player::LB(lb) => lb.pass_def,
+            _ => 0,
+        }
+    }
 }
 
 // struct P {

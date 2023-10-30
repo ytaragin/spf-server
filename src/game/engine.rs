@@ -1,26 +1,24 @@
 pub mod passplay;
 pub mod runplay;
 
-use std::collections::HashMap;
+use std::{collections::HashMap, hash::Hash};
 
 use enum_as_inner::EnumAsInner;
-use itertools::Itertools;
 use serde::{Deserialize, Serialize};
-use spf_macros::ToBasePlayer;
 
 use lazy_static::lazy_static;
 use strum_macros::EnumString;
 
 use crate::game::{
     engine::{passplay::PassUtils, runplay::RunUtils},
-    fac,
+    lineup::DefensiveBox,
 };
 
 use super::{
-    fac::{FacCard, FacData, FacManager, PassTarget, RunResult, RunResultActual},
-    lineup::{DefensiveBox, DefensiveLineup, OffensiveBox, OffensiveLineup},
-    players::{BasePlayer, PassGain, Player, QBStats},
-    stats::{NumStat, RangedStats, TripleStat},
+    fac::{FacCard, FacData, FacManager, PassTarget, RunResult},
+    lineup::{DefensiveLineup, OffensiveBox, OffensiveLineup},
+    players::QBStats,
+    stats::{LabeledStat, RangedStats, TwelveStats},
     GameState, PlayAndState,
 };
 
@@ -53,7 +51,6 @@ pub enum OffensivePlayCategory {
 type RunGetCardVal = for<'a> fn(card: &'a FacData) -> &'a RunResult;
 type PassGetPassVal = for<'a> fn(card: &'a FacData) -> &'a PassTarget;
 type QBGetPassRange = for<'a> fn(qb: &'a QBStats) -> &'a RangedStats<PassResult>;
-type GetPassGain = for<'a> fn(pg: &'a TripleStat) -> &'a NumStat;
 
 type PlayRunner =
     for<'a> fn(&'a GameState, &'a PlaySetup<'a>, &'a mut CardStreamer<'a>) -> PlayResult;
@@ -130,6 +127,19 @@ pub struct OffensivePlayInfo {
     handler: PlayRunner,
 }
 
+// #[derive(Debug, Clone)]
+// pub struct DefensivePlayInfo {
+//     completion_impact: Map<String, i32>,
+//     in20_completion_impact: Map<String, i32>,
+
+//     qk: i32,
+//     sh: i32,
+//     lg: i32,
+
+//     allowed_targets: Vec<OffensiveBox>,
+//     handler: PlayRunner,
+// }
+
 #[derive(Debug, Clone, Serialize, Deserialize, Eq, Hash, PartialEq)]
 pub enum OffensivePlayType {
     SL,
@@ -195,6 +205,70 @@ lazy_static! {
         pass_play_complete: 40,
         pass_play_incomplete: 10,
     };
+
+
+    static ref PASS_DEFENDERS: HashMap<OffensiveBox, DefensiveBox> = {
+        let mut map = HashMap::new();
+        map.insert(OffensiveBox::RE, DefensiveBox::BoxN);
+        map.insert(OffensiveBox::LE, DefensiveBox::BoxK);
+        map.insert(OffensiveBox::FL1, DefensiveBox::BoxO);
+        map.insert(OffensiveBox::FL2, DefensiveBox::BoxM);
+        map.insert(OffensiveBox::B1, DefensiveBox::BoxF);
+        map.insert(OffensiveBox::B2, DefensiveBox::BoxJ);
+        map.insert(OffensiveBox::B3, DefensiveBox::BoxH);
+        map
+    };
+
+    static ref INTERCEPTION_TABLE:TwelveStats<LabeledStat<DefensiveBox>> = {
+
+        let int_vals = vec![
+            "1: J/N/N/L",
+            "2: F/O/M/M",
+            "3: C/J/J/M",
+            "4: I/I/F/O",
+            "5: B/H/I/N",
+            "6: G/G/H/K",
+            "7: H/F/G/O",
+            "8: E/J/O/N",
+            "9: D/H/K/K",
+            "10: A/F/L/M",
+            "11: J/L/N/M",
+            "12: F/M/M/L",
+        ];
+
+        TwelveStats::create_from_strs(&int_vals, LabeledStat::<DefensiveBox>::curry_create("SC/QK/SH/LG"))
+    };
+    // TwelveStats::<HashMap::<String, DefensiveBox>>(stats);
+
+    static ref INTERCEPTION_RETURN_TABLE:TwelveStats<LabeledStat<i32>> = {
+
+        let int_vals = vec![
+            "1: 15/30/100",
+            "2: 10/20/50",
+            "3: 6/15/30",
+            "4: 3/10/20",
+            "5: 1/8/15",
+            "6: 0/5/10",
+            "7: 0/4/8",
+            "8: 0/3/6",
+            "9: 0/0/4",
+            "10: 0/0/2",
+            "11: 0/0/0",
+            "12: 0/0/0",
+        ];
+
+        TwelveStats::create_from_strs(&int_vals, LabeledStat::<i32>::curry_create("DL/LB/DB"))
+    };
+
+
+    // static ref DEFENSIVE_PLAY_LIST: Hashmap<DefensivePlay, DefensivePlayInfo> = {
+    //     let mut map = HashMap::new();
+
+
+    //     map
+    // };
+
+
     static ref OFFENSIVE_PLAYS_LIST: HashMap<OffensivePlayType, OffensivePlayInfo> = {
         let mut map = HashMap::new();
         map.insert(
@@ -527,7 +601,14 @@ impl Play {
 }
 
 #[derive(Debug, Clone, Serialize)]
+pub enum ResultType {
+    Regular,
+    TurnOver,
+}
+
+#[derive(Debug, Clone, Serialize)]
 pub struct PlayResult {
+    pub result_type: ResultType,
     pub result: Yard,
     pub time: i32,
     pub details: Vec<String>,

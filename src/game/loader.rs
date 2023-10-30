@@ -5,7 +5,7 @@ use crate::players::Position;
 
 use super::{
     players::{DLStats, LBStats, OLStats, TEStats},
-    stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats},
+    stats::{TripleStat, NumStat, Range, RangedStats, TwelveStats},
 };
 
 pub fn load_rbs(filename: String) -> Vec<RBStats> {

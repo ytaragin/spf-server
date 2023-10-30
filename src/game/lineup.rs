@@ -9,7 +9,7 @@ use super::players::{
     ToBasePlayer, WRStats,
 };
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy, Eq, Hash)]
 pub enum OffensiveBox {
     QB,
     B1,
@@ -49,45 +49,45 @@ impl FromStr for OffensiveBox {
     }
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DefensiveBox {
-    box_a,
-    box_b,
-    box_c,
-    box_d,
-    box_e,
-    box_f,
-    box_g,
-    box_h,
-    box_i,
-    box_j,
-    box_k,
-    box_l,
-    box_m,
-    box_n,
-    box_o,
+    BoxA,
+    BoxB,
+    BoxC,
+    BoxD,
+    BoxE,
+    BoxF,
+    BoxG,
+    BoxH,
+    BoxI,
+    BoxJ,
+    BoxK,
+    BoxL,
+    BoxM,
+    BoxN,
+    BoxO,
 }
 
 impl FromStr for DefensiveBox {
     type Err = String; // you can use any type that implements std::error::Error
 
     fn from_str(input: &str) -> Result<DefensiveBox, String> {
-        match input {
-            "a" => Ok(DefensiveBox::box_a),
-            "b" => Ok(DefensiveBox::box_b),
-            "c" => Ok(DefensiveBox::box_c),
-            "d" => Ok(DefensiveBox::box_d),
-            "e" => Ok(DefensiveBox::box_e),
-            "f" => Ok(DefensiveBox::box_f),
-            "g" => Ok(DefensiveBox::box_g),
-            "h" => Ok(DefensiveBox::box_h),
-            "i" => Ok(DefensiveBox::box_i),
-            "j" => Ok(DefensiveBox::box_j),
-            "k" => Ok(DefensiveBox::box_k),
-            "l" => Ok(DefensiveBox::box_l),
-            "m" => Ok(DefensiveBox::box_m),
-            "n" => Ok(DefensiveBox::box_n),
-            "o" => Ok(DefensiveBox::box_o),
+        match input.to_lowercase().as_str() {
+            "a" => Ok(DefensiveBox::BoxA),
+            "b" => Ok(DefensiveBox::BoxB),
+            "c" => Ok(DefensiveBox::BoxC),
+            "d" => Ok(DefensiveBox::BoxD),
+            "e" => Ok(DefensiveBox::BoxE),
+            "f" => Ok(DefensiveBox::BoxF),
+            "g" => Ok(DefensiveBox::BoxG),
+            "h" => Ok(DefensiveBox::BoxH),
+            "i" => Ok(DefensiveBox::BoxI),
+            "j" => Ok(DefensiveBox::BoxJ),
+            "k" => Ok(DefensiveBox::BoxK),
+            "l" => Ok(DefensiveBox::BoxL),
+            "m" => Ok(DefensiveBox::BoxM),
+            "n" => Ok(DefensiveBox::BoxN),
+            "o" => Ok(DefensiveBox::BoxO),
             _ => Err(format!("Invalid DefensiveBox: {}", input)), // return an error if the input does not match any variant
         }
     }
@@ -128,19 +128,19 @@ impl FlankerPlayer {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct IDBasedOffensiveLineup {
-    LE: Option<String>,
-    RE: Option<String>,
-    FL1: Option<String>,
-    FL2: Option<String>,
-    QB: Option<String>,
-    B1: Option<String>,
-    B2: Option<String>,
-    B3: Option<String>,
-    LT: Option<String>,
-    LG: Option<String>,
-    C: Option<String>,
-    RG: Option<String>,
-    RT: Option<String>,
+    le: Option<String>,
+    re: Option<String>,
+    fl1: Option<String>,
+    fl2: Option<String>,
+    qb: Option<String>,
+    b1: Option<String>,
+    b2: Option<String>,
+    b3: Option<String>,
+    lt: Option<String>,
+    lg: Option<String>,
+    c: Option<String>,
+    rg: Option<String>,
+    rt: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -166,52 +166,52 @@ impl OffensiveLineup {
         team: &Roster,
     ) -> Result<Self, String> {
         let qb =
-            LineupUtilities::get_player_from_id_or_err(&id_lineup.QB, "QB", &team, Player::is_qb)?;
+            LineupUtilities::get_player_from_id_or_err(&id_lineup.qb, "QB", &team, Player::is_qb)?;
 
         let le = LineupUtilities::get_option_player_from_id(
-            &id_lineup.LE,
+            &id_lineup.le,
             "LE",
             &team,
             EndPlayer::gen_from_player,
         )?;
 
         let re = LineupUtilities::get_option_player_from_id(
-            &id_lineup.RE,
+            &id_lineup.re,
             "RE",
             &team,
             EndPlayer::gen_from_player,
         )?;
 
         let fl1 = LineupUtilities::get_option_player_from_id(
-            &id_lineup.FL1,
+            &id_lineup.fl1,
             "Flanker",
             &team,
             FlankerPlayer::gen_from_player,
         )?;
         let fl2 = LineupUtilities::get_option_player_from_id(
-            &id_lineup.FL2,
+            &id_lineup.fl2,
             "Flanker",
             &team,
             FlankerPlayer::gen_from_player,
         )?;
 
         let b1 =
-            LineupUtilities::get_option_player_from_id(&id_lineup.B1, "B1", &team, Player::is_rb)?;
+            LineupUtilities::get_option_player_from_id(&id_lineup.b1, "B1", &team, Player::is_rb)?;
         let b2 =
-            LineupUtilities::get_option_player_from_id(&id_lineup.B2, "B2", &team, Player::is_rb)?;
+            LineupUtilities::get_option_player_from_id(&id_lineup.b2, "B2", &team, Player::is_rb)?;
         let b3 =
-            LineupUtilities::get_option_player_from_id(&id_lineup.B3, "B3", &team, Player::is_rb)?;
+            LineupUtilities::get_option_player_from_id(&id_lineup.b3, "B3", &team, Player::is_rb)?;
 
         let lt =
-            LineupUtilities::get_player_from_id_or_err(&id_lineup.LT, "LT", &team, Player::is_ol)?;
+            LineupUtilities::get_player_from_id_or_err(&id_lineup.lt, "LT", &team, Player::is_ol)?;
         let lg =
-            LineupUtilities::get_player_from_id_or_err(&id_lineup.LG, "LG", &team, Player::is_ol)?;
+            LineupUtilities::get_player_from_id_or_err(&id_lineup.lg, "LG", &team, Player::is_ol)?;
         let c =
-            LineupUtilities::get_player_from_id_or_err(&id_lineup.C, "C", &team, Player::is_ol)?;
+            LineupUtilities::get_player_from_id_or_err(&id_lineup.c, "C", &team, Player::is_ol)?;
         let rg =
-            LineupUtilities::get_player_from_id_or_err(&id_lineup.RG, "RG", &team, Player::is_ol)?;
+            LineupUtilities::get_player_from_id_or_err(&id_lineup.rg, "RG", &team, Player::is_ol)?;
         let rt =
-            LineupUtilities::get_player_from_id_or_err(&id_lineup.RT, "RT", &team, Player::is_ol)?;
+            LineupUtilities::get_player_from_id_or_err(&id_lineup.rt, "RT", &team, Player::is_ol)?;
 
         return Ok(Self {
             le,
@@ -232,19 +232,19 @@ impl OffensiveLineup {
 
     pub fn convert_to_id_lineup(&self) -> IDBasedOffensiveLineup {
         return IDBasedOffensiveLineup {
-            LE: LineupUtilities::get_id_from_player(&self.le),
-            RE: LineupUtilities::get_id_from_player(&self.re),
-            FL1: LineupUtilities::get_id_from_player(&self.fl1),
-            FL2: LineupUtilities::get_id_from_player(&self.fl2),
-            QB: Some(self.qb.get_id()),
-            B1: LineupUtilities::get_id_from_player(&self.b1),
-            B2: LineupUtilities::get_id_from_player(&self.b2),
-            B3: LineupUtilities::get_id_from_player(&self.b3),
-            LT: Some(self.lt.get_id()),
-            LG: Some(self.lg.get_id()),
-            C: Some(self.c.get_id()),
-            RG: Some(self.rg.get_id()),
-            RT: Some(self.rt.get_id()),
+            le: LineupUtilities::get_id_from_player(&self.le),
+            re: LineupUtilities::get_id_from_player(&self.re),
+            fl1: LineupUtilities::get_id_from_player(&self.fl1),
+            fl2: LineupUtilities::get_id_from_player(&self.fl2),
+            qb: Some(self.qb.get_id()),
+            b1: LineupUtilities::get_id_from_player(&self.b1),
+            b2: LineupUtilities::get_id_from_player(&self.b2),
+            b3: LineupUtilities::get_id_from_player(&self.b3),
+            lt: Some(self.lt.get_id()),
+            lg: Some(self.lg.get_id()),
+            c: Some(self.c.get_id()),
+            rg: Some(self.rg.get_id()),
+            rt: Some(self.rt.get_id()),
         };
     }
 
@@ -533,50 +533,50 @@ impl DefensiveLineup {
 
     pub fn find_player(&self, id: &String) -> Option<DefensiveBox> {
         if LineupUtilities::is_player_in_vec(&self.box_a, id) {
-            return Some(DefensiveBox::box_a);
+            return Some(DefensiveBox::BoxA);
         }
         if LineupUtilities::is_player_in_vec(&self.box_b, id) {
-            return Some(DefensiveBox::box_b);
+            return Some(DefensiveBox::BoxB);
         }
         if LineupUtilities::is_player_in_vec(&self.box_c, id) {
-            return Some(DefensiveBox::box_c);
+            return Some(DefensiveBox::BoxC);
         }
         if LineupUtilities::is_player_in_vec(&self.box_d, id) {
-            return Some(DefensiveBox::box_d);
+            return Some(DefensiveBox::BoxD);
         }
         if LineupUtilities::is_player_in_vec(&self.box_e, id) {
-            return Some(DefensiveBox::box_e);
+            return Some(DefensiveBox::BoxE);
         }
 
         if LineupUtilities::is_same_player(&self.box_f, id) {
-            return Some(DefensiveBox::box_f);
+            return Some(DefensiveBox::BoxF);
         }
         if LineupUtilities::is_same_player(&self.box_g, id) {
-            return Some(DefensiveBox::box_g);
+            return Some(DefensiveBox::BoxG);
         }
         if LineupUtilities::is_same_player(&self.box_h, id) {
-            return Some(DefensiveBox::box_h);
+            return Some(DefensiveBox::BoxH);
         }
         if LineupUtilities::is_same_player(&self.box_i, id) {
-            return Some(DefensiveBox::box_i);
+            return Some(DefensiveBox::BoxI);
         }
         if LineupUtilities::is_same_player(&self.box_j, id) {
-            return Some(DefensiveBox::box_j);
+            return Some(DefensiveBox::BoxJ);
         }
         if LineupUtilities::is_same_player(&self.box_k, id) {
-            return Some(DefensiveBox::box_k);
+            return Some(DefensiveBox::BoxK);
         }
         if LineupUtilities::is_player_in_vec(&self.box_l, id) {
-            return Some(DefensiveBox::box_l);
+            return Some(DefensiveBox::BoxL);
         }
         if LineupUtilities::is_same_player(&self.box_m, id) {
-            return Some(DefensiveBox::box_m);
+            return Some(DefensiveBox::BoxM);
         }
         if LineupUtilities::is_same_player(&self.box_n, id) {
-            return Some(DefensiveBox::box_n);
+            return Some(DefensiveBox::BoxN);
         }
         if LineupUtilities::is_same_player(&self.box_o, id) {
-            return Some(DefensiveBox::box_o);
+            return Some(DefensiveBox::BoxO);
         }
 
         return None;
@@ -585,21 +585,21 @@ impl DefensiveLineup {
     pub fn get_players_in_pos(&self, spot: &DefensiveBox) -> Vec<&dyn BasePlayer> {
         // Use match to compare the field name with each possible option
         match spot {
-            DefensiveBox::box_a => LineupUtilities::convert_vec_to_base_player(&self.box_a),
-            DefensiveBox::box_b => LineupUtilities::convert_vec_to_base_player(&self.box_b),
-            DefensiveBox::box_c => LineupUtilities::convert_vec_to_base_player(&self.box_c),
-            DefensiveBox::box_d => LineupUtilities::convert_vec_to_base_player(&self.box_d),
-            DefensiveBox::box_e => LineupUtilities::convert_vec_to_base_player(&self.box_e),
-            DefensiveBox::box_f => LineupUtilities::convert_option_to_vec(&self.box_f),
-            DefensiveBox::box_g => LineupUtilities::convert_option_to_vec(&self.box_g),
-            DefensiveBox::box_h => LineupUtilities::convert_option_to_vec(&self.box_h),
-            DefensiveBox::box_i => LineupUtilities::convert_option_to_vec(&self.box_i),
-            DefensiveBox::box_j => LineupUtilities::convert_option_to_vec(&self.box_j),
-            DefensiveBox::box_k => LineupUtilities::convert_option_to_vec(&self.box_k),
-            DefensiveBox::box_l => LineupUtilities::convert_vec_to_base_player(&self.box_l),
-            DefensiveBox::box_m => LineupUtilities::convert_option_to_vec(&self.box_m),
-            DefensiveBox::box_n => LineupUtilities::convert_option_to_vec(&self.box_n),
-            DefensiveBox::box_o => LineupUtilities::convert_option_to_vec(&self.box_o),
+            DefensiveBox::BoxA => LineupUtilities::convert_vec_to_base_player(&self.box_a),
+            DefensiveBox::BoxB => LineupUtilities::convert_vec_to_base_player(&self.box_b),
+            DefensiveBox::BoxC => LineupUtilities::convert_vec_to_base_player(&self.box_c),
+            DefensiveBox::BoxD => LineupUtilities::convert_vec_to_base_player(&self.box_d),
+            DefensiveBox::BoxE => LineupUtilities::convert_vec_to_base_player(&self.box_e),
+            DefensiveBox::BoxF => LineupUtilities::convert_option_to_vec(&self.box_f),
+            DefensiveBox::BoxG => LineupUtilities::convert_option_to_vec(&self.box_g),
+            DefensiveBox::BoxH => LineupUtilities::convert_option_to_vec(&self.box_h),
+            DefensiveBox::BoxI => LineupUtilities::convert_option_to_vec(&self.box_i),
+            DefensiveBox::BoxJ => LineupUtilities::convert_option_to_vec(&self.box_j),
+            DefensiveBox::BoxK => LineupUtilities::convert_option_to_vec(&self.box_k),
+            DefensiveBox::BoxL => LineupUtilities::convert_vec_to_base_player(&self.box_l),
+            DefensiveBox::BoxM => LineupUtilities::convert_option_to_vec(&self.box_m),
+            DefensiveBox::BoxN => LineupUtilities::convert_option_to_vec(&self.box_n),
+            DefensiveBox::BoxO => LineupUtilities::convert_option_to_vec(&self.box_o),
         }
     }
 }

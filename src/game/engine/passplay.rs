@@ -3,14 +3,14 @@ use std::cmp::min;
 use crate::game::{
     fac::{FacData, PassTarget},
     lineup::OffensiveBox,
-    players::{Player, PlayerUtils, QBStats},
-    stats::{NumStat, RangedStats, TripleStat, TwelveStats},
+    players::{BasePlayer, Player, PlayerUtils, Position, QBStats},
+    stats::{NumStat, RangedStats},
     GameState,
 };
 
 use super::{
-    CardStreamer, OffensivePlayInfo, PassMetaData, PassResult, PlayLogicState, PlayResult,
-    PlaySetup, TIMES,
+    CardStreamer, OffensivePlayInfo, PassMetaData, PassResult, PlayResult, PlaySetup, ResultType,
+    INTERCEPTION_RETURN_TABLE, INTERCEPTION_TABLE, PASS_DEFENDERS, TIMES,
 };
 
 // use macro_rules! <name of macro> {<Body>}
@@ -101,6 +101,10 @@ impl<'a> PassContext<'a> {
             PassTarget::PassRush => return self.handle_pass_rush(),
             PassTarget::Orig => {
                 self.data.target = self.play.offense_call.target;
+                self.data.details.push(format!(
+                    "The pass is thrown towards the {:?}",
+                    self.data.target
+                ));
             }
             PassTarget::Actual(target) => {
                 self.data.target = *target;
@@ -139,7 +143,7 @@ impl<'a> PassContext<'a> {
         match res {
             PassResult::Complete => self.complete_pass(),
             PassResult::Incomplete => self.incomplete_pass(),
-            PassResult::Interception => self.interception(),
+            PassResult::Interception => self.qb_interception(),
         }
     }
 
@@ -168,10 +172,11 @@ impl<'a> PassContext<'a> {
             .push("The pass falls incomplete".to_string());
 
         return PlayResult {
+            result_type: ResultType::Regular,
             result: 0,
             time: TIMES.pass_play_incomplete,
             details: self.data.details.clone(),
-            mechanic: vec![],
+            mechanic: self.data.mechanic.clone(),
             extra: None,
             cards: self.cards.get_results(),
         };
@@ -193,8 +198,9 @@ impl<'a> PassContext<'a> {
             .push(format!("Pass complete for {} yards", yards));
 
         return PlayResult {
+            result_type: ResultType::Regular,
             result: yards,
-            time: 10,
+            time: TIMES.pass_play_complete,
             details: self.data.details.clone(),
             mechanic: self.data.mechanic.clone(),
             extra: None,
@@ -202,13 +208,45 @@ impl<'a> PassContext<'a> {
         };
     }
 
-    fn interception(&mut self) -> PlayResult {
-        self.data.details.push("It's intercepted".to_string());
-        self.incomplete_pass()
+    fn qb_interception(&mut self) -> PlayResult {
+        let def_box = INTERCEPTION_TABLE
+            .get_stat(self.get_run_num() as usize)
+            .get_val(self.play.offense_metadata.code.to_string())
+            .unwrap();
+
+        let int_point = self.get_interception_point();
+        self.data.details.push(format!(
+            "The QB throws it towards the defense {:?}, {} yards downfield",
+            def_box, int_point
+        ));
+
+        let players = self.play.defense.get_players_in_pos(def_box);
+        if players.is_empty() {
+            self.data
+                .details
+                .push("But there is no one there".to_string());
+            return self.incomplete_pass();
+        }
+
+        let ret_yards = self.get_return_yardage(players[0]);
+
+        return PlayResult {
+            result_type: ResultType::TurnOver,
+            result: int_point - ret_yards,
+            time: TIMES.pass_play_complete,
+            details: self.data.details.clone(),
+            mechanic: self.data.mechanic.clone(),
+            extra: None,
+            cards: self.cards.get_results(),
+        };
     }
 
     fn calculate_pass_shift(&mut self) -> i32 {
-        0
+        let def_impact = self.get_def_impact();
+
+        let player_impact = self.get_pass_defender_impact();
+
+        def_impact + player_impact
     }
 
     fn get_pass_num(&mut self) -> i32 {
@@ -235,6 +273,29 @@ impl<'a> PassContext<'a> {
         .unwrap()
     }
 
+    fn get_interception_point(&mut self) -> i32 {
+        let rn = self.get_run_num();
+        match self.play.offense_call.play_type {
+            super::OffensivePlayType::QK => rn,
+            super::OffensivePlayType::SH => rn * 2,
+            super::OffensivePlayType::LG => rn * 4,
+            super::OffensivePlayType::SC => rn - 6,
+            _ => 0,
+        }
+    }
+
+    fn get_return_yardage(&mut self, player: &dyn BasePlayer) -> i32 {
+        let ret_yards = INTERCEPTION_RETURN_TABLE
+            .get_stat(self.get_run_num() as usize)
+            .get_val(player.get_pos().to_string())
+            .unwrap_or(&0);
+        self.data
+            .details
+            .push(format!("It's returned for {} yard", ret_yards));
+
+        return *ret_yards;
+    }
+
     fn get_pass_gain(&mut self) -> Option<NumStat> {
         let pass_gain =
             PlayerUtils::get_pass_gain(self.play.offense.get_player_in_pos(&self.data.target))
@@ -252,6 +313,53 @@ impl<'a> PassContext<'a> {
             Some(n) => Some(*n),
             None => None,
         }
+    }
+
+    fn get_def_impact(&mut self) -> i32 {
+        let m = match self.play.defense_call.defense_type {
+            super::DefensivePlay::RunDefense => match self.play.offense_call.play_type {
+                super::OffensivePlayType::QK => 0,
+                super::OffensivePlayType::SH => 5,
+                super::OffensivePlayType::LG => 7,
+                _ => 0,
+            },
+            super::DefensivePlay::PassDefense => match self.play.offense_call.play_type {
+                super::OffensivePlayType::QK => -10,
+                super::OffensivePlayType::SH => -5,
+                super::OffensivePlayType::LG => 0,
+                _ => 0,
+            },
+            super::DefensivePlay::PreventDefense => match self.play.offense_call.play_type {
+                super::OffensivePlayType::QK => 0,
+                super::OffensivePlayType::SH => -5,
+                super::OffensivePlayType::LG => -7,
+                _ => 0,
+            },
+            super::DefensivePlay::Blitz => 0,
+        };
+        mechanic!(self, "Defensive Impact: {}", m);
+
+        m
+    }
+
+    fn get_pass_defender_impact(&mut self) -> i32 {
+        let def_box = PASS_DEFENDERS.get(&self.data.target).unwrap();
+        self.data
+            .details
+            .push(format!("Pass defended by {:?}", def_box));
+        let players = self.play.defense.get_players_in_pos(def_box);
+        if players.is_empty() {
+            self.data
+                .details
+                .push("But there is no one there".to_string());
+            mechanic!(self, "No player impact: {}", 5);
+            return 5;
+        }
+        let player_imp = players
+            .iter()
+            .fold(0, |acc, p| acc + PlayerUtils::get_pass_defense(*p));
+        mechanic!(self, "Total player impact: {}", player_imp);
+        player_imp
     }
 
     fn get_fac(&mut self) -> FacData {

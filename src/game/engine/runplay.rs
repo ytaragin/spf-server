@@ -11,7 +11,7 @@ use option_ext::OptionExt;
 
 use super::{
     CardStreamer, DefensivePlay, OffenseCall, OffensivePlayInfo, OffensivePlayType, PlayLogicState,
-    PlayResult, PlaySetup, RunMetaData,
+    PlayResult, PlaySetup, ResultType, RunMetaData,
 };
 
 #[derive(Clone)]
@@ -204,6 +204,7 @@ fn calculate_run_yardage_modifier(
 
 fn handle_bad_play(ctxt: &RunContext) -> PlayResult {
     return PlayResult {
+        result_type: ResultType::Regular,
         result: 0,
         time: 10,
         details: ctxt.data.details.clone(),
@@ -227,6 +228,7 @@ fn finalize_yardage(ctxt: &mut RunContext) -> PlayResult {
 
     data.details.push(format!("Gain of {} yards", data.yardage));
     return PlayResult {
+        result_type: ResultType::Regular,
         result,
         time,
         details: data.details.clone(),

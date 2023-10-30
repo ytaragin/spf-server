@@ -1,6 +1,6 @@
 use serde_derive::Serialize;
 use std::cmp::min;
-use std::fmt::Debug;
+use std::fmt::{self, Debug};
 use std::hash::Hash;
 use std::{collections::HashMap, str::FromStr};
 
@@ -82,6 +82,52 @@ impl TripleStat {
     }
 }
 
+#[derive(Debug, Clone, Serialize)]
+pub struct LabeledStat<T> {
+    stats: HashMap<String, T>,
+}
+
+impl<T: FromStr + Copy> LabeledStat<T>
+where
+    <T as FromStr>::Err: Debug,
+{
+    pub fn create_from_str(labels: String, val: &str) -> Self {
+        let labels: Vec<&str> = labels.split('/').collect();
+        let split_stats: Vec<T> = val.split('/').map(|s| T::from_str(s).unwrap()).collect();
+
+        let mut stats: HashMap<String, T> = HashMap::new();
+
+        for i in 0..split_stats.len() {
+            // if i < split_stats.len() {
+            stats.insert(labels[i].to_string(), split_stats[i]);
+            // }
+        }
+
+        return Self { stats };
+    }
+
+    pub fn curry_create(labels: &str) -> impl Fn(&str) -> Self + '_ {
+        move |vals| LabeledStat::create_from_str(labels.to_string(), vals)
+    }
+
+    pub fn get_val(&self, cat: String) -> Option<&T> {
+        self.stats.get(&cat)
+    }
+}
+
+impl<T: fmt::Display> fmt::Display for LabeledStat<T> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let mut stats = self.stats.iter().collect::<Vec<_>>();
+        stats.sort_by_key(|&(k, _)| k);
+        let stats = stats
+            .into_iter()
+            .map(|(k, v)| format!("{}: {}", k, v))
+            .collect::<Vec<_>>()
+            .join(", ");
+        write!(f, "LabeledStat({})", stats)
+    }
+}
+
 #[derive(Debug, Copy, Clone, Serialize)]
 pub enum NumStat {
     Sg,
@@ -107,7 +153,7 @@ pub struct TwelveStats<T> {
     pub stats: Vec<T>,
 }
 
-impl<T> TwelveStats<T> {
+impl<T: Debug> TwelveStats<T> {
     pub fn get_stat(&self, num: usize) -> &T {
         return &self.stats[num - 1];
     }
@@ -123,6 +169,12 @@ impl<T> TwelveStats<T> {
             .collect();
 
         return Self { stats };
+    }
+
+    pub fn print_out(&self) {
+        for (i, e) in self.stats.iter().enumerate() {
+            println!("The index is {} and the element is {:?}", i, e);
+        }
     }
 }
 

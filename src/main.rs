@@ -23,6 +23,7 @@ use crate::{
 // }
 
 fn main() {
+
     //     load_rbs("SPFB1983/83RB.txt");
     //     load_qbs("SPFB1983/83QB.txt");
     //     load_wrs("SPFB1983/83WR.txt");
@@ -52,5 +53,5 @@ fn main() {
     //         v.print_team()
     //     }
 
-    runserver(g);
+    let _ = runserver(g);
 }

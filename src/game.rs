@@ -8,7 +8,7 @@ pub mod stats;
 use serde::{Deserialize, Serialize};
 
 use self::{
-    engine::{DefenseCall, DefensivePlay, Down, OffenseCall, Play, PlayResult, Validatable, Yard},
+    engine::{DefenseCall, Down, OffenseCall, Play, PlayResult, Validatable, Yard},
     fac::FacManager,
     lineup::{DefensiveLineup, IDBasedDefensiveLineup, IDBasedOffensiveLineup, OffensiveLineup},
     players::Roster,
@@ -51,6 +51,8 @@ pub struct PlayAndState {
     pub result: PlayResult,
     pub new_state: GameState,
 }
+
+
 
 // // #[derive(Debug, Clone)]
 // pub struct Game<'a> {
