@@ -363,6 +363,22 @@ impl PlayerUtils {
             _ => 0,
         }
     }
+
+    pub fn get_pass_block(player: &dyn BasePlayer) -> i32 {
+        match player.get_full_player() {
+            Player::OL(ol) => ol.pass_block,
+            _ => 0,
+        }
+    }
+
+    pub fn get_pass_rush(player: &dyn BasePlayer) -> i32 {
+        match player.get_full_player() {
+            Player::DL(dl) => dl.pass_rush,
+            Player::LB(lb) => lb.pass_rush,
+            Player::DB(db) => db.pass_rush,
+            _ => 0,
+        }
+    }
 }
 
 // struct P {
