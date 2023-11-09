@@ -68,6 +68,8 @@ async fn set_offense_call(
     appstate: web::Data<AppState>,
     data: web::Json<OffenseCall>,
 ) -> impl Responder {
+    println!("data {:?}", data);
+
     let call = data.into_inner();
     println!("Offense Play:  {:?}", call); // Do something with the plays
     let mut game = appstate.game.lock().unwrap();

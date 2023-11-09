@@ -15,7 +15,7 @@ use crate::game::{
 };
 
 use super::{
-    fac::{FacCard, FacData, FacManager, PassTarget, RunResult},
+    fac::{FacCard, FacData, FacManager, PassTarget, RunDirection},
     lineup::{DefensiveLineup, OffensiveBox, OffensiveLineup},
     players::QBStats,
     stats::{LabeledStat, RangedStats, TwelveStats},
@@ -48,7 +48,7 @@ pub enum OffensivePlayCategory {
     Pass(PassMetaData),
 }
 
-type RunGetCardVal = for<'a> fn(card: &'a FacData) -> &'a RunResult;
+type RunGetCardVal = for<'a> fn(card: &'a FacData) -> &'a RunDirection;
 type PassGetPassVal = for<'a> fn(card: &'a FacData) -> &'a PassTarget;
 type QBGetPassRange = for<'a> fn(qb: &'a QBStats) -> &'a RangedStats<PassResult>;
 

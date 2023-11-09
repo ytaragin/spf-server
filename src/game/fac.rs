@@ -40,32 +40,32 @@ impl<'de> Deserialize<'de> for RunNum {
 }
 
 #[derive(Debug, Clone)]
-pub struct RunResultActual {
+pub struct RunDirectionActual {
     pub offensive_boxes: Vec<OffensiveBox>,
     pub defensive_boxes: Vec<DefensiveBox>,
 }
 
 #[derive(Debug, Clone)]
-pub enum RunResult {
-    Actual(RunResultActual),
+pub enum RunDirection {
+    Actual(RunDirectionActual),
     Break,
 }
 
-impl From<RunResultActual> for RunResult {
-    fn from(v: RunResultActual) -> Self {
+impl From<RunDirectionActual> for RunDirection {
+    fn from(v: RunDirectionActual) -> Self {
         Self::Actual(v)
     }
 }
 
-impl<'de> Deserialize<'de> for RunResult {
-    fn deserialize<D>(deserializer: D) -> Result<RunResult, D::Error>
+impl<'de> Deserialize<'de> for RunDirection {
+    fn deserialize<D>(deserializer: D) -> Result<RunDirection, D::Error>
     where
         D: Deserializer<'de>,
     {
         let instr = String::deserialize(deserializer)?;
 
         if instr.eq("break") {
-            return Ok(RunResult::Break);
+            return Ok(RunDirection::Break);
         }
         let re = Regex::new(r"[A-Z]{1,2}").unwrap();
 
@@ -85,7 +85,7 @@ impl<'de> Deserialize<'de> for RunResult {
             };
         }
 
-        Ok(RunResult::from(RunResultActual {
+        Ok(RunDirection::from(RunDirectionActual {
             offensive_boxes: off_list,
             defensive_boxes: def_list,
         }))
@@ -125,10 +125,10 @@ pub struct FacData {
     pub id: i32,
     pub run_num: RunNum,
     pub pass_num: i32,
-    pub sl: RunResult,
-    pub il: RunResult,
-    pub ir: RunResult,
-    pub sr: RunResult,
+    pub sl: RunDirection,
+    pub il: RunDirection,
+    pub ir: RunDirection,
+    pub sr: RunDirection,
     pub er: String,
     pub sc: String,
     pub sh: PassTarget,

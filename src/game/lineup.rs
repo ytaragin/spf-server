@@ -30,7 +30,9 @@ impl FromStr for OffensiveBox {
     type Err = String; // you can use any type that implements std::error::Error
 
     fn from_str(input: &str) -> Result<OffensiveBox, String> {
-        match input {
+        let val = input.to_lowercase();
+        // println!("Validating {}", val);
+        match val.as_str() {
             "qb" => Ok(OffensiveBox::QB),
             "bk" | "bk1" | "b1" => Ok(OffensiveBox::B1),
             "bk2" | "b2" => Ok(OffensiveBox::B2),
