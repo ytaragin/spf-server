@@ -8,7 +8,7 @@ pub mod stats;
 use serde::{Deserialize, Serialize};
 
 use self::{
-    engine::{DefenseCall, Down, OffenseCall, Play, PlayResult, Validatable, Yard},
+    engine::{DefenseCall, Down, OffenseCall, Play, PlayResult, Validatable, Yard, GAMECONSTANTS},
     fac::FacManager,
     lineup::{DefensiveLineup, IDBasedDefensiveLineup, IDBasedOffensiveLineup, OffensiveLineup},
     players::Roster,
@@ -19,14 +19,35 @@ pub enum GameTeams {
     Home,
     Away,
 }
+impl GameTeams {
+    fn other_team(&self) -> GameTeams {
+        match self {
+            GameTeams::Home => GameTeams::Away,
+            GameTeams::Away => GameTeams::Home,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+pub enum GameLastStatus {
+    Touchdown,
+    Safety,
+    FieldGoal,
+    PossesionChange,
+    Ongoing,
+    Start,
+    End,
+}
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub struct GameState {
+    pub last_status: GameLastStatus,
     pub quarter: i32,
     pub time_remaining: i32,
     pub possesion: GameTeams,
     pub down: Down,
     pub yardline: Yard,
+    pub first_down_target: Yard,
     pub home_score: i32,
     pub away_score: i32,
 }
@@ -34,11 +55,13 @@ pub struct GameState {
 impl GameState {
     pub fn start_state() -> Self {
         return Self {
+            last_status: GameLastStatus::Start,
             quarter: 1,
-            time_remaining: 15 * 60,
+            time_remaining: GAMECONSTANTS.sec_per_quarter,
             possesion: GameTeams::Home,
             down: Down::First,
             yardline: 50,
+            first_down_target: 60,
             home_score: 0,
             away_score: 0,
         };
@@ -51,8 +74,6 @@ pub struct PlayAndState {
     pub result: PlayResult,
     pub new_state: GameState,
 }
-
-
 
 // // #[derive(Debug, Clone)]
 // pub struct Game<'a> {

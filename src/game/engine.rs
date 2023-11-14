@@ -1,4 +1,5 @@
 pub mod passplay;
+mod resulthandler;
 pub mod runplay;
 
 use std::{collections::HashMap, hash::Hash};
@@ -14,6 +15,8 @@ use crate::game::{
     lineup::DefensiveBox,
 };
 
+use self::resulthandler::calculate_play_result;
+
 use super::{
     fac::{FacCard, FacData, FacManager, PassTarget, RunDirection},
     lineup::{DefensiveLineup, OffensiveBox, OffensiveLineup},
@@ -22,13 +25,25 @@ use super::{
     GameState, PlayAndState,
 };
 
-#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize, PartialEq)]
 pub enum Down {
     First,
     Second,
     Third,
     Fourth,
 }
+
+impl Down {
+    fn next_down(&self) -> Down {
+        match self {
+            Down::First => Down::Second,
+            Down::Second => Down::Third,
+            Down::Third => Down::Fourth,
+            Down::Fourth => Down::Fourth,
+        }
+    }
+}
+
 pub trait Validatable {
     fn validate(&self, play: &Play) -> Result<(), String>;
 }
@@ -198,12 +213,27 @@ struct TimeTable {
     pass_play_incomplete: i32,
 }
 
+pub struct GameConstants {
+    pub quarters: i32,
+    pub sec_per_quarter: i32,
+    pub points_for_td: i32,
+    pub points_for_safety: i32,
+
+}
+
 lazy_static! {
     static ref TIMES: TimeTable = TimeTable {
         run_play: 40,
         run_play_ob: 10,
         pass_play_complete: 40,
         pass_play_incomplete: 10,
+    };
+
+    pub static ref GAMECONSTANTS: GameConstants = GameConstants {
+        quarters: 4,
+        sec_per_quarter: 15*60,
+        points_for_td: 6,
+        points_for_safety: 2,
     };
 
 
@@ -578,7 +608,7 @@ impl Play {
             Play::handle_z(&result);
         }
 
-        let new_state = Play::create_new_state(game_state, &result);
+        let new_state = calculate_play_result(game_state, &result);
 
         return Ok(PlayAndState {
             play: self.clone(),
@@ -589,14 +619,6 @@ impl Play {
 
     fn handle_z(result: &PlayResult) -> PlayResult {
         return result.clone();
-    }
-
-    fn create_new_state(old_state: &GameState, result: &PlayResult) -> GameState {
-        GameState {
-            down: Down::Second,
-            yardline: 19,
-            ..old_state.clone()
-        }
     }
 }
 

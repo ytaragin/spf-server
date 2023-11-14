@@ -102,7 +102,9 @@ async fn run_play(appstate: web::Data<AppState>) -> impl Responder {
         Ok(res) => {
             let json_data =
                 serde_json::to_string(&res.result).expect("Error while serializing State to JSON.");
-            HttpResponse::Ok().body(json_data)
+            HttpResponse::Ok()
+                .content_type("application/json")
+                .body(json_data)
         }
         Err(msg) => HttpResponse::BadRequest().body(msg),
     }
