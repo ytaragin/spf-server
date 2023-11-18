@@ -1,6 +1,6 @@
 use std::cmp::{max, min};
 
-use crate::game::{GameLastStatus, GameState, GameTeams};
+use crate::game::{GamePlayStatus, GameState, GameTeams};
 
 use super::{Down, Play, PlayResult, ResultType, GAMECONSTANTS};
 
@@ -42,6 +42,7 @@ fn handle_regular_play(interim_state: &GameState, result: &PlayResult) -> GameSt
 
     GameState {
         down: interim_state.down.next_down(),
+        last_status: GamePlayStatus::Ongoing,
         ..interim_state.clone()
     }
 }
@@ -54,7 +55,7 @@ fn handle_safety(interim_state: &GameState) -> GameState {
 
     let (home_score, away_score) = add_points(&score_state, GAMECONSTANTS.points_for_safety);
     GameState {
-        last_status: GameLastStatus::Safety,
+        last_status: GamePlayStatus::Safety,
         home_score,
         away_score,
         ..interim_state.clone()
@@ -78,7 +79,7 @@ fn handle_touchdown(interim_state: &GameState) -> GameState {
     let (home_score, away_score) = add_points(interim_state, GAMECONSTANTS.points_for_td);
 
     GameState {
-        last_status: GameLastStatus::Touchdown,
+        last_status: GamePlayStatus::Touchdown,
         home_score,
         away_score,
         ..interim_state.clone()
@@ -88,6 +89,7 @@ fn handle_touchdown(interim_state: &GameState) -> GameState {
 fn first_down(interim_state: &GameState) -> GameState {
     GameState {
         down: Down::First,
+        last_status: GamePlayStatus::Ongoing,
         first_down_target: min(interim_state.yardline + 10, 100),
         ..interim_state.clone()
     }
@@ -96,7 +98,7 @@ fn first_down(interim_state: &GameState) -> GameState {
 fn possession_change(interim_state: &GameState) -> GameState {
     GameState {
         down: Down::First,
-        last_status: GameLastStatus::PossesionChange,
+        last_status: GamePlayStatus::PossesionChange,
         first_down_target: min(interim_state.yardline + 10, 100),
         possesion: interim_state.possesion.other_team(),
         yardline: 100 - interim_state.yardline,

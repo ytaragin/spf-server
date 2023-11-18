@@ -1,6 +1,7 @@
 use std::cmp::{max, min};
 
 use crate::game::{
+    engine::{GAMECONSTANTS, TIMES},
     fac::{FacData, RunDirection, RunDirectionActual, RunNum},
     lineup::OffensiveBox,
     players::{BasePlayer, Player, PlayerUtils, RBStats},
@@ -231,11 +232,11 @@ impl<'a> RunContext<'a> {
     fn finalize_yardage(&mut self) -> PlayResult {
         let result = max(self.data.yardage, self.data.md.max_loss);
 
-        let mut time = 40;
+        let mut time = TIMES.run_play;
 
         if self.data.ob && self.data.md.can_go_ob {
             detail!(self, "Play ends out of bounds");
-            time = 10;
+            time = TIMES.run_play_ob;
         }
 
         detail!(self, format!("Gain of {} yards", self.data.yardage));

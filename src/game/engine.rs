@@ -57,6 +57,17 @@ pub struct IDOffensivePlay {
     pub target_id: String,
 }
 
+
+#[derive(Debug, Clone, Serialize, Deserialize, EnumString, PartialEq)]
+pub enum PlayType {
+    Kickoff,
+    Punt,
+    ExtraPoint,
+    FieldGoal,
+    OffensePlay,
+}
+
+
 #[derive(Debug, Clone, EnumAsInner)]
 pub enum OffensivePlayCategory {
     Run(RunMetaData),

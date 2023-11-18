@@ -1,11 +1,11 @@
-use std::sync::Mutex;
+use std::{str::FromStr, sync::Mutex};
 
 use actix_cors::Cors;
 use actix_web::{http::header, web, App, HttpResponse, HttpServer, Responder};
 use serde_json::json;
 
 use crate::game::{
-    engine::{DefenseCall, OffenseCall},
+    engine::{DefenseCall, OffenseCall, PlayType},
     lineup::{IDBasedDefensiveLineup, IDBasedOffensiveLineup},
     players::Serializable_Roster,
     Game,
@@ -147,6 +147,51 @@ async fn get_game_state(appstate: web::Data<AppState>) -> impl Responder {
         .body(json_data)
 }
 
+async fn get_next_move_types(appstate: web::Data<AppState>) -> impl Responder {
+    println!("Get Next Moves Called");
+
+    let game = appstate.game.lock().unwrap();
+
+    let next_moves = game.allowed_play_types();
+
+    // Convert the OffensiveLineup struct to JSON
+    let json_data = serde_json::to_string(&next_moves)
+        .expect("Error while serializing Alllowed Moves to JSON.");
+
+    // Set the Content-Type header to application/json
+    HttpResponse::Ok()
+        .content_type("application/json")
+        .body(json_data)
+}
+
+async fn set_next_move_type(appstate: web::Data<AppState>, data: String) -> impl Responder {
+    println!("Set Next Move Called");
+
+    println!("Move Type is {}", data);
+    let v = PlayType::from_str(&data);
+    if v.is_err() {
+        return HttpResponse::BadRequest().body("Unknown Type");
+    }
+
+    let mut game = appstate.game.lock().unwrap();
+    let res = game.set_next_play_type(v.unwrap());
+    match res {
+        Ok(_) => HttpResponse::Ok()
+            .content_type("application/json")
+            .body("Set"),
+        Err(msg) => HttpResponse::BadRequest().body(msg),
+    }
+    // let game = appstate.game.lock().unwrap();
+
+    // let next_moves = game.allowed_play_types();
+
+    // // Convert the OffensiveLineup struct to JSON
+    // let json_data = serde_json::to_string(&next_moves)
+    //     .expect("Error while serializing Alllowed Moves to JSON.");
+
+    // Set the Content-Type header to application/json
+}
+
 async fn get_player(path: web::Path<String>, appstate: web::Data<AppState>) -> impl Responder {
     println!("Get Player Called: {:?}", path);
     let path_param = path.into_inner();
@@ -205,15 +250,17 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
                                          // .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
                                          // .max_age(3600), // Optional: set max age for preflight requests
             )
-            .route("/setoffenselineup", web::post().to(set_offensive_lineup))
-            .route("/getoffenselineup", web::get().to(get_offensive_lineup))
-            .route("/getdefenselineup", web::get().to(get_defensive_lineup))
-            .route("/setdefenselineup", web::post().to(set_defensive_lineup))
+            .route("/offense/lineup", web::post().to(set_offensive_lineup))
+            .route("/offense/lineup", web::get().to(get_offensive_lineup))
             .route("/offense/call", web::post().to(set_offense_call))
+            .route("/defense/lineup", web::get().to(get_defensive_lineup))
+            .route("/defense/lineup", web::post().to(set_defensive_lineup))
             .route("/defense/call", web::post().to(set_defense_call))
             .route("/game/play", web::post().to(run_play))
             // .route("/setdefensiveplay", web::post().to(set_defensive_play))
-            .route("/getstate", web::get().to(get_game_state))
+            .route("/game/state", web::get().to(get_game_state))
+            .route("/game/nexttype", web::get().to(get_next_move_types))
+            .route("/game/nexttype", web::post().to(set_next_move_type))
             .route("/getplayer/{id}", web::get().to(get_player))
             .route("/players/{team}", web::get().to(get_team_players))
     })

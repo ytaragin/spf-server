@@ -8,7 +8,10 @@ pub mod stats;
 use serde::{Deserialize, Serialize};
 
 use self::{
-    engine::{DefenseCall, Down, OffenseCall, Play, PlayResult, Validatable, Yard, GAMECONSTANTS},
+    engine::{
+        DefenseCall, Down, OffenseCall, Play, PlayResult, PlayType, Validatable, Yard,
+        GAMECONSTANTS,
+    },
     fac::FacManager,
     lineup::{DefensiveLineup, IDBasedDefensiveLineup, IDBasedOffensiveLineup, OffensiveLineup},
     players::Roster,
@@ -29,7 +32,7 @@ impl GameTeams {
 }
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
-pub enum GameLastStatus {
+pub enum GamePlayStatus {
     Touchdown,
     Safety,
     FieldGoal,
@@ -40,8 +43,15 @@ pub enum GameLastStatus {
 }
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+pub enum GameStatus {
+    Kickoff,
+    StandardPlay,
+    ExtraPoint,
+}
+
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub struct GameState {
-    pub last_status: GameLastStatus,
+    pub last_status: GamePlayStatus,
     pub quarter: i32,
     pub time_remaining: i32,
     pub possesion: GameTeams,
@@ -55,7 +65,7 @@ pub struct GameState {
 impl GameState {
     pub fn start_state() -> Self {
         return Self {
-            last_status: GameLastStatus::Start,
+            last_status: GamePlayStatus::Start,
             quarter: 1,
             time_remaining: GAMECONSTANTS.sec_per_quarter,
             possesion: GameTeams::Home,
@@ -65,6 +75,19 @@ impl GameState {
             home_score: 0,
             away_score: 0,
         };
+    }
+
+    pub fn get_next_move_types(&self) -> Vec<PlayType> {
+        match self.last_status {
+            GamePlayStatus::Touchdown => vec![PlayType::ExtraPoint],
+            GamePlayStatus::Safety => vec![PlayType::Punt],
+            GamePlayStatus::FieldGoal => vec![PlayType::Kickoff],
+            GamePlayStatus::PossesionChange | GamePlayStatus::Ongoing => {
+                vec![PlayType::OffensePlay, PlayType::Punt, PlayType::FieldGoal]
+            }
+            GamePlayStatus::Start => vec![PlayType::Kickoff],
+            GamePlayStatus::End => vec![],
+        }
     }
 }
 
@@ -93,6 +116,7 @@ pub struct Game {
     pub away: Roster,
     pub state: GameState,
     pub past_plays: Vec<PlayAndState>,
+    pub next_play_type: PlayType,
     pub current_play: Play,
     pub fac_deck: FacManager,
 }
@@ -105,6 +129,7 @@ impl Game {
             state: GameState::start_state(),
             past_plays: vec![],
             current_play: Play::new(),
+            next_play_type: PlayType::Kickoff,
             fac_deck: FacManager::new("cards/fac_cards.csv"),
         };
     }
@@ -224,5 +249,18 @@ impl Game {
 
     fn gen_new_state(curr_state: &GameState, play: &Play, result: &PlayResult) -> GameState {
         return GameState::start_state();
+    }
+
+    pub fn allowed_play_types(&self) -> Vec<PlayType> {
+        return self.state.get_next_move_types();
+    }
+
+    pub fn set_next_play_type(&mut self, playtype: PlayType) -> Result<(), String> {
+        let allowed = self.allowed_play_types();
+        if !allowed.contains(&playtype) {
+            return Err(format!("Valid plays are {:?}", allowed));
+        }
+        self.next_play_type = playtype;
+        Ok(())
     }
 }
