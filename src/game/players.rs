@@ -4,12 +4,15 @@ use enum_as_inner::EnumAsInner;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use spf_macros::{ImplBasePlayer, IsBlocker, IsReceiver};
-use std::collections::HashMap;
+use std::{collections::HashMap, str::FromStr};
 use strum_macros::Display;
 
 use super::{
     engine::{PassResult, PassRushResult},
-    loader::{load_dbs, load_dls, load_lbs, load_ols, load_qbs, load_rbs, load_tes, load_wrs},
+    loader::{
+        load_dbs, load_dls, load_krs, load_ks, load_lbs, load_ols, load_qbs, load_rbs, load_tes,
+        load_wrs,
+    },
     stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats},
 };
 
@@ -32,12 +35,14 @@ impl TeamID {
         let mut fixes: HashMap<&str, &str> = HashMap::new();
         fixes.insert("N.Y.Giants", "N.Y. Giants");
         fixes.insert("NY Giants", "N.Y. Giants");
+        fixes.insert("New York G", "N.Y. Giants");
         fixes.insert("SanDiego", "San Diego");
         fixes.insert("NewOrleans", "New Orleans");
         fixes.insert("SanFran", "San Francisco");
         fixes.insert("St.Louis", "St. Louis");
         fixes.insert("NewEngland", "New England");
         fixes.insert("N.Y.Jets", "N.Y. Jets");
+        fixes.insert("New York J", "N.Y. Jets");
         fixes.insert("NY Jets", "N.Y. Jets");
         fixes.insert("KansasCity", "Kansas City");
         fixes.insert("L.A.Raiders", "L.A. Raiders");
@@ -189,6 +194,28 @@ pub struct KStats {
     pub id: String,
 
     pub position: Position,
+
+    pub field_goals: RangedStats<Range>,
+    pub over_fifty: Range,
+    pub extra_points: Range,
+    pub longest_fg: i32,
+}
+
+
+#[derive(Debug, Clone, Serialize)]
+pub enum PuntResultDetails {
+    FairCatch,
+    Returner(i32)
+}
+// pub enum P
+#[derive(Debug, Clone, Serialize)]
+pub enum PuntResult {
+
+    Special,
+    Actual {   
+        yards: i32,
+        target: PuntResultDetails, 
+    }
 }
 
 #[derive(Debug, Clone, Serialize, ImplBasePlayer)]
@@ -198,6 +225,56 @@ pub struct PStats {
     pub id: String,
 
     pub position: Position,
+
+    pub punt_results: TwelveStats<PuntResult>,
+}
+
+#[derive(Debug, Clone, Serialize, Copy)]
+pub struct ReturnStat {
+    pub yards: i32,
+    pub fumble: bool,
+    pub asterisk: bool,
+}
+impl ReturnStat {
+    pub fn build_from_str(instr: &str) -> Self {
+        let re = regex::Regex::new(r"(\d{1,2})([*f]?)").ok().unwrap();
+
+        // println!("Attempting |{}|", instr);
+
+        let caps = match re.captures(instr) {
+            Some(c) => c,
+            None => {
+                return Self {
+                    yards: 0,
+                    fumble: false,
+                    asterisk: false,
+                }
+            }
+        };
+
+        let yards = caps
+            .get(1)
+            .map_or("0", |m| m.as_str())
+            .parse::<i32>()
+            .unwrap_or(0); // "42"
+        let suffix = caps.get(2).map_or("", |m| m.as_str()); // "f"
+
+        return Self {
+            yards,
+            fumble: suffix == "f",
+            asterisk: suffix == "*",
+        };
+    }
+}
+
+#[derive(Debug, Clone, Serialize)]
+pub enum Returner {
+    SameAs(i32),
+    Actual {
+        name: String,
+        return_stats: TwelveStats<ReturnStat>,
+        asterisk_val: i32,
+    },
 }
 
 #[derive(Debug, Clone, Serialize, ImplBasePlayer)]
@@ -207,6 +284,8 @@ pub struct KRStats {
     pub id: String,
 
     pub position: Position,
+
+    pub returners: Vec<Returner>,
 }
 
 #[derive(Debug, Clone, Serialize, ImplBasePlayer)]
@@ -216,6 +295,7 @@ pub struct PRStats {
     pub id: String,
 
     pub position: Position,
+    pub returners: Vec<Returner>,
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -479,6 +559,8 @@ impl Roster {
         lb: Vec<LBStats>,
         dl: Vec<DLStats>,
         ol: Vec<OLStats>,
+        k: Vec<KStats>,
+        kr: Vec<KRStats>,
     ) -> Self {
         {
             let mut players = Vec::<Box<dyn BasePlayer>>::new();
@@ -490,6 +572,8 @@ impl Roster {
             players.extend(lb.into_iter().map(|s| Box::new(s) as Box<dyn BasePlayer>));
             players.extend(dl.into_iter().map(|s| Box::new(s) as Box<dyn BasePlayer>));
             players.extend(ol.into_iter().map(|s| Box::new(s) as Box<dyn BasePlayer>));
+            players.extend(k.into_iter().map(|s| Box::new(s) as Box<dyn BasePlayer>));
+            players.extend(kr.into_iter().map(|s| Box::new(s) as Box<dyn BasePlayer>));
 
             Self {
                 players,
@@ -538,6 +622,9 @@ impl Roster {
         self.print_pos(Position::DL);
         self.print_pos(Position::LB);
         self.print_pos(Position::DB);
+        println!("*** Special Teams ***");
+        self.print_pos(Position::K);
+        self.print_pos(Position::KR);
     }
 }
 
@@ -552,6 +639,8 @@ pub struct TeamList {
     all_lbs: HashMap<String, LBStats>,
     all_dls: HashMap<String, DLStats>,
     all_ols: HashMap<String, OLStats>,
+    all_ks: HashMap<String, KStats>,
+    all_krs: HashMap<String, KRStats>,
 }
 
 impl TeamList {
@@ -566,6 +655,8 @@ impl TeamList {
             "DL" => TeamList::get_player_from_map(id, &self.all_dls),
             "LB" => TeamList::get_player_from_map(id, &self.all_lbs),
             "DB" => TeamList::get_player_from_map(id, &self.all_dbs),
+            "K" => TeamList::get_player_from_map(id, &self.all_ks),
+            "KR" => TeamList::get_player_from_map(id, &self.all_krs),
             _ => None,
         };
 
@@ -627,6 +718,8 @@ impl TeamList {
         let (dls, all_dls) = TeamList::disperse_players(load_dls(format!("{}/83DL.txt", dir)));
         let (lbs, all_lbs) = TeamList::disperse_players(load_lbs(format!("{}/83LB.txt", dir)));
         let (dbs, all_dbs) = TeamList::disperse_players(load_dbs(format!("{}/83DB.txt", dir)));
+        let (ks, all_ks) = TeamList::disperse_players(load_ks(format!("{}/83K.txt", dir)));
+        let (krs, all_krs) = TeamList::disperse_players(load_krs(format!("{}/83KR.txt", dir)));
 
         // code to validate team_ids
         // for t in qbs.keys() {
@@ -640,6 +733,8 @@ impl TeamList {
 
         let mut teams: HashMap<TeamID, Roster> = HashMap::new();
         for t in qbs.keys() {
+            println!("Load Team {}", t.name);
+
             teams.insert(
                 t.clone(),
                 Roster::create_roster(
@@ -653,6 +748,8 @@ impl TeamList {
                     lbs.get(t).unwrap().to_vec(),
                     dls.get(t).unwrap().to_vec(),
                     ols.get(t).unwrap().to_vec(), // k: (),
+                    ks.get(t).unwrap().to_vec(),  // k: (),
+                    krs.get(t).unwrap().to_vec(), // k: (),
                                                   // p: (),
                                                   // kr: (),
                                                   // pr: (),
@@ -673,6 +770,8 @@ impl TeamList {
             all_dls,
             all_lbs,
             all_dbs,
+            all_ks,
+            all_krs,
         }
     }
 

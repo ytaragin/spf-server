@@ -6,7 +6,7 @@ use std::{collections::HashMap, str::FromStr};
 
 use super::engine::Shiftable;
 
-#[derive(Debug, Clone, Copy, Serialize)]
+#[derive(Debug, Clone, Copy, Serialize, Hash, PartialEq, Eq)]
 pub struct Range {
     pub start: i32,
     pub end: i32,
@@ -38,8 +38,8 @@ impl Range {
         Range { start, end }
     }
 
-    pub fn get_tag_and_range(instr: &str) -> (&str, Self) {
-        let vals: Vec<&str> = instr.split(':').map(|s| s.trim()).collect();
+    pub fn get_tag_and_range<'a>(instr: &'a str, splitter: &str) -> (&'a str, Self) {
+        let vals: Vec<&str> = instr.split(splitter).map(|s| s.trim()).collect();
         match vals.len() {
             0 => ("", Range::new()),
             1 => (vals[0], Range::new()),
@@ -49,6 +49,41 @@ impl Range {
 
     pub fn in_range(&self, num: i32) -> bool {
         return num >= self.start && num <= self.end;
+    }
+}
+
+impl FromStr for Range {
+    type Err = String;
+
+    fn from_str(instr: &str) -> Result<Self, Self::Err> {
+        let mut start = 49;
+        let mut end = 49;
+
+        let vals: Vec<&str> = instr.split('-').collect();
+        if vals.len() >= 1 {
+            if let Ok(num) = vals[0].parse::<i32>() {
+                start = num;
+                end = num;
+            }
+        }
+
+        if vals.len() >= 2 {
+            if let Ok(num) = vals[1].parse::<i32>() {
+                end = num;
+            }
+        }
+
+        Ok(Range { start, end })
+    }
+}
+
+impl Shiftable<Range> for Range {
+    fn get_first() -> Range {
+        todo!()
+    }
+
+    fn get_second() -> Range {
+        todo!()
     }
 }
 
@@ -187,11 +222,11 @@ pub struct RangedStats<T> {
 }
 
 impl<T: FromStr + Eq + Clone + PartialEq + Hash + Shiftable<T> + Debug> RangedStats<T> {
-    pub fn create_from_strs(vals: &[&str]) -> Self {
+    pub fn create_from_strs(vals: &[&str], splitter: &str) -> Self {
         let mut stats: HashMap<T, Range> = HashMap::new();
 
         for v in vals {
-            let p = Range::get_tag_and_range(v);
+            let p = Range::get_tag_and_range(v, splitter);
             if let Ok(k) = T::from_str(p.0) {
                 stats.insert(k, p.1);
             } else {

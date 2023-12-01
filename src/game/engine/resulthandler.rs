@@ -1,8 +1,8 @@
-use std::cmp::{max, min};
+use std::cmp::min;
 
 use crate::game::{GamePlayStatus, GameState, GameTeams};
 
-use super::{Down, Play, PlayResult, ResultType, GAMECONSTANTS};
+use super::{Down, PlayResult, ResultType, defs::GAMECONSTANTS};
 
 pub fn calculate_play_result(old_state: &GameState, result: &PlayResult) -> GameState {
     let new_line = old_state.yardline + result.result;

@@ -1,19 +1,16 @@
 use std::cmp::{max, min};
 
 use crate::game::{
-    engine::{GAMECONSTANTS, TIMES},
+    engine::defs::TIMES,
     fac::{FacData, RunDirection, RunDirectionActual, RunNum},
-    lineup::OffensiveBox,
     players::{BasePlayer, Player, PlayerUtils, RBStats},
     stats::{self, NumStat},
-    Game, GameState,
+    GameState,
 };
-use itertools::fold;
-use option_ext::OptionExt;
 
 use super::{
-    CardStreamer, DefensivePlay, OffenseCall, OffensivePlayInfo, OffensivePlayType, PlayLogicState,
-    PlayResult, PlaySetup, ResultType, RunMetaData,
+    CardStreamer, DefensivePlay, OffensivePlayInfo, OffensivePlayType, PlayResult, PlaySetup,
+    ResultType, RunMetaData, StandardOffenseCall,
 };
 
 // use macro_rules! <name of macro> {<Body>}
@@ -217,16 +214,7 @@ impl<'a> RunContext<'a> {
     }
 
     fn handle_bad_play(&mut self) -> PlayResult {
-        return PlayResult {
-            result_type: ResultType::Regular,
-            result: 0,
-            time: 10,
-            details: self.data.details.clone(),
-            mechanic: vec![],
-            extra: None,
-            cards: self.cards.get_results(),
-        };
-        // return Box::new(RunStateEnd { data: data });
+        return self.create_result(0, ResultType::Regular, 10);
     }
 
     fn finalize_yardage(&mut self) -> PlayResult {
@@ -240,15 +228,7 @@ impl<'a> RunContext<'a> {
         }
 
         detail!(self, format!("Gain of {} yards", self.data.yardage));
-        return PlayResult {
-            result_type: ResultType::Regular,
-            result,
-            time,
-            details: self.data.details.clone(),
-            mechanic: self.data.mechanic.clone(),
-            extra: None,
-            cards: self.cards.get_results(),
-        };
+        return self.create_result(result, ResultType::Regular, time);
     }
 
     fn get_pass_num(&mut self) -> i32 {
@@ -277,6 +257,7 @@ impl<'a> RunContext<'a> {
         return PlayResult {
             result_type,
             result,
+            final_line: result + self.state.yardline,
             time,
             details: self.data.details.clone(),
             mechanic: self.data.mechanic.clone(),

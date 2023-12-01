@@ -5,7 +5,7 @@ use actix_web::{http::header, web, App, HttpResponse, HttpServer, Responder};
 use serde_json::json;
 
 use crate::game::{
-    engine::{DefenseCall, OffenseCall, PlayType},
+    engine::{OffenseCall, PlayType, StandardDefenseCall, StandardOffenseCall},
     lineup::{IDBasedDefensiveLineup, IDBasedOffensiveLineup},
     players::Serializable_Roster,
     Game,
@@ -66,7 +66,7 @@ async fn set_defensive_lineup(
 
 async fn set_offense_call(
     appstate: web::Data<AppState>,
-    data: web::Json<OffenseCall>,
+    data: web::Json<StandardOffenseCall>,
 ) -> impl Responder {
     println!("data {:?}", data);
 
@@ -74,15 +74,27 @@ async fn set_offense_call(
     println!("Offense Play:  {:?}", call); // Do something with the plays
     let mut game = appstate.game.lock().unwrap();
 
-    match game.set_offense_call(call) {
+    match game.set_offense_call_standard(call) {
         Ok(_) => HttpResponse::Ok().body("Offense play set."),
         Err(msg) => HttpResponse::BadRequest().body(msg),
     }
 }
 
+async fn set_offense_call2(
+    appstate: web::Data<AppState>,
+    data: web::Json<OffenseCall>,
+) -> impl Responder {
+    println!("data {:?}", data);
+
+    let call = data.into_inner();
+    println!("Offense Call 2:  {:?}", call); // Do something with the plays
+
+    HttpResponse::Ok().body("Offense Call set.")
+}
+
 async fn set_defense_call(
     appstate: web::Data<AppState>,
-    data: web::Json<DefenseCall>,
+    data: web::Json<StandardDefenseCall>,
 ) -> impl Responder {
     let call = data.into_inner();
     println!("Defense Play:  {:?}", call); // Do something with the plays
@@ -181,15 +193,6 @@ async fn set_next_move_type(appstate: web::Data<AppState>, data: String) -> impl
             .body("Set"),
         Err(msg) => HttpResponse::BadRequest().body(msg),
     }
-    // let game = appstate.game.lock().unwrap();
-
-    // let next_moves = game.allowed_play_types();
-
-    // // Convert the OffensiveLineup struct to JSON
-    // let json_data = serde_json::to_string(&next_moves)
-    //     .expect("Error while serializing Alllowed Moves to JSON.");
-
-    // Set the Content-Type header to application/json
 }
 
 async fn get_player(path: web::Path<String>, appstate: web::Data<AppState>) -> impl Responder {
@@ -253,11 +256,11 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
             .route("/offense/lineup", web::post().to(set_offensive_lineup))
             .route("/offense/lineup", web::get().to(get_offensive_lineup))
             .route("/offense/call", web::post().to(set_offense_call))
+            .route("/offense/call2", web::post().to(set_offense_call2))
             .route("/defense/lineup", web::get().to(get_defensive_lineup))
             .route("/defense/lineup", web::post().to(set_defensive_lineup))
             .route("/defense/call", web::post().to(set_defense_call))
             .route("/game/play", web::post().to(run_play))
-            // .route("/setdefensiveplay", web::post().to(set_defensive_play))
             .route("/game/state", web::get().to(get_game_state))
             .route("/game/nexttype", web::get().to(get_next_move_types))
             .route("/game/nexttype", web::post().to(set_next_move_type))

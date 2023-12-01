@@ -4,8 +4,8 @@ use std::fs;
 use crate::players::Position;
 
 use super::{
-    players::{DLStats, LBStats, OLStats, TEStats},
-    stats::{TripleStat, NumStat, Range, RangedStats, TwelveStats},
+    players::{DLStats, KRStats, KStats, LBStats, OLStats, ReturnStat, Returner, TEStats, PRStats, PStats},
+    stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats},
 };
 
 pub fn load_rbs(filename: String) -> Vec<RBStats> {
@@ -56,11 +56,11 @@ fn parse_qb_record((id, lines): (String, &[&str])) -> Option<QBStats> {
 
     let endurance = get_char_from_val(lines[3], "A");
 
-    let quick = RangedStats::create_from_strs(&lines[6..=8]);
-    let short = RangedStats::create_from_strs(&lines[10..=12]);
-    let long = RangedStats::create_from_strs(&lines[14..=16]);
+    let quick = RangedStats::create_from_strs(&lines[6..=8], ":");
+    let short = RangedStats::create_from_strs(&lines[10..=12], ":");
+    let long = RangedStats::create_from_strs(&lines[14..=16], ":");
 
-    let pass_rush = RangedStats::create_from_strs(&lines[18..=21]);
+    let pass_rush = RangedStats::create_from_strs(&lines[18..=21], ":");
 
     let long_run = get_char_from_val(lines[36], "R");
     let endurance_rushing = get_i32_from_val(lines[38], 0);
@@ -251,6 +251,160 @@ fn parse_te_record((id, lines): (String, &[&str])) -> Option<TEStats> {
     })
 }
 
+pub fn load_ks(filename: String) -> Vec<KStats> {
+    return parse_records(filename, 18, Position::K, parse_k_record).unwrap();
+
+    // println!("{:?}", res);
+}
+
+fn parse_k_record((id, lines): (String, &[&str])) -> Option<KStats> {
+    let team = TeamID::create_from_str(lines[0]);
+    let name = lines[2].to_string();
+    let position = Position::K;
+
+    let field_goals: RangedStats<Range> = RangedStats::create_from_strs(&lines[5..=8], "yds");
+    let over_fifty = Range::from_str(get_val_with_splitter(&lines[9], '*').unwrap_or(""));
+    let longest_fg = get_i32_from_val_with_splitter(&lines[10], 45, 'G');
+    let extra_points = Range::from_str(get_val(&lines[17]).unwrap_or(""));
+
+    Some(KStats {
+        team,
+        name,
+        id,
+        position,
+        field_goals,
+        over_fifty,
+        extra_points,
+        longest_fg,
+    })
+}
+
+// pub fn load_ps(filename: String) -> Vec<KStats> {
+//     return parse_records(filename, 18, Position::P, parse_p_record).unwrap();
+
+//     // println!("{:?}", res);
+// }
+
+// fn parse_p_record((id, lines): (String, &[&str])) -> Option<PStats> {
+//     let team = TeamID::create_from_str(lines[0]);
+//     let name = lines[2].to_string();
+//     let position = Position::K;
+
+//     let field_goals: RangedStats<Range> = RangedStats::create_from_strs(&lines[5..=8], "yds");
+//     let over_fifty = Range::from_str(get_val_with_splitter(&lines[9], '*').unwrap_or(""));
+//     let longest_fg = get_i32_from_val_with_splitter(&lines[10], 45, 'G');
+//     let extra_points = Range::from_str(get_val(&lines[17]).unwrap_or(""));
+
+//     Some(PStats {
+//         team,
+//         name,
+//         id,
+//         position,
+//         field_goals,
+//         over_fifty,
+//         extra_points,
+//         longest_fg,
+//     })
+// }
+
+pub fn load_krs(filename: String) -> Vec<KRStats> {
+    return parse_records(filename, 21, Position::KR, parse_kr_record).unwrap();
+}
+
+fn create_returner(name: &str, stats: Vec<ReturnStat>, asterisk_val: i32, prefix: &str) -> Returner {
+    // let prefix = "Same as KR-";
+    if name.starts_with(prefix) {
+        let i = &name[prefix.len()..].parse::<i32>().unwrap_or(1);
+        Returner::SameAs(*i)
+    } else {
+        Returner::Actual {
+            name: name.to_string(),
+            return_stats: TwelveStats { stats },
+            asterisk_val,
+        }
+    }
+}
+
+fn get_ast_value(val: &str) -> i32 {
+    if val == "TD" {
+        return 100;
+    }
+
+    return val.parse::<i32>().unwrap_or(0);
+}
+
+fn build_returners(name_lines: &[&str], stat_lines: &[&str], ast_line: &str, prefix: &str) -> Vec<Returner> {
+    let names = get_vec_of_vals(name_lines);
+    let ret_vals: Vec<Vec<ReturnStat>> = get_vec_of_vals(stat_lines)
+        .iter()
+        .map(|s| {
+            s.split_whitespace()
+                //   .map(|v| v.parse::<i32>().unwrap_or(0))
+                .map(|v| ReturnStat::build_from_str(v.trim()))
+                .collect()
+        })
+        .collect();
+
+    let pivoted: Vec<Vec<ReturnStat>> = (0..ret_vals[0].len())
+        .map(|c| ret_vals.iter().map(|r| r[c]).collect::<Vec<_>>())
+        .collect();
+
+    let asterisk_vals: Vec<i32> = ast_line
+        .split_whitespace()
+        .into_iter()
+        .skip(1)
+        .map(|v| get_ast_value(v))
+        .collect();
+
+    let returners = names
+        .iter()
+        .enumerate()
+        .map(|(ind, name)| create_returner(name, pivoted[ind].clone(), 
+                                                         asterisk_vals[ind],
+                                                          prefix)
+            )
+        .collect();
+
+    returners
+}
+
+fn parse_kr_record((id, lines): (String, &[&str])) -> Option<KRStats> {
+    let team = TeamID::create_from_str(lines[0]);
+    let name = lines[1].to_string();
+    let position = Position::KR;
+
+    let returners = build_returners(&lines[2..=5], &lines[7..=18], lines[20], "Same as KR-");
+
+    Some(KRStats {
+        team,
+        name,
+        id,
+        position,
+        returners,
+    })
+}
+
+pub fn load_prs(filename: String) -> Vec<PRStats> {
+    return parse_records(filename, 21, Position::PR, parse_pr_record).unwrap();
+}
+
+fn parse_pr_record((id, lines): (String, &[&str])) -> Option<PRStats> {
+    let team = TeamID::create_from_str(lines[0]);
+    let name = lines[1].to_string();
+    let position = Position::PR;
+
+    let returners = build_returners(&lines[2..=5], &lines[7..=18], lines[20], "Same as PR-");
+
+    Some(PRStats {
+        team,
+        name,
+        id,
+        position,
+        returners,
+    })
+}
+
+
 fn parse_records<T, F>(
     filename: String,
     size: usize,
@@ -300,12 +454,21 @@ fn text_str_to_num(instr: &str) -> i32 {
 }
 
 fn get_val(line: &str) -> Option<&str> {
-    let vals: Vec<&str> = line.split(':').map(|s| s.trim()).collect();
+    get_val_with_splitter(line, ':')
+}
+
+fn get_val_with_splitter<'a>(line: &str, splitter: char) -> Option<&str> {
+    let vals: Vec<&str> = line.split(splitter).map(|s| s.trim()).collect();
     if vals.len() > 1 {
         return Some(vals[1]);
     }
     return None;
 }
+
+fn get_vec_of_vals<'a>(lines: &'a [&str]) -> Vec<&'a str> {
+    lines.iter().map(|l| get_val(l).unwrap()).collect()
+}
+
 
 fn get_char(instr: &str) -> char {
     return instr.chars().next().unwrap_or_else(|| ' ');
@@ -322,6 +485,15 @@ fn get_i32(val: &str, def: i32) -> i32 {
 fn get_i32_from_val(val: &str, def: i32) -> i32 {
     let mut ret = def;
     if let Some(s) = get_val(val) {
+        ret = s.parse::<i32>().unwrap_or(def);
+    }
+
+    ret
+}
+
+fn get_i32_from_val_with_splitter(val: &str, def: i32, splitter: char) -> i32 {
+    let mut ret = def;
+    if let Some(s) = get_val_with_splitter(val, splitter) {
         ret = s.parse::<i32>().unwrap_or(def);
     }
 

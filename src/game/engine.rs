@@ -1,13 +1,15 @@
+pub mod defs;
+mod kickplay;
 pub mod passplay;
+mod playutils;
 mod resulthandler;
 pub mod runplay;
 
 use std::{collections::HashMap, hash::Hash};
 
 use enum_as_inner::EnumAsInner;
-use serde::{Deserialize, Serialize};
+use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
-use lazy_static::lazy_static;
 use strum_macros::EnumString;
 
 use crate::game::{
@@ -15,14 +17,16 @@ use crate::game::{
     lineup::DefensiveBox,
 };
 
-use self::resulthandler::calculate_play_result;
+use self::{
+    defs::OFFENSIVE_PLAYS_LIST, kickplay::KickPlayContext, resulthandler::calculate_play_result,
+};
 
 use super::{
     fac::{FacCard, FacData, FacManager, PassTarget, RunDirection},
     lineup::{DefensiveLineup, OffensiveBox, OffensiveLineup},
-    players::QBStats,
+    players::{KRStats, KStats, QBStats},
     stats::{LabeledStat, RangedStats, TwelveStats},
-    GameState, PlayAndState,
+    GameState, Play, PlayAndState,
 };
 
 #[derive(Debug, Copy, Clone, Serialize, Deserialize, PartialEq)]
@@ -45,7 +49,7 @@ impl Down {
 }
 
 pub trait Validatable {
-    fn validate(&self, play: &Play) -> Result<(), String>;
+    fn validate(&self, play: &StandardPlay) -> Result<(), String>;
 }
 
 pub type Yard = i32;
@@ -57,7 +61,6 @@ pub struct IDOffensivePlay {
     pub target_id: String,
 }
 
-
 #[derive(Debug, Clone, Serialize, Deserialize, EnumString, PartialEq)]
 pub enum PlayType {
     Kickoff,
@@ -66,6 +69,7 @@ pub enum PlayType {
     FieldGoal,
     OffensePlay,
 }
+
 
 
 #[derive(Debug, Clone, EnumAsInner)]
@@ -188,14 +192,14 @@ pub enum OffensiveStrategy {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct OffenseCall {
+pub struct StandardOffenseCall {
     play_type: OffensivePlayType,
     strategy: Option<OffensiveStrategy>,
     target: OffensiveBox,
 }
 
-impl Validatable for OffenseCall {
-    fn validate(&self, play: &Play) -> Result<(), String> {
+impl Validatable for StandardOffenseCall {
+    fn validate(&self, play: &StandardPlay) -> Result<(), String> {
         let meta = get_offensive_play_info(&self.play_type);
         if !meta.allowed_targets.contains(&self.target) {
             return Err(format!(
@@ -215,255 +219,6 @@ impl Validatable for OffenseCall {
         // use player for further validations
         return Ok(());
     }
-}
-
-struct TimeTable {
-    run_play: i32,
-    run_play_ob: i32,
-    pass_play_complete: i32,
-    pass_play_incomplete: i32,
-}
-
-pub struct GameConstants {
-    pub quarters: i32,
-    pub sec_per_quarter: i32,
-    pub points_for_td: i32,
-    pub points_for_safety: i32,
-
-}
-
-lazy_static! {
-    static ref TIMES: TimeTable = TimeTable {
-        run_play: 40,
-        run_play_ob: 10,
-        pass_play_complete: 40,
-        pass_play_incomplete: 10,
-    };
-
-    pub static ref GAMECONSTANTS: GameConstants = GameConstants {
-        quarters: 4,
-        sec_per_quarter: 15*60,
-        points_for_td: 6,
-        points_for_safety: 2,
-    };
-
-
-    static ref PASS_DEFENDERS: HashMap<OffensiveBox, DefensiveBox> = {
-        let mut map = HashMap::new();
-        map.insert(OffensiveBox::RE, DefensiveBox::BoxN);
-        map.insert(OffensiveBox::LE, DefensiveBox::BoxK);
-        map.insert(OffensiveBox::FL1, DefensiveBox::BoxO);
-        map.insert(OffensiveBox::FL2, DefensiveBox::BoxM);
-        map.insert(OffensiveBox::B1, DefensiveBox::BoxF);
-        map.insert(OffensiveBox::B2, DefensiveBox::BoxJ);
-        map.insert(OffensiveBox::B3, DefensiveBox::BoxH);
-        map
-    };
-
-    static ref INTERCEPTION_TABLE:TwelveStats<LabeledStat<DefensiveBox>> = {
-
-        let int_vals = vec![
-            "1: J/N/N/L",
-            "2: F/O/M/M",
-            "3: C/J/J/M",
-            "4: I/I/F/O",
-            "5: B/H/I/N",
-            "6: G/G/H/K",
-            "7: H/F/G/O",
-            "8: E/J/O/N",
-            "9: D/H/K/K",
-            "10: A/F/L/M",
-            "11: J/L/N/M",
-            "12: F/M/M/L",
-        ];
-
-        TwelveStats::create_from_strs(&int_vals, LabeledStat::<DefensiveBox>::curry_create("SC/QK/SH/LG"))
-    };
-    // TwelveStats::<HashMap::<String, DefensiveBox>>(stats);
-
-    static ref INTERCEPTION_RETURN_TABLE:TwelveStats<LabeledStat<i32>> = {
-
-        let int_vals = vec![
-            "1: 15/30/100",
-            "2: 10/20/50",
-            "3: 6/15/30",
-            "4: 3/10/20",
-            "5: 1/8/15",
-            "6: 0/5/10",
-            "7: 0/4/8",
-            "8: 0/3/6",
-            "9: 0/0/4",
-            "10: 0/0/2",
-            "11: 0/0/0",
-            "12: 0/0/0",
-        ];
-
-        TwelveStats::create_from_strs(&int_vals, LabeledStat::<i32>::curry_create("DL/LB/DB"))
-    };
-
-
-    // static ref DEFENSIVE_PLAY_LIST: Hashmap<DefensivePlay, DefensivePlayInfo> = {
-    //     let mut map = HashMap::new();
-
-
-    //     map
-    // };
-
-
-    static ref OFFENSIVE_PLAYS_LIST: HashMap<OffensivePlayType, OffensivePlayInfo> = {
-        let mut map = HashMap::new();
-        map.insert(
-            OffensivePlayType::SL,
-            OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Run(RunMetaData {
-                    max_loss: -100,
-                    can_go_ob: true,
-                    card_val: RunUtils::get_sl_fac_result,
-                }),
-                name: "Sweep Left",
-                code: "SL",
-                allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: RunUtils::handle_run_play,
-            },
-        );
-        map.insert(
-            OffensivePlayType::SR,
-            OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Run(RunMetaData {
-                    max_loss: -100,
-                    can_go_ob: true,
-                    card_val: RunUtils::get_sr_fac_result,
-                }),
-                name: "Sweep Right",
-                code: "SR",
-                allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: RunUtils::handle_run_play,
-            },
-        );
-        map.insert(
-            OffensivePlayType::IL,
-            OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Run(RunMetaData {
-                    max_loss: -3,
-                    can_go_ob: false,
-                    card_val: RunUtils::get_il_fac_result,
-                }),
-                name: "Inside Left",
-                code: "IL",
-                allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: RunUtils::handle_run_play,
-            },
-        );
-        map.insert(
-            OffensivePlayType::IR,
-            OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Run(RunMetaData {
-                    max_loss: -3,
-                    can_go_ob: false,
-                    card_val: RunUtils::get_ir_fac_result,
-                }),
-                name: "Inside Right",
-                code: "IR",
-                allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: RunUtils::handle_run_play,
-            },
-        );
-        map.insert(
-            OffensivePlayType::ER,
-            OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Run(RunMetaData {
-                    max_loss: -3,
-                    can_go_ob: false,
-                    card_val: RunUtils::get_ir_fac_result,
-                }),
-                name: "End Around",
-                code: "ER",
-                allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: RunUtils::handle_run_play,
-            },
-        );
-        map.insert(
-            OffensivePlayType::QK,
-            OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Pass(PassMetaData {
-                    target: PassUtils::get_qk_fac_target,
-                    completion_range: PassUtils::get_qk_qb_range,
-                    pass_gain: "Q".to_string(),
-                }),
-                name: "Quick",
-                code: "QK",
-                allowed_targets: vec![
-                    OffensiveBox::B1,
-                    OffensiveBox::B2,
-                    OffensiveBox::B3,
-                    OffensiveBox::RE,
-                    OffensiveBox::LE,
-                    OffensiveBox::FL1,
-                    OffensiveBox::FL2,
-                ],
-                handler: PassUtils::handle_pass_play,
-            },
-        );
-        map.insert(
-            OffensivePlayType::SH,
-            OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Pass(PassMetaData {
-                    target: PassUtils::get_sh_fac_target,
-                    completion_range: PassUtils::get_sh_qb_range,
-                    pass_gain: "S".to_string(),
-                }),
-                name: "Short",
-                code: "SH",
-                allowed_targets: vec![
-                    OffensiveBox::B1,
-                    OffensiveBox::B2,
-                    OffensiveBox::B3,
-                    OffensiveBox::RE,
-                    OffensiveBox::LE,
-                    OffensiveBox::FL1,
-                    OffensiveBox::FL2,
-                ],
-                handler: PassUtils::handle_pass_play,
-            },
-        );
-        map.insert(
-            OffensivePlayType::LG,
-            OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Pass(PassMetaData {
-                    target: PassUtils::get_lg_fac_target,
-                    completion_range: PassUtils::get_lg_qb_range,
-                    pass_gain: "L".to_string(),
-                }),
-                name: "Long",
-                code: "LG",
-                allowed_targets: vec![
-                    OffensiveBox::B1,
-                    OffensiveBox::B2,
-                    OffensiveBox::B3,
-                    OffensiveBox::RE,
-                    OffensiveBox::LE,
-                    OffensiveBox::FL1,
-                    OffensiveBox::FL2,
-                ],
-                handler: PassUtils::handle_pass_play,
-            },
-        );
-        map.insert(
-            OffensivePlayType::SC,
-            OffensivePlayInfo {
-                play_type: OffensivePlayCategory::Pass(PassMetaData {
-                    target: PassUtils::get_qk_fac_target,
-                    completion_range: PassUtils::get_qk_qb_range,
-                    pass_gain: "Q".to_string(),
-                }),
-                name: "Screen",
-                code: "SC",
-                allowed_targets: vec![OffensiveBox::B1, OffensiveBox::B2, OffensiveBox::B3],
-                handler: PassUtils::handle_pass_play,
-            },
-        );
-        map
-    };
 }
 
 fn get_offensive_play_info(play: &OffensivePlayType) -> &OffensivePlayInfo {
@@ -486,14 +241,14 @@ pub enum DefensiveStrategy {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct DefenseCall {
+pub struct StandardDefenseCall {
     defense_type: DefensivePlay,
     strategy: Option<DefensiveStrategy>,
     key: Option<OffensiveBox>,
     def_players: Vec<String>,
 }
-impl Validatable for DefenseCall {
-    fn validate(&self, play: &Play) -> Result<(), String> {
+impl Validatable for StandardDefenseCall {
+    fn validate(&self, play: &StandardPlay) -> Result<(), String> {
         let lineup = play.defense.as_ref().ok_or("Set lineup before Call")?;
         let res = self
             .def_players
@@ -559,21 +314,21 @@ impl<'a> CardStreamer<'a> {
 
 pub struct PlaySetup<'a> {
     pub offense: &'a OffensiveLineup,
-    pub offense_call: &'a OffenseCall,
+    pub offense_call: &'a StandardOffenseCall,
     pub defense: &'a DefensiveLineup,
-    pub defense_call: &'a DefenseCall,
+    pub defense_call: &'a StandardDefenseCall,
     pub offense_metadata: &'a OffensivePlayInfo,
 }
 
 #[derive(Debug, Default, Clone)]
-pub struct Play {
+pub struct StandardPlay {
     pub offense: Option<OffensiveLineup>,
-    pub offense_call: Option<OffenseCall>,
+    pub offense_call: Option<StandardOffenseCall>,
     pub defense: Option<DefensiveLineup>,
-    pub defense_call: Option<DefenseCall>,
+    pub defense_call: Option<StandardDefenseCall>,
 }
 
-impl Play {
+impl StandardPlay {
     pub fn new() -> Self {
         return Self {
             ..Default::default()
@@ -616,13 +371,13 @@ impl Play {
         let result = (details.offense_metadata.handler)(game_state, &details, &mut card_streamer);
 
         if result.cards.had_z {
-            Play::handle_z(&result);
+            StandardPlay::handle_z(&result);
         }
 
         let new_state = calculate_play_result(game_state, &result);
 
         return Ok(PlayAndState {
-            play: self.clone(),
+            play: Play::StandardPlay(self.clone()),
             result,
             new_state,
         });
@@ -643,6 +398,7 @@ pub enum ResultType {
 pub struct PlayResult {
     pub result_type: ResultType,
     pub result: Yard,
+    pub final_line: Yard,
     pub time: i32,
     pub details: Vec<String>,
     pub mechanic: Vec<String>,
@@ -651,15 +407,73 @@ pub struct PlayResult {
     pub cards: CardResults,
 }
 
-pub trait PlayLogicState {
-    fn handle_card(
-        &self,
-        state: &GameState,
-        play: &PlaySetup,
-        card: &FacData,
-    ) -> Box<dyn PlayLogicState>;
-    fn get_result(&self) -> Option<PlayResult> {
-        None
+// pub trait PlayLogicState {
+//     fn handle_card(
+//         &self,
+//         state: &GameState,
+//         play: &PlaySetup,
+//         card: &FacData,
+//     ) -> Box<dyn PlayLogicState>;
+//     fn get_result(&self) -> Option<OffensePlayResult> {
+//         None
+//     }
+//     fn get_name(&self) -> &str;
+// }
+
+#[derive(Debug, Clone)]
+pub enum OffenseCall {
+    KickoffOffenseCall(KickoffOffenseCall),
+    PuntOffenseCall(PuntOffenseCall),
+}
+impl<'de> Deserialize<'de> for OffenseCall {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        #[derive(Deserialize)]
+        #[serde(untagged)]
+        enum TaggedOffenseCall {
+            KickoffOffenseCall(KickoffOffenseCall),
+            PuntOffenseCall(PuntOffenseCall),
+        }
+
+        let tagged_call = TaggedOffenseCall::deserialize(deserializer)?;
+
+        Ok(match tagged_call {
+            TaggedOffenseCall::KickoffOffenseCall(kc) => OffenseCall::KickoffOffenseCall(kc),
+            TaggedOffenseCall::PuntOffenseCall(pc) => OffenseCall::PuntOffenseCall(pc),
+        })
     }
-    fn get_name(&self) -> &str;
+}
+impl OffenseCall {
+    pub fn get_play_type(&self) -> PlayType {
+        match self {
+            OffenseCall::KickoffOffenseCall(_) => PlayType::Kickoff,
+            OffenseCall::PuntOffenseCall(_) => PlayType::Punt,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct KickoffOffenseCall {
+    pub onside: bool,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct PuntOffenseCall {
+    pub coffin_corner: i32,
+}
+
+#[derive(Debug, Clone)]
+pub struct KickoffPlay {
+    pub onside: bool,
+    pub kr: KRStats,
+}
+
+impl KickoffPlay {
+    pub fn runplay(&self, game_state: &GameState, fac_deck: &mut FacManager) -> PlayResult {
+        let mut card_streamer = CardStreamer::new(fac_deck);
+
+        return KickPlayContext::run_play(game_state, self.clone(), &mut card_streamer);
+    }
 }

@@ -9,8 +9,8 @@ use serde::{Deserialize, Serialize};
 
 use self::{
     engine::{
-        DefenseCall, Down, OffenseCall, Play, PlayResult, PlayType, Validatable, Yard,
-        GAMECONSTANTS,
+        defs::GAMECONSTANTS, Down, KickoffPlay, PlayResult, PlayType, StandardDefenseCall,
+        StandardOffenseCall, StandardPlay, Validatable, Yard, OffenseCall,
     },
     fac::FacManager,
     lineup::{DefensiveLineup, IDBasedDefensiveLineup, IDBasedOffensiveLineup, OffensiveLineup},
@@ -92,6 +92,32 @@ impl GameState {
 }
 
 #[derive(Debug, Clone)]
+pub enum Play {
+    StandardPlay(StandardPlay),
+    Kickoff(KickoffPlay),
+}
+
+// impl Play {
+//     fn deserialize<'de, D>(deserializer: D) -> Result<Self, D::Error>
+//         where D: serde::Deserializer<'de>
+//     {
+//         #[derive(Deserialize)]
+//         #[serde(untagged)]
+//         enum TaggedPlay {
+//             OffensePlay(OffensePlay),
+//             KickoffPlay(KickoffPlay)
+//         }
+
+//         let tagged_play = TaggedPlay::deserialize(deserializer)?;
+
+//         Ok(match tagged_play {
+//             TaggedPlay::OffensePlay(op) => Play::OffensePlay(op),
+//             TaggedPlay::KickoffPlay(kp) => Play::KickoffPlay(kp),
+//         })
+//     }
+// }
+
+#[derive(Debug, Clone)]
 pub struct PlayAndState {
     pub play: Play,
     pub result: PlayResult,
@@ -117,7 +143,7 @@ pub struct Game {
     pub state: GameState,
     pub past_plays: Vec<PlayAndState>,
     pub next_play_type: PlayType,
-    pub current_play: Play,
+    pub current_play: StandardPlay,
     pub fac_deck: FacManager,
 }
 
@@ -128,7 +154,7 @@ impl Game {
             away,
             state: GameState::start_state(),
             past_plays: vec![],
-            current_play: Play::new(),
+            current_play: StandardPlay::new(),
             next_play_type: PlayType::Kickoff,
             fac_deck: FacManager::new("cards/fac_cards.csv"),
         };
@@ -148,13 +174,13 @@ impl Game {
         }
     }
 
-    fn get_current_play(&mut self) -> &mut Play {
+    fn get_current_play(&mut self) -> &mut StandardPlay {
         return &mut self.current_play;
     }
 
     fn set_play_field<T, F>(&mut self, data: T, setter: F) -> Result<(), String>
     where
-        F: Fn(&mut Play, T) -> (),
+        F: Fn(&mut StandardPlay, T) -> (),
         T: Validatable,
     {
         let play = self.get_current_play();
@@ -202,11 +228,14 @@ impl Game {
         return self.set_defensive_lineup(lineup);
     }
 
-    pub fn set_offense_call(&mut self, off_call: OffenseCall) -> Result<(), String> {
+    pub fn set_offense_call_standard(
+        &mut self,
+        off_call: StandardOffenseCall,
+    ) -> Result<(), String> {
         return self.set_play_field(off_call, |p, in_p| p.offense_call = Some(in_p));
     }
 
-    pub fn set_defense_call(&mut self, def_call: DefenseCall) -> Result<(), String> {
+    pub fn set_defense_call(&mut self, def_call: StandardDefenseCall) -> Result<(), String> {
         return self.set_play_field(def_call, |p, in_p| p.defense_call = Some(in_p));
     }
 
@@ -228,6 +257,16 @@ impl Game {
         }
     }
 
+    pub fn set_offense_call(&mut self, off_call: OffenseCall) -> Result<(), String> {
+        if off_call.get_play_type() != self.next_play_type {
+            return Err(format!("Worng call for {:?}", self.next_play_type));
+        }
+
+        
+
+        Ok(())
+    }
+
     pub fn run_play(&mut self) -> Result<PlayAndState, String> {
         let play_result = self
             .current_play
@@ -242,12 +281,16 @@ impl Game {
         self.past_plays.push(play_result.clone());
 
         self.state = play_result.new_state;
-        self.current_play = Play::new();
+        self.current_play = StandardPlay::new();
 
         return Ok(play_result);
     }
 
-    fn gen_new_state(curr_state: &GameState, play: &Play, result: &PlayResult) -> GameState {
+    fn gen_new_state(
+        curr_state: &GameState,
+        play: &StandardPlay,
+        result: &PlayResult,
+    ) -> GameState {
         return GameState::start_state();
     }
 

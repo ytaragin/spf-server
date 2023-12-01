@@ -1,7 +1,7 @@
 use std::cmp::min;
 
 use crate::game::{
-    engine::PassRushResult,
+    engine::{PassRushResult, defs::{TIMES, INTERCEPTION_TABLE, INTERCEPTION_RETURN_TABLE, PASS_DEFENDERS}},
     fac::{FacData, PassTarget},
     lineup::{DefensiveBox, OffensiveBox},
     players::{BasePlayer, Player, PlayerUtils, Position, QBStats},
@@ -11,7 +11,7 @@ use crate::game::{
 
 use super::{
     CardStreamer, OffensivePlayInfo, PassMetaData, PassResult, PlayResult, PlaySetup, ResultType,
-    TimeTable, INTERCEPTION_RETURN_TABLE, INTERCEPTION_TABLE, PASS_DEFENDERS, TIMES,
+    
 };
 
 // use macro_rules! <name of macro> {<Body>}
@@ -441,6 +441,7 @@ impl<'a> PassContext<'a> {
         return PlayResult {
             result_type,
             result,
+            final_line: result+self.state.yardline,
             time,
             details: self.data.details.clone(),
             mechanic: self.data.mechanic.clone(),
