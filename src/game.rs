@@ -9,11 +9,15 @@ use serde::{Deserialize, Serialize};
 
 use self::{
     engine::{
-        defs::GAMECONSTANTS, Down, KickoffPlay, PlayResult, PlayType, StandardDefenseCall,
-        StandardOffenseCall, StandardPlay, Validatable, Yard, OffenseCall,
+        defs::GAMECONSTANTS, run_play, DefenseCall, DefenseIDLineup, Down, KickoffPlay,
+        OffenseCall, OffenseIDLineup, PlayImpl, PlayResult, PlayType, StandardDefenseCall,
+        StandardOffenseCall, StandardPlay, Validatable, Yard,
     },
     fac::FacManager,
-    lineup::{DefensiveLineup, IDBasedDefensiveLineup, IDBasedOffensiveLineup, OffensiveLineup},
+    lineup::{
+        StandardDefensiveLineup, StandardIDDefenseLineup, StandardIDOffenseLineup,
+        StandardOffensiveLineup,
+    },
     players::Roster,
 };
 
@@ -68,7 +72,7 @@ impl GameState {
             last_status: GamePlayStatus::Start,
             quarter: 1,
             time_remaining: GAMECONSTANTS.sec_per_quarter,
-            possesion: GameTeams::Home,
+            possesion: GameTeams::Away,
             down: Down::First,
             yardline: 50,
             first_down_target: 60,
@@ -83,7 +87,7 @@ impl GameState {
             GamePlayStatus::Safety => vec![PlayType::Punt],
             GamePlayStatus::FieldGoal => vec![PlayType::Kickoff],
             GamePlayStatus::PossesionChange | GamePlayStatus::Ongoing => {
-                vec![PlayType::OffensePlay, PlayType::Punt, PlayType::FieldGoal]
+                vec![PlayType::Standard, PlayType::Punt, PlayType::FieldGoal]
             }
             GamePlayStatus::Start => vec![PlayType::Kickoff],
             GamePlayStatus::End => vec![],
@@ -124,17 +128,11 @@ pub struct PlayAndState {
     pub new_state: GameState,
 }
 
-// // #[derive(Debug, Clone)]
-// pub struct Game<'a> {
-//     pub home:  &'a Roster,
-//     pub away:  &'a Roster,
-//     pub state: GameState,
-//     pub past_plays: Vec<PlayAndState>,
-//     pub current_play: Play,
-// }
-
-// impl<'a> Game<'a> {
-//     pub fn create_game(home: &'a Roster, away: &'a Roster) -> Self {
+#[derive(Debug, Clone, Serialize)]
+pub struct PlayTypeInfo {
+    pub allowed_types: Vec<PlayType>,
+    pub next_type: Option<PlayType>,
+}
 
 // #[derive(Debug, Clone)]
 pub struct Game {
@@ -142,20 +140,27 @@ pub struct Game {
     pub away: Roster,
     pub state: GameState,
     pub past_plays: Vec<PlayAndState>,
-    pub next_play_type: PlayType,
-    pub current_play: StandardPlay,
+    pub next_play: Option<Box<dyn PlayImpl + Send>>,
+    offlineup: Option<OffenseIDLineup>,
+    defflineup: Option<DefenseIDLineup>,
+
+    // pub current_play: StandardPlayOrig,
     pub fac_deck: FacManager,
 }
 
 impl Game {
     pub fn create_game(home: Roster, away: Roster) -> Self {
+        let start_type = PlayType::Kickoff;
+
         return Self {
             home,
             away,
             state: GameState::start_state(),
             past_plays: vec![],
-            current_play: StandardPlay::new(),
-            next_play_type: PlayType::Kickoff,
+            // current_play: StandardPlayOrig::new(),
+            next_play: Some(start_type.create_impl()),
+            offlineup: None,
+            defflineup: None,
             fac_deck: FacManager::new("cards/fac_cards.csv"),
         };
     }
@@ -174,116 +179,85 @@ impl Game {
         }
     }
 
-    fn get_current_play(&mut self) -> &mut StandardPlay {
-        return &mut self.current_play;
-    }
-
-    fn set_play_field<T, F>(&mut self, data: T, setter: F) -> Result<(), String>
-    where
-        F: Fn(&mut StandardPlay, T) -> (),
-        T: Validatable,
-    {
-        let play = self.get_current_play();
-
-        if let Err(msg) = data.validate(play) {
-            return Err(msg);
-        }
-
-        setter(play, data);
-        return Ok(());
-    }
-
-    pub fn set_offensive_lineup(&mut self, lineup: OffensiveLineup) -> Result<(), String> {
-        let play = self.get_current_play();
-
-        lineup.is_legal_lineup()?;
-        play.offense = Some(lineup);
-        return Ok(());
-
-        // return self.set_play_field(lineup, |p: &mut Play, l| p.offense = Some(l));
-    }
     pub fn set_offensive_lineup_from_ids(
         &mut self,
-        id_lineup: &IDBasedOffensiveLineup,
+        id_lineup: &OffenseIDLineup,
     ) -> Result<(), String> {
-        let lineup = OffensiveLineup::create_lineup(id_lineup, self.get_current_off_roster())?;
-
-        return self.set_offensive_lineup(lineup);
-    }
-
-    pub fn set_defensive_lineup(&mut self, lineup: DefensiveLineup) -> Result<(), String> {
-        let play = self.get_current_play();
-
-        lineup.is_legal_lineup()?;
-        play.defense = Some(lineup);
-        return Ok(());
-        // return self.set_play_field(lineup, |p, l| p.defense = Some(l));
+        let r = self.get_current_off_roster().clone();
+        self.next_play
+            .as_mut()
+            .ok_or("No Play Set")?
+            .set_offense_lineup(id_lineup, &r)
     }
 
     pub fn set_defensive_lineup_from_ids(
         &mut self,
-        id_lineup: &IDBasedDefensiveLineup,
+        id_lineup: &DefenseIDLineup,
     ) -> Result<(), String> {
-        let lineup = DefensiveLineup::create_lineup(id_lineup, self.get_current_def_roster())?;
-        return self.set_defensive_lineup(lineup);
-    }
+        let r = self.get_current_def_roster().clone();
 
-    pub fn set_offense_call_standard(
-        &mut self,
-        off_call: StandardOffenseCall,
-    ) -> Result<(), String> {
-        return self.set_play_field(off_call, |p, in_p| p.offense_call = Some(in_p));
-    }
-
-    pub fn set_defense_call(&mut self, def_call: StandardDefenseCall) -> Result<(), String> {
-        return self.set_play_field(def_call, |p, in_p| p.defense_call = Some(in_p));
-    }
-
-    pub fn get_offensive_lineup(&self) -> &Option<OffensiveLineup> {
-        return &self.current_play.offense;
-    }
-
-    pub fn get_offensive_lineup_ids(&self) -> Option<IDBasedOffensiveLineup> {
-        match &self.current_play.offense {
-            None => None,
-            Some(l) => Some(l.convert_to_id_lineup()),
-        }
-    }
-
-    pub fn get_defensive_lineup_ids(&self) -> Option<IDBasedDefensiveLineup> {
-        match &self.current_play.defense {
-            None => None,
-            Some(l) => Some(l.convert_to_id_lineup()),
-        }
+        self.next_play
+            .as_mut()
+            .ok_or("No Play Set")?
+            .set_defense_lineup(id_lineup, &r)
     }
 
     pub fn set_offense_call(&mut self, off_call: OffenseCall) -> Result<(), String> {
-        if off_call.get_play_type() != self.next_play_type {
-            return Err(format!("Worng call for {:?}", self.next_play_type));
-        }
+        self.next_play
+            .as_mut()
+            .ok_or("No Play Set")?
+            .set_offense_call(off_call)
+    }
 
-        
+    pub fn set_defense_call(&mut self, def_call: DefenseCall) -> Result<(), String> {
+        self.next_play
+            .as_mut()
+            .ok_or("No Play Set")?
+            .set_defense_call(def_call)
+    }
 
+    pub fn set_offense_lineup(&mut self, off_id: OffenseIDLineup) -> Result<(), String> {
+        let r = self.get_current_off_roster().clone();
+        self.next_play
+            .as_mut()
+            .ok_or("No Play Set")?
+            .set_offense_lineup(&off_id, &r)?;
+        self.offlineup = Some(off_id);
         Ok(())
     }
 
+    pub fn set_defense_lineup(&mut self, def_id: DefenseIDLineup) -> Result<(), String> {
+        let r = self.get_current_def_roster().clone();
+
+        self.next_play
+            .as_mut()
+            .ok_or("No Play Set")?
+            .set_defense_lineup(&def_id, &r)?;
+        self.defflineup = Some(def_id);
+        Ok(())
+    }
+
+    pub fn get_offensive_lineup_ids(&self) -> &Option<OffenseIDLineup> {
+        &self.offlineup
+    }
+
+    pub fn get_defensive_lineup_ids(&self) -> &Option<DefenseIDLineup> {
+        &self.defflineup
+    }
+
     pub fn run_play(&mut self) -> Result<PlayAndState, String> {
-        let play_result = self
-            .current_play
-            .run_play(&self.state, &mut self.fac_deck)?;
+        let res = run_play(
+            &self.state,
+            &mut self.fac_deck,
+            self.next_play.as_ref().ok_or("No Play Set")?,
+        )?;
 
-        // let new_state = Game::gen_new_state(&self.state, &self.current_play, &play_result);
-        // let pands = PlayAndState {
-        //     play: self.current_play.clone(),
-        //     result: play_result,
-        //     new_state,
-        // };
-        self.past_plays.push(play_result.clone());
+        self.past_plays.push(res.clone());
 
-        self.state = play_result.new_state;
-        self.current_play = StandardPlay::new();
+        self.state = res.new_state;
+        self.next_play = None;
 
-        return Ok(play_result);
+        return Ok(res);
     }
 
     fn gen_new_state(
@@ -294,16 +268,21 @@ impl Game {
         return GameState::start_state();
     }
 
-    pub fn allowed_play_types(&self) -> Vec<PlayType> {
-        return self.state.get_next_move_types();
+    pub fn allowed_play_types(&self) -> PlayTypeInfo {
+        PlayTypeInfo {
+            allowed_types: self.state.get_next_move_types(),
+            next_type: self.next_play.as_ref().map(|play| play.get_type()),
+        }
     }
 
     pub fn set_next_play_type(&mut self, playtype: PlayType) -> Result<(), String> {
-        let allowed = self.allowed_play_types();
+        let allowed = self.state.get_next_move_types();
         if !allowed.contains(&playtype) {
             return Err(format!("Valid plays are {:?}", allowed));
         }
-        self.next_play_type = playtype;
+        self.next_play = Some(playtype.create_impl());
+        self.offlineup = None;
+        self.defflineup = None;
         Ok(())
     }
 }

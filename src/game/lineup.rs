@@ -5,8 +5,8 @@ use serde::{Deserialize, Serialize};
 use spf_macros::ToBasePlayer;
 
 use super::players::{
-    BasePlayer, DBStats, DLStats, LBStats, OLStats, Player, QBStats, RBStats, Roster, TEStats,
-    ToBasePlayer, WRStats,
+    BasePlayer, DBStats, DLStats, KRStats, KStats, LBStats, OLStats, Player, QBStats, RBStats,
+    Roster, TEStats, ToBasePlayer, WRStats,
 };
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy, Eq, Hash)]
@@ -129,7 +129,7 @@ impl FlankerPlayer {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct IDBasedOffensiveLineup {
+pub struct StandardIDOffenseLineup {
     le: Option<String>,
     re: Option<String>,
     fl1: Option<String>,
@@ -146,7 +146,7 @@ pub struct IDBasedOffensiveLineup {
 }
 
 #[derive(Debug, Clone, Serialize)]
-pub struct OffensiveLineup {
+pub struct StandardOffensiveLineup {
     le: Option<EndPlayer>,
     re: Option<EndPlayer>,
     fl1: Option<FlankerPlayer>,
@@ -162,9 +162,9 @@ pub struct OffensiveLineup {
     rt: OLStats,
 }
 
-impl OffensiveLineup {
+impl StandardOffensiveLineup {
     pub fn create_lineup(
-        id_lineup: &IDBasedOffensiveLineup,
+        id_lineup: &StandardIDOffenseLineup,
         team: &Roster,
     ) -> Result<Self, String> {
         let qb =
@@ -232,8 +232,8 @@ impl OffensiveLineup {
         });
     }
 
-    pub fn convert_to_id_lineup(&self) -> IDBasedOffensiveLineup {
-        return IDBasedOffensiveLineup {
+    pub fn convert_to_id_lineup(&self) -> StandardIDOffenseLineup {
+        return StandardIDOffenseLineup {
             le: LineupUtilities::get_id_from_player(&self.le),
             re: LineupUtilities::get_id_from_player(&self.re),
             fl1: LineupUtilities::get_id_from_player(&self.fl1),
@@ -302,7 +302,7 @@ impl OffensiveLineup {
 // }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct IDBasedDefensiveLineup {
+pub struct StandardIDDefenseLineup {
     box_a: Vec<String>,
     box_b: Vec<String>,
     box_c: Vec<String>,
@@ -336,7 +336,7 @@ impl Row1Player {
 }
 
 #[derive(Debug, Clone, Serialize)]
-pub struct DefensiveLineup {
+pub struct StandardDefensiveLineup {
     box_a: Vec<Row1Player>,
     box_b: Vec<Row1Player>,
     box_c: Vec<Row1Player>,
@@ -354,9 +354,9 @@ pub struct DefensiveLineup {
     box_o: Option<DBStats>,
 }
 
-impl DefensiveLineup {
+impl StandardDefensiveLineup {
     pub fn create_lineup(
-        id_lineup: &IDBasedDefensiveLineup,
+        id_lineup: &StandardIDDefenseLineup,
         team: &Roster,
     ) -> Result<Self, String> {
         let box_a = LineupUtilities::transform_vector(
@@ -467,8 +467,8 @@ impl DefensiveLineup {
         });
     }
 
-    pub fn convert_to_id_lineup(&self) -> IDBasedDefensiveLineup {
-        return IDBasedDefensiveLineup {
+    pub fn convert_to_id_lineup(&self) -> StandardIDDefenseLineup {
+        return StandardIDDefenseLineup {
             box_a: LineupUtilities::get_ids_for_vec(&self.box_a),
             box_b: LineupUtilities::get_ids_for_vec(&self.box_b),
             box_c: LineupUtilities::get_ids_for_vec(&self.box_c),
@@ -613,6 +613,16 @@ impl DefensiveLineup {
 //         return Ok(());
 //     }
 // }
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct KickoffIDOffenseLineup {
+    pub k: String,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct KickoffIDDefenseLineup {
+    pub kr: String,
+}
 
 struct LineupUtilities {}
 impl LineupUtilities {

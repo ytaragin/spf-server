@@ -37,7 +37,7 @@ pub struct PassUtils {}
 impl PassUtils {
     pub fn handle_pass_play<'a>(
         state: &'a GameState,
-        play: &'a PlaySetup<'a>,
+        play: PlaySetup<'a>,
         cards: &'a mut CardStreamer<'a>,
     ) -> PlayResult {
         let mut data = PassPlayData::new(play.offense_metadata);
@@ -96,7 +96,7 @@ impl PassPlayData {
 
 struct PassContext<'a> {
     state: &'a GameState,
-    play: &'a PlaySetup<'a>,
+    play: PlaySetup<'a>,
     cards: &'a mut CardStreamer<'a>,
     data: PassPlayData,
 }
@@ -144,7 +144,7 @@ impl<'a> PassContext<'a> {
     }
 
     fn handle_check_result(&mut self) -> PlayResult {
-        let qb = PassContext::get_qb_stats(self.play);
+        let qb = PassContext::get_qb_stats(&self.play);
 
         let shift = self.calculate_pass_shift();
 
@@ -169,7 +169,7 @@ impl<'a> PassContext<'a> {
         let sack_range_impact = (def_rush - off_block) * 2;
         mechanic!(self, "Sack range impact of {}", sack_range_impact);
 
-        let qb = PassContext::get_qb_stats(self.play);
+        let qb = PassContext::get_qb_stats(&self.play);
         let res = qb
             .pass_rush
             .get_category(self.get_pass_num(), sack_range_impact);
@@ -190,7 +190,7 @@ impl<'a> PassContext<'a> {
     }
 
     fn qb_run(&mut self) -> PlayResult {
-        let qb = PassContext::get_qb_stats(self.play);
+        let qb = PassContext::get_qb_stats(&self.play);
         let val = qb.rushing.get_stat(self.get_run_num() as usize);
         let yds = match val {
             NumStat::Sg => 0,

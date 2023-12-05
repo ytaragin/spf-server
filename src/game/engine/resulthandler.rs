@@ -2,10 +2,10 @@ use std::cmp::min;
 
 use crate::game::{GamePlayStatus, GameState, GameTeams};
 
-use super::{Down, PlayResult, ResultType, defs::GAMECONSTANTS};
+use super::{defs::GAMECONSTANTS, Down, PlayResult, ResultType};
 
 pub fn calculate_play_result(old_state: &GameState, result: &PlayResult) -> GameState {
-    let new_line = old_state.yardline + result.result;
+    let new_line = result.final_line;
     let (quarter, time_remaining) =
         advance_time(old_state.quarter, old_state.time_remaining, result.time);
 
@@ -46,6 +46,7 @@ fn handle_regular_play(interim_state: &GameState, result: &PlayResult) -> GameSt
         ..interim_state.clone()
     }
 }
+
 
 fn handle_safety(interim_state: &GameState) -> GameState {
     let score_state = GameState {
@@ -96,12 +97,14 @@ fn first_down(interim_state: &GameState) -> GameState {
 }
 
 fn possession_change(interim_state: &GameState) -> GameState {
+    let yardline = 100 - interim_state.yardline;
+
     GameState {
         down: Down::First,
         last_status: GamePlayStatus::PossesionChange,
-        first_down_target: min(interim_state.yardline + 10, 100),
+        first_down_target: min(yardline + 10, 100),
         possesion: interim_state.possesion.other_team(),
-        yardline: 100 - interim_state.yardline,
+        yardline,
 
         ..interim_state.clone()
     }

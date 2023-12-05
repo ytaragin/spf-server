@@ -5,25 +5,30 @@ use actix_web::{http::header, web, App, HttpResponse, HttpServer, Responder};
 use serde_json::json;
 
 use crate::game::{
-    engine::{OffenseCall, PlayType, StandardDefenseCall, StandardOffenseCall},
-    lineup::{IDBasedDefensiveLineup, IDBasedOffensiveLineup},
+    engine::{OffenseCall, OffenseIDLineup, PlayType, StandardDefenseCall, StandardOffenseCall, DefenseIDLineup, DefenseCall},
+    lineup::{StandardIDDefenseLineup, StandardIDOffenseLineup},
     players::Serializable_Roster,
     Game,
 };
 
 async fn set_offensive_lineup(
     appstate: web::Data<AppState>,
-    lineup: web::Json<IDBasedOffensiveLineup>,
+    lineup: web::Json<OffenseIDLineup>,
 ) -> impl Responder {
     println!("{:?}", lineup); // Do something with the OffensiveLineup struct
     let mut game = appstate.game.lock().unwrap();
     let lineup_obj = lineup.into_inner();
+
+    println!("{:?}", lineup_obj); // Do something with the OffensiveLineup struct
+
 
     match game.set_offensive_lineup_from_ids(&lineup_obj) {
         Ok(_) => HttpResponse::Ok().body("Offensive lineup set."),
         Err(msg) => HttpResponse::BadRequest().body(msg),
     }
 }
+
+
 
 async fn get_offensive_lineup(appstate: web::Data<AppState>) -> impl Responder {
     println!("get_offensive_lineup called");
@@ -52,7 +57,7 @@ async fn get_defensive_lineup(appstate: web::Data<AppState>) -> impl Responder {
 
 async fn set_defensive_lineup(
     appstate: web::Data<AppState>,
-    lineup: web::Json<IDBasedDefensiveLineup>,
+    lineup: web::Json<DefenseIDLineup>,
 ) -> impl Responder {
     println!("{:?}", lineup); // Do something with the DefensiveLineup struct
     let mut game = appstate.game.lock().unwrap();
@@ -66,7 +71,7 @@ async fn set_defensive_lineup(
 
 async fn set_offense_call(
     appstate: web::Data<AppState>,
-    data: web::Json<StandardOffenseCall>,
+    data: web::Json<OffenseCall>,
 ) -> impl Responder {
     println!("data {:?}", data);
 
@@ -74,7 +79,7 @@ async fn set_offense_call(
     println!("Offense Play:  {:?}", call); // Do something with the plays
     let mut game = appstate.game.lock().unwrap();
 
-    match game.set_offense_call_standard(call) {
+    match game.set_offense_call(call) {
         Ok(_) => HttpResponse::Ok().body("Offense play set."),
         Err(msg) => HttpResponse::BadRequest().body(msg),
     }
@@ -87,14 +92,17 @@ async fn set_offense_call2(
     println!("data {:?}", data);
 
     let call = data.into_inner();
-    println!("Offense Call 2:  {:?}", call); // Do something with the plays
+    let mut game = appstate.game.lock().unwrap();
 
-    HttpResponse::Ok().body("Offense Call set.")
+    match game.set_offense_call(call) {
+        Ok(_) => HttpResponse::Ok().body("Offense play set."),
+        Err(msg) => HttpResponse::BadRequest().body(msg),
+    }
 }
 
 async fn set_defense_call(
     appstate: web::Data<AppState>,
-    data: web::Json<StandardDefenseCall>,
+    data: web::Json<DefenseCall>,
 ) -> impl Responder {
     let call = data.into_inner();
     println!("Defense Play:  {:?}", call); // Do something with the plays
@@ -159,16 +167,16 @@ async fn get_game_state(appstate: web::Data<AppState>) -> impl Responder {
         .body(json_data)
 }
 
-async fn get_next_move_types(appstate: web::Data<AppState>) -> impl Responder {
-    println!("Get Next Moves Called");
+async fn get_next_play_types(appstate: web::Data<AppState>) -> impl Responder {
+    println!("Get Next Plays Called");
 
     let game = appstate.game.lock().unwrap();
 
-    let next_moves = game.allowed_play_types();
+    let next_types = game.allowed_play_types();
 
     // Convert the OffensiveLineup struct to JSON
-    let json_data = serde_json::to_string(&next_moves)
-        .expect("Error while serializing Alllowed Moves to JSON.");
+    let json_data = serde_json::to_string(&next_types)
+        .expect("Error while serializing Alllowed Plays to JSON.");
 
     // Set the Content-Type header to application/json
     HttpResponse::Ok()
@@ -176,10 +184,10 @@ async fn get_next_move_types(appstate: web::Data<AppState>) -> impl Responder {
         .body(json_data)
 }
 
-async fn set_next_move_type(appstate: web::Data<AppState>, data: String) -> impl Responder {
-    println!("Set Next Move Called");
+async fn set_next_play_type(appstate: web::Data<AppState>, data: String) -> impl Responder {
+    println!("Set Next Play Called");
 
-    println!("Move Type is {}", data);
+    println!("Play Type is {}", data);
     let v = PlayType::from_str(&data);
     if v.is_err() {
         return HttpResponse::BadRequest().body("Unknown Type");
@@ -262,8 +270,8 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
             .route("/defense/call", web::post().to(set_defense_call))
             .route("/game/play", web::post().to(run_play))
             .route("/game/state", web::get().to(get_game_state))
-            .route("/game/nexttype", web::get().to(get_next_move_types))
-            .route("/game/nexttype", web::post().to(set_next_move_type))
+            .route("/game/nexttype", web::get().to(get_next_play_types))
+            .route("/game/nexttype", web::post().to(set_next_play_type))
             .route("/getplayer/{id}", web::get().to(get_player))
             .route("/players/{team}", web::get().to(get_team_players))
     })

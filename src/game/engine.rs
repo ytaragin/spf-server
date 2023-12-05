@@ -10,24 +10,59 @@ use std::{collections::HashMap, hash::Hash};
 use enum_as_inner::EnumAsInner;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
+use spf_macros::CustomDeserialize;
 use strum_macros::EnumString;
 
 use crate::game::{
     engine::{passplay::PassUtils, runplay::RunUtils},
-    lineup::DefensiveBox,
+    lineup::{DefensiveBox, KickoffIDDefenseLineup},
 };
 
 use self::{
-    defs::OFFENSIVE_PLAYS_LIST, kickplay::KickPlayContext, resulthandler::calculate_play_result,
+    defs::OFFENSIVE_PLAYS_LIST, kickplay::KickPlayImpl, resulthandler::calculate_play_result,
 };
 
 use super::{
     fac::{FacCard, FacData, FacManager, PassTarget, RunDirection},
-    lineup::{DefensiveLineup, OffensiveBox, OffensiveLineup},
-    players::{KRStats, KStats, QBStats},
+    lineup::{
+        KickoffIDOffenseLineup, OffensiveBox, StandardDefensiveLineup, StandardIDDefenseLineup,
+        StandardIDOffenseLineup, StandardOffensiveLineup,
+    },
+    players::{KRStats, KStats, Player, QBStats, Roster},
     stats::{LabeledStat, RangedStats, TwelveStats},
     GameState, Play, PlayAndState,
 };
+
+macro_rules! impl_deserialize {
+    ($enum_name:ident { $( $variant:ident ( $type:ty ) ),+ }) => {
+        impl<'de> Deserialize<'de> for $enum_name {
+            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+            where
+                D: serde::Deserializer<'de>
+            {
+                #[derive(Deserialize)]
+                #[serde(untagged)]
+                enum Tagged {
+                   $( $variant ($type) ),+
+                }
+
+                let tagged = Tagged::deserialize(deserializer)?;
+
+                Ok(match tagged {
+                   $(Tagged::$variant(v) => $enum_name::$variant(v)),+
+                })
+           }
+        }
+    };
+}
+
+macro_rules! validate_field {
+    ($field:expr, $name:expr ) => {
+        if $field.is_none() {
+            return Err(format!("{} not set", $name));
+        }
+    };
+}
 
 #[derive(Debug, Copy, Clone, Serialize, Deserialize, PartialEq)]
 pub enum Down {
@@ -52,6 +87,29 @@ pub trait Validatable {
     fn validate(&self, play: &StandardPlay) -> Result<(), String>;
 }
 
+pub trait PlayImpl: Send {
+    fn validate(&self) -> Result<(), String>;
+    fn set_offense_call(&mut self, call: OffenseCall) -> Result<(), String>;
+    fn set_defense_call(&mut self, call: DefenseCall) -> Result<(), String>;
+    fn set_offense_lineup(
+        &mut self,
+        lineup: &OffenseIDLineup,
+        roster: &Roster,
+    ) -> Result<(), String>;
+    fn set_defense_lineup(
+        &mut self,
+        lineup: &DefenseIDLineup,
+        roster: &Roster,
+    ) -> Result<(), String>;
+    fn run_play<'a>(
+        &'a self,
+        game_state: &'a GameState,
+        card_streamer: &'a mut CardStreamer<'a>,
+    ) -> PlayResult;
+    fn get_play(&self) -> Play;
+    fn get_type(&self) -> PlayType;
+}
+
 pub type Yard = i32;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -61,16 +119,28 @@ pub struct IDOffensivePlay {
     pub target_id: String,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, EnumString, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, EnumString, PartialEq, Copy)]
 pub enum PlayType {
     Kickoff,
     Punt,
     ExtraPoint,
     FieldGoal,
-    OffensePlay,
+    Standard,
 }
 
-
+impl PlayType {
+    pub fn create_impl(&self) -> Box<dyn PlayImpl + Send> {
+        match self {
+            PlayType::Kickoff => return Box::new(KickoffPlay::new()),
+            PlayType::Standard => return Box::new(StandardPlay::new()),
+            _ => {
+                return Box::new(KickoffPlay {
+                    ..KickoffPlay::default()
+                })
+            }
+        }
+    }
+}
 
 #[derive(Debug, Clone, EnumAsInner)]
 pub enum OffensivePlayCategory {
@@ -82,8 +152,7 @@ type RunGetCardVal = for<'a> fn(card: &'a FacData) -> &'a RunDirection;
 type PassGetPassVal = for<'a> fn(card: &'a FacData) -> &'a PassTarget;
 type QBGetPassRange = for<'a> fn(qb: &'a QBStats) -> &'a RangedStats<PassResult>;
 
-type PlayRunner =
-    for<'a> fn(&'a GameState, &'a PlaySetup<'a>, &'a mut CardStreamer<'a>) -> PlayResult;
+type PlayRunner = for<'a> fn(&'a GameState, PlaySetup<'a>, &'a mut CardStreamer<'a>) -> PlayResult;
 
 #[derive(Debug, Clone, Copy)]
 pub struct RunMetaData {
@@ -157,19 +226,6 @@ pub struct OffensivePlayInfo {
     handler: PlayRunner,
 }
 
-// #[derive(Debug, Clone)]
-// pub struct DefensivePlayInfo {
-//     completion_impact: Map<String, i32>,
-//     in20_completion_impact: Map<String, i32>,
-
-//     qk: i32,
-//     sh: i32,
-//     lg: i32,
-
-//     allowed_targets: Vec<OffensiveBox>,
-//     handler: PlayRunner,
-// }
-
 #[derive(Debug, Clone, Serialize, Deserialize, Eq, Hash, PartialEq)]
 pub enum OffensivePlayType {
     SL,
@@ -208,7 +264,7 @@ impl Validatable for StandardOffenseCall {
             ));
         }
 
-        let off: &OffensiveLineup = play
+        let off: &StandardOffensiveLineup = play
             .offense
             .as_ref()
             .ok_or("Set Lineup before setting Call")?;
@@ -312,20 +368,109 @@ impl<'a> CardStreamer<'a> {
     }
 }
 
+#[derive(Clone)]
 pub struct PlaySetup<'a> {
-    pub offense: &'a OffensiveLineup,
+    pub offense: &'a StandardOffensiveLineup,
     pub offense_call: &'a StandardOffenseCall,
-    pub defense: &'a DefensiveLineup,
+    pub defense: &'a StandardDefensiveLineup,
     pub defense_call: &'a StandardDefenseCall,
     pub offense_metadata: &'a OffensivePlayInfo,
 }
 
+
+
 #[derive(Debug, Default, Clone)]
 pub struct StandardPlay {
-    pub offense: Option<OffensiveLineup>,
+    pub offense: Option<StandardOffensiveLineup>,
     pub offense_call: Option<StandardOffenseCall>,
-    pub defense: Option<DefensiveLineup>,
+    pub defense: Option<StandardDefensiveLineup>,
     pub defense_call: Option<StandardDefenseCall>,
+}
+
+impl PlayImpl for StandardPlay {
+    fn validate(&self) -> Result<(), String> {
+        validate_field!(self.offense, "Offense not set");
+        validate_field!(self.defense, "Defense not set");
+        validate_field!(self.offense_call, "Offense Call not set");
+        validate_field!(self.defense_call, "Defense Call not set");
+        Ok(()) // offense.is_legal_lineup()?;
+    }
+
+    fn set_offense_call(&mut self, call: OffenseCall) -> Result<(), String> {
+        println!("Offense Call {:?}", call);
+        let c = call
+            .as_standard_offense_call()
+            .ok_or("Bad type".to_string())?;
+        self.offense_call = Some(c.clone());
+        Ok(())
+    }
+
+    fn set_defense_call(&mut self, call: DefenseCall) -> Result<(), String> {
+        let c = call
+            .as_standard_defense_call()
+            .ok_or("Bad type".to_string())?;
+        self.defense_call = Some(c.clone());
+        Ok(())
+    }
+
+    fn set_offense_lineup(
+        &mut self,
+        lineup: &OffenseIDLineup,
+        roster: &Roster,
+    ) -> Result<(), String> {
+        let l = lineup
+            .as_standard_id_offense_lineup()
+            .ok_or("Bad type".to_string())?;
+
+        self.offense = Some(StandardOffensiveLineup::create_lineup(l, roster)?);
+
+        self.offense.as_ref().unwrap().is_legal_lineup()?;
+
+        Ok(())
+    }
+
+    fn set_defense_lineup(
+        &mut self,
+        lineup: &DefenseIDLineup,
+        roster: &Roster,
+    ) -> Result<(), String> {
+        let l = lineup
+            .as_standard_id_defense_lineup()
+            .ok_or("Bad type".to_string())?;
+
+        self.defense = Some(StandardDefensiveLineup::create_lineup(l, roster)?);
+
+        self.defense.as_ref().unwrap().is_legal_lineup()?;
+
+        Ok(())
+    }
+
+    fn run_play<'a>(
+        &'a self,
+        game_state: &'a GameState,
+        card_streamer: &'a mut CardStreamer<'a>,
+    ) -> PlayResult {
+        let offense_metadata =
+            get_offensive_play_info(&self.offense_call.as_ref().unwrap().play_type);
+
+        let details = PlaySetup {
+            offense_metadata,
+            offense: self.offense.as_ref().unwrap(),
+            offense_call: self.offense_call.as_ref().unwrap(),
+            defense: self.defense.as_ref().unwrap(),
+            defense_call: self.defense_call.as_ref().unwrap(),
+        };
+
+        (details.offense_metadata.handler)(game_state, details, card_streamer)
+    }
+
+    fn get_play(&self) -> Play {
+        Play::StandardPlay(self.clone())
+    }
+
+    fn get_type(&self) -> PlayType {
+        return PlayType::Standard;
+    }
 }
 
 impl StandardPlay {
@@ -335,53 +480,7 @@ impl StandardPlay {
         };
     }
 
-    fn play_ready(&self) -> Result<PlaySetup, String> {
-        let offense = self.offense.as_ref().ok_or("Offense not set")?;
-        offense.is_legal_lineup()?;
-
-        let defense = self.defense.as_ref().ok_or("Defense not set")?;
-        defense.is_legal_lineup()?;
-
-        let offense_call = self.offense_call.as_ref().ok_or("No offense play")?;
-        offense_call.validate(self)?;
-
-        let defense_call = self.defense_call.as_ref().ok_or("No defense play")?;
-        defense_call.validate(self)?;
-
-        let offense_metadata = get_offensive_play_info(&offense_call.play_type);
-
-        return Ok(PlaySetup {
-            offense,
-            defense,
-            offense_call,
-            defense_call,
-            offense_metadata,
-        });
-    }
-
-    pub fn run_play(
-        &self,
-        game_state: &GameState,
-        fac_deck: &mut FacManager,
-    ) -> Result<PlayAndState, String> {
-        let details = self.play_ready()?;
-
-        let mut card_streamer = CardStreamer::new(fac_deck);
-
-        let result = (details.offense_metadata.handler)(game_state, &details, &mut card_streamer);
-
-        if result.cards.had_z {
-            StandardPlay::handle_z(&result);
-        }
-
-        let new_state = calculate_play_result(game_state, &result);
-
-        return Ok(PlayAndState {
-            play: Play::StandardPlay(self.clone()),
-            result,
-            new_state,
-        });
-    }
+ 
 
     fn handle_z(result: &PlayResult) -> PlayResult {
         return result.clone();
@@ -407,52 +506,105 @@ pub struct PlayResult {
     pub cards: CardResults,
 }
 
-// pub trait PlayLogicState {
-//     fn handle_card(
-//         &self,
-//         state: &GameState,
-//         play: &PlaySetup,
-//         card: &FacData,
-//     ) -> Box<dyn PlayLogicState>;
-//     fn get_result(&self) -> Option<OffensePlayResult> {
-//         None
-//     }
-//     fn get_name(&self) -> &str;
-// }
 
-#[derive(Debug, Clone)]
+pub fn run_play(
+    game_state: &GameState,
+    fac_deck: &mut FacManager,
+    play: &Box<dyn PlayImpl + Send>,
+) -> Result<PlayAndState, String> {
+    play.validate()?;
+
+    let mut card_streamer = CardStreamer::new(fac_deck);
+
+    let result = play.run_play(game_state, &mut card_streamer);
+
+    if result.cards.had_z {
+        StandardPlay::handle_z(&result);
+    }
+
+    let new_state = calculate_play_result(game_state, &result);
+
+    return Ok(PlayAndState {
+        play: play.get_play(),
+        result,
+        new_state,
+    });
+}
+
+#[derive(Debug, Clone, EnumAsInner, Serialize)]
+#[serde(untagged)]
+pub enum OffenseIDLineup {
+    KickoffIDOffenseLineup(KickoffIDOffenseLineup),
+    StandardIDOffenseLineup(StandardIDOffenseLineup),
+}
+
+impl_deserialize!(OffenseIDLineup {
+    KickoffIDOffenseLineup(KickoffIDOffenseLineup),
+    StandardIDOffenseLineup(StandardIDOffenseLineup)
+});
+
+#[derive(Debug, Clone, EnumAsInner, Serialize)]
+#[serde(untagged)]
+pub enum DefenseIDLineup {
+    KickoffIDDefenseLineup(KickoffIDDefenseLineup),
+    StandardIDDefenseLineup(StandardIDDefenseLineup),
+}
+
+impl_deserialize!(DefenseIDLineup {
+    KickoffIDDefenseLineup(KickoffIDDefenseLineup),
+    StandardIDDefenseLineup(StandardIDDefenseLineup)
+});
+
+#[derive(Debug, Clone, EnumAsInner)]
+pub enum DefenseCall {
+    StandardDefenseCall(StandardDefenseCall),
+    KickoffDefenseCall(KickoffDefenseCall),
+    PuntDefenseCall(PuntDefenseCall),
+}
+
+impl_deserialize!(DefenseCall {
+    StandardDefenseCall(StandardDefenseCall),
+    KickoffDefenseCall(KickoffDefenseCall),
+    PuntDefenseCall(PuntDefenseCall)
+});
+
+#[derive(Debug, Clone, EnumAsInner)]
 pub enum OffenseCall {
+    StandardOffenseCall(StandardOffenseCall),
     KickoffOffenseCall(KickoffOffenseCall),
     PuntOffenseCall(PuntOffenseCall),
 }
-impl<'de> Deserialize<'de> for OffenseCall {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-    where
-        D: serde::Deserializer<'de>,
-    {
-        #[derive(Deserialize)]
-        #[serde(untagged)]
-        enum TaggedOffenseCall {
-            KickoffOffenseCall(KickoffOffenseCall),
-            PuntOffenseCall(PuntOffenseCall),
-        }
 
-        let tagged_call = TaggedOffenseCall::deserialize(deserializer)?;
+impl_deserialize!(OffenseCall {
+    StandardOffenseCall(StandardOffenseCall),
+    KickoffOffenseCall(KickoffOffenseCall),
+    PuntOffenseCall(PuntOffenseCall)
+});
 
-        Ok(match tagged_call {
-            TaggedOffenseCall::KickoffOffenseCall(kc) => OffenseCall::KickoffOffenseCall(kc),
-            TaggedOffenseCall::PuntOffenseCall(pc) => OffenseCall::PuntOffenseCall(pc),
-        })
-    }
-}
-impl OffenseCall {
-    pub fn get_play_type(&self) -> PlayType {
-        match self {
-            OffenseCall::KickoffOffenseCall(_) => PlayType::Kickoff,
-            OffenseCall::PuntOffenseCall(_) => PlayType::Punt,
-        }
-    }
-}
+// impl<'de> Deserialize<'de> for OffenseCall {
+//     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+//     where
+//         D: serde::Deserializer<'de>,
+//     {
+//         #[derive(Deserialize)]
+//         #[serde(untagged)]
+//         enum TaggedOffenseCall {
+//             KickoffOffenseCall(KickoffOffenseCall),
+//             PuntOffenseCall(PuntOffenseCall),
+//         }
+
+//         let tagged_call = TaggedOffenseCall::deserialize(deserializer)?;
+
+//         Ok(match tagged_call {
+//             TaggedOffenseCall::KickoffOffenseCall(kc) => OffenseCall::KickoffOffenseCall(kc),
+//             TaggedOffenseCall::PuntOffenseCall(pc) => OffenseCall::PuntOffenseCall(pc),
+//         })
+//     }
+// }
+
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct KickoffDefenseCall {}
 
 #[derive(Debug, Clone, Deserialize)]
 pub struct KickoffOffenseCall {
@@ -460,20 +612,109 @@ pub struct KickoffOffenseCall {
 }
 
 #[derive(Debug, Clone, Deserialize)]
+pub struct PuntDefenseCall {
+    pub attempt_block: bool,
+}
+
+#[derive(Debug, Clone, Deserialize)]
 pub struct PuntOffenseCall {
     pub coffin_corner: i32,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default)]
 pub struct KickoffPlay {
-    pub onside: bool,
-    pub kr: KRStats,
+    pub onside: Option<bool>,
+    pub kr: Option<KRStats>,
+    pub k: Option<KStats>,
 }
 
 impl KickoffPlay {
-    pub fn runplay(&self, game_state: &GameState, fac_deck: &mut FacManager) -> PlayResult {
-        let mut card_streamer = CardStreamer::new(fac_deck);
+    pub fn new() -> Self {
+        return Self {
+            ..Default::default()
+        };
+    }
+}
 
-        return KickPlayContext::run_play(game_state, self.clone(), &mut card_streamer);
+impl PlayImpl for KickoffPlay {
+    fn validate(&self) -> Result<(), String> {
+        validate_field!(self.onside, "Offense Call");
+        validate_field!(self.kr, "Defense Lineup");
+        validate_field!(self.k, "Offense Lineup");
+        Ok(())
+    }
+
+    fn set_offense_call(&mut self, call: OffenseCall) -> Result<(), String> {
+        let c = call
+            .as_kickoff_offense_call()
+            .ok_or("Bad type".to_string())?;
+        self.onside = Some(c.onside);
+        Ok(())
+    }
+
+    fn set_defense_call(&mut self, call: DefenseCall) -> Result<(), String> {
+        Ok(())
+    }
+
+    fn set_offense_lineup(
+        &mut self,
+        lineup: &OffenseIDLineup,
+        roster: &Roster,
+    ) -> Result<(), String> {
+        let l = lineup
+            .as_kickoff_id_offense_lineup()
+            .ok_or("Bad type".to_string())?;
+
+        self.k = Player::is_k(
+            roster
+                .get_player(&l.k)
+                .ok_or(format!("Unknown player: {}", l.k))?
+                .get_full_player(),
+        );
+
+        if self.k.is_none() {
+            return Err("Player is not a K".to_string());
+        }
+
+        return Ok(());
+    }
+
+    fn set_defense_lineup(
+        &mut self,
+        lineup: &DefenseIDLineup,
+        roster: &Roster,
+    ) -> Result<(), String> {
+        let l = lineup
+            .as_kickoff_id_defense_lineup()
+            .ok_or("Bad type".to_string())?;
+
+        self.kr = Player::is_kr(
+            roster
+                .get_player(&l.kr)
+                .ok_or(format!("Unknown player: {}", l.kr))?
+                .get_full_player(),
+        );
+
+        if self.kr.is_none() {
+            return Err("Player is not a KR".to_string());
+        }
+
+        return Ok(());
+    }
+
+    fn run_play<'a>(
+        &'a self,
+        game_state: &'a GameState,
+        card_streamer: &'a mut CardStreamer<'a>,
+    ) -> PlayResult {
+        return KickPlayImpl::run_play(game_state, self, card_streamer);
+    }
+
+    fn get_play(&self) -> Play {
+        return Play::Kickoff(self.clone());
+    }
+
+    fn get_type(&self) -> PlayType {
+        PlayType::Kickoff
     }
 }

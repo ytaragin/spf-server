@@ -396,6 +396,37 @@ impl Player {
         }
         return None;
     }
+
+    pub fn is_k(val: Player) -> Option<KStats> {
+        if let Player::K(v) = val {
+            return Some(v);
+        }
+        return None;
+    }
+
+    pub fn is_kr(val: Player) -> Option<KRStats> {
+        if let Player::KR(v) = val {
+            return Some(v);
+        }
+        return None;
+    }
+
+    pub fn is_p(val: Player) -> Option<PStats> {
+        if let Player::P(v) = val {
+            return Some(v);
+        }
+        return None;
+    }
+
+    pub fn is_pr(val: Player) -> Option<PRStats> {
+        if let Player::PR(v) = val {
+            return Some(v);
+        }
+        return None;
+    }
+
+
+
 }
 
 pub struct PlayerUtils {}

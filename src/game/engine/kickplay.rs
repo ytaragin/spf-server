@@ -14,18 +14,18 @@ use super::{
     CardStreamer, KickoffPlay, PlayResult, ResultType, Yard,
 };
 
-pub struct KickPlayContext<'a> {
+pub struct KickPlayImpl<'a> {
     utils: PlayUtils<'a>,
-    play: KickoffPlay,
+    play: &'a KickoffPlay,
 }
 
-impl<'a> KickPlayContext<'a> {
+impl<'a> KickPlayImpl<'a> {
     pub fn run_play<'b>(
         state: &'b GameState,
-        play: KickoffPlay,
+        play: &'b KickoffPlay,
         cards: &'b mut CardStreamer<'b>,
     ) -> PlayResult {
-        let mut kpc = KickPlayContext {
+        let mut kpc = KickPlayImpl {
             utils: PlayUtils::new(state, cards),
             play,
         };
@@ -34,7 +34,8 @@ impl<'a> KickPlayContext<'a> {
     }
 
     fn run_kickoff(&mut self) -> PlayResult {
-        if self.play.onside {
+        println!("Running Kickoff");
+        if self.play.onside.unwrap_or(false) {
             self.run_onside_kick()
         } else {
             let num = self.utils.get_run_num();
@@ -47,11 +48,11 @@ impl<'a> KickPlayContext<'a> {
         let result_type = match self.utils.get_pass_num() {
             1..=11 => {
                 detail!(self.utils, "Recovered by the kicking team");
-                ResultType::TurnOver
+                ResultType::Regular
             }
             _ => {
                 detail!(self.utils, "Recovered by the receiving team");
-                ResultType::Regular
+                ResultType::TurnOver
             }
         };
 
@@ -59,6 +60,8 @@ impl<'a> KickPlayContext<'a> {
     }
 
     fn run_result(&mut self, result: &KickoffResult) -> PlayResult {
+        println!("Running Result {:?}", result);
+
         match result {
             KickoffResult::Touchback => {
                 detail!(self.utils, "Touchback");
@@ -67,7 +70,7 @@ impl<'a> KickPlayContext<'a> {
                     "Setting ball at {}",
                     GAMECONSTANTS.touchback_line
                 );
-                self.create_result(ResultType::Regular, GAMECONSTANTS.touchback_line, 0)
+                self.create_result(ResultType::TurnOver, GAMECONSTANTS.touchback_line, 0)
             }
             KickoffResult::ColumnB => {
                 mechanic!(self.utils, "Going to Column  {}", 'B');
@@ -75,7 +78,8 @@ impl<'a> KickPlayContext<'a> {
                 self.run_result(KICKOFFRESULTSB.get(&num).unwrap())
             }
             KickoffResult::Return { recipient, line } => {
-                let returner = self.play.kr.returners[*recipient as usize].clone();
+                let returner =
+                    self.play.kr.as_ref().unwrap().returners[(*recipient - 1) as usize].clone();
                 self.run_return(&returner, *line)
             }
         }
@@ -84,9 +88,10 @@ impl<'a> KickPlayContext<'a> {
     fn run_return(&mut self, returner: &Returner, line: Yard) -> PlayResult {
         match returner {
             Returner::SameAs(s) => {
-                let real_returner = self.play.kr.returners[*s as usize].clone();
+                let real_returner =
+                    self.play.kr.as_ref().unwrap().returners[(*s - 1) as usize].clone();
                 self.run_return(&real_returner, line)
-            },
+            }
             Returner::Actual {
                 name,
                 return_stats,
@@ -101,7 +106,7 @@ impl<'a> KickPlayContext<'a> {
                 let ret_val = self.get_return_val(stats.asterisk, stats.yards, *asterisk_val);
                 detail!(self.utils, format!("It's a {} yard return", ret_val));
 
-                self.create_result(ResultType::Regular, line, ret_val)
+                self.create_result(ResultType::TurnOver, line, ret_val)
             }
         }
     }
@@ -122,9 +127,9 @@ impl<'a> KickPlayContext<'a> {
 
     fn create_result(&mut self, result_type: ResultType, line: Yard, result: Yard) -> PlayResult {
         PlayResult {
-            result_type: ResultType::Regular,
+            result_type,
             result: result,
-            final_line: line + result,
+            final_line: 100-(line + result),
             time: 10,
             ..self.utils.result()
         }

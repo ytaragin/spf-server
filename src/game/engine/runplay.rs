@@ -36,7 +36,7 @@ pub struct RunUtils {}
 impl RunUtils {
     pub fn handle_run_play<'a>(
         state: &'a GameState,
-        play: &'a PlaySetup<'a>,
+        play: PlaySetup<'a>,
         cards: &'a mut CardStreamer<'a>,
     ) -> PlayResult {
         let mut data = RunPlayData::new(play.offense_metadata);
@@ -87,14 +87,14 @@ impl RunPlayData {
 
 struct RunContext<'a> {
     state: &'a GameState,
-    play: &'a PlaySetup<'a>,
+    play: PlaySetup<'a>,
     cards: &'a mut CardStreamer<'a>,
     data: RunPlayData,
 }
 
 impl<'a> RunContext<'a> {
     fn start_run(&mut self) -> PlayResult {
-        let player = get_rb_stats(self.play);
+        let player = get_rb_stats(&self.play);
 
         detail!(self, format!("Handoff to {}", player.get_name()));
 
@@ -107,7 +107,7 @@ impl<'a> RunContext<'a> {
 
     fn handle_breakaway(&mut self) -> PlayResult {
         detail!(self, "It's a breakaway");
-        let rb = get_rb_stats(self.play);
+        let rb = get_rb_stats(&self.play);
         self.data.yardage = get_lg_yardage(rb.lg);
         return self.finalize_yardage();
     }
@@ -121,7 +121,7 @@ impl<'a> RunContext<'a> {
     }
 
     fn handle_actual_run(&mut self, actual: &RunDirectionActual) -> PlayResult {
-        let rb = get_rb_stats(self.play);
+        let rb = get_rb_stats(&self.play);
 
         let run_num_modifier = self.get_run_modifier();
         let run_num_full = self.get_run_num();

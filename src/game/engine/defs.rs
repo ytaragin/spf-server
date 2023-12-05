@@ -29,6 +29,7 @@ pub struct GameConstants {
     pub onside_kick_line: Yard,
 }
 
+#[derive(Debug, Clone)]
 pub enum KickoffResult {
     Touchback,
     ColumnB,
