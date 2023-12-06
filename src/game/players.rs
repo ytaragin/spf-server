@@ -6,6 +6,7 @@ use serde_json::{json, Value};
 use spf_macros::{ImplBasePlayer, IsBlocker, IsReceiver};
 use std::{collections::HashMap, str::FromStr};
 use strum_macros::Display;
+use erased_serde::serialize_trait_object;
 
 use super::{
     engine::{PassResult, PassRushResult},
@@ -18,7 +19,7 @@ use super::{
 
 pub type PassGain = TwelveStats<TripleStat>;
 
-#[derive(Debug, Eq, Hash, PartialEq, Clone, Serialize)]
+#[derive(Debug, Eq, Hash, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TeamID {
     pub name: String,
     pub year: String,
@@ -73,7 +74,8 @@ pub trait ToBasePlayer {
     fn get_player(&self) -> &dyn BasePlayer;
 }
 
-pub trait BasePlayer: Sync + Send + DynClone {
+
+pub trait BasePlayer: Sync + Send + DynClone + erased_serde::Serialize {
     fn get_id(&self) -> String;
     fn get_team(&self) -> TeamID;
     fn get_name(&self) -> String;
@@ -82,6 +84,7 @@ pub trait BasePlayer: Sync + Send + DynClone {
     fn get_full_player(&self) -> Player;
 }
 clone_trait_object!(BasePlayer);
+serialize_trait_object!(BasePlayer);
 
 #[derive(Debug, Clone, Serialize, ImplBasePlayer)]
 pub struct QBStats {
@@ -100,7 +103,7 @@ pub struct QBStats {
     pub rushing: TwelveStats<NumStat>,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer, IsBlocker)]
+#[derive(Debug, Clone, Serialize, Deserialize, ImplBasePlayer, IsBlocker)]
 pub struct RBStats {
     pub team: TeamID,
     pub name: String,
@@ -113,7 +116,7 @@ pub struct RBStats {
     pub blocks: i32,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer, IsBlocker)]
+#[derive(Debug, Clone, Serialize, Deserialize, ImplBasePlayer, IsBlocker)]
 pub struct WRStats {
     pub team: TeamID,
     pub name: String,
@@ -127,7 +130,7 @@ pub struct WRStats {
     pub blocks: i32,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
+#[derive(Debug, Clone, Serialize, Deserialize, ImplBasePlayer)]
 pub struct DBStats {
     pub team: TeamID,
     pub name: String,
@@ -139,7 +142,7 @@ pub struct DBStats {
     pub intercepts: Range,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
+#[derive(Debug, Clone, Serialize, Deserialize, ImplBasePlayer)]
 pub struct LBStats {
     pub team: TeamID,
     pub name: String,
@@ -152,7 +155,7 @@ pub struct LBStats {
     pub intercepts: Range,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
+#[derive(Debug, Clone, Serialize, Deserialize, ImplBasePlayer)]
 pub struct DLStats {
     pub team: TeamID,
     pub name: String,
@@ -163,7 +166,7 @@ pub struct DLStats {
     pub pass_rush: i32,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer, IsBlocker)]
+#[derive(Debug, Clone, Serialize, Deserialize, ImplBasePlayer, IsBlocker)]
 pub struct TEStats {
     pub team: TeamID,
     pub name: String,
@@ -176,7 +179,7 @@ pub struct TEStats {
     pub long_rush: char,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer, IsBlocker)]
+#[derive(Debug, Clone, Serialize, Deserialize, ImplBasePlayer, IsBlocker)]
 pub struct OLStats {
     pub team: TeamID,
     pub name: String,
@@ -547,9 +550,13 @@ impl Serializable_Roster {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, Serialize)]
 pub struct Roster {
     team_name: TeamID,
+
+    #[serde(bound(
+        serialize = "Vec<Box<dyn BasePlayer>>: Serialize"
+    ))]
     players: Vec<Box<dyn BasePlayer>>,
     // player_by_pos: HashMap<Position, Vec<Player>>,
 

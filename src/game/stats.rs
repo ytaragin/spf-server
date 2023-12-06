@@ -1,4 +1,5 @@
-use serde_derive::Serialize;
+use serde::{Serializer, Deserializer};
+use serde_derive::{Deserialize, Serialize};
 use std::cmp::min;
 use std::fmt::{self, Debug};
 use std::hash::Hash;
@@ -6,7 +7,7 @@ use std::{collections::HashMap, str::FromStr};
 
 use super::engine::Shiftable;
 
-#[derive(Debug, Clone, Copy, Serialize, Hash, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, Hash, PartialEq, Eq)]
 pub struct Range {
     pub start: i32,
     pub end: i32,
@@ -87,7 +88,29 @@ impl Shiftable<Range> for Range {
     }
 }
 
-#[derive(Debug, Clone, Serialize)]
+impl serde::Serialize for Range {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let s = format!("{}-{}", self.start, self.end);
+        serializer.serialize_str(&s)
+    }
+}
+
+impl<'de> serde::Deserialize<'de> for Range {
+    fn deserialize<D>(deserializer: D) -> Result<Range, D::Error> 
+    where
+        D: Deserializer<'de>,
+    {
+        let s = String::deserialize(deserializer)?;
+        // let (start, end) = parse_range_string(&s)?;
+        let r = Range::from_str(s.as_str());
+        Ok(r)
+    }   
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TripleStat {
     stats: HashMap<String, NumStat>,
 }
@@ -163,7 +186,7 @@ impl<T: fmt::Display> fmt::Display for LabeledStat<T> {
     }
 }
 
-#[derive(Debug, Copy, Clone, Serialize)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub enum NumStat {
     Sg,
     Lg,
@@ -183,7 +206,7 @@ impl NumStat {
     }
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TwelveStats<T> {
     pub stats: Vec<T>,
 }

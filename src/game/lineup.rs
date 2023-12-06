@@ -95,7 +95,7 @@ impl FromStr for DefensiveBox {
     }
 }
 
-#[derive(Debug, Clone, Serialize, ToBasePlayer)]
+#[derive(Debug, Clone, Serialize, Deserialize, ToBasePlayer)]
 enum EndPlayer {
     TE(TEStats),
     WR(WRStats),
@@ -112,7 +112,7 @@ impl EndPlayer {
     }
 }
 
-#[derive(Debug, Clone, Serialize, ToBasePlayer)]
+#[derive(Debug, Clone, Serialize, Deserialize, ToBasePlayer)]
 enum FlankerPlayer {
     WR(WRStats),
     RB(RBStats),
@@ -320,7 +320,7 @@ pub struct StandardIDDefenseLineup {
     box_o: Option<String>,
 }
 
-#[derive(Debug, Clone, Serialize, ToBasePlayer)]
+#[derive(Debug, Clone, Serialize, Deserialize, ToBasePlayer)]
 enum Row1Player {
     DL(DLStats),
     LB(LBStats),
@@ -335,7 +335,7 @@ impl Row1Player {
     }
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct StandardDefensiveLineup {
     box_a: Vec<Row1Player>,
     box_b: Vec<Row1Player>,

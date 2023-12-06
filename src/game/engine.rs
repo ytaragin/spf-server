@@ -379,7 +379,7 @@ pub struct PlaySetup<'a> {
 
 
 
-#[derive(Debug, Default, Clone)]
+#[derive(Debug, Default, Clone, Serialize)]
 pub struct StandardPlay {
     pub offense: Option<StandardOffensiveLineup>,
     pub offense_call: Option<StandardOffenseCall>,
@@ -621,7 +621,7 @@ pub struct PuntOffenseCall {
     pub coffin_corner: i32,
 }
 
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, Serialize)]
 pub struct KickoffPlay {
     pub onside: Option<bool>,
     pub kr: Option<KRStats>,

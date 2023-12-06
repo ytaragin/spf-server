@@ -1,6 +1,7 @@
 use csv::ReaderBuilder;
 use regex::Regex;
 use serde::{Deserialize, Deserializer};
+use serde_derive::Serialize;
 use std::error::Error;
 use std::fs::File;
 use std::str::FromStr;
@@ -10,7 +11,7 @@ use rand::thread_rng;
 
 use super::lineup::{DefensiveBox, OffensiveBox};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Serialize, Clone)]
 pub struct RunNum {
     pub num: i32,
     pub ob: bool,
@@ -39,13 +40,13 @@ impl<'de> Deserialize<'de> for RunNum {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RunDirectionActual {
     pub offensive_boxes: Vec<OffensiveBox>,
     pub defensive_boxes: Vec<DefensiveBox>,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub enum RunDirection {
     Actual(RunDirectionActual),
     Break,
@@ -92,7 +93,7 @@ impl<'de> Deserialize<'de> for RunDirection {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub enum PassTarget {
     Orig,
     PassRush,
@@ -120,7 +121,7 @@ impl<'de> Deserialize<'de> for PassTarget {
     }
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct FacData {
     pub id: i32,
     pub run_num: RunNum,
@@ -138,7 +139,7 @@ pub struct FacData {
     pub solitaire: String,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum FacCard {
     Z,
     Data(FacData),
@@ -150,6 +151,7 @@ impl From<FacData> for FacCard {
     }
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct FacManager {
     facs: Vec<FacCard>,
     deck: Vec<FacCard>,

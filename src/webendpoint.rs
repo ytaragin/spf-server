@@ -85,21 +85,6 @@ async fn set_offense_call(
     }
 }
 
-async fn set_offense_call2(
-    appstate: web::Data<AppState>,
-    data: web::Json<OffenseCall>,
-) -> impl Responder {
-    println!("data {:?}", data);
-
-    let call = data.into_inner();
-    let mut game = appstate.game.lock().unwrap();
-
-    match game.set_offense_call(call) {
-        Ok(_) => HttpResponse::Ok().body("Offense play set."),
-        Err(msg) => HttpResponse::BadRequest().body(msg),
-    }
-}
-
 async fn set_defense_call(
     appstate: web::Data<AppState>,
     data: web::Json<DefenseCall>,
@@ -118,7 +103,7 @@ async fn run_play(appstate: web::Data<AppState>) -> impl Responder {
     println!("Running Play..."); // Do something with the plays
     let mut game = appstate.game.lock().unwrap();
 
-    match game.run_play() {
+    match game.run_current_play() {
         Ok(res) => {
             let json_data =
                 serde_json::to_string(&res.result).expect("Error while serializing State to JSON.");
@@ -203,6 +188,22 @@ async fn set_next_play_type(appstate: web::Data<AppState>, data: String) -> impl
     }
 }
 
+async fn save_game(appstate: web::Data<AppState>, data: String) -> impl Responder {
+    println!("Save Game Called");
+
+    println!("File is {}", data);
+
+    let mut game = appstate.game.lock().unwrap();
+    let res = game.serialize_struct(data);
+    match res {
+        Ok(_) => HttpResponse::Ok()
+            .content_type("application/json")
+            .body("Set"),
+        Err(msg) => HttpResponse::BadRequest().body(msg.to_string()),
+    }
+}
+
+
 async fn get_player(path: web::Path<String>, appstate: web::Data<AppState>) -> impl Responder {
     println!("Get Player Called: {:?}", path);
     let path_param = path.into_inner();
@@ -264,11 +265,11 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
             .route("/offense/lineup", web::post().to(set_offensive_lineup))
             .route("/offense/lineup", web::get().to(get_offensive_lineup))
             .route("/offense/call", web::post().to(set_offense_call))
-            .route("/offense/call2", web::post().to(set_offense_call2))
             .route("/defense/lineup", web::get().to(get_defensive_lineup))
             .route("/defense/lineup", web::post().to(set_defensive_lineup))
             .route("/defense/call", web::post().to(set_defense_call))
             .route("/game/play", web::post().to(run_play))
+            .route("/game/save", web::post().to(save_game))
             .route("/game/state", web::get().to(get_game_state))
             .route("/game/nexttype", web::get().to(get_next_play_types))
             .route("/game/nexttype", web::post().to(set_next_play_type))

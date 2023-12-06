@@ -5,6 +5,11 @@ pub mod loader;
 pub mod players;
 pub mod stats;
 
+use std::{
+    fs::{self, File},
+    io::{BufWriter, Write},
+};
+
 use serde::{Deserialize, Serialize};
 
 use self::{
@@ -95,7 +100,7 @@ impl GameState {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub enum Play {
     StandardPlay(StandardPlay),
     Kickoff(KickoffPlay),
@@ -121,7 +126,7 @@ pub enum Play {
 //     }
 // }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct PlayAndState {
     pub play: Play,
     pub result: PlayResult,
@@ -134,17 +139,20 @@ pub struct PlayTypeInfo {
     pub next_type: Option<PlayType>,
 }
 
-// #[derive(Debug, Clone)]
+#[derive(Serialize)]
 pub struct Game {
+    #[serde(skip_serializing)]
     pub home: Roster,
+    #[serde(skip_serializing)]
     pub away: Roster,
     pub state: GameState,
     pub past_plays: Vec<PlayAndState>,
+    #[serde(skip_serializing)]
     pub next_play: Option<Box<dyn PlayImpl + Send>>,
     offlineup: Option<OffenseIDLineup>,
-    defflineup: Option<DefenseIDLineup>,
+    deflineup: Option<DefenseIDLineup>,
 
-    // pub current_play: StandardPlayOrig,
+    #[serde(skip_serializing)]
     pub fac_deck: FacManager,
 }
 
@@ -157,10 +165,9 @@ impl Game {
             away,
             state: GameState::start_state(),
             past_plays: vec![],
-            // current_play: StandardPlayOrig::new(),
             next_play: Some(start_type.create_impl()),
             offlineup: None,
-            defflineup: None,
+            deflineup: None,
             fac_deck: FacManager::new("cards/fac_cards.csv"),
         };
     }
@@ -187,7 +194,10 @@ impl Game {
         self.next_play
             .as_mut()
             .ok_or("No Play Set")?
-            .set_offense_lineup(id_lineup, &r)
+            .set_offense_lineup(id_lineup, &r)?;
+        self.offlineup = Some(id_lineup.clone());
+
+        Ok(())
     }
 
     pub fn set_defensive_lineup_from_ids(
@@ -199,7 +209,10 @@ impl Game {
         self.next_play
             .as_mut()
             .ok_or("No Play Set")?
-            .set_defense_lineup(id_lineup, &r)
+            .set_defense_lineup(id_lineup, &r)?;
+        self.deflineup = Some(id_lineup.clone());
+
+        Ok(())
     }
 
     pub fn set_offense_call(&mut self, off_call: OffenseCall) -> Result<(), String> {
@@ -233,7 +246,7 @@ impl Game {
             .as_mut()
             .ok_or("No Play Set")?
             .set_defense_lineup(&def_id, &r)?;
-        self.defflineup = Some(def_id);
+        self.deflineup = Some(def_id);
         Ok(())
     }
 
@@ -242,10 +255,10 @@ impl Game {
     }
 
     pub fn get_defensive_lineup_ids(&self) -> &Option<DefenseIDLineup> {
-        &self.defflineup
+        &self.deflineup
     }
 
-    pub fn run_play(&mut self) -> Result<PlayAndState, String> {
+    pub fn run_current_play(&mut self) -> Result<PlayAndState, String> {
         let res = run_play(
             &self.state,
             &mut self.fac_deck,
@@ -282,7 +295,30 @@ impl Game {
         }
         self.next_play = Some(playtype.create_impl());
         self.offlineup = None;
-        self.defflineup = None;
+        self.deflineup = None;
+        Ok(())
+    }
+
+    fn write_json<T>(dir: &String, file: &str, obj: &T) -> std::io::Result<()>
+    where
+        T: Serialize,
+    {
+        let path = format!("{}/{}", dir, file);
+        let file = File::create(path)?;
+
+        let mut writer = BufWriter::new(file);
+
+        serde_json::to_writer(&mut writer, obj)?;
+        writer.flush()?;
+
+        Ok(())
+    }
+    pub fn serialize_struct(&self, file_path: String) -> std::io::Result<()> {
+        fs::create_dir(file_path.clone())?;
+        Game::write_json(&file_path, "state.json", &self.state)?;
+        Game::write_json(&file_path, "home.json", &self.home)?;
+        Game::write_json(&file_path, "away.json", &self.away)?;
+        Game::write_json(&file_path, "facs.json", &self.fac_deck)?;
         Ok(())
     }
 }
