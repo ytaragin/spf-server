@@ -1,36 +1,41 @@
 use std::cmp::{max, min};
 
-use crate::game::{
-    engine::defs::TIMES,
-    fac::{FacData, RunDirection, RunDirectionActual, RunNum},
-    players::{BasePlayer, Player, PlayerUtils, RBStats},
-    stats::{self, NumStat},
-    GameState,
+use crate::{
+    detail, detailf,
+    game::{
+        engine::defs::TIMES,
+        fac::{FacData, RunDirection, RunDirectionActual, RunNum},
+        lineup::{DefensiveBox, OffensiveBox},
+        players::{BasePlayer, Player, PlayerUtils, RBStats},
+        stats::{self, NumStat},
+        GameState,
+    },
+    mechanic, mechanic2,
 };
 
 use super::{
-    CardStreamer, DefensivePlay, OffensivePlayInfo, OffensivePlayType, PlayResult, PlaySetup,
-    ResultType, RunMetaData, StandardOffenseCall,
+    playutils::PlayUtils, CardStreamer, DefensivePlay, OffensivePlayInfo, OffensivePlayType,
+    PlayResult, PlaySetup, ResultType, RunMetaData, StandardOffenseCall,
 };
 
-// use macro_rules! <name of macro> {<Body>}
-macro_rules! mechanic {
-    // match like arm for macro
-    ($ctxt:expr, $msg:expr, $val:expr) => {
-        // macro expands to this code
-        // $msg and $val will be templated using the value/variable provided to macro
-        $ctxt.data.mechanic.push(format!($msg, $val));
-    };
-}
+// // use macro_rules! <name of macro> {<Body>}
+// macro_rules! mechanic {
+//     // match like arm for macro
+//     ($ctxt:expr, $msg:expr, $val:expr) => {
+//         // macro expands to this code
+//         // $msg and $val will be templated using the value/variable provided to macro
+//         $ctxt.data.mechanic.push(format!($msg, $val));
+//     };
+// }
 
-macro_rules! detail {
-    // match like arm for macro
-    ($ctxt:expr, $msg:expr) => {
-        // macro expands to this code
-        // $msg and $val will be templated using the value/variable provided to macro
-        $ctxt.data.details.push($msg.to_string());
-    };
-}
+// macro_rules! detail {
+//     // match like arm for macro
+//     ($ctxt:expr, $msg:expr) => {
+//         // macro expands to this code
+//         // $msg and $val will be templated using the value/variable provided to macro
+//         $ctxt.data.details.push($msg.to_string());
+//     };
+// }
 
 pub struct RunUtils {}
 impl RunUtils {
@@ -43,8 +48,8 @@ impl RunUtils {
         let mut context = RunContext {
             state,
             play,
-            cards,
             data,
+            utils: PlayUtils::new(state, cards),
         };
         return context.start_run();
     }
@@ -63,10 +68,10 @@ impl RunUtils {
     }
 }
 
-#[derive(Clone)]
+// #[derive(Clone)]
 pub struct RunPlayData {
-    details: Vec<String>,
-    mechanic: Vec<String>,
+    // details: Vec<String>,
+    // mechanic: Vec<String>,
     yardage: i32,
     // result: Option<PlayResult>,
     ob: bool,
@@ -76,8 +81,8 @@ pub struct RunPlayData {
 impl RunPlayData {
     fn new(playinfo: &OffensivePlayInfo) -> Self {
         return Self {
-            details: vec![],
-            mechanic: vec![],
+            // details: vec![],
+            // mechanic: vec![],
             yardage: 0,
             ob: false,
             md: playinfo.play_type.as_run().unwrap().clone(),
@@ -88,15 +93,16 @@ impl RunPlayData {
 struct RunContext<'a> {
     state: &'a GameState,
     play: PlaySetup<'a>,
-    cards: &'a mut CardStreamer<'a>,
+    // cards: &'a mut CardStreamer<'a>,
     data: RunPlayData,
+    utils: PlayUtils<'a>,
 }
 
 impl<'a> RunContext<'a> {
     fn start_run(&mut self) -> PlayResult {
         let player = get_rb_stats(&self.play);
 
-        detail!(self, format!("Handoff to {}", player.get_name()));
+        detail!(self.utils, format!("Handoff to {}", player.get_name()));
 
         let dir = self.get_run_direction();
         match dir {
@@ -106,17 +112,17 @@ impl<'a> RunContext<'a> {
     }
 
     fn handle_breakaway(&mut self) -> PlayResult {
-        detail!(self, "It's a breakaway");
+        detail!(self.utils, "It's a breakaway");
         let rb = get_rb_stats(&self.play);
         self.data.yardage = get_lg_yardage(rb.lg);
         return self.finalize_yardage();
     }
 
     fn get_run_direction(&mut self) -> RunDirection {
-        let card = &self.cards.get_fac();
+        let card = &self.utils.get_fac();
         // let res = RunPlayData::get_fac_result(&play.offense_call.play_type, card);
         let res = (self.data.md.card_val)(card);
-        mechanic!(self, "Run Result {:?}", res);
+        mechanic!(self.utils, "Run Result {:?}", res);
         return res.clone();
     }
 
@@ -124,7 +130,7 @@ impl<'a> RunContext<'a> {
         let rb = get_rb_stats(&self.play);
 
         let run_num_modifier = self.get_run_modifier();
-        let run_num_full = self.get_run_num();
+        let run_num_full = self.utils.get_full_run_num();
         let run_num = min(run_num_full.num + run_num_modifier, 12);
 
         let stat = get_rush_stat(&rb, run_num);
@@ -137,20 +143,169 @@ impl<'a> RunContext<'a> {
                 self.data.ob = run_num_full.ob;
             }
         }
+        mechanic!(self.utils, "Base yardage gain: {}", self.data.yardage);
 
         self.data.yardage += self.calculate_run_yardage_modifier(actual);
         return self.finalize_yardage();
     }
 
     fn calculate_sg_yardage(&mut self) -> (i32, bool) {
-        detail!(self, "He gets out for short gain");
-        let rn = self.get_run_num();
+        detail!(self.utils, "He gets out for short gain");
+        let rn = self.utils.get_full_run_num();
         (rn.num + 5, rn.ob)
     }
 
     fn calculate_run_yardage_modifier(&mut self, result: &RunDirectionActual) -> i32 {
         detail!(
-            self,
+            self.utils,
+            format!(
+                "It's {:?} against {:?}",
+                result.offensive_boxes, result.defensive_boxes
+            )
+        );
+
+        if result.offensive_boxes.len() > 0 && result.defensive_boxes.len() > 0 {
+            self.off_vs_def(result)
+        } else if result.offensive_boxes.len() > 0 {
+            self.off_block(result)
+        } else {
+            self.def_tackle(result)
+        }
+    }
+
+    fn off_block(&mut self, result: &RunDirectionActual) -> i32 {
+        let v = result
+            .offensive_boxes
+            .iter()
+            .map(|b| self.get_block_value(b))
+            .sum();
+        detailf!(self.utils, "Block springs for an extra {} yards", v);
+        v
+    }
+
+    fn def_tackle(&mut self, result: &RunDirectionActual) -> i32 {
+        let vals: Vec<Option<i32>> = result
+            .defensive_boxes
+            .iter()
+            .map(|db| self.get_tackle_value(db))
+            .collect();
+
+        if vals.iter().all(|d| d.is_none()) {
+            detail!(self.utils, "All def boxes were empty");
+            2
+        } else {
+            let v = vals.iter().filter_map(|x| *x).sum();
+            detailf!(self.utils, "Defense tackles for a {} yards", v);
+            v
+        }
+    }
+
+    fn off_vs_def(&mut self, result: &RunDirectionActual) -> i32 {
+        if result.offensive_boxes.len() > 1 || result.defensive_boxes.len() > 1 {
+            mechanic!(self.utils, "Unexpected run block result {:?}", result);
+        }
+
+        let b = self.get_block_value(&result.offensive_boxes[0]);
+
+        let t_opt = self.get_tackle_value(&result.defensive_boxes[0]);
+        if t_opt.is_none() {
+            detailf!(
+                self.utils,
+                "No defense player so block gains extra {} yards",
+                b
+            );
+            return b;
+        }
+        let t = t_opt.unwrap();
+
+        let check = b + t;
+        match check.cmp(&0) {
+            std::cmp::Ordering::Less => {
+                detailf!(
+                    self.utils,
+                    "Offense wins the blocking battle for an extra {} yards",
+                    b
+                );
+                b
+            }
+            std::cmp::Ordering::Equal => {
+                detail!(self.utils, "The blocker and tackler match up well");
+                0
+            }
+            std::cmp::Ordering::Greater => {
+                detailf!(
+                    self.utils,
+                    "Defense wins the tackling battle and takes away {} yards",
+                    t
+                );
+                t
+            }
+        }
+    }
+
+    //     let tackles: i32 = result
+    //         .defensive_boxes
+    //         .iter()
+    //         .flat_map(|s| self.play.defense.get_players_in_pos(s))
+    //         // .flatten()
+    //         .fold(0, |acc, ele| acc + PlayerUtils::get_tackles(ele));
+
+    //     let blocks = result
+    //         .offensive_boxes
+    //         .iter()
+    //         .map(|s| self.play.offense.get_player_in_pos(s))
+    //         // .flatten()
+    //         .fold(0, |acc, ele| acc + PlayerUtils::get_blocks(ele));
+
+    //     let modifier = match tackles.cmp(&blocks) {
+    //         std::cmp::Ordering::Less => {
+    //             detail!(
+    //                 self.utils,
+    //                 format!("Block spring the runner for an extra {} yards", blocks)
+    //             );
+    //             blocks
+    //         }
+    //         std::cmp::Ordering::Equal => {
+    //             detail!(self.utils, "Runner gets by blocks and tackles");
+    //             0
+    //         }
+    //         std::cmp::Ordering::Greater => {
+    //             detail!(self.utils, format!("Big tackle to save {} yards", tackles));
+    //             -tackles
+    //         }
+    //     };
+
+    //     return modifier;
+    // }
+
+    fn get_block_value(&mut self, o_box: &OffensiveBox) -> i32 {
+        let b = PlayerUtils::get_blocks(self.play.offense.get_player_in_pos(o_box));
+        mechanic2!(self.utils, "Box {:?} blocks for {}", o_box, b);
+        b
+    }
+
+    fn get_tackle_value(&mut self, d_box: &DefensiveBox) -> Option<i32> {
+        let ps = self.play.defense.get_players_in_pos(d_box);
+        match ps.len() {
+            0 => {
+                mechanic!(self.utils, "Box {:?} empty.", d_box);
+                None
+            }
+            1 => {
+                let t = PlayerUtils::get_tackles(ps[0]);
+                mechanic2!(self.utils, "Box {:?} tackles for {}", d_box, t);
+                Some(t)
+            }
+            _ => {
+                mechanic!(self.utils, "Box {:?} with 2 players. TV: -4", d_box);
+                Some(-4)
+            }
+        }
+    }
+
+    fn calculate_run_yardage_modifier2(&mut self, result: &RunDirectionActual) -> i32 {
+        detail!(
+            self.utils,
             format!(
                 "It's {:?} against {:?}",
                 result.offensive_boxes, result.defensive_boxes
@@ -174,17 +329,17 @@ impl<'a> RunContext<'a> {
         let modifier = match tackles.cmp(&blocks) {
             std::cmp::Ordering::Less => {
                 detail!(
-                    self,
+                    self.utils,
                     format!("Block spring the runner for an extra {} yards", blocks)
                 );
                 blocks
             }
             std::cmp::Ordering::Equal => {
-                detail!(self, "Runner gets by blocks and tackles");
+                detail!(self.utils, "Runner gets by blocks and tackles");
                 0
             }
             std::cmp::Ordering::Greater => {
-                detail!(self, format!("Big tackle to save {} yards", tackles));
+                detail!(self.utils, format!("Big tackle to save {} yards", tackles));
                 -tackles
             }
         };
@@ -194,22 +349,22 @@ impl<'a> RunContext<'a> {
 
     fn get_run_modifier(&mut self) -> i32 {
         if self.play.defense_call.defense_type != DefensivePlay::RunDefense {
-            mechanic!(self, "Run modifier {}", 0);
+            mechanic!(self.utils, "Run modifier {}", 0);
             return 0;
         }
 
-        detail!(self, "The run defense focuses on the run");
+        detail!(self.utils, "The run defense focuses on the run");
         let mut modifier = 2;
         if let Some(pos) = &self.play.defense_call.key {
             if *pos == self.play.offense_call.target {
-                detail!(self, " and they key on the right back");
+                detail!(self.utils, " and they key on the right back");
                 modifier += 2;
             } else {
-                detail!(self, "But they focus on the wrong back");
+                detail!(self.utils, "But they focus on the wrong back");
                 modifier -= 2;
             }
         }
-        mechanic!(self, "Run modifier {}", modifier);
+        mechanic!(self.utils, "Run modifier {}", modifier);
         return modifier;
     }
 
@@ -223,35 +378,35 @@ impl<'a> RunContext<'a> {
         let mut time = TIMES.run_play;
 
         if self.data.ob && self.data.md.can_go_ob {
-            detail!(self, "Play ends out of bounds");
+            detail!(self.utils, "Play ends out of bounds");
             time = TIMES.run_play_ob;
         }
 
-        detail!(self, format!("Gain of {} yards", self.data.yardage));
+        detail!(self.utils, format!("Gain of {} yards", result));
         return self.create_result(result, ResultType::Regular, time);
     }
 
-    fn get_pass_num(&mut self) -> i32 {
-        let card = self.get_fac();
-        let pass_num = card.pass_num;
-        mechanic!(self, "Pass Num: {}", pass_num);
-        pass_num
-    }
+    // fn get_pass_num(&mut self) -> i32 {
+    //     let card = self.get_fac();
+    //     let pass_num = card.pass_num;
+    //     mechanic!(self.utils, "Pass Num: {}", pass_num);
+    //     pass_num
+    // }
 
-    fn get_run_num(&mut self) -> RunNum {
-        let card = self.get_fac();
-        let run_num = card.run_num;
-        mechanic!(self, "Run Num: {:?}", run_num);
-        run_num
-    }
+    // fn get_run_num(&mut self) -> RunNum {
+    //     let card = self.get_fac();
+    //     let run_num = card.run_num;
+    //     mechanic!(self.utils, "Run Num: {:?}", run_num);
+    //     run_num
+    // }
 
-    fn get_fac(&mut self) -> FacData {
-        let card = self.cards.get_fac();
-        self.data
-            .mechanic
-            .push(format!("Card Flipped: {}", (card.id)));
-        card
-    }
+    // fn get_fac(&mut self) -> FacData {
+    //     let card = self.cards.get_fac();
+    //     self.data
+    //         .mechanic
+    //         .push(format!("Card Flipped: {}", (card.id)));
+    //     card
+    // }
 
     fn create_result(&mut self, result: i32, result_type: ResultType, time: i32) -> PlayResult {
         return PlayResult {
@@ -259,10 +414,11 @@ impl<'a> RunContext<'a> {
             result,
             final_line: result + self.state.yardline,
             time,
-            details: self.data.details.clone(),
-            mechanic: self.data.mechanic.clone(),
-            extra: None,
-            cards: self.cards.get_results(),
+            // details: self.data.details.clone(),
+            // mechanic: self.data.mechanic.clone(),
+            // extra: None,
+            // cards: self.cards.get_results(),
+            ..self.utils.result()
         };
     }
 }

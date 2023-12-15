@@ -1,9 +1,12 @@
-use crate::game::{fac::FacData, GameState};
+use crate::game::{
+    fac::{FacData, RunNum},
+    GameState,
+};
 
-use super::{CardStreamer, CardResults, PlayResult};
+use super::{CardResults, CardStreamer, PlayResult};
 
 // use macro_rules! <name of macro> {<Body>}
-#[macro_export] 
+#[macro_export]
 macro_rules! mechanic {
     // match like arm for macro
     ($ctxt:expr, $msg:expr, $val:expr) => {
@@ -13,7 +16,17 @@ macro_rules! mechanic {
     };
 }
 
-#[macro_export] 
+#[macro_export]
+macro_rules! mechanic2 {
+    // match like arm for macro
+    ($ctxt:expr, $msg:expr, $val1:expr, $val2:expr) => {
+        // macro expands to this code
+        // $msg and $val will be templated using the value/variable provided to macro
+        $ctxt.mechanic(format!($msg, $val1, $val2));
+    };
+}
+
+#[macro_export]
 macro_rules! detail {
     // match like arm for macro
     ($ctxt:expr, $msg:expr) => {
@@ -23,8 +36,15 @@ macro_rules! detail {
     };
 }
 
-
-
+#[macro_export]
+macro_rules! detailf {
+    // match like arm for macro
+    ($ctxt:expr, $msg:expr, $val:expr) => {
+        // macro expands to this code
+        // $msg and $val will be templated using the value/variable provided to macro
+        $ctxt.detail(format!($msg, $val));
+    };
+}
 
 pub struct PlayUtils<'a> {
     details: Vec<String>,
@@ -57,9 +77,13 @@ impl<'a> PlayUtils<'a> {
     }
 
     pub fn get_run_num(&mut self) -> i32 {
+        self.get_full_run_num().num
+    }
+
+    pub fn get_full_run_num(&mut self) -> RunNum {
         let card = self.get_fac();
-        let run_num = card.run_num.num;
-        mechanic!(self, "Run Num: {}", run_num);
+        let run_num = card.run_num;
+        mechanic!(self, "Run Num: {:?}", run_num);
         run_num
     }
 
