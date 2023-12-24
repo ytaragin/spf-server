@@ -241,6 +241,7 @@ pub enum OffensivePlayType {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum OffensiveStrategy {
+    Straight,
     Sneak,
     Flop,
     Draw,
@@ -250,7 +251,7 @@ pub enum OffensiveStrategy {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct StandardOffenseCall {
     play_type: OffensivePlayType,
-    strategy: Option<OffensiveStrategy>,
+    strategy: OffensiveStrategy,
     target: OffensiveBox,
 }
 
@@ -291,6 +292,7 @@ pub enum DefensivePlay {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum DefensiveStrategy {
+    Straight,
     DoubleCover,
     TripleCover,
     DoubleCoverX2,
@@ -299,21 +301,27 @@ pub enum DefensiveStrategy {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct StandardDefenseCall {
     defense_type: DefensivePlay,
-    strategy: Option<DefensiveStrategy>,
+    strategy: DefensiveStrategy,
     key: Option<OffensiveBox>,
     def_players: Vec<String>,
 }
 impl Validatable for StandardDefenseCall {
     fn validate(&self, play: &StandardPlay) -> Result<(), String> {
         let lineup = play.defense.as_ref().ok_or("Set lineup before Call")?;
-        let res = self
-            .def_players
+        self.def_players
             .iter()
             .try_for_each(|id| match lineup.find_player(&id) {
                 Some(_) => return Ok(()),
                 None => return Err(format!("{} is not in lineup", id)),
-            });
-        return res;
+            })?;
+
+        if self.defense_type == DefensivePlay::Blitz
+            && (self.def_players.len() < 2 || self.def_players.len() > 5)
+        {
+            return Err("Must blitz between 2 and 5 players".to_string());
+        }
+
+        return Ok(());
     }
 }
 
@@ -372,12 +380,10 @@ impl<'a> CardStreamer<'a> {
 pub struct PlaySetup<'a> {
     pub offense: &'a StandardOffensiveLineup,
     pub offense_call: &'a StandardOffenseCall,
-    pub defense: &'a StandardDefensiveLineup,
+    pub defense: StandardDefensiveLineup,
     pub defense_call: &'a StandardDefenseCall,
     pub offense_metadata: &'a OffensivePlayInfo,
 }
-
-
 
 #[derive(Debug, Default, Clone, Serialize)]
 pub struct StandardPlay {
@@ -453,12 +459,23 @@ impl PlayImpl for StandardPlay {
         let offense_metadata =
             get_offensive_play_info(&self.offense_call.as_ref().unwrap().play_type);
 
+        let def_call = self.defense_call.as_ref().unwrap();
+        let def_lineup = self.defense.as_ref().unwrap();
+
+        let filtered_lineup = def_lineup.filter_players(&def_call.def_players);
+
+        let real_def = if def_call.defense_type == DefensivePlay::Blitz {
+            filtered_lineup
+        } else {
+            def_lineup.clone()
+        };
+
         let details = PlaySetup {
             offense_metadata,
             offense: self.offense.as_ref().unwrap(),
             offense_call: self.offense_call.as_ref().unwrap(),
-            defense: self.defense.as_ref().unwrap(),
-            defense_call: self.defense_call.as_ref().unwrap(),
+            defense: real_def,
+            defense_call: def_call,
         };
 
         (details.offense_metadata.handler)(game_state, details, card_streamer)
@@ -479,8 +496,6 @@ impl StandardPlay {
             ..Default::default()
         };
     }
-
- 
 
     fn handle_z(result: &PlayResult) -> PlayResult {
         return result.clone();
@@ -505,7 +520,6 @@ pub struct PlayResult {
     pub extra: Option<String>,
     pub cards: CardResults,
 }
-
 
 pub fn run_play(
     game_state: &GameState,
@@ -601,7 +615,6 @@ impl_deserialize!(OffenseCall {
 //         })
 //     }
 // }
-
 
 #[derive(Debug, Clone, Deserialize)]
 pub struct KickoffDefenseCall {}

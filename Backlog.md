@@ -29,7 +29,7 @@
 
 
 # Pass Defense
-* Blitz
+* ~~Blitz~~
 * Coverage
 
 # Z Cards

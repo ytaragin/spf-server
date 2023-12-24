@@ -604,6 +604,53 @@ impl StandardDefensiveLineup {
             DefensiveBox::BoxO => LineupUtilities::convert_option_to_vec(&self.box_o),
         }
     }
+
+    fn filter_players_from_vec<T: ToBasePlayer + Clone>(
+        ids: &Vec<String>,
+        players: &Vec<T>,
+    ) -> Vec<T> {
+        let v = players
+            .iter()
+            .filter(|p| !ids.contains(&p.get_player().get_id()))
+            .map(|p| (*p).clone())
+            .collect::<Vec<T>>();
+
+        v
+    }
+
+    fn filter_players_from_pos<T: ToBasePlayer + Clone>(
+        ids: &Vec<String>,
+        player: &Option<T>,
+    ) -> Option<T> {
+        let v = player
+            .clone()
+            .and_then(|p| match ids.contains(&p.get_player().get_id()) {
+                true => None,
+                false => Some(p),
+            });
+
+        v
+    }
+
+    pub fn filter_players(&self, ids: &Vec<String>) -> Self {
+        return Self {
+            box_a: Self::filter_players_from_vec(ids, &self.box_a),
+            box_b: Self::filter_players_from_vec(ids, &self.box_b),
+            box_c: Self::filter_players_from_vec(ids, &self.box_c),
+            box_d: Self::filter_players_from_vec(ids, &self.box_d),
+            box_e: Self::filter_players_from_vec(ids, &self.box_e),
+            box_f: Self::filter_players_from_pos(ids, &self.box_f),
+            box_g: Self::filter_players_from_pos(ids, &self.box_g),
+            box_h: Self::filter_players_from_pos(ids, &self.box_h),
+            box_i: Self::filter_players_from_pos(ids, &self.box_i),
+            box_j: Self::filter_players_from_pos(ids, &self.box_j),
+            box_k: Self::filter_players_from_pos(ids, &self.box_k),
+            box_l: Self::filter_players_from_vec(ids, &self.box_l),
+            box_m: Self::filter_players_from_pos(ids, &self.box_m),
+            box_n: Self::filter_players_from_pos(ids, &self.box_n),
+            box_o: Self::filter_players_from_pos(ids, &self.box_o),
+        };
+    }
 }
 
 // impl Validatable for DefensiveLineup {

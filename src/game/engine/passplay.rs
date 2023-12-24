@@ -1,37 +1,44 @@
 use std::cmp::min;
 
-use crate::game::{
-    engine::{PassRushResult, defs::{TIMES, INTERCEPTION_TABLE, INTERCEPTION_RETURN_TABLE, PASS_DEFENDERS}},
-    fac::{FacData, PassTarget},
-    lineup::{DefensiveBox, OffensiveBox},
-    players::{BasePlayer, Player, PlayerUtils, Position, QBStats},
-    stats::{NumStat, RangedStats},
-    GameState,
+use crate::{
+    detail,
+    game::{
+        engine::{
+            defs::{INTERCEPTION_RETURN_TABLE, INTERCEPTION_TABLE, PASS_DEFENDERS, TIMES},
+            DefensivePlay, PassRushResult,
+        },
+        fac::{FacData, PassTarget},
+        lineup::{DefensiveBox, OffensiveBox, StandardDefensiveLineup},
+        players::{BasePlayer, Player, PlayerUtils, Position, QBStats},
+        stats::{NumStat, RangedStats},
+        GameState,
+    },
+    mechanic,
 };
 
 use super::{
-    CardStreamer, OffensivePlayInfo, PassMetaData, PassResult, PlayResult, PlaySetup, ResultType,
-    
+    playutils::PlayUtils, CardStreamer, DefenseIDLineup, OffensivePlayInfo, PassMetaData,
+    PassResult, PlayResult, PlaySetup, ResultType,
 };
 
-// use macro_rules! <name of macro> {<Body>}
-macro_rules! mechanic {
-    // match like arm for macro
-    ($ctxt:expr, $msg:expr, $val:expr) => {
-        // macro expands to this code
-        // $msg and $val will be templated using the value/variable provided to macro
-        $ctxt.data.mechanic.push(format!($msg, $val));
-    };
-}
+// // use macro_rules! <name of macro> {<Body>}
+// macro_rules! mechanic {
+//     // match like arm for macro
+//     ($ctxt:expr, $msg:expr, $val:expr) => {
+//         // macro expands to this code
+//         // $msg and $val will be templated using the value/variable provided to macro
+//         $ctxt.data.mechanic.push(format!($msg, $val));
+//     };
+// }
 
-macro_rules! detail {
-    // match like arm for macro
-    ($ctxt:expr, $msg:expr) => {
-        // macro expands to this code
-        // $msg and $val will be templated using the value/variable provided to macro
-        $ctxt.data.details.push($msg.to_string());
-    };
-}
+// macro_rules! detail {
+//     // match like arm for macro
+//     ($ctxt:expr, $msg:expr) => {
+//         // macro expands to this code
+//         // $msg and $val will be templated using the value/variable provided to macro
+//         $ctxt.data.details.push($msg.to_string());
+//     };
+// }
 
 pub struct PassUtils {}
 impl PassUtils {
@@ -40,13 +47,26 @@ impl PassUtils {
         play: PlaySetup<'a>,
         cards: &'a mut CardStreamer<'a>,
     ) -> PlayResult {
-        let mut data = PassPlayData::new(play.offense_metadata);
+        let data = PassPlayData::new(play.offense_metadata);
+        // let p_filt = play.defense.filter_players(&play.defense_call.def_players);
+
+        // let p = if play.defense_call.defense_type == DefensivePlay::Blitz {
+        //     PlaySetup {
+        //         defense: &p_filt,
+        //         ..play
+
+        //     }
+        // } else {
+        //     play
+        // };
+
+
 
         let mut context = PassContext {
             state,
             play,
-            cards,
             data,
+            utils: PlayUtils::new(state, cards),
         };
         return context.start_pass();
     }
@@ -74,22 +94,20 @@ impl PassUtils {
 
 #[derive(Clone)]
 pub struct PassPlayData {
-    details: Vec<String>,
-    mechanic: Vec<String>,
+    // details: Vec<String>,
+    // mechanic: Vec<String>,
     target: OffensiveBox,
 
     md: PassMetaData,
-    result: Option<PlayResult>,
 }
 
 impl PassPlayData {
     fn new(playinfo: &OffensivePlayInfo) -> Self {
         return Self {
-            details: vec![],
-            mechanic: vec![],
+            // details: vec![],
+            // mechanic: vec![],
             target: OffensiveBox::QB,
             md: playinfo.play_type.as_pass().unwrap().clone(),
-            result: None,
         };
     }
 }
@@ -97,31 +115,43 @@ impl PassPlayData {
 struct PassContext<'a> {
     state: &'a GameState,
     play: PlaySetup<'a>,
-    cards: &'a mut CardStreamer<'a>,
+    // cards: &'a mut CardStreamer<'a>,
     data: PassPlayData,
+    utils: PlayUtils<'a>,
 }
 impl<'a> PassContext<'a> {
     fn start_pass(&mut self) -> PlayResult {
         self.data.target = self.play.offense_call.target;
 
-        let card = self.get_fac();
+        if self.play.defense_call.defense_type == super::DefensivePlay::Blitz
+            && (self.play.offense_call.play_type == super::OffensivePlayType::SH
+                || self.play.offense_call.play_type == super::OffensivePlayType::LG)
+        {
+            detail!(self.utils, "There is a blitz");
+            return self.handle_pass_rush();
+        }
+
+        let card = self.utils.get_fac();
         let target = (self.data.md.target)(&card);
 
-        mechanic!(self, "Target card returned: {:?}", target);
+        mechanic!(self.utils, "Target card returned: {:?}", target);
 
         match target {
-            PassTarget::PassRush => return self.handle_pass_rush(),
+            PassTarget::PassRush => {
+                detail!(self.utils, "The pass rush gets in");
+                return self.handle_pass_rush();
+            }
             PassTarget::Orig => {
                 self.data.target = self.play.offense_call.target;
                 detail!(
-                    self,
+                    self.utils,
                     format!("The pass is thrown towards the {:?}", self.data.target)
                 );
             }
             PassTarget::Actual(target) => {
                 self.data.target = *target;
                 detail!(
-                    self,
+                    self.utils,
                     format!(
                         "The QB adjusts and throws it towards the {:?} ",
                         self.data.target
@@ -133,8 +163,8 @@ impl<'a> PassContext<'a> {
                     .get_player_in_pos(&self.data.target)
                     .is_none()
                 {
-                    mechanic!(self, "{:?} is empty", self.data.target);
-                    detail!(self, "But no one is there");
+                    mechanic!(self.utils, "{:?} is empty", self.data.target);
+                    detail!(self.utils, "But no one is there");
                     return self.incomplete_pass();
                 }
             }
@@ -149,9 +179,9 @@ impl<'a> PassContext<'a> {
         let shift = self.calculate_pass_shift();
 
         let range = (self.data.md.completion_range)(&qb);
-        mechanic!(self, "Completion Range: {:?}", range);
-        let res = range.get_category(self.get_pass_num(), shift);
-        mechanic!(self, "Pass Result: {:?} ", res);
+        mechanic!(self.utils, "Completion Range: {:?}", range);
+        let res = range.get_category(self.utils.get_pass_num(), shift);
+        mechanic!(self.utils, "Pass Result: {:?} ", res);
 
         match res {
             PassResult::Complete => self.complete_pass(),
@@ -161,19 +191,17 @@ impl<'a> PassContext<'a> {
     }
 
     fn handle_pass_rush(&mut self) -> PlayResult {
-        detail!(self, "The pass rush gets in");
-
         let off_block = self.get_offensive_block();
         let def_rush = self.get_defensive_rush();
 
         let sack_range_impact = (def_rush - off_block) * 2;
-        mechanic!(self, "Sack range impact of {}", sack_range_impact);
+        mechanic!(self.utils, "Sack range impact of {}", sack_range_impact);
 
         let qb = PassContext::get_qb_stats(&self.play);
         let res = qb
             .pass_rush
-            .get_category(self.get_pass_num(), sack_range_impact);
-        mechanic!(self, "Pass Rush Result: {:?}", res);
+            .get_category(self.utils.get_pass_num(), sack_range_impact);
+        mechanic!(self.utils, "Pass Rush Result: {:?}", res);
         match res {
             PassRushResult::Sack => self.sack(),
             PassRushResult::Runs => self.qb_run(),
@@ -183,27 +211,27 @@ impl<'a> PassContext<'a> {
     }
 
     fn sack(&mut self) -> PlayResult {
-        let yds = self.get_pass_num() / 3;
-        detail!(self, format!("The QB is sacked for {} yards", yds));
+        let yds = self.utils.get_pass_num() / 3;
+        detail!(self.utils, format!("The QB is sacked for {} yards", yds));
 
         self.create_result(-yds, ResultType::Regular, TIMES.run_play)
     }
 
     fn qb_run(&mut self) -> PlayResult {
         let qb = PassContext::get_qb_stats(&self.play);
-        let val = qb.rushing.get_stat(self.get_run_num() as usize);
+        let val = qb.rushing.get_stat(self.utils.get_run_num() as usize);
         let yds = match val {
             NumStat::Sg => 0,
             NumStat::Lg => 0,
             NumStat::Val(v) => *v,
         };
-        detail!(self, format!("The QB runs for it for {} yards", yds));
+        detail!(self.utils, format!("The QB runs for it for {} yards", yds));
 
         self.create_result(yds, ResultType::Regular, TIMES.run_play)
     }
 
     fn complete_pass(&mut self) -> PlayResult {
-        detail!(self, "Pass Complete");
+        detail!(self.utils, "Pass Complete");
 
         let gain = self.get_pass_gain();
         match gain {
@@ -217,7 +245,7 @@ impl<'a> PassContext<'a> {
     }
 
     fn incomplete_pass(&mut self) -> PlayResult {
-        detail!(self, "The pass falls incomplete");
+        detail!(self.utils, "The pass falls incomplete");
 
         self.create_result(0, ResultType::Regular, TIMES.pass_play_incomplete)
     }
@@ -227,26 +255,26 @@ impl<'a> PassContext<'a> {
     }
 
     fn long_gain(&mut self) -> PlayResult {
-        detail!(self, "It's a long gain");
-        let yards = min(30, self.get_run_num() * 4);
+        detail!(self.utils, "It's a long gain");
+        let yards = min(30, self.utils.get_run_num() * 4);
         self.finalize_pass(yards)
     }
 
     fn finalize_pass(&mut self, yards: i32) -> PlayResult {
-        detail!(self, format!("Pass complete for {} yards", yards));
+        detail!(self.utils, format!("Pass complete for {} yards", yards));
 
         self.create_result(yards, ResultType::Regular, TIMES.pass_play_complete)
     }
 
     fn qb_interception(&mut self) -> PlayResult {
         let def_box = INTERCEPTION_TABLE
-            .get_stat(self.get_run_num() as usize)
+            .get_stat(self.utils.get_run_num() as usize)
             .get_val(self.play.offense_metadata.code.to_string())
             .unwrap();
 
         let int_point = self.get_interception_point();
         detail!(
-            self,
+            self.utils,
             format!(
                 "The QB throws it towards the defense {:?}, {} yards downfield",
                 def_box, int_point
@@ -255,13 +283,11 @@ impl<'a> PassContext<'a> {
 
         let players = self.play.defense.get_players_in_pos(def_box);
         if players.is_empty() {
-            self.data
-                .details
-                .push("But there is no one there".to_string());
+            detail!(self.utils, "But there is no one there");
             return self.incomplete_pass();
         }
 
-        let ret_yards = self.get_return_yardage(players[0]);
+        let ret_yards = self.get_return_yardage(players[0].get_pos().to_string());
 
         self.create_result(
             int_point - ret_yards,
@@ -278,20 +304,6 @@ impl<'a> PassContext<'a> {
         def_impact + player_impact
     }
 
-    fn get_pass_num(&mut self) -> i32 {
-        let card = self.get_fac();
-        let pass_num = card.pass_num;
-        mechanic!(self, "Pass Num: {}", pass_num);
-        pass_num
-    }
-
-    fn get_run_num(&mut self) -> i32 {
-        let card = self.get_fac();
-        let run_num = card.run_num.num;
-        mechanic!(self, "Run Num: {}", run_num);
-        run_num
-    }
-
     fn get_qb_stats(play: &PlaySetup) -> QBStats {
         Player::is_qb(
             play.offense
@@ -303,7 +315,7 @@ impl<'a> PassContext<'a> {
     }
 
     fn get_interception_point(&mut self) -> i32 {
-        let rn = self.get_run_num();
+        let rn = self.utils.get_run_num();
         match self.play.offense_call.play_type {
             super::OffensivePlayType::QK => rn,
             super::OffensivePlayType::SH => rn * 2,
@@ -313,12 +325,12 @@ impl<'a> PassContext<'a> {
         }
     }
 
-    fn get_return_yardage(&mut self, player: &dyn BasePlayer) -> i32 {
+    fn  get_return_yardage(&mut self, pos: String) -> i32 {
         let ret_yards = INTERCEPTION_RETURN_TABLE
-            .get_stat(self.get_run_num() as usize)
-            .get_val(player.get_pos().to_string())
+            .get_stat(self.utils.get_run_num() as usize)
+            .get_val(pos)
             .unwrap_or(&0);
-        detail!(self, format!("It's returned for {} yard", ret_yards));
+        detail!(self.utils, format!("It's returned for {} yard", ret_yards));
 
         return *ret_yards;
     }
@@ -328,14 +340,14 @@ impl<'a> PassContext<'a> {
         let pass_gain =
             PlayerUtils::get_pass_gain(self.play.offense.get_player_in_pos(&self.data.target))
                 .unwrap();
-        // mechanic!(self, "Full Pass Chart {:?}", pass_gain);
+        // mechanic!(self.utils, "Full Pass Chart {:?}", pass_gain);
 
-        let run_num = self.get_run_num();
+        let run_num = self.utils.get_run_num();
 
         let gain = pass_gain
             .get_stat(run_num as usize)
             .get_val(self.data.md.pass_gain.clone());
-        mechanic!(self, "Assigned gain: {:?}", gain);
+        mechanic!(self.utils, "Assigned gain: {:?}", gain);
 
         match gain {
             Some(n) => Some(*n),
@@ -365,26 +377,24 @@ impl<'a> PassContext<'a> {
             },
             super::DefensivePlay::Blitz => 0,
         };
-        mechanic!(self, "Defensive Impact: {}", m);
+        mechanic!(self.utils, "Defensive Impact: {}", m);
 
         m
     }
 
     fn get_pass_defender_impact(&mut self) -> i32 {
         let def_box = PASS_DEFENDERS.get(&self.data.target).unwrap();
-        detail!(self, format!("Pass defended by {:?}", def_box));
+        detail!(self.utils, format!("Pass defended by {:?}", def_box));
         let players = self.play.defense.get_players_in_pos(def_box);
         if players.is_empty() {
-            self.data
-                .details
-                .push("But there is no one there".to_string());
-            mechanic!(self, "No player impact: {}", 5);
+            detail!(self.utils, "But there is no one there");
+            mechanic!(self.utils, "No player impact: {}", 5);
             return 5;
         }
         let player_imp = players
             .iter()
             .fold(0, |acc, p| acc + PlayerUtils::get_pass_defense(*p));
-        mechanic!(self, "Total player impact: {}", player_imp);
+        mechanic!(self.utils, "Total player impact: {}", player_imp);
         player_imp
     }
 
@@ -401,7 +411,7 @@ impl<'a> PassContext<'a> {
             .map(|spot| self.play.offense.get_player_in_pos(spot).unwrap())
             .fold(0, |acc, p| acc + PlayerUtils::get_pass_block(p));
 
-        mechanic!(self, "Blocking value of {}", val);
+        mechanic!(self.utils, "Blocking value of {}", val);
         val
     }
 
@@ -425,28 +435,37 @@ impl<'a> PassContext<'a> {
             })
             .sum();
         // .fold(0, |acc, v| acc + v);
-        mechanic!(self, "Rushing value of {}", val);
-        val
-    }
 
-    fn get_fac(&mut self) -> FacData {
-        let card = self.cards.get_fac();
-        self.data
-            .mechanic
-            .push(format!("Card Flipped: {}", (card.id)));
-        card
+        let blitzing_val: i32;
+        if self.play.defense_call.defense_type == DefensivePlay::Blitz {
+            blitzing_val = (self.play.defense_call.def_players.len() as i32) * 2;
+            mechanic!(self.utils, "Blitzing Val {}", blitzing_val);
+        } else {
+            blitzing_val = 0;
+        }
+
+        mechanic!(self.utils, "Total rushing value of {}", val + blitzing_val);
+        val
     }
 
     fn create_result(&mut self, result: i32, result_type: ResultType, time: i32) -> PlayResult {
         return PlayResult {
             result_type,
             result,
-            final_line: result+self.state.yardline,
+            final_line: result + self.state.yardline,
             time,
-            details: self.data.details.clone(),
-            mechanic: self.data.mechanic.clone(),
-            extra: None,
-            cards: self.cards.get_results(),
+            // details: self.data.details.clone(),
+            // mechanic: self.data.mechanic.clone(),
+            // extra: None,
+            // cards: self.cards.get_results(),
+            ..self.utils.result()
         };
+    }
+
+
+
+    fn is_non_blitzer(&mut self, player: String) -> bool {
+        self.play.defense_call.defense_type == DefensivePlay::Blitz
+            && self.play.defense_call.def_players.contains(&player)
     }
 }
