@@ -36,6 +36,35 @@ pub enum KickoffResult {
     Return { recipient: i32, line: Yard },
 }
 
+pub struct DrawPlayImpact {
+    pub run_defense: i32,
+    pub pass_defense: i32,
+    pub prevent_defense: i32,
+    pub blitz: i32,
+}
+
+pub struct PassPlayValues {
+    pub qk_run_defense: i32,
+    pub sh_run_defense: i32,
+    pub lg_run_defense: i32,
+
+    pub qk_pass_defense: i32,
+    pub sh_pass_defense: i32,
+    pub lg_pass_defense: i32,
+
+    pub qk_prevent_defense: i32,
+    pub sh_prevent_defense: i32,
+    pub lg_prevent_defense: i32,
+
+    pub blitz: i32,
+
+    pub no_defender: i32,
+
+    pub pa_run_defense: i32,
+    pub pa_pass_defense: i32,
+    pub pa_prevent_defense: i32,
+}
+
 lazy_static! {
     pub static ref TIMES: TimeTable = TimeTable {
         run_play: 40,
@@ -52,6 +81,32 @@ lazy_static! {
         touchback_line: 20,
         onside_kick_line: 50,
     };
+
+
+    pub static ref DRAW_IMPACT: DrawPlayImpact = DrawPlayImpact {
+        run_defense: 2,
+        pass_defense: -4,
+        prevent_defense: -2,
+        blitz: -4
+    };
+
+    pub static ref PASS_PLAY_VALUES: PassPlayValues = PassPlayValues {
+        qk_run_defense: 0,
+        sh_run_defense: 5,
+        lg_run_defense: 7,
+        qk_pass_defense: -10,
+        sh_pass_defense: -5,
+        lg_pass_defense: 0,
+        qk_prevent_defense: 0,
+        sh_prevent_defense: -5,
+        lg_prevent_defense: -7,
+        blitz: 0,
+        no_defender: 5,
+        pa_run_defense: 5,
+        pa_pass_defense: -5,
+        pa_prevent_defense: -10,
+    };
+
 
 
     pub static ref PASS_DEFENDERS: HashMap<OffensiveBox, DefensiveBox> = {

@@ -3,7 +3,10 @@ use std::cmp::{max, min};
 use crate::{
     detail, detailf,
     game::{
-        engine::defs::TIMES,
+        engine::{
+            defs::{DRAW_IMPACT, TIMES},
+            OffensiveStrategy,
+        },
         fac::{FacData, RunDirection, RunDirectionActual, RunNum},
         lineup::{DefensiveBox, OffensiveBox},
         players::{BasePlayer, Player, PlayerUtils, RBStats},
@@ -17,25 +20,6 @@ use super::{
     playutils::PlayUtils, CardStreamer, DefensivePlay, OffensivePlayInfo, OffensivePlayType,
     PlayResult, PlaySetup, ResultType, RunMetaData, StandardOffenseCall,
 };
-
-// // use macro_rules! <name of macro> {<Body>}
-// macro_rules! mechanic {
-//     // match like arm for macro
-//     ($ctxt:expr, $msg:expr, $val:expr) => {
-//         // macro expands to this code
-//         // $msg and $val will be templated using the value/variable provided to macro
-//         $ctxt.data.mechanic.push(format!($msg, $val));
-//     };
-// }
-
-// macro_rules! detail {
-//     // match like arm for macro
-//     ($ctxt:expr, $msg:expr) => {
-//         // macro expands to this code
-//         // $msg and $val will be templated using the value/variable provided to macro
-//         $ctxt.data.details.push($msg.to_string());
-//     };
-// }
 
 pub struct RunUtils {}
 impl RunUtils {
@@ -70,10 +54,8 @@ impl RunUtils {
 
 // #[derive(Clone)]
 pub struct RunPlayData {
-    // details: Vec<String>,
-    // mechanic: Vec<String>,
     yardage: i32,
-    // result: Option<PlayResult>,
+
     ob: bool,
     md: RunMetaData,
 }
@@ -81,8 +63,6 @@ pub struct RunPlayData {
 impl RunPlayData {
     fn new(playinfo: &OffensivePlayInfo) -> Self {
         return Self {
-            // details: vec![],
-            // mechanic: vec![],
             yardage: 0,
             ob: false,
             md: playinfo.play_type.as_run().unwrap().clone(),
@@ -243,41 +223,6 @@ impl<'a> RunContext<'a> {
         }
     }
 
-    //     let tackles: i32 = result
-    //         .defensive_boxes
-    //         .iter()
-    //         .flat_map(|s| self.play.defense.get_players_in_pos(s))
-    //         // .flatten()
-    //         .fold(0, |acc, ele| acc + PlayerUtils::get_tackles(ele));
-
-    //     let blocks = result
-    //         .offensive_boxes
-    //         .iter()
-    //         .map(|s| self.play.offense.get_player_in_pos(s))
-    //         // .flatten()
-    //         .fold(0, |acc, ele| acc + PlayerUtils::get_blocks(ele));
-
-    //     let modifier = match tackles.cmp(&blocks) {
-    //         std::cmp::Ordering::Less => {
-    //             detail!(
-    //                 self.utils,
-    //                 format!("Block spring the runner for an extra {} yards", blocks)
-    //             );
-    //             blocks
-    //         }
-    //         std::cmp::Ordering::Equal => {
-    //             detail!(self.utils, "Runner gets by blocks and tackles");
-    //             0
-    //         }
-    //         std::cmp::Ordering::Greater => {
-    //             detail!(self.utils, format!("Big tackle to save {} yards", tackles));
-    //             -tackles
-    //         }
-    //     };
-
-    //     return modifier;
-    // }
-
     fn get_block_value(&mut self, o_box: &OffensiveBox) -> i32 {
         let b = PlayerUtils::get_blocks(self.play.offense.get_player_in_pos(o_box));
         mechanic2!(self.utils, "Box {:?} blocks for {}", o_box, b);
@@ -348,24 +293,49 @@ impl<'a> RunContext<'a> {
     }
 
     fn get_run_modifier(&mut self) -> i32 {
-        if self.play.defense_call.defense_type != DefensivePlay::RunDefense {
-            mechanic!(self.utils, "Run modifier {}", 0);
-            return 0;
-        }
+        let mut modifier = self.get_drawplay_impact();
 
-        detail!(self.utils, "The run defense focuses on the run");
-        let mut modifier = 2;
-        if let Some(pos) = &self.play.defense_call.key {
-            if *pos == self.play.offense_call.target {
-                detail!(self.utils, " and they key on the right back");
-                modifier += 2;
-            } else {
-                detail!(self.utils, "But they focus on the wrong back");
-                modifier -= 2;
+        if self.play.defense_call.defense_type == DefensivePlay::RunDefense {
+            detail!(self.utils, "The run defense focuses on the run");
+            modifier += 2;
+            if let Some(pos) = &self.play.defense_call.key {
+                if *pos == self.play.offense_call.target {
+                    detail!(self.utils, " and they key on the right back");
+                    modifier += 2;
+                } else {
+                    detail!(self.utils, "But they focus on the wrong back");
+                    modifier -= 2;
+                }
             }
         }
+
         mechanic!(self.utils, "Run modifier {}", modifier);
         return modifier;
+    }
+
+    fn get_drawplay_impact(&mut self) -> i32 {
+        if self.play.offense_call.strategy == OffensiveStrategy::Draw
+            && (self.play.offense_call.play_type == OffensivePlayType::IL
+                || self.play.offense_call.play_type == OffensivePlayType::IR)
+        {
+            let val = match self.play.defense_call.defense_type {
+                DefensivePlay::RunDefense => DRAW_IMPACT.run_defense,
+                DefensivePlay::PassDefense => DRAW_IMPACT.pass_defense,
+                DefensivePlay::PreventDefense => DRAW_IMPACT.prevent_defense,
+                DefensivePlay::Blitz => DRAW_IMPACT.blitz,
+            };
+
+            if val < 0 {
+                detail!(self.utils, "The draw play fools the defense");
+            } else {
+                detail!(self.utils, "The draw crashes into the run defense");
+            }
+            mechanic!(self.utils, "Draw modifier {}", val);
+
+            return val;
+        }
+
+        return 0;
     }
 
     fn handle_bad_play(&mut self) -> PlayResult {
@@ -386,66 +356,44 @@ impl<'a> RunContext<'a> {
         return self.create_result(result, ResultType::Regular, time);
     }
 
-    // fn get_pass_num(&mut self) -> i32 {
-    //     let card = self.get_fac();
-    //     let pass_num = card.pass_num;
-    //     mechanic!(self.utils, "Pass Num: {}", pass_num);
-    //     pass_num
-    // }
-
-    // fn get_run_num(&mut self) -> RunNum {
-    //     let card = self.get_fac();
-    //     let run_num = card.run_num;
-    //     mechanic!(self.utils, "Run Num: {:?}", run_num);
-    //     run_num
-    // }
-
-    // fn get_fac(&mut self) -> FacData {
-    //     let card = self.cards.get_fac();
-    //     self.data
-    //         .mechanic
-    //         .push(format!("Card Flipped: {}", (card.id)));
-    //     card
-    // }
-
     fn create_result(&mut self, result: i32, result_type: ResultType, time: i32) -> PlayResult {
         return PlayResult {
             result_type,
             result,
             final_line: result + self.state.yardline,
             time,
-            // details: self.data.details.clone(),
-            // mechanic: self.data.mechanic.clone(),
-            // extra: None,
-            // cards: self.cards.get_results(),
+
             ..self.utils.result()
         };
     }
 }
 
 fn get_lg_yardage(c: char) -> i32 {
-    match c {
-        'A' => 100,
-        'B' => 95,
-        'C' => 90,
-        'D' => 85,
-        'E' => 80,
-        'F' => 75,
-        'G' => 70,
-        'H' => 65,
-        'I' => 60,
-        'J' => 55,
-        'K' => 50,
-        'L' => 45,
-        'M' => 40,
-        'N' => 35,
-        'O' => 30,
-        'P' => 25,
-        'Q' => 20,
-        'R' => 15,
-        // Use an underscore to handle any other char values and return a default value
-        _ => 0,
-    }
+    // match c {
+    //     'A' => 100,
+    //     'B' => 95,
+    //     'C' => 90,
+    //     'D' => 85,
+    //     'E' => 80,
+    //     'F' => 75,
+    //     'G' => 70,
+    //     'H' => 65,
+    //     'I' => 60,
+    //     'J' => 55,
+    //     'K' => 50,
+    //     'L' => 45,
+    //     'M' => 40,
+    //     'N' => 35,
+    //     'O' => 30,
+    //     'P' => 25,
+    //     'Q' => 20,
+    //     'R' => 15,
+    //     // Use an underscore to handle any other char values and return a default value
+    //     _ => 0,
+    // }
+
+    // let ascii_value = c as i32;
+    100 - (c as i32 - 65) * 5
 }
 
 fn get_rb_stats(play: &PlaySetup) -> RBStats {

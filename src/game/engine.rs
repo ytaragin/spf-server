@@ -239,9 +239,9 @@ pub enum OffensivePlayType {
     SC,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum OffensiveStrategy {
-    Straight,
+    NoStrategy,
     Sneak,
     Flop,
     Draw,
@@ -269,13 +269,43 @@ impl Validatable for StandardOffenseCall {
             .offense
             .as_ref()
             .ok_or("Set Lineup before setting Call")?;
-        let player = off
-            .get_player_in_pos(&self.target)
+        off.get_player_in_pos(&self.target)
             .ok_or(format!("No player in {:?}", self.target))?;
+
+        match self.strategy {
+            OffensiveStrategy::Draw => {
+                validate_strategy(
+                    "Draw",
+                    &self.play_type,
+                    vec![OffensivePlayType::IL, OffensivePlayType::IR],
+                )?;
+            }
+            OffensiveStrategy::PlayAction => {
+                validate_strategy(
+                    "PlayAction",
+                    &self.play_type,
+                    vec![OffensivePlayType::SH, OffensivePlayType::LG],
+                )?;
+            }
+            OffensiveStrategy::NoStrategy => {}
+            OffensiveStrategy::Sneak => {}
+            OffensiveStrategy::Flop => {}
+        }
 
         // use player for further validations
         return Ok(());
     }
+}
+
+fn validate_strategy(
+    strategy: &str,
+    actual: &OffensivePlayType,
+    allowed: Vec<OffensivePlayType>,
+) -> Result<(), String> {
+    if !allowed.contains(actual) {
+        return Err(format!("{:?} can not be played on {:?}", strategy, actual));
+    }
+    Ok(())
 }
 
 fn get_offensive_play_info(play: &OffensivePlayType) -> &OffensivePlayInfo {
