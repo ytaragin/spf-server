@@ -5,7 +5,8 @@ use std::fmt::{self, Debug};
 use std::hash::Hash;
 use std::{collections::HashMap, str::FromStr};
 
-use super::engine::Shiftable;
+use super::standard_play::Shiftable;
+
 
 #[derive(Debug, Clone, Copy, Hash, PartialEq, Eq)]
 pub struct Range {

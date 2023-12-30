@@ -4,6 +4,9 @@ pub mod lineup;
 pub mod loader;
 pub mod players;
 pub mod stats;
+pub mod standard_play;
+
+
 
 use std::{
     fs::{self, File},
@@ -15,15 +18,15 @@ use serde::{Deserialize, Serialize};
 use self::{
     engine::{
         defs::GAMECONSTANTS, run_play, DefenseCall, DefenseIDLineup, Down, KickoffPlay,
-        OffenseCall, OffenseIDLineup, PlayImpl, PlayResult, PlayType, StandardDefenseCall,
-        StandardOffenseCall, StandardPlay, Validatable, Yard,
+        OffenseCall, OffenseIDLineup, PlayImpl, PlayResult, PlayType, 
+           Yard,
     },
     fac::FacManager,
     lineup::{
         StandardDefensiveLineup, StandardIDDefenseLineup, StandardIDOffenseLineup,
         StandardOffensiveLineup,
     },
-    players::Roster,
+    players::Roster, standard_play::StandardPlay,
 };
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
@@ -98,6 +101,18 @@ impl GameState {
             GamePlayStatus::End => vec![],
         }
     }
+
+    pub fn get_next_move_default(&self) -> PlayType {
+        match self.last_status {
+            GamePlayStatus::Touchdown => PlayType::ExtraPoint,
+            GamePlayStatus::Safety => PlayType::Punt,
+            GamePlayStatus::FieldGoal => PlayType::Kickoff,
+            GamePlayStatus::PossesionChange => PlayType::Standard,
+            GamePlayStatus::Ongoing => PlayType::Standard,
+            GamePlayStatus::Start => PlayType::Kickoff,
+            GamePlayStatus::End => PlayType::Kickoff,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -149,6 +164,7 @@ pub struct Game {
     pub past_plays: Vec<PlayAndState>,
     #[serde(skip_serializing)]
     pub next_play: Option<Box<dyn PlayImpl + Send>>,
+    // pub next_play: Box<dyn PlayImpl + Send>,
     offlineup: Option<OffenseIDLineup>,
     deflineup: Option<DefenseIDLineup>,
 
@@ -268,7 +284,9 @@ impl Game {
         self.past_plays.push(res.clone());
 
         self.state = res.new_state;
-        self.next_play = None;
+        self.set_next_play_type(self.state.get_next_move_default())?;
+
+        // if self.next_play.
 
         return Ok(res);
     }

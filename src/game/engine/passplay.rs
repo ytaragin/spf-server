@@ -3,23 +3,23 @@ use std::cmp::min;
 use crate::{
     detail,
     game::{
-        engine::{
-            defs::{INTERCEPTION_RETURN_TABLE, INTERCEPTION_TABLE, PASS_DEFENDERS, TIMES, PASS_PLAY_VALUES},
-            DefensivePlay, PassRushResult,
+        engine::defs::{
+            INTERCEPTION_RETURN_TABLE, INTERCEPTION_TABLE, PASS_DEFENDERS, PASS_PLAY_VALUES, TIMES,
         },
         fac::{FacData, PassTarget},
         lineup::{DefensiveBox, OffensiveBox, StandardDefensiveLineup},
         players::{BasePlayer, Player, PlayerUtils, Position, QBStats},
+        standard_play::{
+            DefensivePlay, OffensivePlayInfo, OffensivePlayType, OffensiveStrategy, PassMetaData,
+            PassResult, PassRushResult, PlaySetup,
+        },
         stats::{NumStat, RangedStats},
         GameState,
     },
     mechanic,
 };
 
-use super::{
-    playutils::PlayUtils, CardStreamer, DefenseIDLineup, OffensivePlayInfo, OffensivePlayType,
-    OffensiveStrategy, PassMetaData, PassResult, PlayResult, PlaySetup, ResultType,
-};
+use super::{playutils::PlayUtils, CardStreamer, DefenseIDLineup, PlayResult, ResultType};
 
 // // use macro_rules! <name of macro> {<Body>}
 // macro_rules! mechanic {
@@ -94,9 +94,9 @@ impl PassUtils {
 pub struct PassPlayData {
     // details: Vec<String>,
     // mechanic: Vec<String>,
-    target: OffensiveBox,
+    pub target: OffensiveBox,
 
-    md: PassMetaData,
+    pub md: PassMetaData,
 }
 
 impl PassPlayData {
@@ -121,9 +121,9 @@ impl<'a> PassContext<'a> {
     fn start_pass(&mut self) -> PlayResult {
         self.data.target = self.play.offense_call.target;
 
-        if self.play.defense_call.defense_type == super::DefensivePlay::Blitz
-            && (self.play.offense_call.play_type == super::OffensivePlayType::SH
-                || self.play.offense_call.play_type == super::OffensivePlayType::LG)
+        if self.play.defense_call.defense_type == DefensivePlay::Blitz
+            && (self.play.offense_call.play_type == OffensivePlayType::SH
+                || self.play.offense_call.play_type == OffensivePlayType::LG)
         {
             detail!(self.utils, "There is a blitz");
             return self.handle_pass_rush();
@@ -323,10 +323,10 @@ impl<'a> PassContext<'a> {
     fn get_interception_point(&mut self) -> i32 {
         let rn = self.utils.get_run_num();
         match self.play.offense_call.play_type {
-            super::OffensivePlayType::QK => rn,
-            super::OffensivePlayType::SH => rn * 2,
-            super::OffensivePlayType::LG => rn * 4,
-            super::OffensivePlayType::SC => rn - 6,
+            OffensivePlayType::QK => rn,
+            OffensivePlayType::SH => rn * 2,
+            OffensivePlayType::LG => rn * 4,
+            OffensivePlayType::SC => rn - 6,
             _ => 0,
         }
     }
@@ -361,77 +361,78 @@ impl<'a> PassContext<'a> {
         }
     }
 
+    fn get_def_impact(&mut self) -> i32 {
+        let m = match self.play.defense_call.defense_type {
+            DefensivePlay::RunDefense => match self.play.offense_call.play_type {
+                OffensivePlayType::QK => PASS_PLAY_VALUES.qk_run_defense,
+                OffensivePlayType::SH => PASS_PLAY_VALUES.sh_run_defense,
+                OffensivePlayType::LG => PASS_PLAY_VALUES.lg_run_defense,
+                _ => 0,
+            },
+            DefensivePlay::PassDefense => match self.play.offense_call.play_type {
+                OffensivePlayType::QK => PASS_PLAY_VALUES.qk_pass_defense,
+                OffensivePlayType::SH => PASS_PLAY_VALUES.sh_pass_defense,
+                OffensivePlayType::LG => PASS_PLAY_VALUES.lg_pass_defense,
+                _ => 0,
+            },
+            DefensivePlay::PreventDefense => match self.play.offense_call.play_type {
+                OffensivePlayType::QK => PASS_PLAY_VALUES.qk_prevent_defense,
+                OffensivePlayType::SH => PASS_PLAY_VALUES.sh_prevent_defense,
+                OffensivePlayType::LG => PASS_PLAY_VALUES.lg_prevent_defense,
+                _ => 0,
+            },
+            DefensivePlay::Blitz => PASS_PLAY_VALUES.blitz,
+        };
 
+        mechanic!(self.utils, "Defensive Impact: {}", m);
 
-fn get_def_impact(&mut self) -> i32 {
-  let m = match self.play.defense_call.defense_type {
-    super::DefensivePlay::RunDefense => match self.play.offense_call.play_type {
-      super::OffensivePlayType::QK => PASS_PLAY_VALUES.qk_run_defense,  
-      super::OffensivePlayType::SH => PASS_PLAY_VALUES.sh_run_defense,
-      super::OffensivePlayType::LG => PASS_PLAY_VALUES.lg_run_defense,
-      _ => 0,
-    },
-    super::DefensivePlay::PassDefense => match self.play.offense_call.play_type {
-      super::OffensivePlayType::QK => PASS_PLAY_VALUES.qk_pass_defense,
-      super::OffensivePlayType::SH => PASS_PLAY_VALUES.sh_pass_defense,
-      super::OffensivePlayType::LG => PASS_PLAY_VALUES.lg_pass_defense,
-      _ => 0,
-    },
-    super::DefensivePlay::PreventDefense => match self.play.offense_call.play_type {
-      super::OffensivePlayType::QK => PASS_PLAY_VALUES.qk_prevent_defense,
-      super::OffensivePlayType::SH => PASS_PLAY_VALUES.sh_prevent_defense,
-      super::OffensivePlayType::LG => PASS_PLAY_VALUES.lg_prevent_defense,  
-      _ => 0,
-    },
-    super::DefensivePlay::Blitz => PASS_PLAY_VALUES.blitz,
-  };
-  
-  mechanic!(self.utils, "Defensive Impact: {}", m);
+        m
+    }
 
-  m
-}
+    fn get_pass_defender_impact(&mut self) -> i32 {
+        let def_box = PASS_DEFENDERS.get(&self.data.target).unwrap();
+        detail!(self.utils, format!("Pass defended by {:?}", def_box));
+        let players = self.play.defense.get_players_in_pos(def_box);
+        if players.is_empty() {
+            detail!(self.utils, "But there is no one there");
+            mechanic!(
+                self.utils,
+                "No player impact: {}",
+                PASS_PLAY_VALUES.no_defender
+            );
+            return PASS_PLAY_VALUES.no_defender;
+        }
+        let player_imp = players
+            .iter()
+            .fold(0, |acc, p| acc + PlayerUtils::get_pass_defense(*p));
+        mechanic!(self.utils, "Total player impact: {}", player_imp);
+        player_imp
+    }
 
-fn get_pass_defender_impact(&mut self) -> i32 {
-  let def_box = PASS_DEFENDERS.get(&self.data.target).unwrap();
-  detail!(self.utils, format!("Pass defended by {:?}", def_box));
-  let players = self.play.defense.get_players_in_pos(def_box);
-  if players.is_empty() {
-    detail!(self.utils, "But there is no one there");
-    mechanic!(self.utils, "No player impact: {}", PASS_PLAY_VALUES.no_defender);
-    return PASS_PLAY_VALUES.no_defender; 
-  }
-  let player_imp = players
-    .iter()
-    .fold(0, |acc, p| acc + PlayerUtils::get_pass_defense(*p));
-  mechanic!(self.utils, "Total player impact: {}", player_imp);
-  player_imp
-}
+    fn get_play_action_effect(&mut self) -> i32 {
+        if self.play.offense_call.strategy != OffensiveStrategy::PlayAction
+            || (self.play.offense_call.play_type != OffensivePlayType::SH
+                && self.play.offense_call.play_type != OffensivePlayType::LG)
+        {
+            return 0;
+        }
 
-fn get_play_action_effect(&mut self) -> i32 {
-  if self.play.offense_call.strategy != OffensiveStrategy::PlayAction
-    || (self.play.offense_call.play_type != OffensivePlayType::SH
-      && self.play.offense_call.play_type != OffensivePlayType::LG)
-  {
-    return 0;
-  }
-  
-  let pa_effect = match self.play.defense_call.defense_type {
-    DefensivePlay::RunDefense => PASS_PLAY_VALUES.pa_run_defense,
-    DefensivePlay::PassDefense => PASS_PLAY_VALUES.pa_pass_defense,
-    DefensivePlay::PreventDefense => PASS_PLAY_VALUES.pa_prevent_defense,
-    DefensivePlay::Blitz => 0,
-  };
+        let pa_effect = match self.play.defense_call.defense_type {
+            DefensivePlay::RunDefense => PASS_PLAY_VALUES.pa_run_defense,
+            DefensivePlay::PassDefense => PASS_PLAY_VALUES.pa_pass_defense,
+            DefensivePlay::PreventDefense => PASS_PLAY_VALUES.pa_prevent_defense,
+            DefensivePlay::Blitz => 0,
+        };
 
-  if pa_effect > 0 {
-    detail!(self.utils, "Play action freezes the defense");
-  } else {
-    detail!(self.utils, "Play action hurts the offense");
-  }
+        if pa_effect > 0 {
+            detail!(self.utils, "Play action freezes the defense");
+        } else {
+            detail!(self.utils, "Play action hurts the offense");
+        }
 
-  mechanic!(self.utils, "Play action effect: {}", pa_effect);
-  pa_effect
-}
-
+        mechanic!(self.utils, "Play action effect: {}", pa_effect);
+        pa_effect
+    }
 
     fn get_offensive_block(&mut self) -> i32 {
         let blockers = vec![

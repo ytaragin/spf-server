@@ -3,22 +3,19 @@ use std::cmp::{max, min};
 use crate::{
     detail, detailf,
     game::{
-        engine::{
-            defs::{DRAW_IMPACT, TIMES},
-            OffensiveStrategy,
-        },
-        fac::{FacData, RunDirection, RunDirectionActual, RunNum},
+        engine::defs::{DRAW_IMPACT, TIMES},
+        fac::{FacData, RunDirection, RunDirectionActual},
         lineup::{DefensiveBox, OffensiveBox},
         players::{BasePlayer, Player, PlayerUtils, RBStats},
         stats::{self, NumStat},
-        GameState,
+        GameState, standard_play::{PlaySetup, DefensivePlay, OffensiveStrategy, OffensivePlayType, OffensivePlayInfo, RunMetaData},
     },
     mechanic, mechanic2,
 };
 
 use super::{
-    playutils::PlayUtils, CardStreamer, DefensivePlay, OffensivePlayInfo, OffensivePlayType,
-    PlayResult, PlaySetup, ResultType, RunMetaData, StandardOffenseCall,
+    playutils::PlayUtils, CardStreamer,
+    PlayResult,  ResultType,  
 };
 
 pub struct RunUtils {}
