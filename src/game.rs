@@ -1,12 +1,11 @@
 pub mod engine;
 pub mod fac;
+pub mod kickoff_play;
 pub mod lineup;
 pub mod loader;
 pub mod players;
-pub mod stats;
 pub mod standard_play;
-
-
+pub mod stats;
 
 use std::{
     fs::{self, File},
@@ -17,16 +16,17 @@ use serde::{Deserialize, Serialize};
 
 use self::{
     engine::{
-        defs::GAMECONSTANTS, run_play, DefenseCall, DefenseIDLineup, Down, KickoffPlay,
-        OffenseCall, OffenseIDLineup, PlayImpl, PlayResult, PlayType, 
-           Yard,
+        defs::GAMECONSTANTS, run_play, DefenseCall, DefenseIDLineup, Down, OffenseCall,
+        OffenseIDLineup, PlayImpl, PlayResult, PlayType, Yard,
     },
     fac::FacManager,
+    kickoff_play::KickoffPlay,
     lineup::{
         StandardDefensiveLineup, StandardIDDefenseLineup, StandardIDOffenseLineup,
         StandardOffensiveLineup,
     },
-    players::Roster, standard_play::StandardPlay,
+    players::Roster,
+    standard_play::StandardPlay,
 };
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
@@ -311,9 +311,12 @@ impl Game {
         if !allowed.contains(&playtype) {
             return Err(format!("Valid plays are {:?}", allowed));
         }
+        let same_type = self.next_play.as_ref().unwrap().get_type() == playtype;
         self.next_play = Some(playtype.create_impl());
-        self.offlineup = None;
-        self.deflineup = None;
+        if !same_type {
+            self.offlineup = None;
+            self.deflineup = None;
+        }
         Ok(())
     }
 

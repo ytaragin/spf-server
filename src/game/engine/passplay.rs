@@ -1,12 +1,16 @@
 use std::cmp::min;
 
 use crate::{
-    detail,
+    detail, detailf,
     game::{
-        engine::defs::{
-            INTERCEPTION_RETURN_TABLE, INTERCEPTION_TABLE, PASS_DEFENDERS, PASS_PLAY_VALUES, TIMES,
+        engine::{
+            defs::{
+                INTERCEPTION_RETURN_TABLE, INTERCEPTION_TABLE, PASS_DEFENDERS, PASS_PLAY_VALUES,
+                TIMES,
+            },
+            runplay::RunUtils,
         },
-        fac::{FacData, PassTarget},
+        fac::{FacCard, FacData, PassTarget, ScreenResult},
         lineup::{DefensiveBox, OffensiveBox, StandardDefensiveLineup},
         players::{BasePlayer, Player, PlayerUtils, Position, QBStats},
         standard_play::{
@@ -19,7 +23,10 @@ use crate::{
     mechanic,
 };
 
-use super::{playutils::PlayUtils, CardStreamer, DefenseIDLineup, PlayResult, ResultType};
+use super::{
+    defs::SCREEN_DEFENSE, playutils::PlayUtils, CardStreamer, DefenseIDLineup, PlayResult,
+    ResultType,
+};
 
 // // use macro_rules! <name of macro> {<Body>}
 // macro_rules! mechanic {
@@ -121,6 +128,9 @@ impl<'a> PassContext<'a> {
     fn start_pass(&mut self) -> PlayResult {
         self.data.target = self.play.offense_call.target;
 
+        if self.play.offense_call.play_type == OffensivePlayType::SC {
+            return self.handle_screen();
+        }
         if self.play.defense_call.defense_type == DefensivePlay::Blitz
             && (self.play.offense_call.play_type == OffensivePlayType::SH
                 || self.play.offense_call.play_type == OffensivePlayType::LG)
@@ -169,6 +179,49 @@ impl<'a> PassContext<'a> {
         }
 
         return self.handle_check_result();
+    }
+
+    fn handle_screen(&mut self) -> PlayResult {
+        detail!(self.utils, "Throws a screen to the ");
+        let sc_res = self.utils.get_fac().sc;
+        match sc_res.result {
+            PassResult::Complete => self.handle_complete_screen(&sc_res),
+            PassResult::Incomplete => self.incomplete_pass(),
+            PassResult::Interception => self.qb_interception(),
+        }
+    }
+
+    fn handle_complete_screen(&mut self, result: &ScreenResult) -> PlayResult {
+        let rb = RunUtils::get_rb_stats(&self.play);
+        detailf!(self.utils, "The screen is complete to {:?} ", rb.name);
+        let modifier = RunUtils::get_run_modifier(
+            &mut self.utils,
+            self.play.defense_call.defense_type,
+            &SCREEN_DEFENSE,
+            self.play.offense_call.target,
+            self.play.defense_call.key,
+        );
+
+        let run_num = min(self.utils.get_run_num() + modifier, FacCard::get_max_rn());
+        let rb = &RunUtils::get_rb_stats(&self.play);
+
+        let stat = RunUtils::get_rush_stat(rb, run_num);
+        let yardage = (result.multiplier
+            * match stat {
+                NumStat::Sg | NumStat::Lg => RunUtils::calculate_sg_yardage(&mut self.utils).0,
+                NumStat::Val(num) => *num,
+            } as f32)
+            .ceil() as i32;
+
+        if result.multiplier < 1.0 {
+            detail!(self.utils, "Defense makes a good play to slow it down");
+        } else if result.multiplier > 1.0 {
+            detail!(self.utils, "Back makes a good play for more yardage");
+        }
+
+        mechanic!(self.utils, "Screen yardage gain: {}", yardage);
+
+        self.finalize_pass(yardage)
     }
 
     fn handle_check_result(&mut self) -> PlayResult {

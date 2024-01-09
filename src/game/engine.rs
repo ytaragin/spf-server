@@ -1,36 +1,25 @@
 pub mod defs;
-mod kickplay;
+pub mod kickplay;
 pub mod passplay;
 mod playutils;
 mod resulthandler;
 pub mod runplay;
 
-use std::{collections::HashMap, hash::Hash};
-
 use enum_as_inner::EnumAsInner;
-use serde::{de::DeserializeOwned, Deserialize, Serialize};
+use serde::{Deserialize, Serialize};
 
-use spf_macros::CustomDeserialize;
 use strum_macros::EnumString;
 
-use crate::game::{
-    engine::{passplay::PassUtils, runplay::RunUtils},
-    lineup::{DefensiveBox, KickoffIDDefenseLineup},
-};
+use crate::game::lineup::KickoffIDDefenseLineup;
 
-use self::{
-    defs::OFFENSIVE_PLAYS_LIST, kickplay::KickPlayImpl, resulthandler::calculate_play_result,
-};
+use self::{kickplay::KickPlayImpl, resulthandler::calculate_play_result};
 
 use super::{
-    fac::{FacCard, FacData, FacManager, PassTarget, RunDirection},
-    lineup::{
-        KickoffIDOffenseLineup, OffensiveBox, StandardDefensiveLineup, StandardIDDefenseLineup,
-        StandardIDOffenseLineup, StandardOffensiveLineup,
-    },
-    players::{KRStats, KStats, Player, QBStats, Roster},
-    standard_play::{self, StandardDefenseCall, StandardOffenseCall, StandardPlay},
-    stats::{LabeledStat, RangedStats, TwelveStats},
+    fac::{FacCard, FacData, FacManager},
+    lineup::{KickoffIDOffenseLineup, StandardIDDefenseLineup, StandardIDOffenseLineup},
+    players::{KRStats, KStats, Player, Roster},
+    standard_play::{StandardDefenseCall, StandardOffenseCall, StandardPlay},
+    kickoff_play::KickoffPlay,
     GameState, Play, PlayAndState,
 };
 
@@ -54,16 +43,6 @@ macro_rules! impl_deserialize {
                 })
            }
         }
-    };
-}
-
-#[macro_export]
-macro_rules! validate_field {
-    ($field:expr, $name:expr ) => {
-        if $field.is_none() {
-            return Err(format!("{} not set", $name));
-        }
-
     };
 }
 
@@ -325,100 +304,3 @@ pub struct PuntOffenseCall {
     pub coffin_corner: i32,
 }
 
-#[derive(Debug, Clone, Default, Serialize)]
-pub struct KickoffPlay {
-    pub onside: Option<bool>,
-    pub kr: Option<KRStats>,
-    pub k: Option<KStats>,
-}
-
-impl KickoffPlay {
-    pub fn new() -> Self {
-        return Self {
-            ..Default::default()
-        };
-    }
-}
-
-impl PlayImpl for KickoffPlay {
-    fn validate(&self) -> Result<(), String> {
-        validate_field!(self.onside, "Offense Call");
-        validate_field!(self.kr, "Defense Lineup");
-        validate_field!(self.k, "Offense Lineup");
-        Ok(())
-    }
-
-    fn set_offense_call(&mut self, call: OffenseCall) -> Result<(), String> {
-        let c = call
-            .as_kickoff_offense_call()
-            .ok_or("Bad type".to_string())?;
-        self.onside = Some(c.onside);
-        Ok(())
-    }
-
-    fn set_defense_call(&mut self, call: DefenseCall) -> Result<(), String> {
-        Ok(())
-    }
-
-    fn set_offense_lineup(
-        &mut self,
-        lineup: &OffenseIDLineup,
-        roster: &Roster,
-    ) -> Result<(), String> {
-        let l = lineup
-            .as_kickoff_id_offense_lineup()
-            .ok_or("Bad type".to_string())?;
-
-        self.k = Player::is_k(
-            roster
-                .get_player(&l.k)
-                .ok_or(format!("Unknown player: {}", l.k))?
-                .get_full_player(),
-        );
-
-        if self.k.is_none() {
-            return Err("Player is not a K".to_string());
-        }
-
-        return Ok(());
-    }
-
-    fn set_defense_lineup(
-        &mut self,
-        lineup: &DefenseIDLineup,
-        roster: &Roster,
-    ) -> Result<(), String> {
-        let l = lineup
-            .as_kickoff_id_defense_lineup()
-            .ok_or("Bad type".to_string())?;
-
-        self.kr = Player::is_kr(
-            roster
-                .get_player(&l.kr)
-                .ok_or(format!("Unknown player: {}", l.kr))?
-                .get_full_player(),
-        );
-
-        if self.kr.is_none() {
-            return Err("Player is not a KR".to_string());
-        }
-
-        return Ok(());
-    }
-
-    fn run_play<'a>(
-        &'a self,
-        game_state: &'a GameState,
-        card_streamer: &'a mut CardStreamer<'a>,
-    ) -> PlayResult {
-        return KickPlayImpl::run_play(game_state, self, card_streamer);
-    }
-
-    fn get_play(&self) -> Play {
-        return Play::Kickoff(self.clone());
-    }
-
-    fn get_type(&self) -> PlayType {
-        PlayType::Kickoff
-    }
-}

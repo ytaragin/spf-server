@@ -9,7 +9,10 @@ use std::str::FromStr;
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 
-use super::lineup::{DefensiveBox, OffensiveBox};
+use super::{
+    lineup::{DefensiveBox, OffensiveBox},
+    standard_play::PassResult,
+};
 
 #[derive(Debug, Serialize, Clone)]
 pub struct RunNum {
@@ -121,6 +124,41 @@ impl<'de> Deserialize<'de> for PassTarget {
     }
 }
 
+#[derive(Debug, Clone, Serialize)]
+pub struct ScreenResult {
+    pub result: PassResult,
+    pub multiplier: f32,
+}
+
+impl From<String> for ScreenResult {
+    fn from(s: String) -> Self {
+        let parts: Vec<&str> = s.split(' ').collect();
+        let result: PassResult = parts[0].parse().unwrap();
+        if parts.len() > 2 {
+            ScreenResult {
+                result,
+                multiplier: parts[2].parse::<f32>().unwrap(),
+            }
+        } else {
+            ScreenResult {
+                result,
+                multiplier: 1.0,
+            }
+        }
+    }
+}
+
+impl<'de> Deserialize<'de> for ScreenResult {
+    fn deserialize<D>(deserializer: D) -> Result<ScreenResult, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        let instr = String::deserialize(deserializer)?;
+
+        Ok(ScreenResult::from(instr))
+    }
+}
+
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct FacData {
     pub id: i32,
@@ -131,7 +169,7 @@ pub struct FacData {
     pub ir: RunDirection,
     pub sr: RunDirection,
     pub er: String,
-    pub sc: String,
+    pub sc: ScreenResult,
     pub sh: PassTarget,
     pub qk: PassTarget,
     pub lg: PassTarget,
@@ -148,6 +186,14 @@ pub enum FacCard {
 impl From<FacData> for FacCard {
     fn from(v: FacData) -> Self {
         Self::Data(v)
+    }
+}
+impl FacCard {
+    pub fn get_max_rn() -> i32 {
+        12
+    }
+    pub fn get_max_pn() -> i32 {
+       48 
     }
 }
 

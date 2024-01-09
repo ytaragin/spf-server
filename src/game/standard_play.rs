@@ -2,14 +2,11 @@ use enum_as_inner::EnumAsInner;
 use serde_derive::{Deserialize, Serialize};
 use strum_macros::EnumString;
 
-use crate::{
-    game::{
+use crate::game::{
         lineup::{StandardDefensiveLineup, StandardOffensiveLineup},
         players::Roster,
         GameState, Play,
-    },
-    validate_field,
-};
+    };
 
 use super::{
     engine::{defs::OFFENSIVE_PLAYS_LIST, CardStreamer},
@@ -256,10 +253,12 @@ pub struct StandardPlay {
 
 impl PlayImpl for StandardPlay {
     fn validate(&self) -> Result<(), String> {
-        validate_field!(self.offense, "Offense not set");
-        validate_field!(self.defense, "Defense not set");
-        validate_field!(self.offense_call, "Offense Call not set");
-        validate_field!(self.defense_call, "Defense Call not set");
+        let _ = self.offense.as_ref().ok_or("Offense not set");
+        let _ = self.defense.as_ref().ok_or("Defense not set");
+        let offense_call = self.offense_call.as_ref().ok_or("Offense Call  not set")?;
+        offense_call.validate(self)?;
+        let defense_call = self.offense_call.as_ref().ok_or("Defense Call  not set")?;
+        defense_call.validate(self)?;
         Ok(()) // offense.is_legal_lineup()?;
     }
 

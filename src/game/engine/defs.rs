@@ -3,11 +3,12 @@ use std::collections::HashMap;
 use lazy_static::lazy_static;
 
 use crate::game::{
-    engine::{
-        passplay::PassUtils, runplay::RunUtils, 
-    },
+    engine::{passplay::PassUtils, runplay::RunUtils},
     lineup::{DefensiveBox, OffensiveBox},
-    stats::{LabeledStat, TwelveStats}, standard_play::{OffensivePlayType, OffensivePlayInfo, OffensivePlayCategory, RunMetaData, PassMetaData},
+    standard_play::{
+        OffensivePlayCategory, OffensivePlayInfo, OffensivePlayType, PassMetaData, RunMetaData,
+    },
+    stats::{LabeledStat, TwelveStats},
 };
 
 use super::Yard;
@@ -38,6 +39,15 @@ pub enum KickoffResult {
 pub struct DrawPlayImpact {
     pub run_defense: i32,
     pub pass_defense: i32,
+    pub prevent_defense: i32,
+    pub blitz: i32,
+}
+
+pub struct RunPlayDefenseImpact {
+    pub pass_defense: i32,
+    pub run_defense_keyed: i32,
+    pub run_defense_nokey: i32,
+    pub run_defense_wrongkey: i32,
     pub prevent_defense: i32,
     pub blitz: i32,
 }
@@ -89,6 +99,23 @@ lazy_static! {
         blitz: -4
     };
 
+    pub static ref RUN_DEFENSE: RunPlayDefenseImpact = RunPlayDefenseImpact {
+        pass_defense: 0,
+        run_defense_nokey: 2,
+        run_defense_keyed: 4,
+        run_defense_wrongkey: 0,
+        prevent_defense: 0,
+        blitz:0 
+    };
+    pub static ref SCREEN_DEFENSE: RunPlayDefenseImpact = RunPlayDefenseImpact {
+        pass_defense: 0,
+        run_defense_nokey: 2,
+        run_defense_keyed: 4,
+        run_defense_wrongkey: 0,
+        prevent_defense: -2,
+        blitz: -4
+    };
+
     pub static ref PASS_PLAY_VALUES: PassPlayValues = PassPlayValues {
         qk_run_defense: 0,
         sh_run_defense: 5,
@@ -105,8 +132,6 @@ lazy_static! {
         pa_pass_defense: -5,
         pa_prevent_defense: -10,
     };
-
-
 
     pub static ref PASS_DEFENDERS: HashMap<OffensiveBox, DefensiveBox> = {
         let mut map = HashMap::new();

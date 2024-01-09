@@ -1,9 +1,11 @@
 use crate::game::{
     fac::{FacData, RunNum},
+    lineup::{DefensiveBox, OffensiveBox},
+    standard_play::DefensivePlay,
     GameState,
 };
 
-use super::{CardResults, CardStreamer, PlayResult};
+use super::{defs::RunPlayDefenseImpact, CardResults, CardStreamer, PlayResult};
 
 // use macro_rules! <name of macro> {<Body>}
 #[macro_export]
@@ -108,4 +110,5 @@ impl<'a> PlayUtils<'a> {
             time: 0,
         }
     }
+
 }

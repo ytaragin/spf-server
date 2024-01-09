@@ -2,10 +2,11 @@
 * End Around
 * Blocking Back
 * Short Gain Rules
+* QB Sneak
 
 
 # Pass Plays
-* Screen Passes
+* ~~Screen Passes~~
 * Place in field Rules
     * Long passes close to end zone
 
@@ -20,8 +21,8 @@
 # Offense Strategies
 * Flop
 * Sneak
-* Draw
-* Play-Action
+* ~~Draw~~
+* ~~Play-Action~~
 
 # Defense Strategies
 * Double Coverage
@@ -30,7 +31,7 @@
 
 # Pass Defense
 * ~~Blitz~~
-* Coverage
+* ~~Coverage~~
 
 # Z Cards
 

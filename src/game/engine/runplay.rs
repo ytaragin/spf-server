@@ -3,19 +3,22 @@ use std::cmp::{max, min};
 use crate::{
     detail, detailf,
     game::{
-        engine::defs::{DRAW_IMPACT, TIMES},
-        fac::{FacData, RunDirection, RunDirectionActual},
+        engine::defs::{DRAW_IMPACT, RUN_DEFENSE, TIMES},
+        fac::{FacCard, FacData, RunDirection, RunDirectionActual},
         lineup::{DefensiveBox, OffensiveBox},
         players::{BasePlayer, Player, PlayerUtils, RBStats},
+        standard_play::{
+            DefensivePlay, OffensivePlayInfo, OffensivePlayType, OffensiveStrategy, PlaySetup,
+            RunMetaData,
+        },
         stats::{self, NumStat},
-        GameState, standard_play::{PlaySetup, DefensivePlay, OffensiveStrategy, OffensivePlayType, OffensivePlayInfo, RunMetaData},
+        GameState,
     },
     mechanic, mechanic2,
 };
 
 use super::{
-    playutils::PlayUtils, CardStreamer,
-    PlayResult,  ResultType,  
+    defs::RunPlayDefenseImpact, playutils::PlayUtils, CardStreamer, PlayResult, ResultType,
 };
 
 pub struct RunUtils {}
@@ -47,6 +50,57 @@ impl RunUtils {
     pub fn get_ir_fac_result<'a>(card: &'a FacData) -> &'a RunDirection {
         &card.ir
     }
+
+    pub fn get_rb_stats(play: &PlaySetup) -> RBStats {
+        let player = play
+            .offense
+            .get_player_in_pos(&play.offense_call.target)
+            .unwrap()
+            .get_full_player();
+        Player::is_rb(player).unwrap()
+    }
+
+    pub fn get_rush_stat<'a>(rb: &'a RBStats, run_num: i32) -> &'a NumStat {
+        rb.rushing
+            .get_stat(run_num.try_into().unwrap())
+            .get_val("N".to_string())
+            .unwrap()
+    }
+    pub fn get_run_modifier(
+        utils: &mut PlayUtils,
+        defense_type: DefensivePlay,
+        defense_impact: &RunPlayDefenseImpact,
+        target: OffensiveBox,
+        key: Option<OffensiveBox>,
+    ) -> i32 {
+        let modifier = match defense_type {
+            DefensivePlay::RunDefense => {
+                detail!(utils, "The defense focuses on the run");
+                if let Some(pos) = key {
+                    if pos == target {
+                        detail!(utils, " and they key on the right back");
+                        defense_impact.run_defense_keyed
+                    } else {
+                        detail!(utils, "But they focus on the wrong back");
+                        defense_impact.run_defense_wrongkey
+                    }
+                } else {
+                    defense_impact.run_defense_nokey
+                }
+            }
+            DefensivePlay::PassDefense => defense_impact.pass_defense,
+            DefensivePlay::PreventDefense => defense_impact.prevent_defense,
+            DefensivePlay::Blitz => defense_impact.blitz,
+        };
+
+        mechanic!(utils, "Run modifier {}", modifier);
+        return modifier;
+    }
+    pub fn calculate_sg_yardage(utils: &mut PlayUtils) -> (i32, bool) {
+        detail!(utils, "He gets out for short gain");
+        let rn = utils.get_full_run_num();
+        (rn.num + 5, rn.ob)
+    }
 }
 
 // #[derive(Clone)]
@@ -77,7 +131,7 @@ struct RunContext<'a> {
 
 impl<'a> RunContext<'a> {
     fn start_run(&mut self) -> PlayResult {
-        let player = get_rb_stats(&self.play);
+        let player = RunUtils::get_rb_stats(&self.play);
 
         detail!(self.utils, format!("Handoff to {}", player.get_name()));
 
@@ -90,7 +144,7 @@ impl<'a> RunContext<'a> {
 
     fn handle_breakaway(&mut self) -> PlayResult {
         detail!(self.utils, "It's a breakaway");
-        let rb = get_rb_stats(&self.play);
+        let rb = RunUtils::get_rb_stats(&self.play);
         self.data.yardage = get_lg_yardage(rb.lg);
         return self.finalize_yardage();
     }
@@ -104,16 +158,16 @@ impl<'a> RunContext<'a> {
     }
 
     fn handle_actual_run(&mut self, actual: &RunDirectionActual) -> PlayResult {
-        let rb = get_rb_stats(&self.play);
+        let rb = RunUtils::get_rb_stats(&self.play);
 
         let run_num_modifier = self.get_run_modifier();
         let run_num_full = self.utils.get_full_run_num();
-        let run_num = min(run_num_full.num + run_num_modifier, 12);
+        let run_num = min(run_num_full.num + run_num_modifier, FacCard::get_max_rn());
 
-        let stat = get_rush_stat(&rb, run_num);
+        let stat = RunUtils::get_rush_stat(&rb, run_num);
         match stat {
             stats::NumStat::Sg | stats::NumStat::Lg => {
-                (self.data.yardage, self.data.ob) = self.calculate_sg_yardage();
+                (self.data.yardage, self.data.ob) = RunUtils::calculate_sg_yardage(&mut self.utils);
             }
             stats::NumStat::Val(num) => {
                 self.data.yardage = *num;
@@ -124,12 +178,6 @@ impl<'a> RunContext<'a> {
 
         self.data.yardage += self.calculate_run_yardage_modifier(actual);
         return self.finalize_yardage();
-    }
-
-    fn calculate_sg_yardage(&mut self) -> (i32, bool) {
-        detail!(self.utils, "He gets out for short gain");
-        let rn = self.utils.get_full_run_num();
-        (rn.num + 5, rn.ob)
     }
 
     fn calculate_run_yardage_modifier(&mut self, result: &RunDirectionActual) -> i32 {
@@ -290,21 +338,14 @@ impl<'a> RunContext<'a> {
     }
 
     fn get_run_modifier(&mut self) -> i32 {
-        let mut modifier = self.get_drawplay_impact();
-
-        if self.play.defense_call.defense_type == DefensivePlay::RunDefense {
-            detail!(self.utils, "The run defense focuses on the run");
-            modifier += 2;
-            if let Some(pos) = &self.play.defense_call.key {
-                if *pos == self.play.offense_call.target {
-                    detail!(self.utils, " and they key on the right back");
-                    modifier += 2;
-                } else {
-                    detail!(self.utils, "But they focus on the wrong back");
-                    modifier -= 2;
-                }
-            }
-        }
+        let modifier = self.get_drawplay_impact()
+            + RunUtils::get_run_modifier(
+                &mut self.utils,
+                self.play.defense_call.defense_type,
+                &RUN_DEFENSE,
+                self.play.offense_call.target,
+                self.play.defense_call.key,
+            );
 
         mechanic!(self.utils, "Run modifier {}", modifier);
         return modifier;
@@ -391,20 +432,4 @@ fn get_lg_yardage(c: char) -> i32 {
 
     // let ascii_value = c as i32;
     100 - (c as i32 - 65) * 5
-}
-
-fn get_rb_stats(play: &PlaySetup) -> RBStats {
-    let player = play
-        .offense
-        .get_player_in_pos(&play.offense_call.target)
-        .unwrap()
-        .get_full_player();
-    Player::is_rb(player).unwrap()
-}
-
-fn get_rush_stat<'a>(rb: &'a RBStats, run_num: i32) -> &'a NumStat {
-    rb.rushing
-        .get_stat(run_num.try_into().unwrap())
-        .get_val("N".to_string())
-        .unwrap()
 }
