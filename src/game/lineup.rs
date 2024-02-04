@@ -26,6 +26,13 @@ pub enum OffensiveBox {
     RT,
 }
 
+impl OffensiveBox {
+    
+    pub fn get_receiver_spots() -> Vec<OffensiveBox> {
+        return vec![Self::FL1, Self::FL2, Self::LE, Self::RE, Self::B1, Self::B2, Self::B3];
+    }
+}
+
 impl FromStr for OffensiveBox {
     type Err = String; // you can use any type that implements std::error::Error
 
@@ -166,7 +173,7 @@ impl StandardOffensiveLineup {
     pub fn create_lineup(
         id_lineup: &StandardIDOffenseLineup,
         team: &Roster,
-    ) -> Result<Self, String> {
+        ) -> Result<Self, String> {
         let qb =
             LineupUtilities::get_player_from_id_or_err(&id_lineup.qb, "QB", &team, Player::is_qb)?;
 
@@ -175,27 +182,27 @@ impl StandardOffensiveLineup {
             "LE",
             &team,
             EndPlayer::gen_from_player,
-        )?;
+            )?;
 
         let re = LineupUtilities::get_option_player_from_id(
             &id_lineup.re,
             "RE",
             &team,
             EndPlayer::gen_from_player,
-        )?;
+            )?;
 
         let fl1 = LineupUtilities::get_option_player_from_id(
             &id_lineup.fl1,
             "Flanker",
             &team,
             FlankerPlayer::gen_from_player,
-        )?;
+            )?;
         let fl2 = LineupUtilities::get_option_player_from_id(
             &id_lineup.fl2,
             "Flanker",
             &team,
             FlankerPlayer::gen_from_player,
-        )?;
+            )?;
 
         let b1 =
             LineupUtilities::get_option_player_from_id(&id_lineup.b1, "B1", &team, Player::is_rb)?;
@@ -268,7 +275,7 @@ impl StandardOffensiveLineup {
             remaining_spots,
             remaining_spots,
             "Invalid number of Flankers",
-        )?;
+            )?;
 
         return Ok(());
     }
@@ -291,6 +298,7 @@ impl StandardOffensiveLineup {
             OffensiveBox::RT => Some(self.rt.get_player()),
         }
     }
+
 }
 
 // impl Validatable for OffensiveLineup {
@@ -319,6 +327,13 @@ pub struct StandardIDDefenseLineup {
     box_n: Option<String>,
     box_o: Option<String>,
 }
+
+pub enum DefensiveRow {
+    Row1,
+    Row2,
+    Row3
+}
+
 
 #[derive(Debug, Clone, Serialize, Deserialize, ToBasePlayer)]
 enum Row1Player {
@@ -358,93 +373,93 @@ impl StandardDefensiveLineup {
     pub fn create_lineup(
         id_lineup: &StandardIDDefenseLineup,
         team: &Roster,
-    ) -> Result<Self, String> {
+        ) -> Result<Self, String> {
         let box_a = LineupUtilities::transform_vector(
             &id_lineup.box_a,
             "box_a",
             &team,
             Row1Player::gen_from_player,
-        )?;
+            )?;
         let box_b = LineupUtilities::transform_vector(
             &id_lineup.box_b,
             "box_b",
             &team,
             Row1Player::gen_from_player,
-        )?;
+            )?;
         let box_c = LineupUtilities::transform_vector(
             &id_lineup.box_c,
             "box_c",
             &team,
             Row1Player::gen_from_player,
-        )?;
+            )?;
         let box_d = LineupUtilities::transform_vector(
             &id_lineup.box_d,
             "box_d",
             &team,
             Row1Player::gen_from_player,
-        )?;
+            )?;
         let box_e = LineupUtilities::transform_vector(
             &id_lineup.box_e,
             "box_e",
             &team,
             Row1Player::gen_from_player,
-        )?;
+            )?;
 
         let box_f = LineupUtilities::get_option_player_from_id(
             &id_lineup.box_f,
             "box_f",
             &team,
             Player::is_lb,
-        )?;
+            )?;
         let box_g = LineupUtilities::get_option_player_from_id(
             &id_lineup.box_g,
             "box_g",
             &team,
             Player::is_lb,
-        )?;
+            )?;
         let box_h = LineupUtilities::get_option_player_from_id(
             &id_lineup.box_h,
             "box_h",
             &team,
             Player::is_lb,
-        )?;
+            )?;
         let box_i = LineupUtilities::get_option_player_from_id(
             &id_lineup.box_i,
             "box_i",
             &team,
             Player::is_lb,
-        )?;
+            )?;
         let box_j = LineupUtilities::get_option_player_from_id(
             &id_lineup.box_j,
             "box_j",
             &team,
             Player::is_lb,
-        )?;
+            )?;
 
         let box_k = LineupUtilities::get_option_player_from_id(
             &id_lineup.box_k,
             "box_k",
             &team,
             Player::is_db,
-        )?;
+            )?;
         let box_m = LineupUtilities::get_option_player_from_id(
             &id_lineup.box_m,
             "box_m",
             &team,
             Player::is_db,
-        )?;
+            )?;
         let box_n = LineupUtilities::get_option_player_from_id(
             &id_lineup.box_n,
             "box_n",
             &team,
             Player::is_db,
-        )?;
+            )?;
         let box_o = LineupUtilities::get_option_player_from_id(
             &id_lineup.box_o,
             "box_o",
             &team,
             Player::is_db,
-        )?;
+            )?;
         let box_l =
             LineupUtilities::transform_vector(&id_lineup.box_l, "box_l", &team, Player::is_db)?;
 
@@ -487,27 +502,47 @@ impl StandardDefensiveLineup {
         };
     }
 
-    pub fn is_legal_lineup(&self) -> Result<(), String> {
-        let row1_spots = LineupUtilities::count_array_spots(
-            vec![
+    pub fn get_count_in_row(&self, row:DefensiveRow) -> i32 {
+        match row {
+            DefensiveRow::Row1 => LineupUtilities::count_array_spots(
+                vec![
                 &self.box_a,
                 &self.box_b,
                 &self.box_c,
                 &self.box_d,
                 &self.box_e,
+                ],3, "").unwrap_or(0),
+            DefensiveRow::Row2 => LineupUtilities::count_spots(vec![
+                                                      &self.box_f,
+                                                      &self.box_g,
+                                                      &self.box_h,
+                                                      &self.box_i,
+                                                      &self.box_j,
+        ]),
+            DefensiveRow::Row3 =>  LineupUtilities::count_spots(vec![&self.box_k, &self.box_m, &self.box_n, &self.box_o])+self.box_l.len() as i32,
+        }
+    }
+    pub fn is_legal_lineup(&self) -> Result<(), String> {
+        let row1_spots = LineupUtilities::count_array_spots(
+            vec![
+            &self.box_a,
+            &self.box_b,
+            &self.box_c,
+            &self.box_d,
+            &self.box_e,
             ],
             3,
             "Only 3 allowed in a First Row Box",
-        )?;
+            )?;
 
         LineupUtilities::validate_count(row1_spots, 3, 10, "Need between 3-10 in First Row")?;
 
         let row2_spots = LineupUtilities::count_spots(vec![
-            &self.box_f,
-            &self.box_g,
-            &self.box_h,
-            &self.box_i,
-            &self.box_j,
+                                                      &self.box_f,
+                                                      &self.box_g,
+                                                      &self.box_h,
+                                                      &self.box_i,
+                                                      &self.box_j,
         ]);
 
         let remaining_row3_spots = 11 - (row2_spots + row1_spots);
@@ -528,7 +563,7 @@ impl StandardDefensiveLineup {
             remaining_row3_spots,
             remaining_row3_spots,
             "Improper secondary size",
-        )?;
+            )?;
 
         return Ok(());
     }
@@ -608,7 +643,7 @@ impl StandardDefensiveLineup {
     fn filter_players_from_vec<T: ToBasePlayer + Clone>(
         ids: &Vec<String>,
         players: &Vec<T>,
-    ) -> Vec<T> {
+        ) -> Vec<T> {
         let v = players
             .iter()
             .filter(|p| !ids.contains(&p.get_player().get_id()))
@@ -621,7 +656,7 @@ impl StandardDefensiveLineup {
     fn filter_players_from_pos<T: ToBasePlayer + Clone>(
         ids: &Vec<String>,
         player: &Option<T>,
-    ) -> Option<T> {
+        ) -> Option<T> {
         let v = player
             .clone()
             .and_then(|p| match ids.contains(&p.get_player().get_id()) {
@@ -689,7 +724,7 @@ impl LineupUtilities {
 
     fn get_player_from_option<'a, T: ToBasePlayer>(
         player: &'a Option<T>,
-    ) -> Option<&'a dyn BasePlayer> {
+        ) -> Option<&'a dyn BasePlayer> {
         match player {
             None => None,
             Some(p) => Some(p.get_player()),
@@ -713,89 +748,89 @@ impl LineupUtilities {
         pos_str: &str,
         team: &Roster,
         transform: F,
-    ) -> Result<T, String>
-    where
-        F: Fn(Player) -> Option<T>,
-    {
-        // let id = &id_opt.ok_or(format!("Missing {}", pos_str))?;
+        ) -> Result<T, String>
+        where
+            F: Fn(Player) -> Option<T>,
+        {
+            // let id = &id_opt.ok_or(format!("Missing {}", pos_str))?;
 
-        let id = match id_opt {
-            None => return Err(format!("Missing {}", pos_str)),
-            Some(val) => val,
-        };
+            let id = match id_opt {
+                None => return Err(format!("Missing {}", pos_str)),
+                Some(val) => val,
+            };
 
-        let p = team.get_player(id).ok_or(format!("No Such {}", pos_str))?;
-        let t =
-            transform(p.get_full_player()).ok_or(format!("Not a valid type for {}", pos_str))?;
-        return Ok(t);
-    }
+            let p = team.get_player(id).ok_or(format!("No Such {}", pos_str))?;
+            let t =
+                transform(p.get_full_player()).ok_or(format!("Not a valid type for {}", pos_str))?;
+            return Ok(t);
+        }
 
     fn get_option_player_from_id<T, F>(
         id_opt: &Option<String>,
         pos_str: &str,
         team: &Roster,
         transform: F,
-    ) -> Result<Option<T>, String>
-    where
-        F: Fn(Player) -> Option<T>,
-    {
-        // let id = &id_opt.ok_or(format!("Missing {}", pos_str))?;
+        ) -> Result<Option<T>, String>
+        where
+            F: Fn(Player) -> Option<T>,
+        {
+            // let id = &id_opt.ok_or(format!("Missing {}", pos_str))?;
 
-        let id = match id_opt {
-            None => return Ok(None),
-            Some(val) => val,
-        };
+            let id = match id_opt {
+                None => return Ok(None),
+                Some(val) => val,
+            };
 
-        let p = team
-            .get_player(id)
-            .ok_or(format!("No Such {} from {}", pos_str, id))?;
-        let t =
-            transform(p.get_full_player()).ok_or(format!("Not a valid type for {}", pos_str))?;
-        return Ok(Some(t));
-    }
+            let p = team
+                .get_player(id)
+                .ok_or(format!("No Such {} from {}", pos_str, id))?;
+            let t =
+                transform(p.get_full_player()).ok_or(format!("Not a valid type for {}", pos_str))?;
+            return Ok(Some(t));
+        }
 
     fn get_player_from_valid_id<T, F>(
         id_opt: Option<String>,
         pos_str: &str,
         team: &Roster,
         transform: F,
-    ) -> Result<T, String>
-    where
-        F: Fn(Player) -> Option<T>,
-    {
-        let id = &id_opt.ok_or(format!("Missing {}", pos_str))?;
+        ) -> Result<T, String>
+        where
+            F: Fn(Player) -> Option<T>,
+        {
+            let id = &id_opt.ok_or(format!("Missing {}", pos_str))?;
 
-        let p = team
-            .get_player(id)
-            .ok_or(format!("No Such {} with id {}", pos_str, id))?;
-        let t =
-            transform(p.get_full_player()).ok_or(format!("Not a valid type for {}", pos_str))?;
-        return Ok(t);
-    }
+            let p = team
+                .get_player(id)
+                .ok_or(format!("No Such {} with id {}", pos_str, id))?;
+            let t =
+                transform(p.get_full_player()).ok_or(format!("Not a valid type for {}", pos_str))?;
+            return Ok(t);
+        }
 
     fn transform_vector<T, F>(
         id_vecs: &Vec<String>,
         pos_str: &str,
         team: &Roster,
         transform: F,
-    ) -> Result<Vec<T>, String>
-    where
-        F: Fn(Player) -> Option<T>,
-    {
-        let v = id_vecs
-            .iter()
-            .map(|item| {
-                LineupUtilities::get_player_from_id_or_err(
-                    &Some(item.clone()),
-                    pos_str,
-                    team,
-                    &transform,
-                )
-            })
+        ) -> Result<Vec<T>, String>
+        where
+            F: Fn(Player) -> Option<T>,
+        {
+            let v = id_vecs
+                .iter()
+                .map(|item| {
+                    LineupUtilities::get_player_from_id_or_err(
+                        &Some(item.clone()),
+                        pos_str,
+                        team,
+                        &transform,
+                        )
+                })
             .collect::<Result<Vec<T>, String>>();
 
-        return v;
-    }
+            return v;
+        }
 
     fn convert_vec_to_base_player<'a, T: ToBasePlayer>(v: &'a Vec<T>) -> Vec<&'a dyn BasePlayer> {
         v.iter().map(ToBasePlayer::get_player).collect()

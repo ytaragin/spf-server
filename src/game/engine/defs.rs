@@ -6,7 +6,7 @@ use crate::game::{
     engine::{passplay::PassUtils, runplay::RunUtils},
     lineup::{DefensiveBox, OffensiveBox},
     standard_play::{
-        OffensivePlayCategory, OffensivePlayInfo, OffensivePlayType, PassMetaData, RunMetaData,
+        OffensivePlayCategory, OffensivePlayInfo, OffensivePlayType, PassMetaData, RunMetaData, DefensiveStrategy,
     },
     stats::{LabeledStat, TwelveStats},
 };
@@ -50,6 +50,19 @@ pub struct RunPlayDefenseImpact {
     pub run_defense_wrongkey: i32,
     pub prevent_defense: i32,
     pub blitz: i32,
+}
+
+pub struct DefenseConsts {
+    pub blitz_min: i32,
+    pub blitz_max: i32,
+    pub double_cover_defense: i32,
+    pub triple_cover_defense: i32,
+}
+
+#[derive(Clone)]
+pub struct DefenseStrategyRowVals {
+    pub row2: i32,
+    pub row3: i32,
 }
 
 pub struct PassPlayValues {
@@ -186,13 +199,25 @@ lazy_static! {
         TwelveStats::create_from_strs(&int_vals, LabeledStat::<i32>::curry_create("DL/LB/DB"))
     };
 
+    pub static ref DEFENSE_CONSTS: DefenseConsts = DefenseConsts{ 
+        blitz_min: 2, 
+        blitz_max: 5,
+        double_cover_defense: -7, 
+        triple_cover_defense: -15,
+    };
 
-    // static ref DEFENSIVE_PLAY_LIST: Hashmap<DefensivePlay, DefensivePlayInfo> = {
-    //     let mut map = HashMap::new();
 
+    pub static ref DEFENSE_STRATEGY_LIMITS: HashMap<DefensiveStrategy, Vec<DefenseStrategyRowVals> > = {
+        let mut map = HashMap::new();
+        let def26 = DefenseStrategyRowVals{ row2: 2, row3: 6 }; 
+        let def44 = DefenseStrategyRowVals{ row2: 4, row3: 4 }; 
+        let def35 = DefenseStrategyRowVals{ row2: 3, row3: 5 }; 
+        map.insert(DefensiveStrategy::DoubleCover, vec![def44, def35]);
+        map.insert(DefensiveStrategy::DoubleCoverX2, vec![def26.clone()]);
+        map.insert(DefensiveStrategy::TripleCover, vec![def26]);
 
-    //     map
-    // };
+        map
+    };
 
     pub static ref KICKOFFRESULTSA: HashMap<i32, KickoffResult> = {
         let mut map = HashMap::new();

@@ -6,7 +6,7 @@ use crate::{
         engine::{
             defs::{
                 INTERCEPTION_RETURN_TABLE, INTERCEPTION_TABLE, PASS_DEFENDERS, PASS_PLAY_VALUES,
-                TIMES,
+                TIMES, DefenseConsts, DEFENSE_CONSTS,
             },
             runplay::RunUtils,
         },
@@ -15,7 +15,7 @@ use crate::{
         players::{BasePlayer, Player, PlayerUtils, Position, QBStats},
         standard_play::{
             DefensivePlay, OffensivePlayInfo, OffensivePlayType, OffensiveStrategy, PassMetaData,
-            PassResult, PassRushResult, PlaySetup,
+            PassResult, PassRushResult, PlaySetup, DefensiveStrategy,
         },
         stats::{NumStat, RangedStats},
         GameState,
@@ -27,25 +27,6 @@ use super::{
     defs::SCREEN_DEFENSE, playutils::PlayUtils, CardStreamer, DefenseIDLineup, PlayResult,
     ResultType,
 };
-
-// // use macro_rules! <name of macro> {<Body>}
-// macro_rules! mechanic {
-//     // match like arm for macro
-//     ($ctxt:expr, $msg:expr, $val:expr) => {
-//         // macro expands to this code
-//         // $msg and $val will be templated using the value/variable provided to macro
-//         $ctxt.data.mechanic.push(format!($msg, $val));
-//     };
-// }
-
-// macro_rules! detail {
-//     // match like arm for macro
-//     ($ctxt:expr, $msg:expr) => {
-//         // macro expands to this code
-//         // $msg and $val will be templated using the value/variable provided to macro
-//         $ctxt.data.details.push($msg.to_string());
-//     };
-// }
 
 pub struct PassUtils {}
 impl PassUtils {
@@ -443,6 +424,15 @@ impl<'a> PassContext<'a> {
     }
 
     fn get_pass_defender_impact(&mut self) -> i32 {
+        if self.play.defense_call.key  == Some(self.data.target) { 
+            match self.play.defense_call.strategy {
+                DefensiveStrategy::DoubleCover => return DEFENSE_CONSTS.double_cover_defense, 
+                DefensiveStrategy::TripleCover => return DEFENSE_CONSTS.triple_cover_defense,
+                DefensiveStrategy::DoubleCoverX2 => return DEFENSE_CONSTS.double_cover_defense,
+                _ => (),
+            }
+        }
+
         let def_box = PASS_DEFENDERS.get(&self.data.target).unwrap();
         detail!(self.utils, format!("Pass defended by {:?}", def_box));
         let players = self.play.defense.get_players_in_pos(def_box);

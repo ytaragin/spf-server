@@ -3,15 +3,15 @@ use serde_derive::{Deserialize, Serialize};
 use strum_macros::EnumString;
 
 use crate::game::{
-        lineup::{StandardDefensiveLineup, StandardOffensiveLineup},
-        players::Roster,
-        GameState, Play,
-    };
+    lineup::{StandardDefensiveLineup, StandardOffensiveLineup},
+    players::Roster,
+    GameState, Play,
+};
 
 use super::{
-    engine::{defs::OFFENSIVE_PLAYS_LIST, CardStreamer},
+    engine::{defs::{OFFENSIVE_PLAYS_LIST, DEFENSE_STRATEGY_LIMITS}, CardStreamer},
     fac::{FacData, PassTarget, RunDirection},
-    lineup::OffensiveBox,
+    lineup::{OffensiveBox, DefensiveBox, DefensiveRow},
     players::QBStats,
     stats::RangedStats,
     DefenseCall, DefenseIDLineup, OffenseCall, OffenseIDLineup, PlayImpl, PlayResult, PlayType,
@@ -135,7 +135,7 @@ pub enum DefensivePlay {
     Blitz,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, Hash, Eq, PartialEq)]
 pub enum DefensiveStrategy {
     Straight,
     DoubleCover,
@@ -150,214 +150,248 @@ pub struct StandardDefenseCall {
     pub key: Option<OffensiveBox>,
     pub def_players: Vec<String>,
 }
+impl StandardDefenseCall {
+
+    fn validate_def_player(&self, lineup:&StandardDefensiveLineup , player: &String) -> Result<(), String>  {
+        let pos = lineup.find_player(player);
+        let actual = pos.ok_or(format!("{} is not in lineup", player))?;
+        if matches!(self.strategy , DefensiveStrategy::DoubleCover 
+                    | DefensiveStrategy::DoubleCoverX2
+                    | DefensiveStrategy::TripleCover) { 
+            if actual != DefensiveBox::BoxL {
+            return Err("Extra Coverage player must bein Box L".to_string());
+            }
+        }
+        return Ok(());
+    }
+}
 impl Validatable for StandardDefenseCall {
     fn validate(&self, play: &StandardPlay) -> Result<(), String> {
+        println!("Validating Defense Lineup");
         let lineup = play.defense.as_ref().ok_or("Set lineup before Call")?;
         self.def_players
             .iter()
-            .try_for_each(|id| match lineup.find_player(&id) {
-                Some(_) => return Ok(()),
-                None => return Err(format!("{} is not in lineup", id)),
-            })?;
+            .try_for_each(|id| self.validate_def_player(lineup, id))?;
 
         if self.defense_type == DefensivePlay::Blitz
             && (self.def_players.len() < 2 || self.def_players.len() > 5)
-        {
-            return Err("Must blitz between 2 and 5 players".to_string());
+            {
+                return Err("Must blitz between 2 and 5 players".to_string());
+            }
+
+        let vals_opt = DEFENSE_STRATEGY_LIMITS.get(&self.strategy);
+        if let Some(vals)  = vals_opt {
+            let row2 = lineup.get_count_in_row(DefensiveRow::Row2);
+            let row3 = lineup.get_count_in_row(DefensiveRow::Row3);
+            let exists = vals.iter().any(|x| {
+                row2 == x.row2 && row3 == x.row3
+            });
+            if !exists {
+                return Err(format!("Row2: {} Row3: {} - illegal lineup for {:?}", row2, row3, self.strategy));
+            }
         }
 
+        if (vec![DefensiveStrategy::DoubleCover, 
+                 DefensiveStrategy::TripleCover, 
+                 DefensiveStrategy::DoubleCoverX2]).contains(&self.strategy) {
+            let key = self.key.ok_or("Extra coverage needs to key a player")?;
+           if !OffensiveBox::get_receiver_spots().contains(&key) {
+               return Err(format!("{:?} not a position for extra coverage", key));
+           }
+        }
         return Ok(());
     }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct StandardOffenseCall {
-    pub play_type: OffensivePlayType,
-    pub strategy: OffensiveStrategy,
-    pub target: OffensiveBox,
-}
-
-impl Validatable for StandardOffenseCall {
-    fn validate(&self, play: &StandardPlay) -> Result<(), String> {
-        let meta = get_offensive_play_info(&self.play_type);
-        if !meta.allowed_targets.contains(&self.target) {
-            return Err(format!(
-                "{:?} is not a valid target for {:?}",
-                self.target, self.play_type
-            ));
-        }
-
-        let off: &StandardOffensiveLineup = play
-            .offense
-            .as_ref()
-            .ok_or("Set Lineup before setting Call")?;
-        off.get_player_in_pos(&self.target)
-            .ok_or(format!("No player in {:?}", self.target))?;
-
-        match self.strategy {
-            OffensiveStrategy::Draw => {
-                validate_strategy(
-                    "Draw",
-                    &self.play_type,
-                    vec![OffensivePlayType::IL, OffensivePlayType::IR],
-                )?;
-            }
-            OffensiveStrategy::PlayAction => {
-                validate_strategy(
-                    "PlayAction",
-                    &self.play_type,
-                    vec![OffensivePlayType::SH, OffensivePlayType::LG],
-                )?;
-            }
-            OffensiveStrategy::NoStrategy => {}
-            OffensiveStrategy::Sneak => {}
-            OffensiveStrategy::Flop => {}
-        }
-
-        // use player for further validations
-        return Ok(());
+    pub struct StandardOffenseCall {
+        pub play_type: OffensivePlayType,
+        pub strategy: OffensiveStrategy,
+        pub target: OffensiveBox,
     }
-}
 
-fn validate_strategy(
-    strategy: &str,
-    actual: &OffensivePlayType,
-    allowed: Vec<OffensivePlayType>,
-) -> Result<(), String> {
-    if !allowed.contains(actual) {
-        return Err(format!("{:?} can not be played on {:?}", strategy, actual));
+    impl Validatable for StandardOffenseCall {
+        fn validate(&self, play: &StandardPlay) -> Result<(), String> {
+            let meta = get_offensive_play_info(&self.play_type);
+            if !meta.allowed_targets.contains(&self.target) {
+                return Err(format!(
+                        "{:?} is not a valid target for {:?}",
+                        self.target, self.play_type
+                        ));
+            }
+
+            let off: &StandardOffensiveLineup = play
+                .offense
+                .as_ref()
+                .ok_or("Set Lineup before setting Call")?;
+            off.get_player_in_pos(&self.target)
+                .ok_or(format!("No player in {:?}", self.target))?;
+
+            match self.strategy {
+                OffensiveStrategy::Draw => {
+                    validate_strategy(
+                        "Draw",
+                        &self.play_type,
+                        vec![OffensivePlayType::IL, OffensivePlayType::IR],
+                        )?;
+                }
+                OffensiveStrategy::PlayAction => {
+                    validate_strategy(
+                        "PlayAction",
+                        &self.play_type,
+                        vec![OffensivePlayType::SH, OffensivePlayType::LG],
+                        )?;
+                }
+                OffensiveStrategy::NoStrategy => {}
+                OffensiveStrategy::Sneak => {}
+                OffensiveStrategy::Flop => {}
+            }
+
+            // use player for further validations
+            return Ok(());
+        }
     }
-    Ok(())
-}
 
-fn get_offensive_play_info(play: &OffensivePlayType) -> &OffensivePlayInfo {
-    return &OFFENSIVE_PLAYS_LIST[play];
-}
+    fn validate_strategy(
+        strategy: &str,
+        actual: &OffensivePlayType,
+        allowed: Vec<OffensivePlayType>,
+        ) -> Result<(), String> {
+        if !allowed.contains(actual) {
+            return Err(format!("{:?} can not be played on {:?}", strategy, actual));
+        }
+        Ok(())
+    }
+
+    fn get_offensive_play_info(play: &OffensivePlayType) -> &OffensivePlayInfo {
+        return &OFFENSIVE_PLAYS_LIST[play];
+    }
 
 #[derive(Clone)]
-pub struct PlaySetup<'a> {
-    pub offense: &'a StandardOffensiveLineup,
-    pub offense_call: &'a StandardOffenseCall,
-    pub defense: StandardDefensiveLineup,
-    pub defense_call: &'a StandardDefenseCall,
-    pub offense_metadata: &'a OffensivePlayInfo,
-}
+    pub struct PlaySetup<'a> {
+        pub offense: &'a StandardOffensiveLineup,
+        pub offense_call: &'a StandardOffenseCall,
+        pub defense: StandardDefensiveLineup,
+        pub defense_call: &'a StandardDefenseCall,
+        pub offense_metadata: &'a OffensivePlayInfo,
+    }
 
 #[derive(Debug, Default, Clone, Serialize)]
-pub struct StandardPlay {
-    pub offense: Option<StandardOffensiveLineup>,
-    pub offense_call: Option<StandardOffenseCall>,
-    pub defense: Option<StandardDefensiveLineup>,
-    pub defense_call: Option<StandardDefenseCall>,
-}
-
-impl PlayImpl for StandardPlay {
-    fn validate(&self) -> Result<(), String> {
-        let _ = self.offense.as_ref().ok_or("Offense not set");
-        let _ = self.defense.as_ref().ok_or("Defense not set");
-        let offense_call = self.offense_call.as_ref().ok_or("Offense Call  not set")?;
-        offense_call.validate(self)?;
-        let defense_call = self.offense_call.as_ref().ok_or("Defense Call  not set")?;
-        defense_call.validate(self)?;
-        Ok(()) // offense.is_legal_lineup()?;
+    pub struct StandardPlay {
+        pub offense: Option<StandardOffensiveLineup>,
+        pub offense_call: Option<StandardOffenseCall>,
+        pub defense: Option<StandardDefensiveLineup>,
+        pub defense_call: Option<StandardDefenseCall>,
     }
 
-    fn set_offense_call(&mut self, call: OffenseCall) -> Result<(), String> {
-        println!("Offense Call {:?}", call);
-        let c = call
-            .as_standard_offense_call()
-            .ok_or("Bad type".to_string())?;
-        self.offense_call = Some(c.clone());
-        Ok(())
+    impl PlayImpl for StandardPlay {
+        fn validate(&self) -> Result<(), String> {
+            println!("Validating Play");
+            let _ = self.offense.as_ref().ok_or("Offense not set");
+            let _ = self.defense.as_ref().ok_or("Defense not set");
+            let offense_call = self.offense_call.as_ref().ok_or("Offense Call  not set")?;
+            offense_call.validate(self)?;
+            let defense_call = self.defense_call.as_ref().ok_or("Defense Call  not set")?;
+            defense_call.validate(self)?;
+            Ok(()) // offense.is_legal_lineup()?;
+        }
+
+        fn set_offense_call(&mut self, call: OffenseCall) -> Result<(), String> {
+            println!("Offense Call {:?}", call);
+            let c = call
+                .as_standard_offense_call()
+                .ok_or("Bad type".to_string())?;
+            self.offense_call = Some(c.clone());
+            Ok(())
+        }
+
+        fn set_defense_call(&mut self, call: DefenseCall) -> Result<(), String> {
+            let c = call
+                .as_standard_defense_call()
+                .ok_or("Bad type".to_string())?;
+            self.defense_call = Some(c.clone());
+            Ok(())
+        }
+
+        fn set_offense_lineup(
+            &mut self,
+            lineup: &OffenseIDLineup,
+            roster: &Roster,
+            ) -> Result<(), String> {
+            let l = lineup
+                .as_standard_id_offense_lineup()
+                .ok_or("Bad type".to_string())?;
+
+            self.offense = Some(StandardOffensiveLineup::create_lineup(l, roster)?);
+
+            self.offense.as_ref().unwrap().is_legal_lineup()?;
+
+            Ok(())
+        }
+
+        fn set_defense_lineup(
+            &mut self,
+            lineup: &DefenseIDLineup,
+            roster: &Roster,
+            ) -> Result<(), String> {
+            let l = lineup
+                .as_standard_id_defense_lineup()
+                .ok_or("Bad type".to_string())?;
+
+            self.defense = Some(StandardDefensiveLineup::create_lineup(l, roster)?);
+
+            self.defense.as_ref().unwrap().is_legal_lineup()?;
+
+            Ok(())
+        }
+
+        fn run_play<'a>(
+            &'a self,
+            game_state: &'a GameState,
+            card_streamer: &'a mut CardStreamer<'a>,
+            ) -> PlayResult {
+            let offense_metadata =
+                get_offensive_play_info(&self.offense_call.as_ref().unwrap().play_type);
+
+            let def_call = self.defense_call.as_ref().unwrap();
+            let def_lineup = self.defense.as_ref().unwrap();
+
+            let filtered_lineup = def_lineup.filter_players(&def_call.def_players);
+
+            let real_def = if def_call.defense_type == DefensivePlay::Blitz {
+                filtered_lineup
+            } else {
+                def_lineup.clone()
+            };
+
+            let details = PlaySetup {
+                offense_metadata,
+                offense: self.offense.as_ref().unwrap(),
+                offense_call: self.offense_call.as_ref().unwrap(),
+                defense: real_def,
+                defense_call: def_call,
+            };
+
+            (details.offense_metadata.handler)(game_state, details, card_streamer)
+        }
+
+        fn get_play(&self) -> Play {
+            Play::StandardPlay(self.clone())
+        }
+
+        fn get_type(&self) -> PlayType {
+            return PlayType::Standard;
+        }
     }
 
-    fn set_defense_call(&mut self, call: DefenseCall) -> Result<(), String> {
-        let c = call
-            .as_standard_defense_call()
-            .ok_or("Bad type".to_string())?;
-        self.defense_call = Some(c.clone());
-        Ok(())
+    impl StandardPlay {
+        pub fn new() -> Self {
+            return Self {
+                ..Default::default()
+            };
+        }
+
+        pub fn handle_z(result: &PlayResult) -> PlayResult {
+            return result.clone();
+        }
     }
-
-    fn set_offense_lineup(
-        &mut self,
-        lineup: &OffenseIDLineup,
-        roster: &Roster,
-    ) -> Result<(), String> {
-        let l = lineup
-            .as_standard_id_offense_lineup()
-            .ok_or("Bad type".to_string())?;
-
-        self.offense = Some(StandardOffensiveLineup::create_lineup(l, roster)?);
-
-        self.offense.as_ref().unwrap().is_legal_lineup()?;
-
-        Ok(())
-    }
-
-    fn set_defense_lineup(
-        &mut self,
-        lineup: &DefenseIDLineup,
-        roster: &Roster,
-    ) -> Result<(), String> {
-        let l = lineup
-            .as_standard_id_defense_lineup()
-            .ok_or("Bad type".to_string())?;
-
-        self.defense = Some(StandardDefensiveLineup::create_lineup(l, roster)?);
-
-        self.defense.as_ref().unwrap().is_legal_lineup()?;
-
-        Ok(())
-    }
-
-    fn run_play<'a>(
-        &'a self,
-        game_state: &'a GameState,
-        card_streamer: &'a mut CardStreamer<'a>,
-    ) -> PlayResult {
-        let offense_metadata =
-            get_offensive_play_info(&self.offense_call.as_ref().unwrap().play_type);
-
-        let def_call = self.defense_call.as_ref().unwrap();
-        let def_lineup = self.defense.as_ref().unwrap();
-
-        let filtered_lineup = def_lineup.filter_players(&def_call.def_players);
-
-        let real_def = if def_call.defense_type == DefensivePlay::Blitz {
-            filtered_lineup
-        } else {
-            def_lineup.clone()
-        };
-
-        let details = PlaySetup {
-            offense_metadata,
-            offense: self.offense.as_ref().unwrap(),
-            offense_call: self.offense_call.as_ref().unwrap(),
-            defense: real_def,
-            defense_call: def_call,
-        };
-
-        (details.offense_metadata.handler)(game_state, details, card_streamer)
-    }
-
-    fn get_play(&self) -> Play {
-        Play::StandardPlay(self.clone())
-    }
-
-    fn get_type(&self) -> PlayType {
-        return PlayType::Standard;
-    }
-}
-
-impl StandardPlay {
-    pub fn new() -> Self {
-        return Self {
-            ..Default::default()
-        };
-    }
-
-    pub fn handle_z(result: &PlayResult) -> PlayResult {
-        return result.clone();
-    }
-}
