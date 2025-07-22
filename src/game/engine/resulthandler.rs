@@ -10,7 +10,7 @@ pub fn calculate_play_result(old_state: &GameState, result: &PlayResult) -> Game
         advance_time(old_state.quarter, old_state.time_remaining, result.time);
 
     let interim_state = GameState {
-        yardline: new_line,
+        yard_line: new_line,
         time_remaining,
         quarter,
 
@@ -24,15 +24,15 @@ pub fn calculate_play_result(old_state: &GameState, result: &PlayResult) -> Game
 }
 
 fn handle_regular_play(interim_state: &GameState, result: &PlayResult) -> GameState {
-    if interim_state.yardline >= 100 {
+    if interim_state.yard_line >= 100 {
         return handle_touchdown(interim_state);
     }
 
-    if interim_state.yardline < 0 {
+    if interim_state.yard_line < 0 {
         return handle_safety(interim_state);
     }
 
-    if interim_state.yardline >= interim_state.first_down_target {
+    if interim_state.yard_line >= interim_state.first_down_target {
         return first_down(&interim_state);
     }
 
@@ -47,10 +47,9 @@ fn handle_regular_play(interim_state: &GameState, result: &PlayResult) -> GameSt
     }
 }
 
-
 fn handle_safety(interim_state: &GameState) -> GameState {
     let score_state = GameState {
-        possesion: interim_state.possesion.other_team(),
+        possession: interim_state.possession.other_team(),
         ..interim_state.clone()
     };
 
@@ -64,9 +63,9 @@ fn handle_safety(interim_state: &GameState) -> GameState {
 }
 
 fn handle_turnover(interim_state: &GameState) -> GameState {
-    if interim_state.yardline < 0 {
+    if interim_state.yard_line < 0 {
         let score_state = GameState {
-            possesion: interim_state.possesion.other_team(),
+            possession: interim_state.possession.other_team(),
 
             ..interim_state.clone()
         };
@@ -91,20 +90,20 @@ fn first_down(interim_state: &GameState) -> GameState {
     GameState {
         down: Down::First,
         last_status: GamePlayStatus::Ongoing,
-        first_down_target: min(interim_state.yardline + 10, 100),
+        first_down_target: min(interim_state.yard_line + 10, 100),
         ..interim_state.clone()
     }
 }
 
 fn possession_change(interim_state: &GameState) -> GameState {
-    let yardline = 100 - interim_state.yardline;
+    let yard_line = 100 - interim_state.yard_line;
 
     GameState {
         down: Down::First,
-        last_status: GamePlayStatus::PossesionChange,
-        first_down_target: min(yardline + 10, 100),
-        possesion: interim_state.possesion.other_team(),
-        yardline,
+        last_status: GamePlayStatus::PossessionChange,
+        first_down_target: min(yard_line + 10, 100),
+        possession: interim_state.possession.other_team(),
+        yard_line,
 
         ..interim_state.clone()
     }
@@ -123,7 +122,7 @@ fn advance_time(curr_quarter: i32, curr_time: i32, play_time: i32) -> (i32, i32)
 }
 
 fn add_points(interim_state: &GameState, points: i32) -> (i32, i32) {
-    match interim_state.possesion {
+    match interim_state.possession {
         GameTeams::Home => (interim_state.home_score + points, interim_state.away_score),
         GameTeams::Away => (interim_state.home_score, interim_state.away_score + points),
     }

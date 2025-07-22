@@ -398,7 +398,7 @@ impl<'a> RunContext<'a> {
         return PlayResult {
             result_type,
             result,
-            final_line: result + self.state.yardline,
+            final_line: result + self.state.yard_line,
             time,
 
             ..self.utils.result()

@@ -28,7 +28,7 @@ impl PlayImpl for KickoffPlay {
     fn set_offense_call(&mut self, call: OffenseCall) -> Result<(), String> {
         let c = call
             .as_kickoff_offense_call()
-            .ok_or("Bad type".to_string())?;
+            .ok_or("Not a call for a Kickoff".to_string())?;
         self.onside = Some(c.onside);
         Ok(())
     }
@@ -44,7 +44,7 @@ impl PlayImpl for KickoffPlay {
     ) -> Result<(), String> {
         let l = lineup
             .as_kickoff_id_offense_lineup()
-            .ok_or("Bad type".to_string())?;
+            .ok_or("Bad Lineup for Kickoff".to_string())?;
 
         self.k = Player::is_k(
             roster

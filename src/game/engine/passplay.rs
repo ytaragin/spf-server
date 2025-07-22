@@ -531,7 +531,7 @@ impl<'a> PassContext<'a> {
         return PlayResult {
             result_type,
             result,
-            final_line: result + self.state.yardline,
+            final_line: result + self.state.yard_line,
             time,
             // details: self.data.details.clone(),
             // mechanic: self.data.mechanic.clone(),

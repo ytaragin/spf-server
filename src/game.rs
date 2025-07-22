@@ -12,19 +12,16 @@ use std::{
     io::{BufWriter, Write},
 };
 
+use engine::defs::GAMECONSTANTS;
 use serde::{Deserialize, Serialize};
 
 use self::{
     engine::{
-        defs::GAMECONSTANTS, run_play, DefenseCall, DefenseIDLineup, Down, OffenseCall,
-        OffenseIDLineup, PlayImpl, PlayResult, PlayType, Yard,
+        run_play, DefenseCall, DefenseIDLineup, Down, OffenseCall, OffenseIDLineup, PlayImpl,
+        PlayResult, PlayType, Yard,
     },
     fac::FacManager,
     kickoff_play::KickoffPlay,
-    lineup::{
-        StandardDefensiveLineup, StandardIDDefenseLineup, StandardIDOffenseLineup,
-        StandardOffensiveLineup,
-    },
     players::Roster,
     standard_play::StandardPlay,
 };
@@ -48,7 +45,7 @@ pub enum GamePlayStatus {
     Touchdown,
     Safety,
     FieldGoal,
-    PossesionChange,
+    PossessionChange,
     Ongoing,
     Start,
     End,
@@ -66,9 +63,9 @@ pub struct GameState {
     pub last_status: GamePlayStatus,
     pub quarter: i32,
     pub time_remaining: i32,
-    pub possesion: GameTeams,
+    pub possession: GameTeams,
     pub down: Down,
-    pub yardline: Yard,
+    pub yard_line: Yard,
     pub first_down_target: Yard,
     pub home_score: i32,
     pub away_score: i32,
@@ -80,9 +77,9 @@ impl GameState {
             last_status: GamePlayStatus::Start,
             quarter: 1,
             time_remaining: GAMECONSTANTS.sec_per_quarter,
-            possesion: GameTeams::Away,
+            possession: GameTeams::Away,
             down: Down::First,
-            yardline: 50,
+            yard_line: 50,
             first_down_target: 60,
             home_score: 0,
             away_score: 0,
@@ -94,7 +91,7 @@ impl GameState {
             GamePlayStatus::Touchdown => vec![PlayType::ExtraPoint],
             GamePlayStatus::Safety => vec![PlayType::Punt],
             GamePlayStatus::FieldGoal => vec![PlayType::Kickoff],
-            GamePlayStatus::PossesionChange | GamePlayStatus::Ongoing => {
+            GamePlayStatus::PossessionChange | GamePlayStatus::Ongoing => {
                 vec![PlayType::Standard, PlayType::Punt, PlayType::FieldGoal]
             }
             GamePlayStatus::Start => vec![PlayType::Kickoff],
@@ -107,7 +104,7 @@ impl GameState {
             GamePlayStatus::Touchdown => PlayType::ExtraPoint,
             GamePlayStatus::Safety => PlayType::Punt,
             GamePlayStatus::FieldGoal => PlayType::Kickoff,
-            GamePlayStatus::PossesionChange => PlayType::Standard,
+            GamePlayStatus::PossessionChange => PlayType::Standard,
             GamePlayStatus::Ongoing => PlayType::Standard,
             GamePlayStatus::Start => PlayType::Kickoff,
             GamePlayStatus::End => PlayType::Kickoff,
@@ -189,14 +186,14 @@ impl Game {
     }
 
     fn get_current_off_roster(&self) -> &Roster {
-        match self.state.possesion {
+        match self.state.possession {
             GameTeams::Away => &self.away,
             GameTeams::Home => &self.home,
         }
     }
 
     fn get_current_def_roster(&self) -> &Roster {
-        match self.state.possesion {
+        match self.state.possession {
             GameTeams::Away => &self.home,
             GameTeams::Home => &self.away,
         }
