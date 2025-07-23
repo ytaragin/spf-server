@@ -339,4 +339,8 @@ impl Game {
         Game::write_json(&file_path, "facs.json", &self.fac_deck)?;
         Ok(())
     }
+
+    pub fn get_last_play(&self) -> Option<&PlayAndState> {
+        self.past_plays.last()
+    }
 }

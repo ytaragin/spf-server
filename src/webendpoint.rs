@@ -5,7 +5,7 @@ use actix_web::{http::header, web, App, HttpResponse, HttpServer, Responder};
 use serde_json::json;
 
 use crate::game::{
-    engine::{OffenseCall, OffenseIDLineup, PlayType,  DefenseIDLineup, DefenseCall},
+    engine::{DefenseCall, DefenseIDLineup, OffenseCall, OffenseIDLineup, PlayType},
     lineup::{StandardIDDefenseLineup, StandardIDOffenseLineup},
     players::Serializable_Roster,
     Game,
@@ -21,14 +21,11 @@ async fn set_offensive_lineup(
 
     println!("{:?}", lineup_obj); // Do something with the OffensiveLineup struct
 
-
     match game.set_offensive_lineup_from_ids(&lineup_obj) {
         Ok(_) => HttpResponse::Ok().body("Offensive lineup set."),
         Err(msg) => HttpResponse::BadRequest().body(msg),
     }
 }
-
-
 
 async fn get_offensive_lineup(appstate: web::Data<AppState>) -> impl Responder {
     println!("get_offensive_lineup called");
@@ -193,7 +190,7 @@ async fn save_game(appstate: web::Data<AppState>, data: String) -> impl Responde
 
     println!("File is {}", data);
 
-    let mut game = appstate.game.lock().unwrap();
+    let game = appstate.game.lock().unwrap();
     let res = game.serialize_struct(data);
     match res {
         Ok(_) => HttpResponse::Ok()
@@ -202,7 +199,6 @@ async fn save_game(appstate: web::Data<AppState>, data: String) -> impl Responde
         Err(msg) => HttpResponse::BadRequest().body(msg.to_string()),
     }
 }
-
 
 async fn get_player(path: web::Path<String>, appstate: web::Data<AppState>) -> impl Responder {
     println!("Get Player Called: {:?}", path);
@@ -231,6 +227,41 @@ async fn get_player(path: web::Path<String>, appstate: web::Data<AppState>) -> i
     HttpResponse::Ok()
         .content_type("application/json")
         .body(json_str)
+}
+
+async fn get_last_play(
+    appstate: web::Data<AppState>,
+    query: web::Query<std::collections::HashMap<String, String>>,
+) -> impl Responder {
+    let game = appstate.game.lock().unwrap();
+    let last_play = game.get_last_play();
+
+    match last_play {
+        Some(play) => {
+            let result_only = query
+                .get("result")
+                .map(|v| v.parse::<bool>().unwrap_or(false))
+                .unwrap_or(false);
+
+            let json_data = if result_only {
+                // Return only PlayResult and GameState
+                let partial_response = json!({
+                    "result": play.result,
+                    "new_state": play.new_state
+                });
+                serde_json::to_string(&partial_response)
+                    .expect("Error while serializing partial play to JSON.")
+            } else {
+                // Return full PlayAndState object
+                serde_json::to_string(play).expect("Error while serializing play to JSON.")
+            };
+
+            HttpResponse::Ok()
+                .content_type("application/json")
+                .body(json_data)
+        }
+        None => HttpResponse::NotFound().body("No plays found."),
+    }
 }
 
 struct AppState {
@@ -268,6 +299,7 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
             .route("/defense/lineup", web::get().to(get_defensive_lineup))
             .route("/defense/lineup", web::post().to(set_defensive_lineup))
             .route("/defense/call", web::post().to(set_defense_call))
+            .route("/game/play", web::get().to(get_last_play))
             .route("/game/play", web::post().to(run_play))
             .route("/game/save", web::post().to(save_game))
             .route("/game/state", web::get().to(get_game_state))
@@ -275,6 +307,7 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
             .route("/game/nexttype", web::post().to(set_next_play_type))
             .route("/getplayer/{id}", web::get().to(get_player))
             .route("/players/{team}", web::get().to(get_team_players))
+            .route("/game/last_play", web::get().to(get_last_play))
     })
     .bind("127.0.0.1:8080")?
     .run()
