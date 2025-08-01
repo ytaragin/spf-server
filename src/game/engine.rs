@@ -16,10 +16,10 @@ use self::{kickplay::KickPlayImpl, resulthandler::calculate_play_result};
 
 use super::{
     fac::{FacCard, FacData, FacManager},
+    kickoff_play::KickoffPlay,
     lineup::{KickoffIDOffenseLineup, StandardIDDefenseLineup, StandardIDOffenseLineup},
     players::{KRStats, KStats, Player, Roster},
     standard_play::{StandardDefenseCall, StandardOffenseCall, StandardPlay},
-    kickoff_play::KickoffPlay,
     GameState, Play, PlayAndState,
 };
 
@@ -200,6 +200,7 @@ pub fn run_play(
 
     let mut card_streamer = CardStreamer::new(fac_deck);
 
+    println!("Will Run Play");
     let result = play.run_play(game_state, &mut card_streamer);
 
     if result.cards.had_z {
@@ -303,4 +304,3 @@ pub struct PuntDefenseCall {
 pub struct PuntOffenseCall {
     pub coffin_corner: i32,
 }
-

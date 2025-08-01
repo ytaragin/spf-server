@@ -343,4 +343,8 @@ impl Game {
     pub fn get_last_play(&self) -> Option<&PlayAndState> {
         self.past_plays.last()
     }
+
+    pub fn get_all_plays(&self) -> &Vec<PlayAndState> {
+        &self.past_plays
+    }
 }

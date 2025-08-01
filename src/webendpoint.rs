@@ -2,14 +2,39 @@ use std::{str::FromStr, sync::Mutex};
 
 use actix_cors::Cors;
 use actix_web::{http::header, web, App, HttpResponse, HttpServer, Responder};
+use serde::Deserialize;
 use serde_json::json;
 
 use crate::game::{
     engine::{DefenseCall, DefenseIDLineup, OffenseCall, OffenseIDLineup, PlayType},
-    lineup::{StandardIDDefenseLineup, StandardIDOffenseLineup},
     players::Serializable_Roster,
-    Game,
+    Game, PlayAndState,
 };
+
+#[derive(Deserialize)]
+struct PlayQueryParams {
+    #[serde(default)]
+    result: bool,
+}
+
+fn serialize_plays(plays: &[PlayAndState], result_only: bool) -> Result<String, serde_json::Error> {
+    if result_only {
+        // Return only PlayResult and GameState for each play
+        let partial_response: Vec<_> = plays
+            .iter()
+            .map(|play| {
+                json!({
+                    "result": play.result,
+                    "new_state": play.new_state
+                })
+            })
+            .collect();
+        serde_json::to_string(&partial_response)
+    } else {
+        // Return full PlayAndState objects
+        serde_json::to_string(plays)
+    }
+}
 
 async fn set_offensive_lineup(
     appstate: web::Data<AppState>,
@@ -231,30 +256,15 @@ async fn get_player(path: web::Path<String>, appstate: web::Data<AppState>) -> i
 
 async fn get_last_play(
     appstate: web::Data<AppState>,
-    query: web::Query<std::collections::HashMap<String, String>>,
+    query: web::Query<PlayQueryParams>,
 ) -> impl Responder {
     let game = appstate.game.lock().unwrap();
     let last_play = game.get_last_play();
 
     match last_play {
         Some(play) => {
-            let result_only = query
-                .get("result")
-                .map(|v| v.parse::<bool>().unwrap_or(false))
-                .unwrap_or(false);
-
-            let json_data = if result_only {
-                // Return only PlayResult and GameState
-                let partial_response = json!({
-                    "result": play.result,
-                    "new_state": play.new_state
-                });
-                serde_json::to_string(&partial_response)
-                    .expect("Error while serializing partial play to JSON.")
-            } else {
-                // Return full PlayAndState object
-                serde_json::to_string(play).expect("Error while serializing play to JSON.")
-            };
+            let json_data = serialize_plays(&[play.clone()], query.result)
+                .expect("Error while serializing play to JSON.");
 
             HttpResponse::Ok()
                 .content_type("application/json")
@@ -262,6 +272,21 @@ async fn get_last_play(
         }
         None => HttpResponse::NotFound().body("No plays found."),
     }
+}
+
+async fn get_all_plays(
+    appstate: web::Data<AppState>,
+    query: web::Query<PlayQueryParams>,
+) -> impl Responder {
+    let game = appstate.game.lock().unwrap();
+    let all_plays = game.get_all_plays();
+
+    let json_data =
+        serialize_plays(all_plays, query.result).expect("Error while serializing plays to JSON.");
+
+    HttpResponse::Ok()
+        .content_type("application/json")
+        .body(json_data)
 }
 
 struct AppState {
@@ -301,6 +326,7 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
             .route("/defense/call", web::post().to(set_defense_call))
             .route("/game/play", web::get().to(get_last_play))
             .route("/game/play", web::post().to(run_play))
+            .route("/game/plays", web::get().to(get_all_plays))
             .route("/game/save", web::post().to(save_game))
             .route("/game/state", web::get().to(get_game_state))
             .route("/game/nexttype", web::get().to(get_next_play_types))
