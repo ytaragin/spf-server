@@ -69,6 +69,7 @@ pub struct GameState {
     pub first_down_target: Yard,
     pub home_score: i32,
     pub away_score: i32,
+    pub play_counter: u32,
 }
 
 impl GameState {
@@ -83,6 +84,7 @@ impl GameState {
             first_down_target: 60,
             home_score: 0,
             away_score: 0,
+            play_counter: 0,
         };
     }
 
@@ -272,6 +274,10 @@ impl Game {
     }
 
     pub fn run_current_play(&mut self) -> Result<PlayAndState, String> {
+        // Increment play counter in state
+        self.state.play_counter += 1;
+        let current_play_number = self.state.play_counter;
+
         let res = run_play(
             &self.state,
             &mut self.fac_deck,
@@ -280,7 +286,11 @@ impl Game {
 
         self.past_plays.push(res.clone());
 
-        self.state = res.new_state;
+        // Update state, ensuring play counter is preserved
+        self.state = GameState {
+            play_counter: current_play_number,
+            ..res.new_state
+        };
         self.set_next_play_type(self.state.get_next_move_default())?;
 
         // if self.next_play.
@@ -346,5 +356,9 @@ impl Game {
 
     pub fn get_all_plays(&self) -> &Vec<PlayAndState> {
         &self.past_plays
+    }
+
+    pub fn get_play_counter(&self) -> u32 {
+        self.state.play_counter
     }
 }
