@@ -13,6 +13,7 @@ pub fn calculate_play_result(old_state: &GameState, result: &PlayResult) -> Game
         yard_line: new_line,
         time_remaining,
         quarter,
+        play_counter: old_state.play_counter + 1,
 
         ..old_state.clone()
     };

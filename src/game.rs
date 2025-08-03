@@ -275,8 +275,6 @@ impl Game {
 
     pub fn run_current_play(&mut self) -> Result<PlayAndState, String> {
         // Increment play counter in state
-        self.state.play_counter += 1;
-        let current_play_number = self.state.play_counter;
 
         let res = run_play(
             &self.state,
@@ -287,10 +285,7 @@ impl Game {
         self.past_plays.push(res.clone());
 
         // Update state, ensuring play counter is preserved
-        self.state = GameState {
-            play_counter: current_play_number,
-            ..res.new_state
-        };
+        self.state = GameState { ..res.new_state };
         self.set_next_play_type(self.state.get_next_move_default())?;
 
         // if self.next_play.

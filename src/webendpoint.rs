@@ -15,6 +15,7 @@ use crate::game::{
 struct PlayQueryParams {
     #[serde(default)]
     result: bool,
+    count: Option<usize>,
 }
 
 fn serialize_plays(plays: &[PlayAndState], result_only: bool) -> Result<String, serde_json::Error> {
@@ -254,26 +255,6 @@ async fn get_player(path: web::Path<String>, appstate: web::Data<AppState>) -> i
         .body(json_str)
 }
 
-async fn get_last_play(
-    appstate: web::Data<AppState>,
-    query: web::Query<PlayQueryParams>,
-) -> impl Responder {
-    let game = appstate.game.lock().unwrap();
-    let last_play = game.get_last_play();
-
-    match last_play {
-        Some(play) => {
-            let json_data = serialize_plays(&[play.clone()], query.result)
-                .expect("Error while serializing play to JSON.");
-
-            HttpResponse::Ok()
-                .content_type("application/json")
-                .body(json_data)
-        }
-        None => HttpResponse::NotFound().body("No plays found."),
-    }
-}
-
 async fn get_all_plays(
     appstate: web::Data<AppState>,
     query: web::Query<PlayQueryParams>,
@@ -281,8 +262,24 @@ async fn get_all_plays(
     let game = appstate.game.lock().unwrap();
     let all_plays = game.get_all_plays();
 
-    let json_data =
-        serialize_plays(all_plays, query.result).expect("Error while serializing plays to JSON.");
+    // Apply count filter if specified
+    let plays_to_return = if let Some(count) = query.count {
+        if all_plays.is_empty() {
+            all_plays
+        } else {
+            let start_index = if count >= all_plays.len() {
+                0
+            } else {
+                all_plays.len() - count
+            };
+            &all_plays[start_index..]
+        }
+    } else {
+        all_plays
+    };
+
+    let json_data = serialize_plays(plays_to_return, query.result)
+        .expect("Error while serializing plays to JSON.");
 
     HttpResponse::Ok()
         .content_type("application/json")
@@ -324,7 +321,6 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
             .route("/defense/lineup", web::get().to(get_defensive_lineup))
             .route("/defense/lineup", web::post().to(set_defensive_lineup))
             .route("/defense/call", web::post().to(set_defense_call))
-            .route("/game/play", web::get().to(get_last_play))
             .route("/game/play", web::post().to(run_play))
             .route("/game/plays", web::get().to(get_all_plays))
             .route("/game/save", web::post().to(save_game))
@@ -333,7 +329,6 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
             .route("/game/nexttype", web::post().to(set_next_play_type))
             .route("/getplayer/{id}", web::get().to(get_player))
             .route("/players/{team}", web::get().to(get_team_players))
-            .route("/game/last_play", web::get().to(get_last_play))
     })
     .bind("127.0.0.1:8080")?
     .run()
