@@ -29,8 +29,9 @@
 			"installOhMyZsh": true,
 			"configureZshAsDefaultShell": true,
 			"username": "vscode",
-			"upgradePackages": true
-		}
+			"upgradePackages": false
+		},
+		    "ghcr.io/danzilberdan/devcontainers/opencode:0": {}
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -47,6 +48,14 @@
 			"onAutoForward": "notify"
 		}
 	},
+
+	  "mounts": [
+    {
+      "source": "${localEnv:HOME}/.local/share/opencode/auth.json",
+      "target": "/mnt/opencode-auth.json",
+      "type": "bind"
+    }
+  ],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "rustup component add clippy rustfmt && cargo fetch",
