@@ -1,0 +1,20 @@
+info:
+  name: Run Play 2
+  type: http
+  seq: 18
+
+http:
+  method: POST
+  url: "{{spf_host}}/game/play"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: none
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

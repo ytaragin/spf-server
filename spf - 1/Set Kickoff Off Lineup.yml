@@ -1,0 +1,24 @@
+info:
+  name: Set Kickoff Off Lineup
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{spf_host}}/offense/lineup"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "k": "K-6"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

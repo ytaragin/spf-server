@@ -1,0 +1,15 @@
+opencollection: 1.0.0
+
+info:
+  name: spf - 1
+
+request:
+  variables:
+    - name: spf_host
+      value: http://localhost:8080
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

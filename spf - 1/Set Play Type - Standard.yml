@@ -1,0 +1,21 @@
+info:
+  name: Set Play Type - Standard
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: "{{spf_host}}/game/nexttype"
+  headers:
+    - name: Content-Type
+      value: text/plain
+  body:
+    type: text
+    data: Standard
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

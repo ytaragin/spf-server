@@ -1,0 +1,15 @@
+info:
+  name: Get Plays
+  type: http
+  seq: 19
+
+http:
+  method: GET
+  url: "{{spf_host}}/game/plays?result=true&count=3"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

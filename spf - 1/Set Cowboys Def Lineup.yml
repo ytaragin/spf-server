@@ -1,0 +1,38 @@
+info:
+  name: Set Cowboys Def Lineup
+  type: http
+  seq: 12
+
+http:
+  method: POST
+  url: "{{spf_host}}/defense/lineup"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "box_a": ["DL-39"],
+        "box_b": ["DL-40"],
+        "box_c": ["DL-37"],
+        "box_d": ["DL-38"],
+        "box_e": ["LB-35"],
+        "box_f": "LB-34",
+        "box_g": "LB-36",
+        "box_h": null,
+        "box_i": "DB-40",
+        "box_j": "DB-39",
+        "box_k": null,
+        "box_l": ["DB-42"],
+        "box_m": "DB-41",
+        "box_n": null,
+        "box_o": null
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

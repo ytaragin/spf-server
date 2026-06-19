@@ -1,0 +1,27 @@
+info:
+  name: Set Def Call - Pass Defense
+  type: http
+  seq: 17
+
+http:
+  method: POST
+  url: "{{spf_host}}/defense/call"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "defense_type": "PassDefense",
+        "strategy": "DoubleCover",
+        "key": "RE",
+        "def_players": ["DB-40"]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

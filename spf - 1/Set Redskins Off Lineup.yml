@@ -1,0 +1,36 @@
+info:
+  name: Set Redskins Off Lineup
+  type: http
+  seq: 11
+
+http:
+  method: POST
+  url: "{{spf_host}}/offense/lineup"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "qb": "QB-62",
+        "b1": "RB-127",
+        "b2": "RB-128",
+        "b3": null,
+        "le": "TE-61",
+        "re": "WR-118",
+        "fl1": "WR-119",
+        "fl2": null,
+        "lt": "OL-222",
+        "lg": "OL-225",
+        "c": "OL-224",
+        "rg": "OL-226",
+        "rt": "OL-223"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,27 @@
+info:
+  name: Set Def Call - Run Defense
+  type: http
+  seq: 14
+
+http:
+  method: POST
+  url: "{{spf_host}}/defense/call"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "defense_type": "RunDefense",
+        "strategy": "Straight",
+        "key": null,
+        "def_players": []
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
