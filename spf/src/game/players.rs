@@ -1,19 +1,20 @@
 use dyn_clone::{clone_trait_object, DynClone};
 // use itertools::Itertools;
 use enum_as_inner::EnumAsInner;
+use erased_serde::serialize_trait_object;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use spf_macros::{ImplBasePlayer, IsBlocker, IsReceiver};
 use std::{collections::HashMap, str::FromStr};
 use strum_macros::Display;
-use erased_serde::serialize_trait_object;
 
 use super::{
     loader::{
         load_dbs, load_dls, load_krs, load_ks, load_lbs, load_ols, load_qbs, load_rbs, load_tes,
         load_wrs,
     },
-    stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats}, standard_play::{PassResult, PassRushResult},
+    standard_play::{PassResult, PassRushResult},
+    stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats},
 };
 
 pub type PassGain = TwelveStats<TripleStat>;
@@ -72,7 +73,6 @@ pub trait Receiver {
 pub trait ToBasePlayer {
     fn get_player(&self) -> &dyn BasePlayer;
 }
-
 
 pub trait BasePlayer: Sync + Send + DynClone + erased_serde::Serialize {
     fn get_id(&self) -> String;
@@ -203,21 +203,19 @@ pub struct KStats {
     pub longest_fg: i32,
 }
 
-
 #[derive(Debug, Clone, Serialize)]
 pub enum PuntResultDetails {
     FairCatch,
-    Returner(i32)
+    Returner(i32),
 }
 // pub enum P
 #[derive(Debug, Clone, Serialize)]
 pub enum PuntResult {
-
     Special,
-    Actual {   
+    Actual {
         yards: i32,
-        target: PuntResultDetails, 
-    }
+        target: PuntResultDetails,
+    },
 }
 
 #[derive(Debug, Clone, Serialize, ImplBasePlayer)]
@@ -426,9 +424,6 @@ impl Player {
         }
         return None;
     }
-
-
-
 }
 
 pub struct PlayerUtils {}
@@ -553,9 +548,7 @@ impl Serializable_Roster {
 pub struct Roster {
     team_name: TeamID,
 
-    #[serde(bound(
-        serialize = "Vec<Box<dyn BasePlayer>>: Serialize"
-    ))]
+    #[serde(bound(serialize = "Vec<Box<dyn BasePlayer>>: Serialize"))]
     players: Vec<Box<dyn BasePlayer>>,
     // player_by_pos: HashMap<Position, Vec<Player>>,
 
@@ -681,6 +674,10 @@ pub struct TeamList {
 }
 
 impl TeamList {
+    pub fn get_team(&self, id: &TeamID) -> Option<&Roster> {
+        self.teams.get(id)
+    }
+
     pub fn get_player(&self, id: &String) -> Option<Box<&dyn BasePlayer>> {
         let pos = id.split('-').next().unwrap_or("");
 

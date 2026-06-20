@@ -193,7 +193,7 @@ impl FacCard {
         12
     }
     pub fn get_max_pn() -> i32 {
-       48 
+        48
     }
 }
 

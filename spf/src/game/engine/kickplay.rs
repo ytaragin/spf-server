@@ -129,7 +129,7 @@ impl<'a> KickPlayImpl<'a> {
         PlayResult {
             result_type,
             result: result,
-            final_line: 100-(line + result),
+            final_line: 100 - (line + result),
             time: 10,
             ..self.utils.result()
         }

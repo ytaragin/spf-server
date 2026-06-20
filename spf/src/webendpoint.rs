@@ -7,9 +7,27 @@ use serde_json::json;
 
 use crate::game::{
     engine::{DefenseCall, DefenseIDLineup, OffenseCall, OffenseIDLineup, PlayType},
-    players::Serializable_Roster,
+    players::{Serializable_Roster, TeamID, TeamList},
     Game, PlayAndState,
 };
+
+#[derive(Deserialize)]
+struct StartGameRequest {
+    home: TeamID,
+    away: TeamID,
+}
+
+/// Locks the shared game state and binds `$game` to a `&mut Game`.
+/// Early-returns 409 Conflict when no game is in progress.
+macro_rules! lock_game {
+    ($appstate:expr, $game:ident) => {
+        let mut guard = $appstate.game.lock().unwrap();
+        let $game = match guard.as_mut() {
+            Some(g) => g,
+            None => return HttpResponse::Conflict().body("No game in progress"),
+        };
+    };
+}
 
 #[derive(Deserialize)]
 struct PlayQueryParams {
@@ -42,7 +60,7 @@ async fn set_offensive_lineup(
     lineup: web::Json<OffenseIDLineup>,
 ) -> impl Responder {
     println!("{:?}", lineup); // Do something with the OffensiveLineup struct
-    let mut game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
     let lineup_obj = lineup.into_inner();
 
     println!("{:?}", lineup_obj); // Do something with the OffensiveLineup struct
@@ -56,7 +74,7 @@ async fn set_offensive_lineup(
 async fn get_offensive_lineup(appstate: web::Data<AppState>) -> impl Responder {
     println!("get_offensive_lineup called");
 
-    let game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
     let lineup = game.get_offensive_lineup_ids();
     let res = serde_json::to_string(&lineup);
 
@@ -68,7 +86,7 @@ async fn get_offensive_lineup(appstate: web::Data<AppState>) -> impl Responder {
 
 async fn get_defensive_lineup(appstate: web::Data<AppState>) -> impl Responder {
     println!("get_defensive_lineup called");
-    let game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
     let lineup = game.get_defensive_lineup_ids();
     let res = serde_json::to_string(&lineup);
 
@@ -83,7 +101,7 @@ async fn set_defensive_lineup(
     lineup: web::Json<DefenseIDLineup>,
 ) -> impl Responder {
     println!("{:?}", lineup); // Do something with the DefensiveLineup struct
-    let mut game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
     let lineup_obj = lineup.into_inner();
 
     match game.set_defensive_lineup_from_ids(&lineup_obj) {
@@ -100,7 +118,7 @@ async fn set_offense_call(
 
     let call = data.into_inner();
     println!("Offense Play:  {:?}", call); // Do something with the plays
-    let mut game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
 
     match game.set_offense_call(call) {
         Ok(_) => HttpResponse::Ok().body("Offense play set."),
@@ -114,7 +132,7 @@ async fn set_defense_call(
 ) -> impl Responder {
     let call = data.into_inner();
     println!("Defense Play:  {:?}", call); // Do something with the plays
-    let mut game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
 
     match game.set_defense_call(call) {
         Ok(_) => HttpResponse::Ok().body("Defense play set."),
@@ -124,7 +142,7 @@ async fn set_defense_call(
 
 async fn run_play(appstate: web::Data<AppState>) -> impl Responder {
     println!("Running Play..."); // Do something with the plays
-    let mut game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
 
     match game.run_current_play() {
         Ok(res) => {
@@ -142,7 +160,7 @@ async fn get_team_players(
     team: web::Path<String>,
     appstate: web::Data<AppState>,
 ) -> impl Responder {
-    let game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
 
     let team_path = team.into_inner();
     let team_rost = match team_path.as_str() {
@@ -162,7 +180,7 @@ async fn get_team_players(
 async fn get_game_state(appstate: web::Data<AppState>) -> impl Responder {
     println!("Get State Called");
 
-    let game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
 
     let state = game.state;
 
@@ -178,7 +196,7 @@ async fn get_game_state(appstate: web::Data<AppState>) -> impl Responder {
 async fn get_next_play_types(appstate: web::Data<AppState>) -> impl Responder {
     println!("Get Next Plays Called");
 
-    let game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
 
     let next_types = game.allowed_play_types();
 
@@ -201,7 +219,7 @@ async fn set_next_play_type(appstate: web::Data<AppState>, data: String) -> impl
         return HttpResponse::BadRequest().body("Unknown Type");
     }
 
-    let mut game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
     let res = game.set_next_play_type(v.unwrap());
     match res {
         Ok(_) => HttpResponse::Ok()
@@ -216,7 +234,7 @@ async fn save_game(appstate: web::Data<AppState>, data: String) -> impl Responde
 
     println!("File is {}", data);
 
-    let game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
     let res = game.serialize_struct(data);
     match res {
         Ok(_) => HttpResponse::Ok()
@@ -231,7 +249,7 @@ async fn get_player(path: web::Path<String>, appstate: web::Data<AppState>) -> i
     let path_param = path.into_inner();
     println!("Get Player Called Inner: {:?}", path_param);
 
-    let game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
 
     let mut rec = game.home.get_player(&path_param);
     if rec.is_none() {
@@ -259,7 +277,7 @@ async fn get_all_plays(
     appstate: web::Data<AppState>,
     query: web::Query<PlayQueryParams>,
 ) -> impl Responder {
-    let game = appstate.game.lock().unwrap();
+    lock_game!(appstate, game);
     let all_plays = game.get_all_plays();
 
     // Apply count filter if specified
@@ -287,14 +305,50 @@ async fn get_all_plays(
 }
 
 struct AppState {
-    // game: Arc<Mutex<Game<'a>>>,
-    game: Mutex<Game>,
+    league: TeamList,
+    game: Mutex<Option<Game>>,
+}
+
+async fn start_game(
+    appstate: web::Data<AppState>,
+    data: web::Json<StartGameRequest>,
+) -> impl Responder {
+    let req = data.into_inner();
+    println!("Start Game: {:?} vs {:?}", req.home, req.away);
+
+    let mut guard = appstate.game.lock().unwrap();
+    if guard.is_some() {
+        return HttpResponse::Conflict().body("A game is already in progress");
+    }
+
+    let home = match appstate.league.get_team(&req.home) {
+        Some(r) => r,
+        None => {
+            return HttpResponse::NotFound().body(format!("Unknown team: {}", req.home.to_string()))
+        }
+    };
+    let away = match appstate.league.get_team(&req.away) {
+        Some(r) => r,
+        None => {
+            return HttpResponse::NotFound().body(format!("Unknown team: {}", req.away.to_string()))
+        }
+    };
+
+    let game = Game::create_game(home.clone(), away.clone());
+    let json_data =
+        serde_json::to_string(&game.state).expect("Error while serializing State to JSON.");
+    *guard = Some(game);
+
+    HttpResponse::Ok()
+        .content_type("application/json")
+        .body(json_data)
 }
 
 #[actix_web::main]
-pub async fn runserver(game: Game) -> std::io::Result<()> {
+pub async fn runserver(league: TeamList) -> std::io::Result<()> {
     let app_state = web::Data::new(AppState {
-        game: Mutex::new(game),
+        league,
+        game: Mutex::new(None),
     });
 
     // let game = RefCell::new(game);
@@ -315,6 +369,7 @@ pub async fn runserver(game: Game) -> std::io::Result<()> {
                                          // .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
                                          // .max_age(3600), // Optional: set max age for preflight requests
             )
+            .route("/game/start", web::post().to(start_game))
             .route("/offense/lineup", web::post().to(set_offensive_lineup))
             .route("/offense/lineup", web::get().to(get_offensive_lineup))
             .route("/offense/call", web::post().to(set_offense_call))

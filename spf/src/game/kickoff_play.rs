@@ -1,6 +1,13 @@
 use serde_derive::Serialize;
 
-use super::{players::{KRStats, KStats, Roster, Player}, engine::{PlayImpl, OffenseCall, DefenseCall, OffenseIDLineup, DefenseIDLineup, CardStreamer, PlayResult, PlayType, kickplay::KickPlayImpl}, GameState, Play};
+use super::{
+    engine::{
+        kickplay::KickPlayImpl, CardStreamer, DefenseCall, DefenseIDLineup, OffenseCall,
+        OffenseIDLineup, PlayImpl, PlayResult, PlayType,
+    },
+    players::{KRStats, KStats, Player, Roster},
+    GameState, Play,
+};
 
 #[derive(Debug, Clone, Default, Serialize)]
 pub struct KickoffPlay {

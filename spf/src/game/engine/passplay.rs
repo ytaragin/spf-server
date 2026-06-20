@@ -5,8 +5,8 @@ use crate::{
     game::{
         engine::{
             defs::{
-                INTERCEPTION_RETURN_TABLE, INTERCEPTION_TABLE, PASS_DEFENDERS, PASS_PLAY_VALUES,
-                TIMES, DefenseConsts, DEFENSE_CONSTS,
+                DefenseConsts, DEFENSE_CONSTS, INTERCEPTION_RETURN_TABLE, INTERCEPTION_TABLE,
+                PASS_DEFENDERS, PASS_PLAY_VALUES, TIMES,
             },
             runplay::RunUtils,
         },
@@ -14,8 +14,8 @@ use crate::{
         lineup::{DefensiveBox, OffensiveBox, StandardDefensiveLineup},
         players::{BasePlayer, Player, PlayerUtils, Position, QBStats},
         standard_play::{
-            DefensivePlay, OffensivePlayInfo, OffensivePlayType, OffensiveStrategy, PassMetaData,
-            PassResult, PassRushResult, PlaySetup, DefensiveStrategy,
+            DefensivePlay, DefensiveStrategy, OffensivePlayInfo, OffensivePlayType,
+            OffensiveStrategy, PassMetaData, PassResult, PassRushResult, PlaySetup,
         },
         stats::{NumStat, RangedStats},
         GameState,
@@ -424,9 +424,9 @@ impl<'a> PassContext<'a> {
     }
 
     fn get_pass_defender_impact(&mut self) -> i32 {
-        if self.play.defense_call.key  == Some(self.data.target) { 
+        if self.play.defense_call.key == Some(self.data.target) {
             match self.play.defense_call.strategy {
-                DefensiveStrategy::DoubleCover => return DEFENSE_CONSTS.double_cover_defense, 
+                DefensiveStrategy::DoubleCover => return DEFENSE_CONSTS.double_cover_defense,
                 DefensiveStrategy::TripleCover => return DEFENSE_CONSTS.triple_cover_defense,
                 DefensiveStrategy::DoubleCoverX2 => return DEFENSE_CONSTS.double_cover_defense,
                 _ => (),

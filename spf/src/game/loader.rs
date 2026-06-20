@@ -4,7 +4,9 @@ use std::fs;
 use crate::players::Position;
 
 use super::{
-    players::{DLStats, KRStats, KStats, LBStats, OLStats, ReturnStat, Returner, TEStats, PRStats, PStats},
+    players::{
+        DLStats, KRStats, KStats, LBStats, OLStats, PRStats, PStats, ReturnStat, Returner, TEStats,
+    },
     stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats},
 };
 
@@ -311,7 +313,12 @@ pub fn load_krs(filename: String) -> Vec<KRStats> {
     return parse_records(filename, 21, Position::KR, parse_kr_record).unwrap();
 }
 
-fn create_returner(name: &str, stats: Vec<ReturnStat>, asterisk_val: i32, prefix: &str) -> Returner {
+fn create_returner(
+    name: &str,
+    stats: Vec<ReturnStat>,
+    asterisk_val: i32,
+    prefix: &str,
+) -> Returner {
     // let prefix = "Same as KR-";
     if name.starts_with(prefix) {
         let i = &name[prefix.len()..].parse::<i32>().unwrap_or(1);
@@ -333,7 +340,12 @@ fn get_ast_value(val: &str) -> i32 {
     return val.parse::<i32>().unwrap_or(0);
 }
 
-fn build_returners(name_lines: &[&str], stat_lines: &[&str], ast_line: &str, prefix: &str) -> Vec<Returner> {
+fn build_returners(
+    name_lines: &[&str],
+    stat_lines: &[&str],
+    ast_line: &str,
+    prefix: &str,
+) -> Vec<Returner> {
     let names = get_vec_of_vals(name_lines);
     let ret_vals: Vec<Vec<ReturnStat>> = get_vec_of_vals(stat_lines)
         .iter()
@@ -359,10 +371,7 @@ fn build_returners(name_lines: &[&str], stat_lines: &[&str], ast_line: &str, pre
     let returners = names
         .iter()
         .enumerate()
-        .map(|(ind, name)| create_returner(name, pivoted[ind].clone(), 
-                                                         asterisk_vals[ind],
-                                                          prefix)
-            )
+        .map(|(ind, name)| create_returner(name, pivoted[ind].clone(), asterisk_vals[ind], prefix))
         .collect();
 
     returners
@@ -403,7 +412,6 @@ fn parse_pr_record((id, lines): (String, &[&str])) -> Option<PRStats> {
         returners,
     })
 }
-
 
 fn parse_records<T, F>(
     filename: String,
@@ -468,7 +476,6 @@ fn get_val_with_splitter<'a>(line: &str, splitter: char) -> Option<&str> {
 fn get_vec_of_vals<'a>(lines: &'a [&str]) -> Vec<&'a str> {
     lines.iter().map(|l| get_val(l).unwrap()).collect()
 }
-
 
 fn get_char(instr: &str) -> char {
     return instr.chars().next().unwrap_or_else(|| ' ');

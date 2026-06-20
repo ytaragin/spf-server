@@ -1,4 +1,4 @@
-use serde::{Serializer, Deserializer};
+use serde::{Deserializer, Serializer};
 use serde_derive::{Deserialize, Serialize};
 use std::cmp::min;
 use std::fmt::{self, Debug};
@@ -6,7 +6,6 @@ use std::hash::Hash;
 use std::{collections::HashMap, str::FromStr};
 
 use super::standard_play::Shiftable;
-
 
 #[derive(Debug, Clone, Copy, Hash, PartialEq, Eq)]
 pub struct Range {
@@ -100,7 +99,7 @@ impl serde::Serialize for Range {
 }
 
 impl<'de> serde::Deserialize<'de> for Range {
-    fn deserialize<D>(deserializer: D) -> Result<Range, D::Error> 
+    fn deserialize<D>(deserializer: D) -> Result<Range, D::Error>
     where
         D: Deserializer<'de>,
     {
@@ -108,7 +107,7 @@ impl<'de> serde::Deserialize<'de> for Range {
         // let (start, end) = parse_range_string(&s)?;
         let r = Range::from_str(s.as_str());
         Ok(r)
-    }   
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
