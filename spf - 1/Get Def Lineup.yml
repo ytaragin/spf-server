@@ -1,0 +1,15 @@
+info:
+  name: Get Def Lineup
+  type: http
+  seq: 21
+
+http:
+  method: GET
+  url: "{{spf_host}}/defense/lineup"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

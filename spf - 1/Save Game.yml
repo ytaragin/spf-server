@@ -1,0 +1,21 @@
+info:
+  name: Save Game
+  type: http
+  seq: 23
+
+http:
+  method: POST
+  url: "{{spf_host}}/game/save"
+  headers:
+    - name: Content-Type
+      value: text/plain
+  body:
+    type: text
+    data: savegame_01.json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,15 @@
+info:
+  name: Get Next Types
+  type: http
+  seq: 22
+
+http:
+  method: GET
+  url: "{{spf_host}}/game/nexttype"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

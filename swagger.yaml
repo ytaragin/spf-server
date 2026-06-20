@@ -20,6 +20,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/OffenseIDLineup"
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
         "500":
           description: Internal server error
           content:
@@ -71,6 +73,8 @@ paths:
             text/plain:
               schema:
                 type: string
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
 
   /offense/call:
     post:
@@ -118,6 +122,8 @@ paths:
             text/plain:
               schema:
                 type: string
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
 
   /defense/lineup:
     get:
@@ -131,6 +137,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DefenseIDLineup"
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
         "500":
           description: Internal server error
           content:
@@ -184,6 +192,8 @@ paths:
             text/plain:
               schema:
                 type: string
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
 
   /defense/call:
     post:
@@ -232,6 +242,45 @@ paths:
             text/plain:
               schema:
                 type: string
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
+
+  /game/start:
+    post:
+      summary: Start a new game between two teams
+      description: >
+        Begins a game between the chosen home and away teams. All other endpoints
+        return 409 Conflict until a game has started.
+      operationId: startGame
+      tags: [Game]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StartGameRequest"
+            example:
+              home: { name: "Washington", year: "1983" }
+              away: { name: "Dallas", year: "1983" }
+      responses:
+        "200":
+          description: Game started; returns the initial game state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GameState"
+        "404":
+          description: One of the teams was not found
+          content:
+            text/plain:
+              schema:
+                type: string
+        "409":
+          description: A game is already in progress
+          content:
+            text/plain:
+              schema:
+                type: string
 
   /game/play:
     post:
@@ -251,6 +300,8 @@ paths:
             text/plain:
               schema:
                 type: string
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
 
   /game/plays:
     get:
@@ -279,6 +330,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/PlayAndState"
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
 
   /game/state:
     get:
@@ -292,6 +345,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GameState"
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
 
   /game/nexttype:
     get:
@@ -307,6 +362,8 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/PlayType"
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
     post:
       summary: Set the next play type
       operationId: setNextPlayType
@@ -342,6 +399,8 @@ paths:
             text/plain:
               schema:
                 type: string
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
 
   /game/save:
     post:
@@ -370,6 +429,8 @@ paths:
             text/plain:
               schema:
                 type: string
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
 
   /getplayer/{id}:
     get:
@@ -391,6 +452,8 @@ paths:
               schema:
                 type: object
                 description: Player stats (shape varies by position)
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
 
   /players/{team}:
     get:
@@ -414,9 +477,41 @@ paths:
                 $ref: "#/components/schemas/SerializableRoster"
         "404":
           description: Team not found (invalid team parameter)
+        "409":
+          $ref: "#/components/responses/NoGameInProgress"
 
 components:
+  responses:
+    NoGameInProgress:
+      description: No game in progress (start one with POST /game/start)
+      content:
+        text/plain:
+          schema:
+            type: string
+
   schemas:
+    # --- Game Setup Schemas ---
+
+    StartGameRequest:
+      type: object
+      required: [home, away]
+      properties:
+        home:
+          $ref: "#/components/schemas/TeamID"
+        away:
+          $ref: "#/components/schemas/TeamID"
+
+    TeamID:
+      type: object
+      required: [name, year]
+      properties:
+        name:
+          type: string
+          example: "Washington"
+        year:
+          type: string
+          example: "1983"
+
     # --- Lineup Schemas ---
 
     OffenseIDLineup:
