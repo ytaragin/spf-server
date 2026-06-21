@@ -48,3 +48,21 @@ cargo run
 ```bash
 cargo test
 ```
+
+## API Documentation (Swagger / OpenAPI)
+
+The OpenAPI spec is generated directly from the server code (via `utoipa`); there is no
+hand-maintained `swagger.yaml`. Once the server is running (`cargo run`, listening on
+`127.0.0.1:8080`), you can access:
+
+- **Swagger UI** (interactive docs): [http://127.0.0.1:8080/swagger-ui/](http://127.0.0.1:8080/swagger-ui/)
+- **Raw OpenAPI JSON spec:** [http://127.0.0.1:8080/api-docs/openapi.json](http://127.0.0.1:8080/api-docs/openapi.json)
+
+The raw spec can be imported into other tools (Postman, code generators, etc.). For example, to
+save it to a file:
+
+```bash
+curl http://127.0.0.1:8080/api-docs/openapi.json -o openapi.json
+```
+
+Endpoints are grouped into `game`, `offense`, `defense`, and `players` tags in the UI.
