@@ -7,6 +7,7 @@ pub mod runplay;
 
 use enum_as_inner::EnumAsInner;
 use serde::{Deserialize, Serialize};
+use utoipa::ToSchema;
 
 use strum_macros::EnumString;
 
@@ -46,7 +47,7 @@ macro_rules! impl_deserialize {
     };
 }
 
-#[derive(Debug, Copy, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize, PartialEq, ToSchema)]
 pub enum Down {
     First,
     Second,
@@ -97,7 +98,7 @@ pub struct IDOffensivePlay {
     pub target_id: String,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, EnumString, PartialEq, Copy)]
+#[derive(Debug, Clone, Serialize, Deserialize, EnumString, PartialEq, Copy, ToSchema)]
 pub enum PlayType {
     Kickoff,
     Punt,
@@ -121,7 +122,7 @@ impl PlayType {
     }
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ToSchema)]
 pub struct CardResults {
     had_z: bool,
     cards_flipped: Vec<i32>,
@@ -172,13 +173,13 @@ impl<'a> CardStreamer<'a> {
     }
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ToSchema)]
 pub enum ResultType {
     Regular,
     TurnOver,
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ToSchema)]
 pub struct PlayResult {
     pub result_type: ResultType,
     pub result: Yard,
@@ -216,7 +217,7 @@ pub fn run_play(
     });
 }
 
-#[derive(Debug, Clone, EnumAsInner, Serialize)]
+#[derive(Debug, Clone, EnumAsInner, Serialize, ToSchema)]
 #[serde(untagged)]
 pub enum OffenseIDLineup {
     KickoffIDOffenseLineup(KickoffIDOffenseLineup),
@@ -228,7 +229,7 @@ impl_deserialize!(OffenseIDLineup {
     StandardIDOffenseLineup(StandardIDOffenseLineup)
 });
 
-#[derive(Debug, Clone, EnumAsInner, Serialize)]
+#[derive(Debug, Clone, EnumAsInner, Serialize, ToSchema)]
 #[serde(untagged)]
 pub enum DefenseIDLineup {
     KickoffIDDefenseLineup(KickoffIDDefenseLineup),
@@ -266,6 +267,44 @@ impl_deserialize!(OffenseCall {
     PuntOffenseCall(PuntOffenseCall)
 });
 
+impl utoipa::PartialSchema for OffenseCall {
+    fn schema() -> utoipa::openapi::RefOr<utoipa::openapi::schema::Schema> {
+        use utoipa::openapi::schema::{OneOfBuilder, Ref};
+        utoipa::openapi::RefOr::T(utoipa::openapi::schema::Schema::OneOf(
+            OneOfBuilder::new()
+                .item(Ref::from_schema_name("StandardOffenseCall"))
+                .item(Ref::from_schema_name("KickoffOffenseCall"))
+                .item(Ref::from_schema_name("PuntOffenseCall"))
+                .build(),
+        ))
+    }
+}
+
+impl utoipa::ToSchema for OffenseCall {
+    fn name() -> std::borrow::Cow<'static, str> {
+        std::borrow::Cow::Borrowed("OffenseCall")
+    }
+}
+
+impl utoipa::PartialSchema for DefenseCall {
+    fn schema() -> utoipa::openapi::RefOr<utoipa::openapi::schema::Schema> {
+        use utoipa::openapi::schema::{OneOfBuilder, Ref};
+        utoipa::openapi::RefOr::T(utoipa::openapi::schema::Schema::OneOf(
+            OneOfBuilder::new()
+                .item(Ref::from_schema_name("StandardDefenseCall"))
+                .item(Ref::from_schema_name("KickoffDefenseCall"))
+                .item(Ref::from_schema_name("PuntDefenseCall"))
+                .build(),
+        ))
+    }
+}
+
+impl utoipa::ToSchema for DefenseCall {
+    fn name() -> std::borrow::Cow<'static, str> {
+        std::borrow::Cow::Borrowed("DefenseCall")
+    }
+}
+
 // impl<'de> Deserialize<'de> for OffenseCall {
 //     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
 //     where
@@ -287,20 +326,20 @@ impl_deserialize!(OffenseCall {
 //     }
 // }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Deserialize, ToSchema)]
 pub struct KickoffDefenseCall {}
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Deserialize, ToSchema)]
 pub struct KickoffOffenseCall {
     pub onside: bool,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Deserialize, ToSchema)]
 pub struct PuntDefenseCall {
     pub attempt_block: bool,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Deserialize, ToSchema)]
 pub struct PuntOffenseCall {
     pub coffin_corner: i32,
 }

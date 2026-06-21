@@ -21,13 +21,13 @@ http:
         "box_f": "LB-34",
         "box_g": "LB-36",
         "box_h": null,
-        "box_i": "DB-40",
-        "box_j": "DB-39",
-        "box_k": null,
-        "box_l": ["DB-42"],
+        "box_i": null,
+        "box_j": null,
+        "box_k": "DB-42",
+        "box_l": [],
         "box_m": "DB-41",
-        "box_n": null,
-        "box_o": null
+        "box_n": "DB-40",
+        "box_o": "DB-39"
       }
   auth: inherit
 

@@ -1,17 +1,20 @@
 use std::{str::FromStr, sync::Mutex};
 
 use actix_cors::Cors;
-use actix_web::{http::header, web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{get, http::header, post, web, App, HttpResponse, HttpServer, Responder};
 use serde::Deserialize;
 use serde_json::json;
+use utoipa::{IntoParams, OpenApi, ToSchema};
+use utoipa_actix_web::{scope, AppExt};
+use utoipa_swagger_ui::SwaggerUi;
 
 use crate::game::{
-    engine::{DefenseCall, DefenseIDLineup, OffenseCall, OffenseIDLineup, PlayType},
+    engine::{DefenseCall, DefenseIDLineup, OffenseCall, OffenseIDLineup, PlayResult, PlayType},
     players::{Serializable_Roster, TeamID, TeamList},
-    Game, PlayAndState,
+    Game, GameState, PlayAndState, PlayTypeInfo,
 };
 
-#[derive(Deserialize)]
+#[derive(Deserialize, ToSchema)]
 struct StartGameRequest {
     home: TeamID,
     away: TeamID,
@@ -29,10 +32,12 @@ macro_rules! lock_game {
     };
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, IntoParams)]
 struct PlayQueryParams {
+    /// When `true`, each entry contains only `{result, new_state}` instead of the full play.
     #[serde(default)]
     result: bool,
+    /// Limit the response to the last `count` plays.
     count: Option<usize>,
 }
 
@@ -55,6 +60,16 @@ fn serialize_plays(plays: &[PlayAndState], result_only: bool) -> Result<String, 
     }
 }
 
+#[utoipa::path(
+    tag = "offense",
+    request_body = OffenseIDLineup,
+    responses(
+        (status = 200, description = "Offensive lineup set"),
+        (status = 400, description = "Invalid lineup"),
+        (status = 409, description = "No game in progress"),
+    )
+)]
+#[post("/lineup")]
 async fn set_offensive_lineup(
     appstate: web::Data<AppState>,
     lineup: web::Json<OffenseIDLineup>,
@@ -71,6 +86,15 @@ async fn set_offensive_lineup(
     }
 }
 
+#[utoipa::path(
+    tag = "offense",
+    responses(
+        (status = 200, description = "Current offensive lineup", body = OffenseIDLineup),
+        (status = 409, description = "No game in progress"),
+        (status = 500, description = "Serialization error"),
+    )
+)]
+#[get("/lineup")]
 async fn get_offensive_lineup(appstate: web::Data<AppState>) -> impl Responder {
     println!("get_offensive_lineup called");
 
@@ -84,6 +108,15 @@ async fn get_offensive_lineup(appstate: web::Data<AppState>) -> impl Responder {
     };
 }
 
+#[utoipa::path(
+    tag = "defense",
+    responses(
+        (status = 200, description = "Current defensive lineup", body = DefenseIDLineup),
+        (status = 409, description = "No game in progress"),
+        (status = 500, description = "Serialization error"),
+    )
+)]
+#[get("/lineup")]
 async fn get_defensive_lineup(appstate: web::Data<AppState>) -> impl Responder {
     println!("get_defensive_lineup called");
     lock_game!(appstate, game);
@@ -96,6 +129,16 @@ async fn get_defensive_lineup(appstate: web::Data<AppState>) -> impl Responder {
     };
 }
 
+#[utoipa::path(
+    tag = "defense",
+    request_body = DefenseIDLineup,
+    responses(
+        (status = 200, description = "Defensive lineup set"),
+        (status = 400, description = "Invalid lineup"),
+        (status = 409, description = "No game in progress"),
+    )
+)]
+#[post("/lineup")]
 async fn set_defensive_lineup(
     appstate: web::Data<AppState>,
     lineup: web::Json<DefenseIDLineup>,
@@ -110,6 +153,16 @@ async fn set_defensive_lineup(
     }
 }
 
+#[utoipa::path(
+    tag = "offense",
+    request_body = OffenseCall,
+    responses(
+        (status = 200, description = "Offense play set"),
+        (status = 400, description = "Invalid call"),
+        (status = 409, description = "No game in progress"),
+    )
+)]
+#[post("/call")]
 async fn set_offense_call(
     appstate: web::Data<AppState>,
     data: web::Json<OffenseCall>,
@@ -126,6 +179,16 @@ async fn set_offense_call(
     }
 }
 
+#[utoipa::path(
+    tag = "defense",
+    request_body = DefenseCall,
+    responses(
+        (status = 200, description = "Defense play set"),
+        (status = 400, description = "Invalid call"),
+        (status = 409, description = "No game in progress"),
+    )
+)]
+#[post("/call")]
 async fn set_defense_call(
     appstate: web::Data<AppState>,
     data: web::Json<DefenseCall>,
@@ -140,6 +203,15 @@ async fn set_defense_call(
     }
 }
 
+#[utoipa::path(
+    tag = "game",
+    responses(
+        (status = 200, description = "Result of the executed play", body = PlayResult),
+        (status = 400, description = "Play could not be run"),
+        (status = 409, description = "No game in progress"),
+    )
+)]
+#[post("/play")]
 async fn run_play(appstate: web::Data<AppState>) -> impl Responder {
     println!("Running Play..."); // Do something with the plays
     lock_game!(appstate, game);
@@ -156,6 +228,16 @@ async fn run_play(appstate: web::Data<AppState>) -> impl Responder {
     }
 }
 
+#[utoipa::path(
+    tag = "players",
+    params(("team" = String, Path, description = "Team selector: home | away")),
+    responses(
+        (status = 200, description = "Roster for the selected team", body = Serializable_Roster),
+        (status = 404, description = "Unknown team selector"),
+        (status = 409, description = "No game in progress"),
+    )
+)]
+#[get("/players/{team}")]
 async fn get_team_players(
     team: web::Path<String>,
     appstate: web::Data<AppState>,
@@ -177,6 +259,14 @@ async fn get_team_players(
         .body(json_data)
 }
 
+#[utoipa::path(
+    tag = "game",
+    responses(
+        (status = 200, description = "Current game state", body = GameState),
+        (status = 409, description = "No game in progress"),
+    )
+)]
+#[get("/state")]
 async fn get_game_state(appstate: web::Data<AppState>) -> impl Responder {
     println!("Get State Called");
 
@@ -193,6 +283,14 @@ async fn get_game_state(appstate: web::Data<AppState>) -> impl Responder {
         .body(json_data)
 }
 
+#[utoipa::path(
+    tag = "game",
+    responses(
+        (status = 200, description = "Allowed and currently-selected next play types", body = PlayTypeInfo),
+        (status = 409, description = "No game in progress"),
+    )
+)]
+#[get("/nexttype")]
 async fn get_next_play_types(appstate: web::Data<AppState>) -> impl Responder {
     println!("Get Next Plays Called");
 
@@ -210,6 +308,20 @@ async fn get_next_play_types(appstate: web::Data<AppState>) -> impl Responder {
         .body(json_data)
 }
 
+#[utoipa::path(
+    tag = "game",
+    request_body(
+        content = String,
+        content_type = "text/plain",
+        description = "PlayType value: Kickoff | Punt | ExtraPoint | FieldGoal | Standard | None"
+    ),
+    responses(
+        (status = 200, description = "Next play type set"),
+        (status = 400, description = "Unknown or illegal play type"),
+        (status = 409, description = "No game in progress"),
+    )
+)]
+#[post("/nexttype")]
 async fn set_next_play_type(appstate: web::Data<AppState>, data: String) -> impl Responder {
     println!("Set Next Play Called");
 
@@ -229,6 +341,20 @@ async fn set_next_play_type(appstate: web::Data<AppState>, data: String) -> impl
     }
 }
 
+#[utoipa::path(
+    tag = "game",
+    request_body(
+        content = String,
+        content_type = "text/plain",
+        description = "Path of the file to save the serialized game to"
+    ),
+    responses(
+        (status = 200, description = "Game saved"),
+        (status = 400, description = "Could not save game"),
+        (status = 409, description = "No game in progress"),
+    )
+)]
+#[post("/save")]
 async fn save_game(appstate: web::Data<AppState>, data: String) -> impl Responder {
     println!("Save Game Called");
 
@@ -244,6 +370,15 @@ async fn save_game(appstate: web::Data<AppState>, data: String) -> impl Responde
     }
 }
 
+#[utoipa::path(
+    tag = "players",
+    params(("id" = String, Path, description = "Player ID, e.g. QB-1234")),
+    responses(
+        (status = 200, description = "Player record; shape varies by position", body = Object),
+        (status = 409, description = "No game in progress"),
+    )
+)]
+#[get("/getplayer/{id}")]
 async fn get_player(path: web::Path<String>, appstate: web::Data<AppState>) -> impl Responder {
     println!("Get Player Called: {:?}", path);
     let path_param = path.into_inner();
@@ -273,6 +408,20 @@ async fn get_player(path: web::Path<String>, appstate: web::Data<AppState>) -> i
         .body(json_str)
 }
 
+#[utoipa::path(
+    tag = "game",
+    params(PlayQueryParams),
+    responses(
+        (
+            status = 200,
+            description = "Play history. With `?result=true` each entry contains only \
+                           `{result, new_state}`; `?count=N` limits to the last N plays.",
+            body = Vec<PlayAndState>
+        ),
+        (status = 409, description = "No game in progress"),
+    )
+)]
+#[get("/plays")]
 async fn get_all_plays(
     appstate: web::Data<AppState>,
     query: web::Query<PlayQueryParams>,
@@ -309,6 +458,16 @@ struct AppState {
     game: Mutex<Option<Game>>,
 }
 
+#[utoipa::path(
+    tag = "game",
+    request_body = StartGameRequest,
+    responses(
+        (status = 200, description = "Game started; returns initial game state", body = GameState),
+        (status = 404, description = "Unknown team"),
+        (status = 409, description = "A game is already in progress"),
+    )
+)]
+#[post("/start")]
 async fn start_game(
     appstate: web::Data<AppState>,
     data: web::Json<StartGameRequest>,
@@ -344,6 +503,29 @@ async fn start_game(
         .body(json_data)
 }
 
+#[derive(OpenApi)]
+#[openapi(
+    info(
+        title = "Statis Pro Football API",
+        version = "0.1.0",
+        description = "HTTP API for running Statis Pro Football game simulations"
+    ),
+    servers(
+        (url = "http://127.0.0.1:8080", description = "Local dev server")
+    ),
+    components(schemas(
+        OffenseCall,
+        DefenseCall,
+        crate::game::standard_play::StandardOffenseCall,
+        crate::game::standard_play::StandardDefenseCall,
+        crate::game::engine::KickoffOffenseCall,
+        crate::game::engine::PuntOffenseCall,
+        crate::game::engine::KickoffDefenseCall,
+        crate::game::engine::PuntDefenseCall,
+    ))
+)]
+struct ApiDoc;
+
 #[actix_web::main]
 pub async fn runserver(league: TeamList) -> std::io::Result<()> {
     let app_state = web::Data::new(AppState {
@@ -355,35 +537,48 @@ pub async fn runserver(league: TeamList) -> std::io::Result<()> {
     println!("Starting up server....");
 
     HttpServer::new(move || {
-        App::new()
+        let cors = Cors::default()
+            .allowed_origin("http://localhost:5173") // <- your vue app origin
+            .allowed_methods(vec!["GET", "POST"]) // <- allow GET and POST requests
+            .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
+            .allowed_header(header::CONTENT_TYPE)
+            .max_age(3600)
+            .allow_any_origin(); // You can use `allow_origin` to specify a specific origin
+
+        let (app, api) = App::new()
+            .into_utoipa_app()
+            .openapi(ApiDoc::openapi())
             .app_data(app_state.clone())
-            .wrap(
-                Cors::default()
-                    .allowed_origin("http://localhost:5173") // <- your vue app origin
-                    .allowed_methods(vec!["GET", "POST"]) // <- allow GET and POST requests
-                    .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
-                    .allowed_header(header::CONTENT_TYPE)
-                    .max_age(3600)
-                    .allow_any_origin(), // You can use `allow_origin` to specify a specific origin
-                                         // .allowed_methods(vec!["GET", "POST", "PUT", "DELETE"])
-                                         // .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
-                                         // .max_age(3600), // Optional: set max age for preflight requests
+            .map(|a| a.wrap(cors))
+            .service(
+                scope::scope("/game")
+                    .service(start_game)
+                    .service(get_game_state)
+                    .service(run_play)
+                    .service(get_all_plays)
+                    .service(save_game)
+                    .service(get_next_play_types)
+                    .service(set_next_play_type),
             )
-            .route("/game/start", web::post().to(start_game))
-            .route("/offense/lineup", web::post().to(set_offensive_lineup))
-            .route("/offense/lineup", web::get().to(get_offensive_lineup))
-            .route("/offense/call", web::post().to(set_offense_call))
-            .route("/defense/lineup", web::get().to(get_defensive_lineup))
-            .route("/defense/lineup", web::post().to(set_defensive_lineup))
-            .route("/defense/call", web::post().to(set_defense_call))
-            .route("/game/play", web::post().to(run_play))
-            .route("/game/plays", web::get().to(get_all_plays))
-            .route("/game/save", web::post().to(save_game))
-            .route("/game/state", web::get().to(get_game_state))
-            .route("/game/nexttype", web::get().to(get_next_play_types))
-            .route("/game/nexttype", web::post().to(set_next_play_type))
-            .route("/getplayer/{id}", web::get().to(get_player))
-            .route("/players/{team}", web::get().to(get_team_players))
+            .service(
+                scope::scope("/offense")
+                    .service(get_offensive_lineup)
+                    .service(set_offensive_lineup)
+                    .service(set_offense_call),
+            )
+            .service(
+                scope::scope("/defense")
+                    .service(get_defensive_lineup)
+                    .service(set_defensive_lineup)
+                    .service(set_defense_call),
+            )
+            .service(get_player)
+            .service(get_team_players)
+            .split_for_parts();
+
+        app.service(
+            SwaggerUi::new("/swagger-ui/{_:.*}").url("/api-docs/openapi.json", api.clone()),
+        )
     })
     .bind("127.0.0.1:8080")?
     .run()

@@ -28,5 +28,8 @@ enum-as-inner = "0.6.0"
 option-ext = "0.2.0"
 strum = "0.25.0"
 erased-serde = "0.3.31"
+utoipa = { version = "5", features = ["actix_extras"] }
+utoipa-actix-web = "0.1"
+utoipa-swagger-ui = { version = "8", features = ["actix-web"] }
 
 

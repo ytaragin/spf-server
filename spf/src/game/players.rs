@@ -7,6 +7,7 @@ use serde_json::{json, Value};
 use spf_macros::{ImplBasePlayer, IsBlocker, IsReceiver};
 use std::{collections::HashMap, str::FromStr};
 use strum_macros::Display;
+use utoipa::ToSchema;
 
 use super::{
     loader::{
@@ -19,7 +20,7 @@ use super::{
 
 pub type PassGain = TwelveStats<TripleStat>;
 
-#[derive(Debug, Eq, Hash, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Eq, Hash, PartialEq, Clone, Serialize, Deserialize, ToSchema)]
 pub struct TeamID {
     pub name: String,
     pub year: String,
@@ -521,9 +522,10 @@ pub enum DBPosition {
     Safety,
 }
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, ToSchema)]
 pub struct Serializable_Roster {
     team: TeamID,
+    #[schema(value_type = Object)]
     players: HashMap<String, Value>,
 }
 

@@ -14,6 +14,7 @@ use std::{
 
 use engine::defs::GAMECONSTANTS;
 use serde::{Deserialize, Serialize};
+use utoipa::ToSchema;
 
 use self::{
     engine::{
@@ -26,7 +27,7 @@ use self::{
     standard_play::StandardPlay,
 };
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, ToSchema)]
 pub enum GameTeams {
     Home,
     Away,
@@ -40,7 +41,7 @@ impl GameTeams {
     }
 }
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, ToSchema)]
 pub enum GamePlayStatus {
     Touchdown,
     Safety,
@@ -58,7 +59,7 @@ pub enum GameStatus {
     ExtraPoint,
 }
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, ToSchema)]
 pub struct GameState {
     pub last_status: GamePlayStatus,
     pub quarter: i32,
@@ -140,14 +141,15 @@ pub enum Play {
 //     }
 // }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ToSchema)]
 pub struct PlayAndState {
+    #[schema(value_type = Object)]
     pub play: Play,
     pub result: PlayResult,
     pub new_state: GameState,
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, ToSchema)]
 pub struct PlayTypeInfo {
     pub allowed_types: Vec<PlayType>,
     pub next_type: Option<PlayType>,

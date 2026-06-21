@@ -3,13 +3,14 @@ use std::str::FromStr;
 use itertools::Itertools;
 use serde::{Deserialize, Serialize};
 use spf_macros::ToBasePlayer;
+use utoipa::ToSchema;
 
 use super::players::{
     BasePlayer, DBStats, DLStats, KRStats, KStats, LBStats, OLStats, Player, QBStats, RBStats,
     Roster, TEStats, ToBasePlayer, WRStats,
 };
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy, Eq, Hash, ToSchema)]
 pub enum OffensiveBox {
     QB,
     B1,
@@ -142,7 +143,7 @@ impl FlankerPlayer {
     }
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, ToSchema)]
 pub struct StandardIDOffenseLineup {
     le: Option<String>,
     re: Option<String>,
@@ -315,7 +316,7 @@ impl StandardOffensiveLineup {
 //     }
 // }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, ToSchema)]
 pub struct StandardIDDefenseLineup {
     box_a: Vec<String>,
     box_b: Vec<String>,
@@ -712,12 +713,12 @@ impl StandardDefensiveLineup {
 //     }
 // }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize, ToSchema)]
 pub struct KickoffIDOffenseLineup {
     pub k: String,
 }
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize, ToSchema)]
 pub struct KickoffIDDefenseLineup {
     pub kr: String,
 }

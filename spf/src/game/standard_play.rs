@@ -1,6 +1,7 @@
 use enum_as_inner::EnumAsInner;
 use serde_derive::{Deserialize, Serialize};
 use strum_macros::EnumString;
+use utoipa::ToSchema;
 
 use crate::game::{
     lineup::{StandardDefensiveLineup, StandardOffensiveLineup},
@@ -108,7 +109,7 @@ pub struct OffensivePlayInfo {
     pub handler: PlayRunner,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, Eq, Hash, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, Eq, Hash, PartialEq, ToSchema)]
 pub enum OffensivePlayType {
     SL,
     SR,
@@ -121,7 +122,7 @@ pub enum OffensivePlayType {
     SC,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, ToSchema)]
 pub enum OffensiveStrategy {
     NoStrategy,
     Sneak,
@@ -130,7 +131,7 @@ pub enum OffensiveStrategy {
     PlayAction,
 }
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, ToSchema)]
 pub enum DefensivePlay {
     RunDefense,
     PassDefense,
@@ -138,7 +139,7 @@ pub enum DefensivePlay {
     Blitz,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, Hash, Eq, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, Hash, Eq, PartialEq, ToSchema)]
 pub enum DefensiveStrategy {
     Straight,
     DoubleCover,
@@ -146,7 +147,7 @@ pub enum DefensiveStrategy {
     DoubleCoverX2,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, ToSchema)]
 pub struct StandardDefenseCall {
     pub defense_type: DefensivePlay,
     pub strategy: DefensiveStrategy,
@@ -217,7 +218,7 @@ impl Validatable for StandardDefenseCall {
     }
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, ToSchema)]
 pub struct StandardOffenseCall {
     pub play_type: OffensivePlayType,
     pub strategy: OffensiveStrategy,
