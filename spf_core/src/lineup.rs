@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use spf_macros::ToBasePlayer;
 use utoipa::ToSchema;
 
-use super::players::{
+use crate::players::{
     BasePlayer, DBStats, DLStats, KRStats, KStats, LBStats, OLStats, Player, QBStats, RBStats,
     Roster, TEStats, ToBasePlayer, WRStats,
 };

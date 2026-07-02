@@ -5,7 +5,7 @@ use std::fmt::{self, Debug};
 use std::hash::Hash;
 use std::{collections::HashMap, str::FromStr};
 
-use super::standard_play::Shiftable;
+use crate::shiftable::Shiftable;
 
 #[derive(Debug, Clone, Copy, Hash, PartialEq, Eq)]
 pub struct Range {
@@ -140,7 +140,7 @@ impl TripleStat {
     }
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LabeledStat<T> {
     stats: HashMap<String, T>,
 }
@@ -236,8 +236,11 @@ impl<T: Debug> TwelveStats<T> {
     }
 }
 
-#[derive(Debug, Clone, Serialize)]
-pub struct RangedStats<T> {
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct RangedStats<T>
+where
+    T: Eq + Hash,
+{
     // pub com: Range,
     // pub inc: Range,
     // pub int: Range,
@@ -293,27 +296,3 @@ impl<T: FromStr + Eq + Clone + PartialEq + Hash + Shiftable<T> + Debug> RangedSt
         return res.unwrap();
     }
 }
-
-// pub struct RangedStats {
-//     // pub com: Range,
-//     // pub inc: Range,
-//     // pub int: Range,
-//     stats: HashMap<String, Range>,
-// }
-
-// impl RangedStats {
-//     pub fn create_from_strs(vals: &[&str]) -> Self {
-//         let mut stats: HashMap<String, Range> = HashMap::new();
-
-//         for v in vals {
-//             let p = Range::get_tag_and_range(v);
-//             stats.insert(p.0.to_string(), p.1);
-//         }
-
-//         Self { stats }
-//     }
-
-//     pub fn get_category(&self, val: i32) -> String {
-//         return "ZZZ".to_string();
-//     }
-// }

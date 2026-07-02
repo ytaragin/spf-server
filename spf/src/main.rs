@@ -3,32 +3,32 @@ mod webendpoint;
 
 extern crate spf_macros;
 
-use game::{fac::read_csv_file, *};
-// use lazy_static::lazy_static;
+use std::process::ExitCode;
 
-use crate::{
-    game::{loader::*, players::TeamList},
-    webendpoint::runserver,
-};
-// let static league: TeamList;
+use spf_core::persist;
+use spf_core::players::TeamList;
 
-// lazy_static! {
-//     static ref THE_GAME: Game = {
-//         let league: TeamList = TeamList::create_teams("cards/SPFB1983");
-//         Game::create_game(wash, dallas)
-//     };
-// }
+use crate::webendpoint::runserver;
 
-fn main() {
-    //     load_rbs("SPFB1983/83RB.txt");
-    //     load_qbs("SPFB1983/83QB.txt");
-    //     load_wrs("SPFB1983/83WR.txt");
-    //     load_dbs("SPFB1983/83DB.txt");
-    let league: TeamList = TeamList::create_teams("cards/SPFB1983");
+/// Directory holding the pre-generated persistent card data for the season the
+/// server runs. Produce it with:
+///   `cargo run -p spf_cli -- convert --cards-dir cards/SPFB1983 --year 1983`
+const DATA_DIR: &str = "data/1983";
 
-    //     for v in league.teams.values() {
-    //         v.print_team()
-    //     }
+fn main() -> ExitCode {
+    let league: TeamList = match persist::load_league(DATA_DIR) {
+        Ok(l) => l,
+        Err(e) => {
+            eprintln!("Failed to load card data: {}", e);
+            return ExitCode::FAILURE;
+        }
+    };
 
-    let _ = runserver(league);
+    match runserver(league) {
+        Ok(_) => ExitCode::SUCCESS,
+        Err(e) => {
+            eprintln!("Server error: {}", e);
+            ExitCode::FAILURE
+        }
+    }
 }

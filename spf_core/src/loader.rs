@@ -3,7 +3,7 @@ use std::fs;
 
 use crate::players::Position;
 
-use super::{
+use crate::{
     players::{
         DLStats, KRStats, KStats, LBStats, OLStats, PRStats, PStats, ReturnStat, Returner, TEStats,
     },

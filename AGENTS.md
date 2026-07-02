@@ -16,11 +16,11 @@ client.
 spf/                  # Workspace root
 ├── spf/              # Main server crate (actix-web server, game logic)
 │   └── src/
-│       ├── main.rs
-│       ├── webendpoint.rs       # HTTP handlers, route scopes, OpenAPI (utoipa) wiring
-│       ├── game.rs              # Top-level Game struct + GameState
+│       ├── main.rs                 # Loads persistent data (data/1983) then starts server
+│       ├── webendpoint.rs          # HTTP handlers, route scopes, OpenAPI (utoipa) wiring
+│       ├── game.rs                 # Top-level Game struct + GameState; re-exports spf_core model
 │       └── game/
-│           ├── engine.rs        # Core play-execution traits and types
+│           ├── engine.rs           # Core play-execution traits and types
 │           ├── engine/
 │           │   ├── defs.rs          # Constants and lookup tables (lazy_static)
 │           │   ├── runplay.rs       # Run play logic
@@ -28,16 +28,48 @@ spf/                  # Workspace root
 │           │   ├── kickplay.rs      # Kickoff play logic
 │           │   ├── playutils.rs     # Shared play utilities and logging macros
 │           │   └── resulthandler.rs # Post-play state (down, score, possession)
-│           ├── standard_play.rs     # StandardPlay struct + call types
+│           ├── standard_play.rs     # StandardPlay struct + call types (re-exports PassResult etc.)
 │           ├── kickoff_play.rs      # KickoffPlay struct + PlayImpl
-│           ├── players.rs           # Player stat structs, Roster, TeamList, BasePlayer trait
-│           ├── lineup.rs            # OffensiveBox/DefensiveBox enums + lineup structs
-│           ├── loader.rs            # File parsers for player stat text files
-│           ├── fac.rs               # FAC card deck: parsing, shuffling, data types
-│           └── stats.rs             # Generic stat types: Range, TwelveStats, RangedStats
+│           └── fac.rs               # FAC card deck: parsing, shuffling, data types
+├── spf_core/         # Shared library crate: data model, loaders, persistence
+│   └── src/
+│       ├── lib.rs
+│       ├── players.rs           # Player stat structs, Roster, TeamList, BasePlayer, Player enum
+│       ├── lineup.rs            # OffensiveBox/DefensiveBox enums + lineup structs
+│       ├── loader.rs            # File parsers for player stat text files
+│       ├── stats.rs             # Generic stat types: Range, TwelveStats, RangedStats
+│       ├── shiftable.rs         # Shiftable trait + PassResult/PassRushResult enums
+│       └── persist.rs           # Persistent JSON format: write_league / load_league / manifest
+├── spf_cli/          # Standalone CLI: converts card .txt files into persistent JSON
+│   └── src/main.rs   # `spf-cli convert --cards-dir <dir> --year <yy> --out <dir>`
 └── spf_macros/       # Procedural macro crate
     └── src/lib.rs    # Custom derive macros: ImplBasePlayer, IsBlocker, IsReceiver, etc.
 ```
+
+### Data pipeline (offline ingestion vs. runtime)
+
+Card ingestion is split from the server:
+
+1. **PDF → txt** (unchanged): `pdftodat.zsh` shells out to `pdftotext` to produce the `.txt`
+   files in `cards/SPFB1983/`.
+2. **txt → JSON** (the `spf_cli` tool): `spf-cli convert --cards-dir cards/SPFB1983 --year 1983`
+   parses the `.txt` files via `spf_core::loader` and writes the persistent model to `data/1983/`
+   (one `<TeamName>.json` per team + an `index.json` manifest). `data/` is git-ignored — it is a
+   locally-generated build artifact, not committed.
+3. **JSON → memory** (the server): `main.rs` calls `spf_core::persist::load_league("data/1983")`
+   at startup (hardcoded path). If the manifest is missing the server exits with a clear error;
+   it no longer parses `.txt` files at runtime.
+
+The persistent format stores each roster's players as a JSON array of the internally-tagged
+`Player` enum (`{ "QB": { … } }`). On load, `Roster::from_players` maps each variant back into a
+`Box<dyn BasePlayer>`. Because trait objects cannot be auto-deserialized, **every** `*Stats` struct
+and stat helper (`RangedStats`, `Returner`, etc.) derives both `Serialize` and `Deserialize`; keep
+it that way when adding fields/types.
+
+> **FAC deck note:** `fac_cards.csv` is still parsed at runtime (lazily, per-game) by
+> `game/fac.rs` — it was intentionally left out of the persistent format for now, so the `cards/`
+> directory must remain present at runtime.
+
 
 ---
 
@@ -179,5 +211,9 @@ The codebase currently has no tests. When adding tests:
 - **API exploration:** Browse the live API at `http://127.0.0.1:8080/swagger-ui/` (raw spec at
   `/api-docs/openapi.json`). A Postman collection (`spf.postman_collection.json`) at the workspace
   root also documents all HTTP endpoints.
-- **Game data:** Player card data lives in `cards/SPFB1983/` (text files) and `cards/fac_cards.csv`.
-  These are parsed at startup by `game/loader.rs` and `game/fac.rs`.
+- **Game data:** Raw player card data lives in `cards/SPFB1983/` (text files) and
+  `cards/fac_cards.csv`. The `.txt` files are converted **offline** into `data/1983/*.json` by the
+  `spf_cli` tool (see "Data pipeline" above) and loaded at startup via
+  `spf_core::persist::load_league`. `fac_cards.csv` is still parsed at runtime by `game/fac.rs`.
+  Regenerate the persistent data with:
+  `cargo run -p spf_cli -- convert --cards-dir cards/SPFB1983 --year 1983`.

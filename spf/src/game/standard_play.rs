@@ -1,6 +1,5 @@
 use enum_as_inner::EnumAsInner;
 use serde_derive::{Deserialize, Serialize};
-use strum_macros::EnumString;
 use utoipa::ToSchema;
 
 use crate::game::{
@@ -27,52 +26,10 @@ type QBGetPassRange = for<'a> fn(qb: &'a QBStats) -> &'a RangedStats<PassResult>
 
 type PlayRunner = for<'a> fn(&'a GameState, PlaySetup<'a>, &'a mut CardStreamer<'a>) -> PlayResult;
 
-pub trait Shiftable<T> {
-    fn get_first() -> T;
-    fn get_second() -> T;
-}
-
-#[derive(Debug, PartialEq, Eq, Hash, Copy, Clone, Serialize, EnumString)]
-pub enum PassResult {
-    #[strum(serialize = "Com")]
-    Complete,
-    #[strum(serialize = "Inc")]
-    Incomplete,
-    #[strum(serialize = "Int")]
-    Interception,
-}
-
-impl Shiftable<PassResult> for PassResult {
-    fn get_first() -> PassResult {
-        PassResult::Complete
-    }
-
-    fn get_second() -> PassResult {
-        PassResult::Incomplete
-    }
-}
-
-#[derive(Debug, PartialEq, Eq, Hash, Copy, Clone, Serialize, EnumString)]
-pub enum PassRushResult {
-    #[strum(serialize = "Sack")]
-    Sack,
-    #[strum(serialize = "Runs")]
-    Runs,
-    #[strum(serialize = "Com")]
-    Complete,
-    #[strum(serialize = "Inc")]
-    Incomplete,
-}
-
-impl Shiftable<PassRushResult> for PassRushResult {
-    fn get_first() -> PassRushResult {
-        PassRushResult::Sack
-    }
-
-    fn get_second() -> PassRushResult {
-        PassRushResult::Runs
-    }
-}
+// `Shiftable`, `PassResult` and `PassRushResult` were moved into `spf_core` so the
+// shared data model can depend on them. Re-export the two result enums here for
+// existing call sites in the play engine.
+pub use spf_core::shiftable::{PassResult, PassRushResult};
 
 pub trait Validatable {
     fn validate(&self, play: &StandardPlay) -> Result<(), String>;

@@ -9,12 +9,12 @@ use std::{collections::HashMap, str::FromStr};
 use strum_macros::Display;
 use utoipa::ToSchema;
 
-use super::{
+use crate::{
     loader::{
         load_dbs, load_dls, load_krs, load_ks, load_lbs, load_ols, load_qbs, load_rbs, load_tes,
         load_wrs,
     },
-    standard_play::{PassResult, PassRushResult},
+    shiftable::{PassResult, PassRushResult},
     stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats},
 };
 
@@ -86,7 +86,7 @@ pub trait BasePlayer: Sync + Send + DynClone + erased_serde::Serialize {
 clone_trait_object!(BasePlayer);
 serialize_trait_object!(BasePlayer);
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
+#[derive(Debug, Clone, Serialize, Deserialize, ImplBasePlayer)]
 pub struct QBStats {
     pub team: TeamID,
     pub name: String,
@@ -190,7 +190,7 @@ pub struct OLStats {
     pub pass_block: i32,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
+#[derive(Debug, Clone, Serialize, Deserialize, ImplBasePlayer)]
 pub struct KStats {
     pub team: TeamID,
     pub name: String,
@@ -204,13 +204,13 @@ pub struct KStats {
     pub longest_fg: i32,
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum PuntResultDetails {
     FairCatch,
     Returner(i32),
 }
 // pub enum P
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum PuntResult {
     Special,
     Actual {
@@ -219,7 +219,7 @@ pub enum PuntResult {
     },
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
+#[derive(Debug, Clone, Serialize, Deserialize, ImplBasePlayer)]
 pub struct PStats {
     pub team: TeamID,
     pub name: String,
@@ -230,7 +230,7 @@ pub struct PStats {
     pub punt_results: TwelveStats<PuntResult>,
 }
 
-#[derive(Debug, Clone, Serialize, Copy)]
+#[derive(Debug, Clone, Serialize, Deserialize, Copy)]
 pub struct ReturnStat {
     pub yards: i32,
     pub fumble: bool,
@@ -268,7 +268,7 @@ impl ReturnStat {
     }
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum Returner {
     SameAs(i32),
     Actual {
@@ -278,7 +278,7 @@ pub enum Returner {
     },
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
+#[derive(Debug, Clone, Serialize, Deserialize, ImplBasePlayer)]
 pub struct KRStats {
     pub team: TeamID,
     pub name: String,
@@ -289,7 +289,7 @@ pub struct KRStats {
     pub returners: Vec<Returner>,
 }
 
-#[derive(Debug, Clone, Serialize, ImplBasePlayer)]
+#[derive(Debug, Clone, Serialize, Deserialize, ImplBasePlayer)]
 pub struct PRStats {
     pub team: TeamID,
     pub name: String,
@@ -299,7 +299,7 @@ pub struct PRStats {
     pub returners: Vec<Returner>,
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TeamStats {
     pub team: TeamID,
     pub position: Position,
@@ -309,7 +309,7 @@ pub struct TeamStats {
     pub def_adj: i32,
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum Player {
     QB(QBStats),
     RB(RBStats),
@@ -326,26 +326,6 @@ pub enum Player {
 }
 
 impl Player {
-    // fn get_struct_from_enum<T>(val: Player) -> Option<T> {
-    //     match val {
-    //         Player::QB(struct1) => Some(struct1 as T),
-    //         Player::RB(struct2) => Some(struct2),
-    //         _
-    //     }
-    // }
-
-    // fn extract_type<T>(input: &Player) -> Option<&T> {
-    //     if let Player::QB(my_struct1) = input {
-    //         // Attempt to cast to the desired type
-    //         Some(my_struct1 as &T)
-    //     } else if let MyEnum::Val2(my_struct2) = input {
-    //         // Attempt to cast to the desired type
-    //         Some(my_struct2 as &T)
-    //     } else {
-    //         None
-    //     }
-    // }
-
     pub fn is_qb(val: Player) -> Option<QBStats> {
         if let Player::QB(v) = val {
             return Some(v);
@@ -425,6 +405,28 @@ impl Player {
         }
         return None;
     }
+
+    /// Convert a tagged `Player` into a boxed trait object for the in-memory roster.
+    ///
+    /// This is the inverse of `BasePlayer::get_full_player` and is the key step that
+    /// lets the persistent (deserializable) representation be rebuilt into the
+    /// runtime model, which stores `Box<dyn BasePlayer>`.
+    pub fn into_base_player(self) -> Box<dyn BasePlayer> {
+        match self {
+            Player::QB(s) => Box::new(s),
+            Player::RB(s) => Box::new(s),
+            Player::WR(s) => Box::new(s),
+            Player::TE(s) => Box::new(s),
+            Player::DB(s) => Box::new(s),
+            Player::LB(s) => Box::new(s),
+            Player::DL(s) => Box::new(s),
+            Player::OL(s) => Box::new(s),
+            Player::K(s) => Box::new(s),
+            Player::KR(s) => Box::new(s),
+            Player::P(s) => Box::new(s),
+            Player::PR(s) => Box::new(s),
+        }
+    }
 }
 
 pub struct PlayerUtils {}
@@ -490,11 +492,6 @@ impl PlayerUtils {
     }
 }
 
-// struct P {
-//     pla: Player,
-//     base: dyn BasePlayer,
-// }
-
 #[derive(Debug, Copy, Clone, Deserialize, Serialize, Display, PartialEq)]
 pub enum Position {
     QB,
@@ -523,6 +520,7 @@ pub enum DBPosition {
 }
 
 #[derive(Clone, Serialize, ToSchema)]
+#[allow(non_camel_case_types)]
 pub struct Serializable_Roster {
     team: TeamID,
     #[schema(value_type = Object)]
@@ -552,33 +550,7 @@ pub struct Roster {
 
     #[serde(bound(serialize = "Vec<Box<dyn BasePlayer>>: Serialize"))]
     players: Vec<Box<dyn BasePlayer>>,
-    // player_by_pos: HashMap<Position, Vec<Player>>,
-
-    // team: TeamStats,
-    // qb: Vec<QBStats>,
-    // rb: Vec<RBStats>,
-    // wr: Vec<WRStats>,
-    // te: Vec<TEStats>,
-    // db: Vec<DBStats>,
-    // lb: Vec<LBStats>,
-    // dl: Vec<DLStats>,
-    // ol: Vec<OLStats>,
-    // k: Vec<KStats>,
-    // p: Vec<PStats>,
-    // kr: Vec<KRStats>,
-    // pr: Vec<PRStats>,
 }
-
-// impl Clone for MyStruct {
-//     fn clone(&self) -> Self {
-//         let mut new_players = Vec::new();
-//         for player in self.players.iter() {
-//             new_players.push(Box::new(player.clone()));
-//         }
-
-//         MyStruct { players: new_players }
-//     }
-// }
 
 impl Roster {
     fn create_roster(
@@ -607,23 +579,30 @@ impl Roster {
             players.extend(k.into_iter().map(|s| Box::new(s) as Box<dyn BasePlayer>));
             players.extend(kr.into_iter().map(|s| Box::new(s) as Box<dyn BasePlayer>));
 
-            Self {
-                players,
-                team_name,
-                // qb,
-                // rb,
-                // wr,
-                // te,
-                // db,
-                // lb,
-                // dl,
-                // ol,
-            }
+            Self { players, team_name }
         }
+    }
+
+    /// Build a roster from a flat list of tagged `Player`s (the persistent form).
+    ///
+    /// Used when loading the JSON data model back into memory.
+    pub fn from_players(team_name: TeamID, players: Vec<Player>) -> Self {
+        Self {
+            team_name,
+            players: players.into_iter().map(|p| p.into_base_player()).collect(),
+        }
+    }
+
+    pub fn get_team_name(&self) -> &TeamID {
+        &self.team_name
     }
 
     pub fn get_player(&self, id: &String) -> Option<&Box<dyn BasePlayer>> {
         return self.players.iter().find(|&x| x.get_id() == *id);
+    }
+
+    pub fn get_all_players(&self) -> &Vec<Box<dyn BasePlayer>> {
+        &self.players
     }
 
     pub fn get_players(&self, pos: Position) -> Vec<&Box<dyn BasePlayer>> {
@@ -710,40 +689,6 @@ impl TeamList {
         return None;
     }
 
-    // pub fn get_player_json(&self, id: &String) -> String {
-    //     let s = id.as_str();
-    //     println!("Searching for {}", id);
-
-    //     // if i.starts_with("QB") { TeamList::get_player_json_from_map(&id, &self.all_qbs) }
-    //     // else
-    //     let pos = id.split('-').next().unwrap_or("");
-
-    //     match pos {
-    //         "QB" => TeamList::get_player_json_from_map(id, &self.all_qbs),
-    //         "RB" => TeamList::get_player_json_from_map(id, &self.all_rbs),
-    //         "WR" => TeamList::get_player_json_from_map(id, &self.all_wrs),
-    //         "TE" => TeamList::get_player_json_from_map(id, &self.all_tes),
-    //         "DL" => TeamList::get_player_json_from_map(id, &self.all_dls),
-    //         _ => "{\"err\": \"Invalid ID\"}".to_string(),
-    //     }
-    // }
-
-    // fn get_player_json_from_map<T: BasePlayer>(
-    //     id: &String,
-    //     playermap: &HashMap<String, T>,
-    // ) -> String {
-    //     match playermap.get(id) {
-    //         Some(p) => {
-    //             println!("A Match");
-    //             p.get_json()
-    //         }
-    //         _ => {
-    //             println!("No Match");
-    //             "{\"err\": \"No such player\"}".to_string()
-    //         }
-    //     }
-    // }
-
     pub fn create_teams(dir: &str) -> Self {
         let (qbs, all_qbs) = TeamList::disperse_players(load_qbs(format!("{}/83QB.txt", dir)));
         let (rbs, all_rbs) = TeamList::disperse_players(load_rbs(format!("{}/83RB.txt", dir)));
@@ -757,16 +702,6 @@ impl TeamList {
         let (ks, all_ks) = TeamList::disperse_players(load_ks(format!("{}/83K.txt", dir)));
         let (krs, all_krs) = TeamList::disperse_players(load_krs(format!("{}/83KR.txt", dir)));
 
-        // code to validate team_ids
-        // for t in qbs.keys() {
-        //     println!("|{:?}|", t);
-        //     let r = ols.get(t);
-        //     match r {
-        //         Some(value) => println!("Value associated with key '{:?}': {}", t, value.len()),
-        //         None => println!("Key not found."),
-        //     }
-        // }
-
         let mut teams: HashMap<TeamID, Roster> = HashMap::new();
         for t in qbs.keys() {
             println!("Load Team {}", t.name);
@@ -775,7 +710,6 @@ impl TeamList {
                 t.clone(),
                 Roster::create_roster(
                     t.clone(),
-                    // team: (),
                     qbs.get(t).unwrap().to_vec(),
                     rbs.get(t).unwrap().to_vec(),
                     wrs.get(t).unwrap().to_vec(),
@@ -783,18 +717,84 @@ impl TeamList {
                     dbs.get(t).unwrap().to_vec(),
                     lbs.get(t).unwrap().to_vec(),
                     dls.get(t).unwrap().to_vec(),
-                    ols.get(t).unwrap().to_vec(), // k: (),
-                    ks.get(t).unwrap().to_vec(),  // k: (),
-                    krs.get(t).unwrap().to_vec(), // k: (),
-                                                  // p: (),
-                                                  // kr: (),
-                                                  // pr: (),
+                    ols.get(t).unwrap().to_vec(),
+                    ks.get(t).unwrap().to_vec(),
+                    krs.get(t).unwrap().to_vec(),
                 ),
             );
         }
 
-        // println!("All DLs************");
-        // println!("{:?}", all_dls);
+        Self {
+            teams,
+            all_qbs,
+            all_rbs,
+            all_wrs,
+            all_tes,
+            all_ols,
+            all_dls,
+            all_lbs,
+            all_dbs,
+            all_ks,
+            all_krs,
+        }
+    }
+
+    /// Rebuild a `TeamList` from already-parsed rosters (the persistent-load path).
+    ///
+    /// Reconstructs the per-position `all_*` id lookup maps by walking every
+    /// player in every roster and matching on the concrete `Player` variant.
+    pub fn from_rosters(rosters: Vec<Roster>) -> Self {
+        let mut teams: HashMap<TeamID, Roster> = HashMap::new();
+        let mut all_qbs: HashMap<String, QBStats> = HashMap::new();
+        let mut all_rbs: HashMap<String, RBStats> = HashMap::new();
+        let mut all_wrs: HashMap<String, WRStats> = HashMap::new();
+        let mut all_tes: HashMap<String, TEStats> = HashMap::new();
+        let mut all_dbs: HashMap<String, DBStats> = HashMap::new();
+        let mut all_lbs: HashMap<String, LBStats> = HashMap::new();
+        let mut all_dls: HashMap<String, DLStats> = HashMap::new();
+        let mut all_ols: HashMap<String, OLStats> = HashMap::new();
+        let mut all_ks: HashMap<String, KStats> = HashMap::new();
+        let mut all_krs: HashMap<String, KRStats> = HashMap::new();
+
+        for roster in rosters {
+            for p in &roster.players {
+                let id = p.get_id();
+                match p.get_full_player() {
+                    Player::QB(s) => {
+                        all_qbs.insert(id, s);
+                    }
+                    Player::RB(s) => {
+                        all_rbs.insert(id, s);
+                    }
+                    Player::WR(s) => {
+                        all_wrs.insert(id, s);
+                    }
+                    Player::TE(s) => {
+                        all_tes.insert(id, s);
+                    }
+                    Player::DB(s) => {
+                        all_dbs.insert(id, s);
+                    }
+                    Player::LB(s) => {
+                        all_lbs.insert(id, s);
+                    }
+                    Player::DL(s) => {
+                        all_dls.insert(id, s);
+                    }
+                    Player::OL(s) => {
+                        all_ols.insert(id, s);
+                    }
+                    Player::K(s) => {
+                        all_ks.insert(id, s);
+                    }
+                    Player::KR(s) => {
+                        all_krs.insert(id, s);
+                    }
+                    Player::P(_) | Player::PR(_) => {}
+                }
+            }
+            teams.insert(roster.team_name.clone(), roster);
+        }
 
         Self {
             teams,
@@ -831,14 +831,4 @@ impl TeamList {
 
         return (team_map, id_map);
     }
-
-    // fn disperse_players2<T>(players: Vec<T>) -> HashMap<TeamID, Vec<&'static T>>
-    // where
-    //     T: TeamGroup,
-    // {
-    //     let grouped_map: HashMap<TeamID, Vec<&T>> =
-    //         players.iter().into_group_map_by(|item| item.get_team());
-
-    //     return grouped_map;
-    // }
 }

@@ -1,11 +1,13 @@
 pub mod engine;
 pub mod fac;
 pub mod kickoff_play;
-pub mod lineup;
-pub mod loader;
-pub mod players;
 pub mod standard_play;
-pub mod stats;
+
+// The data model, loaders and stat primitives now live in the shared `spf_core`
+// crate. Re-export the pieces the server references under the `game` namespace so
+// existing intra-crate paths (`crate::game::players::*`, `super::stats::*`, etc.)
+// continue to resolve.
+pub use spf_core::{lineup, players, stats};
 
 use std::{
     fs::{self, File},
