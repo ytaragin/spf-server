@@ -81,6 +81,13 @@ The most logic-dense modules are the highest-value targets (pure functions,
 
 Update this table as modules are covered or as the code evolves.
 
+> **T2 progress (`spf_core` pass, done):** `lineup.rs` (`from_str` parsers + `LineupUtilities`
+> count/validation helpers), `players.rs` (`TeamID::create_from_str`), and `stats.rs`
+> (`RangedStats<PassResult>`) are now covered. As part of this, a stale trailing-space alias
+> literal in `OffensiveBox::from_str` (`"fl1 "` → `"fl1"`) was corrected (test-driven bugfix).
+> `resulthandler.rs` (spf crate) remains the deferred T2 remainder. See
+> `../plans/testing-plan.md` §T2.
+
 ---
 
 ## 5. Determinism: the FAC deck seam
@@ -133,12 +140,14 @@ expands).
 | Crate | Location | Tests |
 |---|---|---|
 | `spf_core` | `src/persist.rs` | `test_sanitize_file_stem_replaces_unsafe_chars`, `test_convert_and_reload_round_trip` (self-skips without card data) |
-| `spf_core` | `src/stats.rs` | 7 `Range` unit tests (parsing, `in_range` inclusivity, `get_tag_and_range`) |
-| `spf` | — | none yet |
+| `spf_core` | `src/stats.rs` | 7 `Range` unit tests (parsing, `in_range` inclusivity, `get_tag_and_range`) + 3 `RangedStats<PassResult>` tests (`create_from_strs`, `get_category` with/without boundary shift) |
+| `spf_core` | `src/lineup.rs` | 10 tests: `OffensiveBox`/`DefensiveBox` `from_str` (alias maps, case-insensitivity, error paths) and `LineupUtilities` `validate_count` / `count_spots` / `count_array_spots` |
+| `spf_core` | `src/players.rs` | 6 `TeamID::create_from_str` tests (fixup table, unmapped pass-through, `splitn` year/name defaults) |
+| `spf` | — | none yet (`resulthandler.rs` transitions are the deferred T2 remainder) |
 | `spf_cli` | — | none yet |
 | `spf_macros` | — | none yet |
 
-**Total: 9 tests**, all in `spf_core`. No integration (`tests/`) directories, no
+**Total: 28 tests**, all in `spf_core`. No integration (`tests/`) directories, no
 `[dev-dependencies]`, no CI gate yet.
 
 ---

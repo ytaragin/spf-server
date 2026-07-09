@@ -30,7 +30,7 @@ There were no `tests/` integration directories, no `[dev-dependencies]`, and no 
 | Stage | Theme | Status | Outcome |
 |---|---|---|---|
 | T1 | Harness bootstrap | ✅ Done | `cargo test` runs real assertions in a leaf module; loop proven. |
-| T2 | Pure-logic unit tests | ⬜ Not started | Table-driven coverage of the highest-ROI pure functions. No deps/I-O. |
+| T2 | Pure-logic unit tests | 🟡 In progress | `spf_core` targets done (19 tests across `lineup`/`players`/`stats`; +1 alias bugfix). Remainder: `resulthandler.rs` (spf crate) and full `is_legal_lineup` (needs builders). |
 | T3 | Deterministic FAC seam | ⬜ Not started | `FacManager` buildable from an explicit deck; play execution reproducible. |
 | T4 | HTTP / integration tests | ⬜ Not started | `spf/tests/` exercising the real actix `App` via `test::init_service`. |
 | T5 | CI gate | ⬜ Not started | `.github/workflows` running fmt-check + clippy + test on every push. |
@@ -59,22 +59,62 @@ confirm the `cargo test` loop works, with no new dependencies.
 
 ---
 
-## Stage T2 — Pure-logic unit tests (highest ROI) ⬜
+## Stage T2 — Pure-logic unit tests (highest ROI) 🟡
 
 **Goal:** table-driven `#[cfg(test)]` coverage of the pure hotspots, colocated in their
 modules. No I/O, no external deps.
 
-**Targets:**
-- `lineup.rs` — legality checks (`is_legal_lineup`, `validate_count`, `count_array_spots`),
-  `from_str` for the box enums.
-- `players.rs` — `TeamID::create_from_str` fixup cases (the hardcoded name-normalization
-  table).
-- `stats.rs` — extend beyond `Range` to `RangedStats` where feasible (valid + malformed
-  input).
-- `resulthandler.rs` — `calculate_play_result` state transitions (down advance, first-down
-  reset, possession change, scoring).
+**Scope decision (this pass):** cover the **`spf_core`** pure targets only, and treat the
+`OffensiveBox::from_str` alias defects as a **test-driven bugfix** (fix obvious typos, then
+assert corrected behavior). The `spf`-crate `resulthandler.rs` target is **deferred** to a
+follow-up (it needs `GameState`/`PlayResult` builders and is the natural pairing for T3 /
+WS Stage 2).
 
-**Checkpoint:** each target module has a `tests` submodule; `cargo test --workspace` green.
+**Targets (this pass — `spf_core`):**
+- `lineup.rs` — legality checks (`is_legal_lineup` (both impls), `validate_count`,
+  `count_array_spots`), plus `from_str` for `OffensiveBox` / `DefensiveBox`.
+  - **Bugfix:** correct obvious malformed alias literals in `OffensiveBox::from_str`
+    (e.g. the trailing-space `"fl1 "` on line 57, which makes the intended `fl1` input
+    unmatchable). Audit callers first; fix only unambiguous typos, surfacing anything
+    ambiguous rather than guessing. Each fix pairs with an asserting test.
+- `players.rs` — `TeamID::create_from_str` fixup cases (the hardcoded name-normalization
+  table) + the `splitn` year/name defaults.
+- `stats.rs` — extend beyond `Range` to `RangedStats` where feasible (valid + malformed
+  input, no fixtures).
+
+**Deferred (T2 remainder):**
+- `resulthandler.rs` — `calculate_play_result` state transitions (down advance, first-down
+  reset, possession change, scoring). First `spf`-crate tests; carried forward.
+- `is_legal_lineup` (both impls) — full legality needs `Standard*Lineup`/`Roster` builders
+  (real `Player` stats), which is fixture-ish and out of scope for this pure pass. The
+  underlying `LineupUtilities` count/validation helpers **are** covered directly.
+
+**What landed:**
+- **Bugfix** in `spf_core/src/lineup.rs`: `OffensiveBox::from_str` alias `"fl1 "` (trailing
+  space, unmatchable — dead code) → `"fl1"`. Caller audit confirmed the only runtime callers
+  are in `spf/src/game/fac.rs` parsing `fac_cards.csv`; that data uses `FL` (never `FL1`),
+  so the run-direction path was unaffected and the fix only *adds* the intended `fl1` alias.
+  No other alias was ambiguous, so none other was touched.
+- `lineup.rs` — 10 tests: `OffensiveBox`/`DefensiveBox` `from_str` (full alias maps,
+  case-insensitivity, error paths incl. the stale `"fl1 "` form) and `LineupUtilities`
+  `validate_count` (inclusive bounds), `count_spots`, `count_array_spots` (sum + over-max).
+- `players.rs` — 6 `TeamID::create_from_str` tests (fixup table, unmapped pass-through,
+  multi-word names, trimming, missing-name default).
+- `stats.rs` — 3 `RangedStats<PassResult>` tests (`create_from_strs`, `get_category` with and
+  without boundary shift, and that an unparseable tag is skipped during construction).
+
+**Characterization note (no code change):** `TeamID::create_from_str("")` yields
+`year == ""` (not the `"1980"` default) because `splitn(2, ' ')` always emits one element for
+a trimmed-empty string; only `name` falls back (`"Omaha"`). Test documents *current*
+behavior. Empty team input is not real data, and the `"1980"` default is not a typo, so it
+was left as-is rather than changed under a testing task.
+
+**Verification:**
+- `cargo test --workspace` → 28 passed, 0 failed (9 pre-existing + 19 new; round-trip test
+  still passes / self-skips as before, unaffected by the alias fix).
+- `cargo fmt -p spf_core -- --check` → clean.
+- `cargo clippy -p spf_core --tests` → no new warnings from the test code (remaining lints
+  are the pre-existing workspace noise slated for T6).
 
 ---
 

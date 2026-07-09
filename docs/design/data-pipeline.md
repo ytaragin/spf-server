@@ -14,8 +14,10 @@ For the crates involved, see [`workspace-structure.md`](workspace-structure.md).
    files in `cards/SPFB1983/`.
 2. **txt → JSON** (the `spf_cli` tool): `spf-cli convert --cards-dir cards/SPFB1983 --year 1983`
    parses the `.txt` files via `spf_core::loader` and writes the persistent model to `data/1983/`
-   (one `<TeamName>.json` per team + an `index.json` manifest). `data/` is git-ignored — it is a
-   locally-generated build artifact, not committed.
+   (one `<TeamName>.json` per team + an `index.json` manifest). The generated `data/` directory
+   is committed to the repo, so a fresh checkout can run the server without first regenerating it;
+   re-run the converter (see below) whenever the card `.txt` files or the persistent format change,
+   then commit the updated JSON.
 3. **JSON → memory** (the server): `main.rs` calls `spf_core::persist::load_league("data/1983")`
    at startup (hardcoded path). If the manifest is missing the server exits with a clear error;
    it no longer parses `.txt` files at runtime.

@@ -832,3 +832,87 @@ impl TeamList {
         return (team_map, id_map);
     }
 }
+
+#[cfg(test)]
+mod tests {
+    //! Pure-logic unit tests (Testing Stage T2, see `docs/plans/testing-plan.md`).
+    //!
+    //! Covers `TeamID::create_from_str`: the hardcoded name-normalization ("fixup")
+    //! table and the `splitn` year/name split with its defaults. Pure, no I/O.
+
+    use super::*;
+
+    #[test]
+    fn test_create_from_str_normalizes_known_aliases() {
+        // (raw "YEAR NAME", expected year, expected normalized name) for the fixup table.
+        let cases = [
+            ("1983 N.Y.Giants", "1983", "N.Y. Giants"),
+            ("1983 NY Giants", "1983", "N.Y. Giants"),
+            ("1983 New York G", "1983", "N.Y. Giants"),
+            ("1983 SanDiego", "1983", "San Diego"),
+            ("1983 NewOrleans", "1983", "New Orleans"),
+            ("1983 SanFran", "1983", "San Francisco"),
+            ("1983 St.Louis", "1983", "St. Louis"),
+            ("1983 NewEngland", "1983", "New England"),
+            ("1983 N.Y.Jets", "1983", "N.Y. Jets"),
+            ("1983 New York J", "1983", "N.Y. Jets"),
+            ("1983 NY Jets", "1983", "N.Y. Jets"),
+            ("1983 KansasCity", "1983", "Kansas City"),
+            ("1983 L.A.Raiders", "1983", "L.A. Raiders"),
+            ("1983 L.A.Rams", "1983", "L.A. Rams"),
+            ("1983 LA Raiders", "1983", "L.A. Raiders"),
+            ("1983 LA Rams", "1983", "L.A. Rams"),
+            ("1983 Balimore", "1983", "Baltimore"),
+            ("1983 Cincinatti", "1983", "Cincinnati"),
+        ];
+
+        for (raw, year, name) in cases {
+            let id = TeamID::create_from_str(raw);
+            assert_eq!(id.year, year, "year for {:?}", raw);
+            assert_eq!(id.name, name, "normalized name for {:?}", raw);
+        }
+    }
+
+    #[test]
+    fn test_create_from_str_passes_through_unmapped_name() {
+        // A name that is not in the fixup table is used verbatim.
+        let id = TeamID::create_from_str("1983 Chicago");
+        assert_eq!(id.year, "1983");
+        assert_eq!(id.name, "Chicago");
+    }
+
+    #[test]
+    fn test_create_from_str_splits_year_and_multiword_name() {
+        // Only the first space separates year from name; the rest stays intact.
+        let id = TeamID::create_from_str("1983 Green Bay");
+        assert_eq!(id.year, "1983");
+        assert_eq!(id.name, "Green Bay");
+    }
+
+    #[test]
+    fn test_create_from_str_trims_surrounding_whitespace() {
+        let id = TeamID::create_from_str("  1983 SanDiego  ");
+        assert_eq!(id.year, "1983");
+        assert_eq!(id.name, "San Diego");
+    }
+
+    #[test]
+    fn test_create_from_str_defaults_when_name_missing() {
+        // Year present but no name -> default name "Omaha".
+        let id = TeamID::create_from_str("1983");
+        assert_eq!(id.year, "1983");
+        assert_eq!(id.name, "Omaha");
+    }
+
+    #[test]
+    fn test_create_from_str_defaults_when_empty() {
+        // Characterization: `splitn(2, ' ')` on a trimmed-empty string still yields one
+        // (empty) element, so `year` becomes "" and only the *name* falls back to its
+        // default ("Omaha"). The "1980" year default is only reached when the first
+        // `splitn` item is `None`, which a trimmed string never produces. This documents
+        // current behavior (not asserted-as-desired); empty team input is not real data.
+        let id = TeamID::create_from_str("");
+        assert_eq!(id.year, "");
+        assert_eq!(id.name, "Omaha");
+    }
+}

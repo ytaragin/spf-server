@@ -5,4 +5,5 @@ members = [
     "spf_cli",
     "spf_macros",
 ]
+default-members = ["spf"]
 resolver = "2"

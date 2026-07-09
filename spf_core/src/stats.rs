@@ -363,4 +363,55 @@ mod tests {
         assert_eq!(range.start, 49);
         assert_eq!(range.end, 49);
     }
+
+    // --- RangedStats (Testing Stage T2) ---------------------------------------
+    //
+    // `RangedStats<PassResult>` is the concrete instantiation used by the pass
+    // engine. These build a small table via `create_from_strs` and assert
+    // `get_category` picks the variant whose (optionally boundary-shifted) range
+    // contains a value.
+
+    use crate::shiftable::PassResult;
+
+    /// Build a simple Complete/Incomplete/Interception table for tests.
+    fn sample_pass_stats() -> RangedStats<PassResult> {
+        // first = Complete (1-5), second = Incomplete (6-9), Interception (10-12).
+        RangedStats::<PassResult>::create_from_strs(&["Com 1-5", "Inc 6-9", "Int 10-12"], " ")
+    }
+
+    #[test]
+    fn test_ranged_stats_get_category_no_shift() {
+        let stats = sample_pass_stats();
+        assert_eq!(stats.get_category(3, 0), PassResult::Complete);
+        assert_eq!(stats.get_category(7, 0), PassResult::Incomplete);
+        assert_eq!(stats.get_category(11, 0), PassResult::Interception);
+    }
+
+    #[test]
+    fn test_ranged_stats_get_category_positive_shift_expands_first() {
+        // A +2 shift pushes Complete's upper bound from 5 to 7 (and Incomplete's
+        // lower bound from 6 to 8), so a value of 7 now resolves to Complete.
+        let stats = sample_pass_stats();
+        assert_eq!(stats.get_category(7, 2), PassResult::Complete);
+        assert_eq!(stats.get_category(9, 2), PassResult::Incomplete);
+        // The interception band is unshifted.
+        assert_eq!(stats.get_category(11, 2), PassResult::Interception);
+    }
+
+    #[test]
+    fn test_ranged_stats_create_from_strs_ignores_unparseable_tag() {
+        // An extra entry whose `PassResult::from_str` fails is skipped during
+        // construction (logged, not inserted); the three valid variants remain, so the
+        // map has exactly three entries and still resolves.
+        let stats = RangedStats::<PassResult>::create_from_strs(
+            &["Com 1-5", "Inc 6-9", "Int 10-12", "Bogus 13-15"],
+            " ",
+        );
+        // `stats` is a private field, reachable from this in-module test.
+        assert_eq!(stats.stats.len(), 3, "the bogus tag must not be inserted");
+        assert!(stats.stats.contains_key(&PassResult::Complete));
+        assert!(stats.stats.contains_key(&PassResult::Incomplete));
+        assert!(stats.stats.contains_key(&PassResult::Interception));
+        assert_eq!(stats.get_category(3, 0), PassResult::Complete);
+    }
 }

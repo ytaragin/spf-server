@@ -25,7 +25,8 @@ All commands use standard Cargo. There is no Makefile, npm, or custom script lay
 
 | Command | Purpose |
 |---|---|
-| `cargo run -p spf` | Start the actix-web server (loads `data/1983` at startup; serves on **8080**). |
+| `cargo run` | Start the actix-web server. Workspace `default-members` points at `spf`, so bare `cargo run` from the repo root is equivalent to `cargo run -p spf` (loads `data/1983` at startup; serves on **8080**). |
+| `cargo run -p spf` | Same as above, explicit. |
 | `cargo run -p spf_cli -- convert --cards-dir cards/SPFB1983 --year 1983` | Regenerate the persistent JSON data from card `.txt` files. See [`data-pipeline.md`](data-pipeline.md). |
 
 > If `data/1983` is missing, the server exits with a clear error — run the `spf_cli` convert

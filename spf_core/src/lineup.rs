@@ -54,7 +54,7 @@ impl FromStr for OffensiveBox {
             "bk3" | "b3" => Ok(OffensiveBox::B3),
             "re" => Ok(OffensiveBox::RE),
             "le" => Ok(OffensiveBox::LE),
-            "fl" | "fl1 " => Ok(OffensiveBox::FL1),
+            "fl" | "fl1" => Ok(OffensiveBox::FL1),
             "fl2" => Ok(OffensiveBox::FL2),
             "lt" => Ok(OffensiveBox::LT),
             "lg" => Ok(OffensiveBox::LG),
@@ -883,5 +883,162 @@ impl LineupUtilities {
         })?;
 
         return Ok(total);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    //! Pure-logic unit tests (Testing Stage T2, see `docs/plans/testing-plan.md`).
+    //!
+    //! Covers the box `from_str` parsers and the `LineupUtilities` count/validation
+    //! helpers. These are pure and dependency-free (no fixtures, no I/O). Full
+    //! `is_legal_lineup` coverage needs `Standard*Lineup` builders and is deferred.
+
+    use super::*;
+
+    #[test]
+    fn test_offensive_box_from_str_maps_all_aliases() {
+        // (input, expected) — every accepted alias, including case-insensitivity.
+        let cases = [
+            ("qb", OffensiveBox::QB),
+            ("QB", OffensiveBox::QB),
+            ("bk", OffensiveBox::B1),
+            ("bk1", OffensiveBox::B1),
+            ("b1", OffensiveBox::B1),
+            ("bk2", OffensiveBox::B2),
+            ("b2", OffensiveBox::B2),
+            ("bk3", OffensiveBox::B3),
+            ("b3", OffensiveBox::B3),
+            ("re", OffensiveBox::RE),
+            ("le", OffensiveBox::LE),
+            ("fl", OffensiveBox::FL1),
+            // Regression: the "fl1" alias previously carried a trailing space
+            // ("fl1 ") and was therefore unmatchable. It must now parse.
+            ("fl1", OffensiveBox::FL1),
+            ("fl2", OffensiveBox::FL2),
+            ("lt", OffensiveBox::LT),
+            ("lg", OffensiveBox::LG),
+            ("c", OffensiveBox::C),
+            ("cn", OffensiveBox::C),
+            ("rg", OffensiveBox::RG),
+            ("rt", OffensiveBox::RT),
+        ];
+
+        for (input, expected) in cases {
+            let got = OffensiveBox::from_str(input).unwrap_or_else(|e| {
+                panic!("expected {:?} for {:?}, got Err({})", expected, input, e)
+            });
+            assert_eq!(got, expected, "OffensiveBox::from_str({:?})", input);
+        }
+    }
+
+    #[test]
+    fn test_offensive_box_from_str_is_case_insensitive() {
+        // Mixed/upper case must resolve identically to lower case.
+        assert_eq!(OffensiveBox::from_str("Bk1").unwrap(), OffensiveBox::B1);
+        assert_eq!(OffensiveBox::from_str("FL").unwrap(), OffensiveBox::FL1);
+        assert_eq!(OffensiveBox::from_str("Fl1").unwrap(), OffensiveBox::FL1);
+        assert_eq!(OffensiveBox::from_str("CN").unwrap(), OffensiveBox::C);
+    }
+
+    #[test]
+    fn test_offensive_box_from_str_rejects_unknown() {
+        // Unknown tokens (and the stale trailing-space form) must error.
+        for bad in ["", "xx", "fl1 ", "quarterback", "b4"] {
+            assert!(
+                OffensiveBox::from_str(bad).is_err(),
+                "expected Err for OffensiveBox::from_str({:?})",
+                bad
+            );
+        }
+    }
+
+    #[test]
+    fn test_defensive_box_from_str_maps_a_through_o() {
+        // (input, expected) for the full A..=O set.
+        let cases = [
+            ("a", DefensiveBox::BoxA),
+            ("b", DefensiveBox::BoxB),
+            ("c", DefensiveBox::BoxC),
+            ("d", DefensiveBox::BoxD),
+            ("e", DefensiveBox::BoxE),
+            ("f", DefensiveBox::BoxF),
+            ("g", DefensiveBox::BoxG),
+            ("h", DefensiveBox::BoxH),
+            ("i", DefensiveBox::BoxI),
+            ("j", DefensiveBox::BoxJ),
+            ("k", DefensiveBox::BoxK),
+            ("l", DefensiveBox::BoxL),
+            ("m", DefensiveBox::BoxM),
+            ("n", DefensiveBox::BoxN),
+            ("o", DefensiveBox::BoxO),
+        ];
+
+        for (input, expected) in cases {
+            let got = DefensiveBox::from_str(input).unwrap_or_else(|e| {
+                panic!("expected {:?} for {:?}, got Err({})", expected, input, e)
+            });
+            assert_eq!(got, expected, "DefensiveBox::from_str({:?})", input);
+            // And the upper-case form must resolve the same way.
+            assert_eq!(
+                DefensiveBox::from_str(&input.to_uppercase()).unwrap(),
+                expected,
+                "DefensiveBox::from_str({:?}) (upper)",
+                input
+            );
+        }
+    }
+
+    #[test]
+    fn test_defensive_box_from_str_rejects_unknown() {
+        for bad in ["", "p", "z", "aa", "1"] {
+            assert!(
+                DefensiveBox::from_str(bad).is_err(),
+                "expected Err for DefensiveBox::from_str({:?})",
+                bad
+            );
+        }
+    }
+
+    #[test]
+    fn test_validate_count_accepts_inclusive_bounds() {
+        // Boundaries are inclusive on both ends.
+        assert!(LineupUtilities::validate_count(1, 1, 3, "low bound").is_ok());
+        assert!(LineupUtilities::validate_count(3, 1, 3, "high bound").is_ok());
+        assert!(LineupUtilities::validate_count(2, 1, 3, "mid").is_ok());
+    }
+
+    #[test]
+    fn test_validate_count_rejects_out_of_range() {
+        assert!(LineupUtilities::validate_count(0, 1, 3, "too low").is_err());
+        assert!(LineupUtilities::validate_count(4, 1, 3, "too high").is_err());
+    }
+
+    #[test]
+    fn test_count_spots_counts_only_some() {
+        let a = Some(1);
+        let b: Option<i32> = None;
+        let c = Some(3);
+        assert_eq!(LineupUtilities::count_spots(vec![&a, &b, &c]), 2);
+        let none_only: Vec<&Option<i32>> = vec![&b];
+        assert_eq!(LineupUtilities::count_spots(none_only), 0);
+    }
+
+    #[test]
+    fn test_count_array_spots_sums_within_limit() {
+        let r1 = vec![1, 2];
+        let r2 = vec![3];
+        let total = LineupUtilities::count_array_spots(vec![&r1, &r2], 2, "ok")
+            .expect("counts within max_per should be Ok");
+        assert_eq!(total, 3);
+    }
+
+    #[test]
+    fn test_count_array_spots_errors_when_over_max() {
+        let too_many = vec![1, 2, 3];
+        assert!(
+            LineupUtilities::count_array_spots(vec![&too_many], 2, "over").is_err(),
+            "a single array exceeding max_per must error"
+        );
     }
 }
