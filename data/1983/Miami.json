@@ -1,0 +1,3261 @@
+{
+  "team": {
+    "name": "Miami",
+    "year": "1983"
+  },
+  "players": [
+    {
+      "QB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Dan Marino",
+        "id": "QB-30",
+        "position": "QB",
+        "endurance": "A",
+        "quick": {
+          "stats": {
+            "Complete": "1-35",
+            "Interception": "49-49",
+            "Incomplete": "36-48"
+          }
+        },
+        "short": {
+          "stats": {
+            "Incomplete": "28-47",
+            "Interception": "48-48",
+            "Complete": "1-27"
+          }
+        },
+        "long": {
+          "stats": {
+            "Complete": "1-19",
+            "Incomplete": "20-46",
+            "Interception": "47-48"
+          }
+        },
+        "long_run": "Q",
+        "pass_rush": {
+          "stats": {
+            "Incomplete": "43-48",
+            "Sack": "1-9",
+            "Complete": "31-42",
+            "Runs": "10-30"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            "Sg",
+            {
+              "Val": 4
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 1
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": -1
+            },
+            {
+              "Val": -2
+            },
+            {
+              "Val": -3
+            },
+            {
+              "Val": -4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "QB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "David Woodley",
+        "id": "QB-31",
+        "position": "QB",
+        "endurance": "B",
+        "quick": {
+          "stats": {
+            "Complete": "1-32",
+            "Incomplete": "33-47",
+            "Interception": "48-48"
+          }
+        },
+        "short": {
+          "stats": {
+            "Incomplete": "25-45",
+            "Complete": "1-24",
+            "Interception": "46-48"
+          }
+        },
+        "long": {
+          "stats": {
+            "Incomplete": "16-43",
+            "Interception": "44-48",
+            "Complete": "1-15"
+          }
+        },
+        "long_run": "Q",
+        "pass_rush": {
+          "stats": {
+            "Incomplete": "41-48",
+            "Runs": "9-30",
+            "Complete": "31-40",
+            "Sack": "1-8"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            "Sg",
+            {
+              "Val": 10
+            },
+            {
+              "Val": 8
+            },
+            {
+              "Val": 7
+            },
+            {
+              "Val": 6
+            },
+            {
+              "Val": 5
+            },
+            {
+              "Val": 4
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 1
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": -1
+            },
+            {
+              "Val": -1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Andra Franklin",
+        "id": "RB-65",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "lg": "P",
+        "blocks": 2
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "David Overstreet",
+        "id": "RB-66",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 14
+                },
+                "S": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 5
+                },
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 3
+                },
+                "Q": {
+                  "Val": 1
+                }
+              }
+            }
+          ]
+        },
+        "lg": "K",
+        "blocks": 1
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Tony Nathan",
+        "id": "RB-67",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 25
+                },
+                "S": {
+                  "Val": 25
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 18
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": -1
+                }
+              }
+            }
+          ]
+        },
+        "lg": "L",
+        "blocks": -1
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Woody Bennett",
+        "id": "RB-68",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                }
+              }
+            }
+          ]
+        },
+        "lg": "O",
+        "blocks": -2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Mark Duper",
+        "id": "WR-63",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "S": "Lg",
+                "L": {
+                  "Val": 85
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 24
+                },
+                "L": {
+                  "Val": 61
+                },
+                "Q": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 11
+                },
+                "L": {
+                  "Val": 47
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 22
+                },
+                "L": {
+                  "Val": 42
+                },
+                "Q": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 21
+                },
+                "L": {
+                  "Val": 38
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 34
+                },
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 31
+                },
+                "S": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 18
+                },
+                "L": {
+                  "Val": 29
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 25
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 23
+                },
+                "S": {
+                  "Val": 16
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 22
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -1
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Nat Moore",
+        "id": "WR-64",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "L": {
+                  "Val": 66
+                },
+                "Q": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 47
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 17
+                },
+                "L": {
+                  "Val": 38
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 33
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 28
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 27
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 25
+                },
+                "S": {
+                  "Val": 12
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "L": {
+                  "Val": 23
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "L": {
+                  "Val": 22
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Mark Clayton",
+        "id": "WR-65",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "S": "Lg",
+                "L": {
+                  "Val": 39
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 23
+                },
+                "L": {
+                  "Val": 30
+                },
+                "Q": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 22
+                },
+                "L": {
+                  "Val": 28
+                },
+                "Q": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 10
+                },
+                "L": {
+                  "Val": 26
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 23
+                },
+                "S": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 21
+                },
+                "S": {
+                  "Val": 19
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 18
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": "R",
+        "blocks": -3
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Duriel Harris",
+        "id": "WR-66",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "S": "Lg",
+                "L": {
+                  "Val": 64
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 42
+                },
+                "S": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 19
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 28
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 25
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 21
+                },
+                "S": {
+                  "Val": 17
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -2
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Dan Johnson",
+        "id": "TE-29",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "L": {
+                  "Val": 33
+                },
+                "Q": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 30
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 29
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 28
+                },
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "L": {
+                  "Val": 26
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 24
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "L": {
+                  "Val": 22
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 5
+                },
+                "Q": {
+                  "Val": 3
+                },
+                "L": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 3
+                },
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                },
+                "S": {
+                  "Val": 3
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 2,
+        "long_rush": "N"
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Bruce Hardy",
+        "id": "TE-30",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 25
+                },
+                "S": {
+                  "Val": 25
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 8
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 6
+                },
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                },
+                "S": {
+                  "Val": 3
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 2,
+        "long_rush": "N"
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Joe Rose",
+        "id": "TE-31",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "L": {
+                  "Val": 37
+                },
+                "S": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 32
+                },
+                "S": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 30
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 29
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 28
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 27
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 11
+                },
+                "L": {
+                  "Val": 25
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 24
+                },
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "L": {
+                  "Val": 23
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 22
+                },
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 3,
+        "long_rush": "N"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "William Judson",
+        "id": "DB-89",
+        "position": "DB",
+        "pass_def": -2,
+        "pass_rush": 0,
+        "intercepts": "42-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Gerald Small",
+        "id": "DB-90",
+        "position": "DB",
+        "pass_def": -3,
+        "pass_rush": 0,
+        "intercepts": "43-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Mike Kozlowski",
+        "id": "DB-91",
+        "position": "DB",
+        "pass_def": 3,
+        "pass_rush": 0,
+        "intercepts": "46-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Fulton Walker",
+        "id": "DB-92",
+        "position": "DB",
+        "pass_def": 4,
+        "pass_rush": 0,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Lyle Blackwood",
+        "id": "DB-93",
+        "position": "DB",
+        "pass_def": 2,
+        "pass_rush": 0,
+        "intercepts": "44-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Glenn Blackwood",
+        "id": "DB-94",
+        "position": "DB",
+        "pass_def": 3,
+        "pass_rush": 0,
+        "intercepts": "45-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Paul Lankford",
+        "id": "DB-95",
+        "position": "DB",
+        "pass_def": 4,
+        "pass_rush": 0,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "A.J. Duhe",
+        "id": "LB-81",
+        "position": "LB",
+        "tackles": -2,
+        "pass_rush": 2,
+        "pass_def": 2,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Earnest Rhone",
+        "id": "LB-82",
+        "position": "LB",
+        "tackles": -2,
+        "pass_rush": 1,
+        "pass_def": 2,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Bob Brudzinski",
+        "id": "LB-83",
+        "position": "LB",
+        "tackles": -1,
+        "pass_rush": 2,
+        "pass_def": 0,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Rodell Thomas",
+        "id": "LB-84",
+        "position": "LB",
+        "tackles": 0,
+        "pass_rush": 0,
+        "pass_def": 3,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Charles Bowser",
+        "id": "LB-85",
+        "position": "LB",
+        "tackles": 2,
+        "pass_rush": 1,
+        "pass_def": -3,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Mark Brown",
+        "id": "LB-86",
+        "position": "LB",
+        "tackles": 3,
+        "pass_rush": 0,
+        "pass_def": 3,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Mike Charles",
+        "id": "DL-80",
+        "position": "DL",
+        "tackles": 3,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Steve Clark",
+        "id": "DL-81",
+        "position": "DL",
+        "tackles": 2,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Doug Betters",
+        "id": "DL-82",
+        "position": "DL",
+        "tackles": -3,
+        "pass_rush": 2
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Bob Baumhower",
+        "id": "DL-83",
+        "position": "DL",
+        "tackles": -2,
+        "pass_rush": 2
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Kim Bokamper",
+        "id": "DL-84",
+        "position": "DL",
+        "tackles": -1,
+        "pass_rush": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Ed Newman",
+        "id": "OL-116",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Jon Giesler",
+        "id": "OL-117",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Bob Kuechenberg",
+        "id": "OL-118",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 2
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Dwight Stephenson",
+        "id": "OL-119",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 2
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Eric Laasko",
+        "id": "OL-120",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Cleveland Green",
+        "id": "OL-121",
+        "position": "OL",
+        "blocks": 1,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Jeff Teows",
+        "id": "OL-122",
+        "position": "OL",
+        "blocks": -1,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Roy Foster",
+        "id": "OL-123",
+        "position": "OL",
+        "blocks": -2,
+        "pass_block": 0
+      }
+    },
+    {
+      "K": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Uwe von Schamann",
+        "id": "K-15",
+        "position": "K",
+        "field_goals": {
+          "stats": {
+            "26-35": "1-32",
+            "36-45": "1-22",
+            "18-25": "1-37",
+            "46-50": "1-12"
+          }
+        },
+        "over_fifty": "1-6",
+        "extra_points": "1-44",
+        "longest_fg": 52
+      }
+    },
+    {
+      "KR": {
+        "team": {
+          "name": "Miami",
+          "year": "1983"
+        },
+        "name": "Kick Return Unit",
+        "id": "KR-14",
+        "position": "KR",
+        "returners": [
+          {
+            "Actual": {
+              "name": "Fulton Walker",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 45,
+                    "fumble": false,
+                    "asterisk": true
+                  },
+                  {
+                    "yards": 42,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 34,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 32,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 29,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 28,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 27,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 25,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 19,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 17,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 14,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 12,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 78
+            }
+          },
+          {
+            "SameAs": 1
+          },
+          {
+            "SameAs": 1
+          },
+          {
+            "Actual": {
+              "name": "Mike Kozlowski",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 23,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 22,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 20,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 18,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 15,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 14,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 13,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 11,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 5,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 3,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 0,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 0,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 0
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

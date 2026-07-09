@@ -1,0 +1,3429 @@
+{
+  "team": {
+    "name": "Cleveland",
+    "year": "1983"
+  },
+  "players": [
+    {
+      "QB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Brian Sipe",
+        "id": "QB-10",
+        "position": "QB",
+        "endurance": "A",
+        "quick": {
+          "stats": {
+            "Interception": "48-48",
+            "Incomplete": "36-47",
+            "Complete": "1-35"
+          }
+        },
+        "short": {
+          "stats": {
+            "Complete": "1-27",
+            "Interception": "46-48",
+            "Incomplete": "28-45"
+          }
+        },
+        "long": {
+          "stats": {
+            "Complete": "1-16",
+            "Interception": "44-48",
+            "Incomplete": "17-43"
+          }
+        },
+        "long_run": "R",
+        "pass_rush": {
+          "stats": {
+            "Runs": "11-30",
+            "Incomplete": "43-48",
+            "Complete": "31-42",
+            "Sack": "1-10"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            "Sg",
+            {
+              "Val": 5
+            },
+            {
+              "Val": 4
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 1
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": -1
+            },
+            {
+              "Val": -2
+            },
+            {
+              "Val": -2
+            },
+            {
+              "Val": -3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "QB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Paul McDonald",
+        "id": "QB-11",
+        "position": "QB",
+        "endurance": "A",
+        "quick": {
+          "stats": {
+            "Incomplete": "32-47",
+            "Complete": "1-31",
+            "Interception": "48-48"
+          }
+        },
+        "short": {
+          "stats": {
+            "Interception": "46-48",
+            "Complete": "1-23",
+            "Incomplete": "24-45"
+          }
+        },
+        "long": {
+          "stats": {
+            "Incomplete": "16-42",
+            "Interception": "43-48",
+            "Complete": "1-15"
+          }
+        },
+        "long_run": "R",
+        "pass_rush": {
+          "stats": {
+            "Sack": "1-8",
+            "Runs": "9-30",
+            "Incomplete": "40-48",
+            "Complete": "31-39"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            "Sg",
+            {
+              "Val": 10
+            },
+            {
+              "Val": 9
+            },
+            {
+              "Val": 8
+            },
+            {
+              "Val": 7
+            },
+            {
+              "Val": 6
+            },
+            {
+              "Val": 5
+            },
+            {
+              "Val": 4
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": -1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Mike Pruitt",
+        "id": "RB-23",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 18
+                },
+                "S": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 12
+                },
+                "S": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 8
+                },
+                "Q": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "lg": "N",
+        "blocks": 2
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Boyce Green",
+        "id": "RB-24",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "L": {
+                  "Val": 33
+                },
+                "Q": "Lg",
+                "S": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 11
+                },
+                "L": {
+                  "Val": 32
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "L": {
+                  "Val": 21
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "S": {
+                  "Val": 8
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                },
+                "S": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                },
+                "S": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 3
+                },
+                "Q": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "lg": "N",
+        "blocks": 0
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Dwight Walker",
+        "id": "RB-25",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "L": {
+                  "Val": 35
+                },
+                "S": "Lg",
+                "Q": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 31
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 30
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "L": {
+                  "Val": 27
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "L": {
+                  "Val": 25
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "L": {
+                  "Val": 22
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 3
+                },
+                "Q": {
+                  "Val": 1
+                }
+              }
+            }
+          ]
+        },
+        "lg": "Q",
+        "blocks": -1
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Johnny Davis",
+        "id": "RB-26",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -3
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": -1
+                }
+              }
+            }
+          ]
+        },
+        "lg": "Q",
+        "blocks": 2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Dave Logan",
+        "id": "WR-24",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "Q": "Lg",
+                "L": {
+                  "Val": 34
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 17
+                },
+                "L": {
+                  "Val": 32
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 20
+                },
+                "L": {
+                  "Val": 31
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 19
+                },
+                "L": {
+                  "Val": 28
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 18
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 27
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 26
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 25
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 24
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 23
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 22
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -3
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Bobby Jones",
+        "id": "WR-25",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "S": "Lg",
+                "L": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 18
+                },
+                "Q": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 51
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 42
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 37
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 31
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 28
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 25
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 24
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 23
+                },
+                "S": {
+                  "Val": 11
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "L": {
+                  "Val": 22
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "L": {
+                  "Val": 21
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": "P",
+        "blocks": -2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Willis Adams",
+        "id": "WR-26",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -4
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "S": "Lg",
+                "L": {
+                  "Val": 59
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 19
+                },
+                "L": {
+                  "Val": 42
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 22
+                },
+                "Q": {
+                  "Val": 11
+                },
+                "L": {
+                  "Val": 34
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 20
+                },
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 19
+                },
+                "L": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 18
+                },
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 17
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": "R",
+        "blocks": -2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Ricky Feacher",
+        "id": "WR-27",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "S": "Lg",
+                "L": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 43
+                },
+                "Q": {
+                  "Val": 17
+                },
+                "S": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 20
+                },
+                "L": {
+                  "Val": 41
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 19
+                },
+                "L": {
+                  "Val": 32
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 24
+                },
+                "S": {
+                  "Val": 18
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 21
+                },
+                "S": {
+                  "Val": 17
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 11
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -3
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Rocky Belk",
+        "id": "WR-28",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "L": {
+                  "Val": 0
+                },
+                "S": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 28
+                },
+                "S": {
+                  "Val": 32
+                },
+                "L": {
+                  "Val": 45
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 37
+                },
+                "Q": {
+                  "Val": 15
+                },
+                "S": {
+                  "Val": 31
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 30
+                },
+                "Q": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 31
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 29
+                },
+                "L": {
+                  "Val": 35
+                },
+                "Q": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 14
+                },
+                "S": {
+                  "Val": 28
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 13
+                },
+                "S": {
+                  "Val": 27
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 13
+                },
+                "S": {
+                  "Val": 26
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 25
+                },
+                "Q": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 11
+                },
+                "S": {
+                  "Val": 24
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 11
+                },
+                "S": {
+                  "Val": 23
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 11
+                },
+                "S": {
+                  "Val": 22
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -1
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Ozzie Newsome",
+        "id": "TE-10",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "L": {
+                  "Val": 0
+                },
+                "Q": "Lg",
+                "S": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 58
+                },
+                "Q": {
+                  "Val": 11
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 55
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 47
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "Q": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 41
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 35
+                },
+                "S": {
+                  "Val": 11
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 10
+                },
+                "L": {
+                  "Val": 31
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "Q": {
+                  "Val": 4
+                },
+                "L": {
+                  "Val": 28
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 8
+                },
+                "Q": {
+                  "Val": 4
+                },
+                "L": {
+                  "Val": 27
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 24
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "L": {
+                  "Val": 21
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 5
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 2,
+        "long_rush": "N"
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Harry Holt",
+        "id": "TE-11",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -3
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "S": "Lg",
+                "L": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 19
+                },
+                "L": {
+                  "Val": 53
+                },
+                "Q": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 42
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "L": {
+                  "Val": 34
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 31
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 1,
+        "long_rush": "R"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Hanford Dixon",
+        "id": "DB-30",
+        "position": "DB",
+        "pass_def": -2,
+        "pass_rush": 0,
+        "intercepts": "45-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Larry Johnson",
+        "id": "DB-31",
+        "position": "DB",
+        "pass_def": 3,
+        "pass_rush": 0,
+        "intercepts": "46-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Lawrence Johnson",
+        "id": "DB-32",
+        "position": "DB",
+        "pass_def": 3,
+        "pass_rush": 0,
+        "intercepts": "46-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Rod Perry",
+        "id": "DB-33",
+        "position": "DB",
+        "pass_def": 4,
+        "pass_rush": 0,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Larry Braziel",
+        "id": "DB-34",
+        "position": "DB",
+        "pass_def": 2,
+        "pass_rush": 0,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Mike Whitwell",
+        "id": "DB-35",
+        "position": "DB",
+        "pass_def": 2,
+        "pass_rush": 0,
+        "intercepts": "45-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Clarence Scott",
+        "id": "DB-36",
+        "position": "DB",
+        "pass_def": -3,
+        "pass_rush": 0,
+        "intercepts": "46-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Clinton Burrell",
+        "id": "DB-37",
+        "position": "DB",
+        "pass_def": 3,
+        "pass_rush": 0,
+        "intercepts": "46-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Chip Banks",
+        "id": "LB-28",
+        "position": "LB",
+        "tackles": -2,
+        "pass_rush": 1,
+        "pass_def": -2,
+        "intercepts": "45-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Tom Cousineau",
+        "id": "LB-29",
+        "position": "LB",
+        "tackles": -2,
+        "pass_rush": 1,
+        "pass_def": 0,
+        "intercepts": "44-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Clay Matthews",
+        "id": "LB-30",
+        "position": "LB",
+        "tackles": -2,
+        "pass_rush": 1,
+        "pass_def": 2,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Scott Nicolas",
+        "id": "LB-31",
+        "position": "LB",
+        "tackles": -1,
+        "pass_rush": 0,
+        "pass_def": 3,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Curtis Weathers",
+        "id": "LB-32",
+        "position": "LB",
+        "tackles": 0,
+        "pass_rush": 0,
+        "pass_def": 3,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Dale Carver",
+        "id": "LB-33",
+        "position": "LB",
+        "tackles": 2,
+        "pass_rush": 0,
+        "pass_def": 4,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Keith Baldwin",
+        "id": "DL-30",
+        "position": "DL",
+        "tackles": 2,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Dave Puzzuoli",
+        "id": "DL-31",
+        "position": "DL",
+        "tackles": 1,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Bob Golic",
+        "id": "DL-32",
+        "position": "DL",
+        "tackles": -3,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Reggie Camp",
+        "id": "DL-33",
+        "position": "DL",
+        "tackles": -2,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Elvis Franks",
+        "id": "DL-34",
+        "position": "DL",
+        "tackles": -2,
+        "pass_rush": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Doug Dieken",
+        "id": "OL-43",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "J.Delamielleure",
+        "id": "OL-44",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Cody Riesen",
+        "id": "OL-45",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 2
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Mike Babb",
+        "id": "OL-46",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 2
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Robert Jackson",
+        "id": "OL-47",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Tom DeLeone",
+        "id": "OL-48",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Bill Contz",
+        "id": "OL-49",
+        "position": "OL",
+        "blocks": 1,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Tom Hopkins",
+        "id": "OL-50",
+        "position": "OL",
+        "blocks": 0,
+        "pass_block": 0
+      }
+    },
+    {
+      "K": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Matt Bahr",
+        "id": "K-5",
+        "position": "K",
+        "field_goals": {
+          "stats": {
+            "36-45": "1-23",
+            "46-50": "1-8",
+            "18-25": "1-45",
+            "26-35": "1-40"
+          }
+        },
+        "over_fifty": "1-1",
+        "extra_points": "1-46",
+        "longest_fg": 47
+      }
+    },
+    {
+      "KR": {
+        "team": {
+          "name": "Cleveland",
+          "year": "1983"
+        },
+        "name": "Kick Return Unit",
+        "id": "KR-5",
+        "position": "KR",
+        "returners": [
+          {
+            "Actual": {
+              "name": "Dwight Walker",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 38,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 37,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 29,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 27,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 24,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 23,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 22,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 20,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 14,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 12,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 9,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 7,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 0
+            }
+          },
+          {
+            "Actual": {
+              "name": "Boyce Green",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 30,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 29,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 28,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 26,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 23,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 22,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 21,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 19,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 13,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 11,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 8,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 6,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 0
+            }
+          },
+          {
+            "Actual": {
+              "name": "Dino Hall",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 28,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 27,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 26,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 25,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 24,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 23,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 22,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 10,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 14,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 12,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 9,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 7,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 0
+            }
+          },
+          {
+            "SameAs": 1
+          }
+        ]
+      }
+    }
+  ]
+}

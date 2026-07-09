@@ -1,0 +1,3296 @@
+{
+  "team": {
+    "name": "Kansas City",
+    "year": "1983"
+  },
+  "players": [
+    {
+      "QB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Bill Kenney",
+        "id": "QB-23",
+        "position": "QB",
+        "endurance": "A",
+        "quick": {
+          "stats": {
+            "Interception": "49-49",
+            "Incomplete": "36-48",
+            "Complete": "1-35"
+          }
+        },
+        "short": {
+          "stats": {
+            "Complete": "1-27",
+            "Interception": "48-48",
+            "Incomplete": "28-47"
+          }
+        },
+        "long": {
+          "stats": {
+            "Complete": "1-18",
+            "Incomplete": "19-45",
+            "Interception": "46-48"
+          }
+        },
+        "long_run": "R",
+        "pass_rush": {
+          "stats": {
+            "Complete": "31-42",
+            "Sack": "1-10",
+            "Runs": "11-30",
+            "Incomplete": "43-48"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            "Sg",
+            {
+              "Val": 6
+            },
+            {
+              "Val": 5
+            },
+            {
+              "Val": 4
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 1
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": -1
+            },
+            {
+              "Val": -2
+            },
+            {
+              "Val": -3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "QB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Todd Blackledge",
+        "id": "QB-24",
+        "position": "QB",
+        "endurance": "B",
+        "quick": {
+          "stats": {
+            "Incomplete": "36-48",
+            "Complete": "1-35",
+            "Interception": "49-49"
+          }
+        },
+        "short": {
+          "stats": {
+            "Interception": "49-49",
+            "Incomplete": "27-48",
+            "Complete": "1-26"
+          }
+        },
+        "long": {
+          "stats": {
+            "Incomplete": "20-48",
+            "Interception": "49-49",
+            "Complete": "1-19"
+          }
+        },
+        "long_run": "R",
+        "pass_rush": {
+          "stats": {
+            "Incomplete": "43-48",
+            "Runs": "12-30",
+            "Sack": "1-11",
+            "Complete": "31-42"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            "Sg",
+            {
+              "Val": 4
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 1
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": -1
+            },
+            {
+              "Val": -2
+            },
+            {
+              "Val": -3
+            },
+            {
+              "Val": -4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Billy Jackson",
+        "id": "RB-51",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "L": {
+                  "Val": 29
+                },
+                "Q": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 28
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 27
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 27
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 26
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 26
+                },
+                "S": {
+                  "Val": 11
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "L": {
+                  "Val": 25
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 24
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 23
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 22
+                },
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                },
+                "S": {
+                  "Val": 4
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": -1
+                },
+                "S": {
+                  "Val": 3
+                }
+              }
+            }
+          ]
+        },
+        "lg": "P",
+        "blocks": 0
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Theotis Brown",
+        "id": "RB-52",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "L": {
+                  "Val": 53
+                },
+                "Q": "Lg",
+                "S": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 37
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 34
+                },
+                "S": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 33
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 31
+                },
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 28
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 27
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "L": {
+                  "Val": 26
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 2
+                },
+                "L": {
+                  "Val": 24
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "Q": {
+                  "Val": 1
+                },
+                "L": {
+                  "Val": 22
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 8
+                },
+                "Q": {
+                  "Val": 0
+                },
+                "L": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                },
+                "L": {
+                  "Val": 20
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            }
+          ]
+        },
+        "lg": "J",
+        "blocks": 1
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Jewerl Thomas",
+        "id": "RB-53",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -3
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                }
+              }
+            }
+          ]
+        },
+        "lg": "R",
+        "blocks": -1
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Ken Thomas",
+        "id": "RB-54",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 25
+                },
+                "S": {
+                  "Val": 25
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 5
+                },
+                "Q": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "lg": "N",
+        "blocks": -1
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Lawrence Ricks",
+        "id": "RB-55",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -5
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "lg": "R",
+        "blocks": 2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Carlos Carson",
+        "id": "WR-50",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "L": {
+                  "Val": 50
+                },
+                "Q": "Lg",
+                "S": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 18
+                },
+                "L": {
+                  "Val": 43
+                },
+                "S": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 41
+                },
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 19
+                },
+                "L": {
+                  "Val": 38
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 18
+                },
+                "L": {
+                  "Val": 36
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 32
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 30
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 28
+                },
+                "S": {
+                  "Val": 15
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 26
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 25
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": "P",
+        "blocks": -3
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Henry Marshall",
+        "id": "WR-51",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "L": {
+                  "Val": 52
+                },
+                "S": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 43
+                },
+                "Q": {
+                  "Val": 16
+                },
+                "S": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 19
+                },
+                "L": {
+                  "Val": 38
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 34
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 33
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 30
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 29
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 27
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 24
+                },
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                },
+                "L": {
+                  "Val": 22
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -3
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Stephon Paige",
+        "id": "WR-52",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "Q": "Lg",
+                "L": {
+                  "Val": 43
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 22
+                },
+                "L": {
+                  "Val": 35
+                },
+                "Q": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "L": {
+                  "Val": 33
+                },
+                "S": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 32
+                },
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 30
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "L": {
+                  "Val": 28
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 26
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 24
+                },
+                "S": {
+                  "Val": 15
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "S": {
+                  "Val": 12
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -4
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Anthony Hancock",
+        "id": "WR-53",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "S": "Lg",
+                "L": {
+                  "Val": 50
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 20
+                },
+                "L": {
+                  "Val": 42
+                },
+                "Q": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 19
+                },
+                "L": {
+                  "Val": 38
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 18
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 37
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 36
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 34
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 32
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 29
+                },
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 26
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -3
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Willie Scott",
+        "id": "TE-23",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                },
+                "S": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                },
+                "S": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                },
+                "S": {
+                  "Val": 3
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 0,
+        "long_rush": "N"
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Ed Beckman",
+        "id": "TE-24",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 20
+                },
+                "S": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 6
+                },
+                "Q": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                },
+                "S": {
+                  "Val": 5
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 1,
+        "long_rush": "N"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Gary Green",
+        "id": "DB-70",
+        "position": "DB",
+        "pass_def": -2,
+        "pass_rush": 0,
+        "intercepts": "42-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Albert Lewis",
+        "id": "DB-71",
+        "position": "DB",
+        "pass_def": 1,
+        "pass_rush": 0,
+        "intercepts": "44-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Lucious Smith",
+        "id": "DB-72",
+        "position": "DB",
+        "pass_def": -3,
+        "pass_rush": 0,
+        "intercepts": "45-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Deron Cherry",
+        "id": "DB-73",
+        "position": "DB",
+        "pass_def": 0,
+        "pass_rush": 0,
+        "intercepts": "41-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Lloyd Burruss",
+        "id": "DB-74",
+        "position": "DB",
+        "pass_def": -3,
+        "pass_rush": 0,
+        "intercepts": "44-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Dur Rocquemore",
+        "id": "DB-75",
+        "position": "DB",
+        "pass_def": 2,
+        "pass_rush": 0,
+        "intercepts": "44-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Charles Jackson",
+        "id": "LB-62",
+        "position": "LB",
+        "tackles": -3,
+        "pass_rush": 1,
+        "pass_def": 2,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Jerry Blanton",
+        "id": "LB-63",
+        "position": "LB",
+        "tackles": -2,
+        "pass_rush": 0,
+        "pass_def": 0,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Thomas Howard",
+        "id": "LB-64",
+        "position": "LB",
+        "tackles": -1,
+        "pass_rush": 0,
+        "pass_def": 3,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Gary Spani",
+        "id": "LB-65",
+        "position": "LB",
+        "tackles": 0,
+        "pass_rush": 1,
+        "pass_def": -1,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Calvin Daniels",
+        "id": "LB-66",
+        "position": "LB",
+        "tackles": 1,
+        "pass_rush": 0,
+        "pass_def": 2,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "John Zamberlin",
+        "id": "LB-67",
+        "position": "LB",
+        "tackles": 3,
+        "pass_rush": 0,
+        "pass_def": 0,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Steve Potter",
+        "id": "LB-68",
+        "position": "LB",
+        "tackles": 3,
+        "pass_rush": 0,
+        "pass_def": 3,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Dave Lindstrom",
+        "id": "DL-64",
+        "position": "DL",
+        "tackles": 2,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Ken Kremer",
+        "id": "DL-65",
+        "position": "DL",
+        "tackles": 1,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Art Still",
+        "id": "DL-66",
+        "position": "DL",
+        "tackles": -3,
+        "pass_rush": 1
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Mike Bell",
+        "id": "DL-67",
+        "position": "DL",
+        "tackles": -2,
+        "pass_rush": 2
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Dino Mangiero",
+        "id": "DL-68",
+        "position": "DL",
+        "tackles": -2,
+        "pass_rush": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Tom Condon",
+        "id": "OL-92",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 2
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Bob Simmons",
+        "id": "OL-93",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "David Lutz",
+        "id": "OL-94",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Matt Herkenhoff",
+        "id": "OL-95",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Bob Rush",
+        "id": "OL-96",
+        "position": "OL",
+        "blocks": 1,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Jim Rourke",
+        "id": "OL-97",
+        "position": "OL",
+        "blocks": -1,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Adam Lingner",
+        "id": "OL-98",
+        "position": "OL",
+        "blocks": -2,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Ellis Gardner",
+        "id": "OL-99",
+        "position": "OL",
+        "blocks": -2,
+        "pass_block": 0
+      }
+    },
+    {
+      "K": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Nick Lowery",
+        "id": "K-11",
+        "position": "K",
+        "field_goals": {
+          "stats": {
+            "36-45": "1-28",
+            "46-50": "1-18",
+            "18-25": "1-43",
+            "26-35": "1-38"
+          }
+        },
+        "over_fifty": "1-15",
+        "extra_points": "1-46",
+        "longest_fg": 58
+      }
+    },
+    {
+      "KR": {
+        "team": {
+          "name": "Kansas City",
+          "year": "1983"
+        },
+        "name": "Kick Return Unit",
+        "id": "KR-11",
+        "position": "KR",
+        "returners": [
+          {
+            "Actual": {
+              "name": "Anthony Hancock",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 33,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 32,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 25,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 23,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 20,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 19,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 18,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 16,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 10,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 8,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 5,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 3,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 0
+            }
+          },
+          {
+            "SameAs": 1
+          },
+          {
+            "Actual": {
+              "name": "Theotis Brown",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 46,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 35,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 27,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 25,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 22,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 21,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 20,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 18,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 12,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 10,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 7,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 5,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 0
+            }
+          },
+          {
+            "SameAs": 3
+          }
+        ]
+      }
+    }
+  ]
+}

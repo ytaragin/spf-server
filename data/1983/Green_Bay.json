@@ -1,0 +1,3244 @@
+{
+  "team": {
+    "name": "Green Bay",
+    "year": "1983"
+  },
+  "players": [
+    {
+      "QB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Lynn Dickey",
+        "id": "QB-19",
+        "position": "QB",
+        "endurance": "A",
+        "quick": {
+          "stats": {
+            "Complete": "1-37",
+            "Incomplete": "38-47",
+            "Interception": "48-48"
+          }
+        },
+        "short": {
+          "stats": {
+            "Interception": "46-48",
+            "Complete": "1-29",
+            "Incomplete": "30-45"
+          }
+        },
+        "long": {
+          "stats": {
+            "Interception": "43-48",
+            "Complete": "1-15",
+            "Incomplete": "16-42"
+          }
+        },
+        "long_run": "R",
+        "pass_rush": {
+          "stats": {
+            "Complete": "31-42",
+            "Runs": "13-30",
+            "Sack": "1-12",
+            "Incomplete": "43-48"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            "Sg",
+            {
+              "Val": 4
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 1
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": -1
+            },
+            {
+              "Val": -2
+            },
+            {
+              "Val": -3
+            },
+            {
+              "Val": -4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "QB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "David Whitehurst",
+        "id": "QB-20",
+        "position": "QB",
+        "endurance": "B",
+        "quick": {
+          "stats": {
+            "Complete": "1-33",
+            "Interception": "47-48",
+            "Incomplete": "34-46"
+          }
+        },
+        "short": {
+          "stats": {
+            "Complete": "1-25",
+            "Incomplete": "26-44",
+            "Interception": "45-48"
+          }
+        },
+        "long": {
+          "stats": {
+            "Interception": "42-48",
+            "Complete": "1-14",
+            "Incomplete": "15-41"
+          }
+        },
+        "long_run": "R",
+        "pass_rush": {
+          "stats": {
+            "Incomplete": "42-48",
+            "Sack": "1-10",
+            "Runs": "11-30",
+            "Complete": "31-40"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            "Sg",
+            {
+              "Val": 5
+            },
+            {
+              "Val": 4
+            },
+            {
+              "Val": 4
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": -1
+            },
+            {
+              "Val": -1
+            },
+            {
+              "Val": -2
+            },
+            {
+              "Val": -2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Gerry Ellis",
+        "id": "RB-42",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "Q": "Lg",
+                "L": {
+                  "Val": 56
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 12
+                },
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 51
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 41
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 30
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 28
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 27
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 26
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 25
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 23
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 22
+                },
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 21
+                },
+                "S": {
+                  "Val": 7
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            }
+          ]
+        },
+        "lg": "F",
+        "blocks": 0
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Eddie Lee Ivery",
+        "id": "RB-43",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "Q": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 11
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 5
+                },
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 4
+                }
+              }
+            }
+          ]
+        },
+        "lg": "P",
+        "blocks": -2
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Harlan Huckleby",
+        "id": "RB-44",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": -1
+                }
+              }
+            }
+          ]
+        },
+        "lg": "P",
+        "blocks": -2
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Jessie Clark",
+        "id": "RB-45",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 19
+                },
+                "Q": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                }
+              }
+            }
+          ]
+        },
+        "lg": "K",
+        "blocks": 1
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Mike Meade",
+        "id": "RB-46",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "lg": "Q",
+        "blocks": 1
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "John Jefferson",
+        "id": "WR-41",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "Q": "Lg",
+                "L": {
+                  "Val": 36
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "L": {
+                  "Val": 35
+                },
+                "S": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 34
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 33
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 32
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 26
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 24
+                },
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "Q": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 23
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 11
+                },
+                "L": {
+                  "Val": 22
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": "M",
+        "blocks": -2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "James Lofton",
+        "id": "WR-42",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "Q": "Lg",
+                "L": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 74
+                },
+                "Q": {
+                  "Val": 13
+                },
+                "S": {
+                  "Val": 26
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 12
+                },
+                "S": {
+                  "Val": 25
+                },
+                "L": {
+                  "Val": 63
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 53
+                },
+                "S": {
+                  "Val": 24
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 47
+                },
+                "S": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 22
+                },
+                "Q": {
+                  "Val": 11
+                },
+                "L": {
+                  "Val": 41
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 38
+                },
+                "S": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 20
+                },
+                "L": {
+                  "Val": 36
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 18
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 26
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 25
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 20
+                },
+                "S": {
+                  "Val": 16
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": "B",
+        "blocks": -2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Phillip Epps",
+        "id": "WR-43",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "S": "Lg",
+                "L": {
+                  "Val": 45
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 43
+                },
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 20
+                },
+                "L": {
+                  "Val": 41
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 36
+                },
+                "S": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 18
+                },
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 17
+                },
+                "L": {
+                  "Val": 25
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -3
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Ron Cassidy",
+        "id": "WR-44",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 12
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 11
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 7
+                },
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 6
+                },
+                "Q": {
+                  "Val": 3
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -2
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Paul Coffman",
+        "id": "TE-18",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "L": {
+                  "Val": 36
+                },
+                "Q": "Lg",
+                "S": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 15
+                },
+                "S": {
+                  "Val": 19
+                },
+                "L": {
+                  "Val": 35
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 34
+                },
+                "S": {
+                  "Val": 18
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "L": {
+                  "Val": 32
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 31
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 30
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 28
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 26
+                },
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 22
+                },
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 3,
+        "long_rush": "N"
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Gary Lewis",
+        "id": "TE-19",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "L": {
+                  "Val": 47
+                },
+                "S": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 23
+                },
+                "L": {
+                  "Val": 41
+                },
+                "Q": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 36
+                },
+                "Q": {
+                  "Val": 11
+                },
+                "S": {
+                  "Val": 22
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 21
+                },
+                "L": {
+                  "Val": 30
+                },
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 20
+                },
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 21
+                },
+                "S": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 2,
+        "long_rush": "N"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Estus Hood",
+        "id": "DB-58",
+        "position": "DB",
+        "pass_def": 2,
+        "pass_rush": 0,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Tim Lewis",
+        "id": "DB-59",
+        "position": "DB",
+        "pass_def": 0,
+        "pass_rush": 0,
+        "intercepts": "43-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Mark lee",
+        "id": "DB-60",
+        "position": "DB",
+        "pass_def": -1,
+        "pass_rush": 0,
+        "intercepts": "44-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Mike Jolly",
+        "id": "DB-61",
+        "position": "DB",
+        "pass_def": 3,
+        "pass_rush": 0,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Johnnie Gray",
+        "id": "DB-62",
+        "position": "DB",
+        "pass_def": 2,
+        "pass_rush": 0,
+        "intercepts": "46-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Mark Murphy",
+        "id": "DB-63",
+        "position": "DB",
+        "pass_def": 1,
+        "pass_rush": 0,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "George Cumby",
+        "id": "LB-50",
+        "position": "LB",
+        "tackles": -3,
+        "pass_rush": 0,
+        "pass_def": 2,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Mike Douglass",
+        "id": "LB-51",
+        "position": "LB",
+        "tackles": -2,
+        "pass_rush": 1,
+        "pass_def": -2,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "John Anderson",
+        "id": "LB-52",
+        "position": "LB",
+        "tackles": -1,
+        "pass_rush": 1,
+        "pass_def": -3,
+        "intercepts": "43-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Randy Scott",
+        "id": "LB-53",
+        "position": "LB",
+        "tackles": 0,
+        "pass_rush": 0,
+        "pass_def": 2,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Guy Prather",
+        "id": "LB-54",
+        "position": "LB",
+        "tackles": 2,
+        "pass_rush": 0,
+        "pass_def": 3,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Jim Laughlin",
+        "id": "LB-55",
+        "position": "LB",
+        "tackles": 2,
+        "pass_rush": 1,
+        "pass_def": 3,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Daryle Skaugstad",
+        "id": "DL-53",
+        "position": "DL",
+        "tackles": 2,
+        "pass_rush": 1
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Ron Spears",
+        "id": "DL-54",
+        "position": "DL",
+        "tackles": 1,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Ezra Johnson",
+        "id": "DL-55",
+        "position": "DL",
+        "tackles": -2,
+        "pass_rush": 2
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Charlie Johnson",
+        "id": "DL-56",
+        "position": "DL",
+        "tackles": -2,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Byron Braggs",
+        "id": "DL-57",
+        "position": "DL",
+        "tackles": -1,
+        "pass_rush": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Greg Koch",
+        "id": "OL-75",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Karl Swankle",
+        "id": "OL-76",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Larry McCracken",
+        "id": "OL-77",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Dave Dreschler",
+        "id": "OL-78",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Ron Hallstrom",
+        "id": "OL-79",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Syd Kitson",
+        "id": "OL-80",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Larry Rubens",
+        "id": "OL-81",
+        "position": "OL",
+        "blocks": 1,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Tim Huffman",
+        "id": "OL-82",
+        "position": "OL",
+        "blocks": 1,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Charlie Getty",
+        "id": "OL-83",
+        "position": "OL",
+        "blocks": 0,
+        "pass_block": 2
+      }
+    },
+    {
+      "K": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Jan Stenerud",
+        "id": "K-9",
+        "position": "K",
+        "field_goals": {
+          "stats": {
+            "18-25": "1-43",
+            "36-45": "1-28",
+            "46-50": "1-17",
+            "26-35": "1-38"
+          }
+        },
+        "over_fifty": "1-5",
+        "extra_points": "1-48",
+        "longest_fg": 48
+      }
+    },
+    {
+      "KR": {
+        "team": {
+          "name": "Green Bay",
+          "year": "1983"
+        },
+        "name": "Kick Return Unit",
+        "id": "KR-9",
+        "position": "KR",
+        "returners": [
+          {
+            "Actual": {
+              "name": "Harlan Huckleby",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 37,
+                    "fumble": false,
+                    "asterisk": true
+                  },
+                  {
+                    "yards": 34,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 26,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 24,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 21,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 20,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 19,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 17,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 11,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 9,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 6,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 4,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 57
+            }
+          },
+          {
+            "SameAs": 1
+          },
+          {
+            "Actual": {
+              "name": "Tim Lewis",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 30,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 29,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 25,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 23,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 20,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 19,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 18,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 16,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 10,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 8,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 5,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 3,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 0
+            }
+          },
+          {
+            "SameAs": 3
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,3030 @@
+{
+  "team": {
+    "name": "New England",
+    "year": "1983"
+  },
+  "players": [
+    {
+      "QB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Steve Grogan",
+        "id": "QB-41",
+        "position": "QB",
+        "endurance": "A",
+        "quick": {
+          "stats": {
+            "Incomplete": "32-47",
+            "Interception": "48-48",
+            "Complete": "1-31"
+          }
+        },
+        "short": {
+          "stats": {
+            "Incomplete": "24-45",
+            "Complete": "1-23",
+            "Interception": "46-48"
+          }
+        },
+        "long": {
+          "stats": {
+            "Complete": "1-15",
+            "Interception": "44-48",
+            "Incomplete": "16-43"
+          }
+        },
+        "long_run": "Q",
+        "pass_rush": {
+          "stats": {
+            "Complete": "31-40",
+            "Runs": "11-30",
+            "Sack": "1-10",
+            "Incomplete": "41-48"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            "Sg",
+            {
+              "Val": 9
+            },
+            {
+              "Val": 8
+            },
+            {
+              "Val": 7
+            },
+            {
+              "Val": 6
+            },
+            {
+              "Val": 5
+            },
+            {
+              "Val": 4
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 1
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": -1
+            },
+            {
+              "Val": -1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "QB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Tony Eason",
+        "id": "QB-42",
+        "position": "QB",
+        "endurance": "A",
+        "quick": {
+          "stats": {
+            "Incomplete": "35-47",
+            "Interception": "48-48",
+            "Complete": "1-34"
+          }
+        },
+        "short": {
+          "stats": {
+            "Interception": "47-48",
+            "Complete": "1-26",
+            "Incomplete": "27-46"
+          }
+        },
+        "long": {
+          "stats": {
+            "Complete": "1-18",
+            "Interception": "45-48",
+            "Incomplete": "19-44"
+          }
+        },
+        "long_run": "R",
+        "pass_rush": {
+          "stats": {
+            "Sack": "1-15",
+            "Complete": "31-41",
+            "Runs": "16-30",
+            "Incomplete": "42-48"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            "Sg",
+            {
+              "Val": 5
+            },
+            {
+              "Val": 4
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 1
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": -1
+            },
+            {
+              "Val": -2
+            },
+            {
+              "Val": -2
+            },
+            {
+              "Val": -3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "QB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Mike Kerrigan",
+        "id": "QB-43",
+        "position": "QB",
+        "endurance": "B",
+        "quick": {
+          "stats": {
+            "Incomplete": "31-46",
+            "Complete": "1-30",
+            "Interception": "47-48"
+          }
+        },
+        "short": {
+          "stats": {
+            "Complete": "1-21",
+            "Incomplete": "22-44",
+            "Interception": "45-48"
+          }
+        },
+        "long": {
+          "stats": {
+            "Interception": "42-48",
+            "Complete": "1-13",
+            "Incomplete": "14-41"
+          }
+        },
+        "long_run": "R",
+        "pass_rush": {
+          "stats": {
+            "Complete": "31-38",
+            "Sack": "1-18",
+            "Runs": "19-30",
+            "Incomplete": "39-48"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            "Sg",
+            {
+              "Val": 16
+            },
+            {
+              "Val": 15
+            },
+            {
+              "Val": 14
+            },
+            {
+              "Val": 13
+            },
+            {
+              "Val": 12
+            },
+            {
+              "Val": 9
+            },
+            {
+              "Val": 7
+            },
+            {
+              "Val": 6
+            },
+            {
+              "Val": 5
+            },
+            {
+              "Val": 4
+            },
+            {
+              "Val": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Tony Collins",
+        "id": "RB-84",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 11
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 8
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 4
+                }
+              }
+            }
+          ]
+        },
+        "lg": "G",
+        "blocks": -1
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Mosi Tatupu",
+        "id": "RB-85",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "Q": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 11
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 8
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 4
+                }
+              }
+            }
+          ]
+        },
+        "lg": "I",
+        "blocks": 1
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Mark van Eeghen",
+        "id": "RB-86",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 23
+                },
+                "S": {
+                  "Val": 23
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 8
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 6
+                },
+                "Q": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 4
+                }
+              }
+            }
+          ]
+        },
+        "lg": "R",
+        "blocks": 2
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Robert Weathers",
+        "id": "RB-87",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": {
+                  "Val": 19
+                },
+                "Q": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 4
+                },
+                "Q": {
+                  "Val": 2
+                }
+              }
+            }
+          ]
+        },
+        "lg": "D",
+        "blocks": -2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Stanley Morgan",
+        "id": "WR-72",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "L": {
+                  "Val": 0
+                },
+                "Q": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 65
+                },
+                "Q": {
+                  "Val": 15
+                },
+                "S": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 53
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 17
+                },
+                "L": {
+                  "Val": 46
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 41
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 38
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 34
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 26
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 11
+                },
+                "L": {
+                  "Val": 23
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "L": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": "Q",
+        "blocks": -1
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Stephen Starring",
+        "id": "WR-73",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "L": {
+                  "Val": 0
+                },
+                "S": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 43
+                },
+                "Q": {
+                  "Val": 23
+                },
+                "S": {
+                  "Val": 27
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 26
+                },
+                "L": {
+                  "Val": 32
+                },
+                "Q": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 28
+                },
+                "S": {
+                  "Val": 25
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 24
+                },
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 11
+                },
+                "S": {
+                  "Val": 23
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 22
+                },
+                "Q": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 19
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 18
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Clarence Weathers",
+        "id": "WR-74",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "L": {
+                  "Val": 39
+                },
+                "Q": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 14
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 29
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 27
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 25
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": "N",
+        "blocks": -2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Cedric Jones",
+        "id": "WR-75",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "L": {
+                  "Val": 30
+                },
+                "Q": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 16
+                },
+                "S": {
+                  "Val": 20
+                },
+                "L": {
+                  "Val": 28
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 19
+                },
+                "L": {
+                  "Val": 26
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 18
+                },
+                "L": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 20
+                },
+                "S": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -3
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Derrick Ramsey",
+        "id": "TE-40",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 19
+                },
+                "S": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 14
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 2,
+        "long_rush": "N"
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Lin Dawson",
+        "id": "TE-41",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 2,
+        "long_rush": "N"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Ronnie Lippett",
+        "id": "DB-115",
+        "position": "DB",
+        "pass_def": 1,
+        "pass_rush": 0,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Raymond Clayborn",
+        "id": "DB-116",
+        "position": "DB",
+        "pass_def": 2,
+        "pass_rush": 0,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Fre Marion",
+        "id": "DB-117",
+        "position": "DB",
+        "pass_def": -1,
+        "pass_rush": 0,
+        "intercepts": "46-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Fred Marion",
+        "id": "DB-118",
+        "position": "DB",
+        "pass_def": -1,
+        "pass_rush": 0,
+        "intercepts": "46-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Keith Lee",
+        "id": "DB-119",
+        "position": "DB",
+        "pass_def": 2,
+        "pass_rush": 0,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Rick Sanford",
+        "id": "DB-120",
+        "position": "DB",
+        "pass_def": -5,
+        "pass_rush": 0,
+        "intercepts": "41-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Roland James",
+        "id": "DB-121",
+        "position": "DB",
+        "pass_def": -3,
+        "pass_rush": 0,
+        "intercepts": "43-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Steve Nelson",
+        "id": "LB-104",
+        "position": "LB",
+        "tackles": -3,
+        "pass_rush": 0,
+        "pass_def": 0,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Larry McGrew",
+        "id": "LB-105",
+        "position": "LB",
+        "tackles": -2,
+        "pass_rush": 0,
+        "pass_def": 3,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Don Blackmon",
+        "id": "LB-106",
+        "position": "LB",
+        "tackles": -1,
+        "pass_rush": 1,
+        "pass_def": -2,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Clayton Weishuhn",
+        "id": "LB-107",
+        "position": "LB",
+        "tackles": -1,
+        "pass_rush": 1,
+        "pass_def": 1,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Johnny Rembert",
+        "id": "LB-108",
+        "position": "LB",
+        "tackles": 1,
+        "pass_rush": 0,
+        "pass_def": 3,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Andre Tippett",
+        "id": "LB-109",
+        "position": "LB",
+        "tackles": 2,
+        "pass_rush": 2,
+        "pass_def": 0,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Lester Williams",
+        "id": "DL-101",
+        "position": "DL",
+        "tackles": 2,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Kenneth Sims",
+        "id": "DL-102",
+        "position": "DL",
+        "tackles": 0,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Julius Adams",
+        "id": "DL-103",
+        "position": "DL",
+        "tackles": -3,
+        "pass_rush": 2
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Dennis Owens",
+        "id": "DL-104",
+        "position": "DL",
+        "tackles": -2,
+        "pass_rush": 1
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Toby Williamson",
+        "id": "DL-105",
+        "position": "DL",
+        "tackles": -2,
+        "pass_rush": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "John Hannah",
+        "id": "OL-148",
+        "position": "OL",
+        "blocks": 4,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Ron Wooten",
+        "id": "OL-149",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Bob Cryder",
+        "id": "OL-150",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Brian Holloway",
+        "id": "OL-151",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Pete Brock",
+        "id": "OL-152",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Darryl Haley",
+        "id": "OL-153",
+        "position": "OL",
+        "blocks": 1,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Steve Moore",
+        "id": "OL-154",
+        "position": "OL",
+        "blocks": 0,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Dwight Wheeler",
+        "id": "OL-155",
+        "position": "OL",
+        "blocks": -1,
+        "pass_block": 1
+      }
+    },
+    {
+      "K": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Fred Steinfort",
+        "id": "K-19",
+        "position": "K",
+        "field_goals": {
+          "stats": {
+            "18-25": "1-26",
+            "26-35": "1-21",
+            "46-50": "1-1",
+            "36-45": "1-3"
+          }
+        },
+        "over_fifty": "1-1",
+        "extra_points": "1-45",
+        "longest_fg": 0
+      }
+    },
+    {
+      "K": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "John Smith",
+        "id": "K-20",
+        "position": "K",
+        "field_goals": {
+          "stats": {
+            "26-35": "1-24",
+            "36-45": "1-14",
+            "18-25": "1-29",
+            "46-50": "1-1"
+          }
+        },
+        "over_fifty": "1-1",
+        "extra_points": "1-38",
+        "longest_fg": 43
+      }
+    },
+    {
+      "KR": {
+        "team": {
+          "name": "New England",
+          "year": "1983"
+        },
+        "name": "Kick Return Unit",
+        "id": "KR-16",
+        "position": "KR",
+        "returners": [
+          {
+            "Actual": {
+              "name": "Ricky Smith",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 40,
+                    "fumble": false,
+                    "asterisk": true
+                  },
+                  {
+                    "yards": 37,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 29,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 27,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 24,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 23,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 22,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 20,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 14,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 12,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 9,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 7,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 53
+            }
+          },
+          {
+            "SameAs": 1
+          },
+          {
+            "SameAs": 1
+          },
+          {
+            "SameAs": 1
+          }
+        ]
+      }
+    }
+  ]
+}

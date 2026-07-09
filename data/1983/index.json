@@ -1,0 +1,146 @@
+{
+  "year": "1983",
+  "format_version": 1,
+  "teams": [
+    {
+      "name": "Atlanta",
+      "year": "1983",
+      "file": "Atlanta.json"
+    },
+    {
+      "name": "Baltimore",
+      "year": "1983",
+      "file": "Baltimore.json"
+    },
+    {
+      "name": "Buffalo",
+      "year": "1983",
+      "file": "Buffalo.json"
+    },
+    {
+      "name": "Chicago",
+      "year": "1983",
+      "file": "Chicago.json"
+    },
+    {
+      "name": "Cincinnati",
+      "year": "1983",
+      "file": "Cincinnati.json"
+    },
+    {
+      "name": "Cleveland",
+      "year": "1983",
+      "file": "Cleveland.json"
+    },
+    {
+      "name": "Dallas",
+      "year": "1983",
+      "file": "Dallas.json"
+    },
+    {
+      "name": "Denver",
+      "year": "1983",
+      "file": "Denver.json"
+    },
+    {
+      "name": "Detroit",
+      "year": "1983",
+      "file": "Detroit.json"
+    },
+    {
+      "name": "Green Bay",
+      "year": "1983",
+      "file": "Green_Bay.json"
+    },
+    {
+      "name": "Houston",
+      "year": "1983",
+      "file": "Houston.json"
+    },
+    {
+      "name": "Kansas City",
+      "year": "1983",
+      "file": "Kansas_City.json"
+    },
+    {
+      "name": "L.A. Raiders",
+      "year": "1983",
+      "file": "L.A._Raiders.json"
+    },
+    {
+      "name": "L.A. Rams",
+      "year": "1983",
+      "file": "L.A._Rams.json"
+    },
+    {
+      "name": "Miami",
+      "year": "1983",
+      "file": "Miami.json"
+    },
+    {
+      "name": "Minnesota",
+      "year": "1983",
+      "file": "Minnesota.json"
+    },
+    {
+      "name": "N.Y. Giants",
+      "year": "1983",
+      "file": "N.Y._Giants.json"
+    },
+    {
+      "name": "N.Y. Jets",
+      "year": "1983",
+      "file": "N.Y._Jets.json"
+    },
+    {
+      "name": "New England",
+      "year": "1983",
+      "file": "New_England.json"
+    },
+    {
+      "name": "New Orleans",
+      "year": "1983",
+      "file": "New_Orleans.json"
+    },
+    {
+      "name": "Philadelphia",
+      "year": "1983",
+      "file": "Philadelphia.json"
+    },
+    {
+      "name": "Pittsburgh",
+      "year": "1983",
+      "file": "Pittsburgh.json"
+    },
+    {
+      "name": "San Diego",
+      "year": "1983",
+      "file": "San_Diego.json"
+    },
+    {
+      "name": "San Francisco",
+      "year": "1983",
+      "file": "San_Francisco.json"
+    },
+    {
+      "name": "Seattle",
+      "year": "1983",
+      "file": "Seattle.json"
+    },
+    {
+      "name": "St. Louis",
+      "year": "1983",
+      "file": "St._Louis.json"
+    },
+    {
+      "name": "Tampa Bay",
+      "year": "1983",
+      "file": "Tampa_Bay.json"
+    },
+    {
+      "name": "Washington",
+      "year": "1983",
+      "file": "Washington.json"
+    }
+  ]
+}

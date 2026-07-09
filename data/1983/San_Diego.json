@@ -1,0 +1,3411 @@
+{
+  "team": {
+    "name": "San Diego",
+    "year": "1983"
+  },
+  "players": [
+    {
+      "QB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Dan Fouts",
+        "id": "QB-51",
+        "position": "QB",
+        "endurance": "A",
+        "quick": {
+          "stats": {
+            "Interception": "48-48",
+            "Incomplete": "40-47",
+            "Complete": "1-39"
+          }
+        },
+        "short": {
+          "stats": {
+            "Incomplete": "32-46",
+            "Interception": "47-48",
+            "Complete": "1-31"
+          }
+        },
+        "long": {
+          "stats": {
+            "Interception": "45-48",
+            "Incomplete": "22-44",
+            "Complete": "1-21"
+          }
+        },
+        "long_run": "R",
+        "pass_rush": {
+          "stats": {
+            "Runs": "9-30",
+            "Complete": "31-43",
+            "Sack": "1-8",
+            "Incomplete": "44-48"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            {
+              "Val": 5
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 1
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": -1
+            },
+            {
+              "Val": -2
+            },
+            {
+              "Val": -3
+            },
+            {
+              "Val": -4
+            },
+            {
+              "Val": -5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "QB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Ed Luther",
+        "id": "QB-52",
+        "position": "QB",
+        "endurance": "B",
+        "quick": {
+          "stats": {
+            "Interception": "48-48",
+            "Complete": "1-33",
+            "Incomplete": "34-47"
+          }
+        },
+        "short": {
+          "stats": {
+            "Incomplete": "26-45",
+            "Complete": "1-25",
+            "Interception": "46-48"
+          }
+        },
+        "long": {
+          "stats": {
+            "Interception": "43-48",
+            "Complete": "1-14",
+            "Incomplete": "15-42"
+          }
+        },
+        "long_run": "R",
+        "pass_rush": {
+          "stats": {
+            "Sack": "1-6",
+            "Runs": "7-30",
+            "Complete": "31-40",
+            "Incomplete": "41-48"
+          }
+        },
+        "endurance_rushing": 4,
+        "rushing": {
+          "stats": [
+            {
+              "Val": 5
+            },
+            {
+              "Val": 3
+            },
+            {
+              "Val": 2
+            },
+            {
+              "Val": 1
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": 0
+            },
+            {
+              "Val": -1
+            },
+            {
+              "Val": -2
+            },
+            {
+              "Val": -3
+            },
+            {
+              "Val": -4
+            },
+            {
+              "Val": -5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Chuck Muncie",
+        "id": "RB-103",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": {
+                  "Val": 27
+                },
+                "Q": {
+                  "Val": 27
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 13
+                },
+                "S": {
+                  "Val": 23
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 19
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 6
+                },
+                "Q": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 5
+                },
+                "Q": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "lg": "L",
+        "blocks": 2
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "James Brooks",
+        "id": "RB-104",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "L": {
+                  "Val": 36
+                },
+                "S": "Lg",
+                "Q": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 18
+                },
+                "L": {
+                  "Val": 35
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 34
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 32
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 31
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 30
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 28
+                },
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "L": {
+                  "Val": 26
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                },
+                "S": {
+                  "Val": 10
+                },
+                "L": {
+                  "Val": 24
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                },
+                "S": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 22
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 5
+                },
+                "Q": {
+                  "Val": -1
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            }
+          ]
+        },
+        "lg": "H",
+        "blocks": -2
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Earnest Jackson",
+        "id": "RB-105",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                }
+              }
+            }
+          ]
+        },
+        "lg": "R",
+        "blocks": -1
+      }
+    },
+    {
+      "RB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Sherman Smith",
+        "id": "RB-106",
+        "position": "RB",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -1
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": -2
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": {
+                  "Val": 21
+                },
+                "S": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 11
+                },
+                "S": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 18
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 7
+                },
+                "Q": {
+                  "Val": 2
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 1
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 5
+                },
+                "Q": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "lg": "P",
+        "blocks": 1
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Charlie Joiner",
+        "id": "WR-97",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "Q": "Lg",
+                "L": {
+                  "Val": 0
+                },
+                "S": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 55
+                },
+                "Q": {
+                  "Val": 15
+                },
+                "S": {
+                  "Val": 19
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 52
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 45
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 41
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 35
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 34
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 31
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 28
+                },
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 22
+                },
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Wes Chandler",
+        "id": "WR-98",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": "Sg"
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 3
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "Q": "Lg",
+                "L": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 19
+                },
+                "L": {
+                  "Val": 53
+                },
+                "Q": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 18
+                },
+                "L": {
+                  "Val": 46
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 17
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 41
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 37
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 34
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 32
+                },
+                "S": {
+                  "Val": 14
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 28
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 11
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "L": {
+                  "Val": 21
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": "O",
+        "blocks": 2
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Eric Sievers",
+        "id": "WR-99",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "L": {
+                  "Val": 28
+                },
+                "S": "Lg",
+                "Q": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 14
+                },
+                "S": {
+                  "Val": 18
+                },
+                "L": {
+                  "Val": 27
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 26
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 25
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 24
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 23
+                },
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 22
+                },
+                "S": {
+                  "Val": 13
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "S": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 11
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 4
+                },
+                "S": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -3
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Bobby Duckworth",
+        "id": "WR-100",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "L": {
+                  "Val": 59
+                },
+                "Q": "Lg",
+                "S": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 22
+                },
+                "L": {
+                  "Val": 50
+                },
+                "S": {
+                  "Val": 28
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 21
+                },
+                "Q": {
+                  "Val": 11
+                },
+                "L": {
+                  "Val": 35
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 30
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 26
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 22
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 8
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 7
+                },
+                "Q": {
+                  "Val": 3
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -3
+      }
+    },
+    {
+      "WR": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Roger Carr",
+        "id": "WR-101",
+        "position": "WR",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 23
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 22
+                },
+                "Q": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 10
+                },
+                "S": {
+                  "Val": 20
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 19
+                },
+                "Q": {
+                  "Val": 9
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 9
+                },
+                "S": {
+                  "Val": 18
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "Q": {
+                  "Val": 8
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            }
+          ]
+        },
+        "end": 4,
+        "lg": " ",
+        "blocks": -3
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Kellen Winslow",
+        "id": "TE-49",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "S": "Lg",
+                "Q": "Lg",
+                "L": {
+                  "Val": 46
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 41
+                },
+                "S": {
+                  "Val": 17
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 8
+                },
+                "L": {
+                  "Val": 39
+                },
+                "S": {
+                  "Val": 16
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 39
+                },
+                "S": {
+                  "Val": 15
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 37
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 35
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 6
+                },
+                "L": {
+                  "Val": 32
+                },
+                "S": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 10
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "L": {
+                  "Val": 28
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 24
+                },
+                "S": {
+                  "Val": 8
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 7
+                },
+                "L": {
+                  "Val": 22
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 0,
+        "long_rush": "N"
+      }
+    },
+    {
+      "TE": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Pete Holohan",
+        "id": "TE-50",
+        "position": "TE",
+        "rushing": {
+          "stats": [
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            },
+            {
+              "stats": {
+                "N": {
+                  "Val": 0
+                }
+              }
+            }
+          ]
+        },
+        "pass_gain": {
+          "stats": [
+            {
+              "stats": {
+                "L": {
+                  "Val": 0
+                },
+                "S": "Lg",
+                "Q": "Lg"
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 16
+                },
+                "L": {
+                  "Val": 40
+                },
+                "Q": {
+                  "Val": 12
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 7
+                },
+                "S": {
+                  "Val": 15
+                },
+                "L": {
+                  "Val": 34
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 14
+                },
+                "L": {
+                  "Val": 31
+                },
+                "Q": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 13
+                },
+                "L": {
+                  "Val": 28
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 12
+                },
+                "L": {
+                  "Val": 23
+                },
+                "Q": {
+                  "Val": 6
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 5
+                },
+                "S": {
+                  "Val": 11
+                },
+                "L": {
+                  "Val": 21
+                }
+              }
+            },
+            {
+              "stats": {
+                "L": {
+                  "Val": 20
+                },
+                "S": {
+                  "Val": 10
+                },
+                "Q": {
+                  "Val": 5
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 9
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "S": {
+                  "Val": 8
+                },
+                "Q": {
+                  "Val": 4
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 7
+                }
+              }
+            },
+            {
+              "stats": {
+                "Q": {
+                  "Val": 3
+                },
+                "S": {
+                  "Val": 6
+                }
+              }
+            }
+          ]
+        },
+        "blocks": 2,
+        "long_rush": "N"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Reuben Henderson",
+        "id": "DB-140",
+        "position": "DB",
+        "pass_def": 4,
+        "pass_rush": 0,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Danny Walters",
+        "id": "DB-141",
+        "position": "DB",
+        "pass_def": -2,
+        "pass_rush": 0,
+        "intercepts": "41-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Gill Byrd",
+        "id": "DB-142",
+        "position": "DB",
+        "pass_def": -3,
+        "pass_rush": 0,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Tim Fox",
+        "id": "DB-143",
+        "position": "DB",
+        "pass_def": 1,
+        "pass_rush": 0,
+        "intercepts": "46-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Andre Young",
+        "id": "DB-144",
+        "position": "DB",
+        "pass_def": 2,
+        "pass_rush": 0,
+        "intercepts": "46-48"
+      }
+    },
+    {
+      "DB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Ken Greene",
+        "id": "DB-145",
+        "position": "DB",
+        "pass_def": 3,
+        "pass_rush": 0,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Linden King",
+        "id": "LB-128",
+        "position": "LB",
+        "tackles": -2,
+        "pass_rush": 2,
+        "pass_def": 2,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Woodrow Lowe",
+        "id": "LB-129",
+        "position": "LB",
+        "tackles": -2,
+        "pass_rush": 1,
+        "pass_def": 2,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Mike Green",
+        "id": "LB-130",
+        "position": "LB",
+        "tackles": -2,
+        "pass_rush": 0,
+        "pass_def": 3,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Billy Ray Smith",
+        "id": "LB-131",
+        "position": "LB",
+        "tackles": -1,
+        "pass_rush": 0,
+        "pass_def": 1,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Ray Preston",
+        "id": "LB-132",
+        "position": "LB",
+        "tackles": -1,
+        "pass_rush": 0,
+        "pass_def": 3,
+        "intercepts": "47-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Derrie Nelson",
+        "id": "LB-133",
+        "position": "LB",
+        "tackles": 0,
+        "pass_rush": 0,
+        "pass_def": 4,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "LB": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Carlos Bradley",
+        "id": "LB-134",
+        "position": "LB",
+        "tackles": 2,
+        "pass_rush": 0,
+        "pass_def": 3,
+        "intercepts": "48-48"
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Chuck Ehin",
+        "id": "DL-123",
+        "position": "DL",
+        "tackles": 3,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Bill Elko",
+        "id": "DL-124",
+        "position": "DL",
+        "tackles": 2,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Keith Ferguson",
+        "id": "DL-125",
+        "position": "DL",
+        "tackles": -3,
+        "pass_rush": 1
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Gary Johnson",
+        "id": "DL-126",
+        "position": "DL",
+        "tackles": -2,
+        "pass_rush": 0
+      }
+    },
+    {
+      "DL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Rick Ackerman",
+        "id": "DL-127",
+        "position": "DL",
+        "tackles": -2,
+        "pass_rush": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Doug Wilkerson",
+        "id": "OL-180",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 2
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Ed White",
+        "id": "OL-181",
+        "position": "OL",
+        "blocks": 3,
+        "pass_block": 2
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Billy Shields",
+        "id": "OL-182",
+        "position": "OL",
+        "blocks": 2,
+        "pass_block": 2
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Andy Gissinger",
+        "id": "OL-183",
+        "position": "OL",
+        "blocks": 1,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Dennis McKnight",
+        "id": "OL-184",
+        "position": "OL",
+        "blocks": 1,
+        "pass_block": 1
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Don Macek",
+        "id": "OL-185",
+        "position": "OL",
+        "blocks": 0,
+        "pass_block": 0
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Derrel Gofourth",
+        "id": "OL-186",
+        "position": "OL",
+        "blocks": -1,
+        "pass_block": 2
+      }
+    },
+    {
+      "OL": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Sam Clapham",
+        "id": "OL-187",
+        "position": "OL",
+        "blocks": -2,
+        "pass_block": 0
+      }
+    },
+    {
+      "K": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Rolf Benirschke",
+        "id": "K-24",
+        "position": "K",
+        "field_goals": {
+          "stats": {
+            "36-45": "1-20",
+            "46-50": "1-10",
+            "26-35": "1-30",
+            "18-25": "1-35"
+          }
+        },
+        "over_fifty": "1-5",
+        "extra_points": "1-45",
+        "longest_fg": 51
+      }
+    },
+    {
+      "KR": {
+        "team": {
+          "name": "San Diego",
+          "year": "1983"
+        },
+        "name": "Kick Return Unit",
+        "id": "KR-22",
+        "position": "KR",
+        "returners": [
+          {
+            "Actual": {
+              "name": "Bruce Laird",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 41,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 38,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 30,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 28,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 25,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 24,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 23,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 21,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 15,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 13,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 10,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 8,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 0
+            }
+          },
+          {
+            "Actual": {
+              "name": "James Brooks",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 34,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 33,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 26,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 24,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 21,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 20,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 19,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 17,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 11,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 9,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 6,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 4,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 0
+            }
+          },
+          {
+            "SameAs": 2
+          },
+          {
+            "Actual": {
+              "name": "Earnest Jackson",
+              "return_stats": {
+                "stats": [
+                  {
+                    "yards": 32,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 31,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 24,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 22,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 19,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 18,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 17,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 15,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 9,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 7,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 4,
+                    "fumble": false,
+                    "asterisk": false
+                  },
+                  {
+                    "yards": 2,
+                    "fumble": true,
+                    "asterisk": false
+                  }
+                ]
+              },
+              "asterisk_val": 0
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
