@@ -296,3 +296,71 @@ impl<T: FromStr + Eq + Clone + PartialEq + Hash + Shiftable<T> + Debug> RangedSt
         return res.unwrap();
     }
 }
+
+#[cfg(test)]
+mod tests {
+    //! Test-harness bootstrap (Testing Stage T1, see `docs/plans/testing-plan.md`).
+    //!
+    //! These exercise `Range`, a small, pure, dependency-free leaf type, purely to move
+    //! the suite from "0 tests" to "green with real assertions" and confirm the
+    //! `cargo test` loop works. Broader pure-logic coverage is Stage T2.
+
+    use super::*;
+
+    #[test]
+    fn test_range_from_str_parses_start_and_end() {
+        let r = Range::from_str("12-18");
+        assert_eq!(r.start, 12);
+        assert_eq!(r.end, 18);
+    }
+
+    #[test]
+    fn test_range_from_str_single_value_sets_both_ends() {
+        let r = Range::from_str("7");
+        assert_eq!(r.start, 7);
+        assert_eq!(r.end, 7);
+    }
+
+    #[test]
+    fn test_range_from_str_defaults_to_49_on_garbage() {
+        // Neither side parses as an int, so both fall back to the default of 49.
+        let r = Range::from_str("abc");
+        assert_eq!(r.start, 49);
+        assert_eq!(r.end, 49);
+    }
+
+    #[test]
+    fn test_range_fromstr_trait_matches_inherent() {
+        // The `FromStr` impl never errors; it mirrors the inherent `from_str`.
+        let via_trait: Range = "3-9".parse().expect("Range::from_str never returns Err");
+        let via_inherent = Range::from_str("3-9");
+        assert_eq!(via_trait, via_inherent);
+    }
+
+    #[test]
+    fn test_range_in_range_is_inclusive() {
+        let r = Range::from_str("4-6");
+        assert!(!r.in_range(3));
+        assert!(r.in_range(4)); // lower bound inclusive
+        assert!(r.in_range(5));
+        assert!(r.in_range(6)); // upper bound inclusive
+        assert!(!r.in_range(7));
+    }
+
+    #[test]
+    fn test_get_tag_and_range_splits_and_trims() {
+        let (tag, range) = Range::get_tag_and_range("COM : 12-18", ":");
+        assert_eq!(tag, "COM");
+        assert_eq!(range.start, 12);
+        assert_eq!(range.end, 18);
+    }
+
+    #[test]
+    fn test_get_tag_and_range_tag_only_uses_default_range() {
+        let (tag, range) = Range::get_tag_and_range("COM", ":");
+        assert_eq!(tag, "COM");
+        // No range portion -> default Range::new() (49-49).
+        assert_eq!(range.start, 49);
+        assert_eq!(range.end, 49);
+    }
+}
