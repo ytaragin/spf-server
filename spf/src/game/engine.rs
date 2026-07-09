@@ -124,7 +124,7 @@ impl PlayType {
     }
 }
 
-#[derive(Debug, Clone, Serialize, ToSchema)]
+#[derive(Debug, Clone, Default, Serialize, ToSchema)]
 pub struct CardResults {
     had_z: bool,
     cards_flipped: Vec<i32>,

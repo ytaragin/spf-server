@@ -30,11 +30,11 @@ There were no `tests/` integration directories, no `[dev-dependencies]`, and no 
 | Stage | Theme | Status | Outcome |
 |---|---|---|---|
 | T1 | Harness bootstrap | ✅ Done | `cargo test` runs real assertions in a leaf module; loop proven. |
-| T2 | Pure-logic unit tests | 🟡 In progress | `spf_core` targets done (19 tests across `lineup`/`players`/`stats`; +1 alias bugfix). Remainder: `resulthandler.rs` (spf crate) and full `is_legal_lineup` (needs builders). |
+| T2 | Pure-logic unit tests | ✅ Done | `spf_core` targets + `resulthandler.rs` (spf crate) covered; 41 tests. `is_legal_lineup` full-lineup path still needs builders (carried to T4). |
 | T3 | Deterministic FAC seam | ⬜ Not started | `FacManager` buildable from an explicit deck; play execution reproducible. |
 | T4 | HTTP / integration tests | ⬜ Not started | `spf/tests/` exercising the real actix `App` via `test::init_service`. |
 | T5 | CI gate | ⬜ Not started | `.github/workflows` running fmt-check + clippy + test on every push. |
-| T6 | Warning cleanup | ⬜ Not started | Drive build warnings to zero so real issues aren't lost in noise. |
+| T6 | Warning cleanup | 🟡 Partly done | `cargo build --workspace` is warning-free + `[workspace.lints]` added; `cargo clippy` still emits ~200 style lints, so the `-D warnings` clippy gate is not yet unblocked. |
 
 Sequencing favors fastest safety-net-per-effort. Each stage is independently landable and
 leaves `cargo test --workspace` green.
@@ -59,16 +59,16 @@ confirm the `cargo test` loop works, with no new dependencies.
 
 ---
 
-## Stage T2 — Pure-logic unit tests (highest ROI) 🟡
+## Stage T2 — Pure-logic unit tests (highest ROI) ✅
 
 **Goal:** table-driven `#[cfg(test)]` coverage of the pure hotspots, colocated in their
 modules. No I/O, no external deps.
 
-**Scope decision (this pass):** cover the **`spf_core`** pure targets only, and treat the
-`OffensiveBox::from_str` alias defects as a **test-driven bugfix** (fix obvious typos, then
-assert corrected behavior). The `spf`-crate `resulthandler.rs` target is **deferred** to a
-follow-up (it needs `GameState`/`PlayResult` builders and is the natural pairing for T3 /
-WS Stage 2).
+**Scope decision:** covered in two passes — first the **`spf_core`** pure targets (with the
+`OffensiveBox::from_str` alias defect fixed test-first), then the **`spf`-crate**
+`resulthandler.rs` transitions. The full `is_legal_lineup` path needs
+`Standard*Lineup`/`Roster` builders (real `Player` stats), so it is fixture-ish and carried
+to **T4**; the underlying `LineupUtilities` count/validation helpers are already covered.
 
 **Targets (this pass — `spf_core`):**
 - `lineup.rs` — legality checks (`is_legal_lineup` (both impls), `validate_count`,
@@ -82,14 +82,12 @@ WS Stage 2).
 - `stats.rs` — extend beyond `Range` to `RangedStats` where feasible (valid + malformed
   input, no fixtures).
 
-**Deferred (T2 remainder):**
-- `resulthandler.rs` — `calculate_play_result` state transitions (down advance, first-down
-  reset, possession change, scoring). First `spf`-crate tests; carried forward.
+**Carried to T4 (not a T2 remainder):**
 - `is_legal_lineup` (both impls) — full legality needs `Standard*Lineup`/`Roster` builders
-  (real `Player` stats), which is fixture-ish and out of scope for this pure pass. The
+  (real `Player` stats), which is fixture-ish and out of scope for a pure pass. The
   underlying `LineupUtilities` count/validation helpers **are** covered directly.
 
-**What landed:**
+**What landed (pass 1 — `spf_core`):**
 - **Bugfix** in `spf_core/src/lineup.rs`: `OffensiveBox::from_str` alias `"fl1 "` (trailing
   space, unmatchable — dead code) → `"fl1"`. Caller audit confirmed the only runtime callers
   are in `spf/src/game/fac.rs` parsing `fac_cards.csv`; that data uses `FL` (never `FL1`),
@@ -109,12 +107,30 @@ a trimmed-empty string; only `name` falls back (`"Omaha"`). Test documents *curr
 behavior. Empty team input is not real data, and the `"1980"` default is not a typo, so it
 was left as-is rather than changed under a testing task.
 
+**What landed (pass 2 — `spf` crate, `resulthandler.rs`):** the first tests in the `spf`
+crate. 13 inline `#[cfg(test)]` tests exercising `calculate_play_result` end-to-end (private
+helpers `handle_*` / `advance_time` are asserted through the public entry point):
+- Down advance short of the marker; first down on reaching it (incl. the `min(_, 100)` marker
+  clamp in the red zone).
+- Turnover on downs (4th & short) and explicit `ResultType::TurnOver` in the field → field
+  flips (`100 - line`), possession flips, fresh 1st down.
+- Offensive touchdown (`>= 100`) credited to the team in possession (Home *and* Away cases);
+  defensive touchdown when a `TurnOver` crosses the goal line (`< 0`); safety on a regular
+  play behind the goal line (points to the other team).
+- Clock: run-down within a quarter, roll into the next quarter with a full clock, and the
+  final-quarter clamp to `(4, 0)`.
+- Non-invasive enabler: added `#[derive(Default)]` to `CardResults` so tests can build a
+  `PlayResult` without reaching its private fields (no runtime behavior change).
+
+`GamePlayStatus` / `GameTeams` don't derive `PartialEq`, so status/possession are compared by
+discriminant via small `is_status` / `is_possession` test helpers rather than `assert_eq!`.
+
 **Verification:**
-- `cargo test --workspace` → 28 passed, 0 failed (9 pre-existing + 19 new; round-trip test
-  still passes / self-skips as before, unaffected by the alias fix).
-- `cargo fmt -p spf_core -- --check` → clean.
-- `cargo clippy -p spf_core --tests` → no new warnings from the test code (remaining lints
-  are the pre-existing workspace noise slated for T6).
+- `cargo test --workspace` → 41 passed, 0 failed (28 from pass 1 + 13 new; round-trip test
+  still passes / self-skips as before).
+- `cargo fmt -- --check` → clean.
+- `cargo clippy -p spf --tests` → no new build warnings from the test code (remaining clippy
+  style lints are the pre-existing workspace noise tracked under T6).
 
 ---
 
@@ -164,14 +180,31 @@ arrives) lands here.
 
 ---
 
-## Stage T6 — Warning cleanup ⬜
+## Stage T6 — Warning cleanup 🟡
 
 **Goal:** raise signal quality and enable a `-D warnings` clippy gate.
 
 - Resolve the build warnings (largely dead code / unused imports across the workspace).
 - Separate from testing per se, but a prerequisite for the strict clippy step in T5.
 
-**Checkpoint:** `cargo build --workspace` and `cargo clippy --workspace` emit no warnings.
+**Done (build-warning half):**
+- `cargo build --workspace` is now **warning-free** (was 38 warnings). Mechanical noise
+  (unused imports, parens, `mut`, unused bindings) was fixed; confirmed leftover/duplicate
+  code and parked-feature scaffolding were annotated with narrow `#[allow(dead_code)]` +
+  a reason (`// unused:` / `// TODO(...)` / `// FIXME:`); two latent bugs surfaced by the
+  warnings (`is_non_blitzer` inverted name/body, and the missing `"OL"` arm behind
+  `all_ols`) were flagged with `FIXME` rather than changed.
+- A centralized lint policy was added: `[workspace.lints.rust] unused = "warn"` in the root
+  `Cargo.toml` with `[lints] workspace = true` in each crate; documented in
+  `../design/code-style.md`.
+
+**Remaining (clippy half — blocks the strict T5 gate):**
+- `cargo clippy --workspace` still emits ~200 style lints (dominated by ~105
+  `needless_return` and ~33 `needless_borrow`), ~185 of them `cargo clippy --fix`-able.
+  These must be cleared before `cargo clippy --workspace -- -D warnings` can be enforced.
+
+**Checkpoint:** `cargo build --workspace` emits no warnings ✅; `cargo clippy --workspace`
+emits no warnings ⬜ (clippy pass still pending).
 
 ---
 

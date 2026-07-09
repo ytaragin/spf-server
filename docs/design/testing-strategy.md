@@ -77,16 +77,17 @@ The most logic-dense modules are the highest-value targets (pure functions,
 | `spf/src/game/standard_play.rs` | 369 | play validation |
 | `spf/src/game.rs` | 363 | `GameState` transitions (`get_next_move_types`, `set_next_play_type` legality) |
 | `spf_core/src/stats.rs` | 298 | `Range` / `RangedStats` parsing (e.g. `"12-18"`) |
-| `spf/src/game/engine/resulthandler.rs` | 130 | `calculate_play_result`: `(GameState, PlayResult)` → new `GameState` (down/score/possession) |
+| `spf/src/game/engine/resulthandler.rs` | 130 | `calculate_play_result`: `(GameState, PlayResult)` → new `GameState` (down/score/possession) — **covered (T2)** |
 
 Update this table as modules are covered or as the code evolves.
 
-> **T2 progress (`spf_core` pass, done):** `lineup.rs` (`from_str` parsers + `LineupUtilities`
+> **T2 progress (done):** `lineup.rs` (`from_str` parsers + `LineupUtilities`
 > count/validation helpers), `players.rs` (`TeamID::create_from_str`), and `stats.rs`
-> (`RangedStats<PassResult>`) are now covered. As part of this, a stale trailing-space alias
-> literal in `OffensiveBox::from_str` (`"fl1 "` → `"fl1"`) was corrected (test-driven bugfix).
-> `resulthandler.rs` (spf crate) remains the deferred T2 remainder. See
-> `../plans/testing-plan.md` §T2.
+> (`RangedStats<PassResult>`) are covered in `spf_core`; a stale trailing-space alias literal
+> in `OffensiveBox::from_str` (`"fl1 "` → `"fl1"`) was corrected (test-driven bugfix). The
+> `spf`-crate `resulthandler.rs` transitions (`calculate_play_result`) are now covered too —
+> the first tests in the `spf` crate. The full `is_legal_lineup` path (needs
+> `Standard*Lineup`/`Roster` builders) is carried to T4. See `../plans/testing-plan.md` §T2.
 
 ---
 
@@ -143,11 +144,11 @@ expands).
 | `spf_core` | `src/stats.rs` | 7 `Range` unit tests (parsing, `in_range` inclusivity, `get_tag_and_range`) + 3 `RangedStats<PassResult>` tests (`create_from_strs`, `get_category` with/without boundary shift) |
 | `spf_core` | `src/lineup.rs` | 10 tests: `OffensiveBox`/`DefensiveBox` `from_str` (alias maps, case-insensitivity, error paths) and `LineupUtilities` `validate_count` / `count_spots` / `count_array_spots` |
 | `spf_core` | `src/players.rs` | 6 `TeamID::create_from_str` tests (fixup table, unmapped pass-through, `splitn` year/name defaults) |
-| `spf` | — | none yet (`resulthandler.rs` transitions are the deferred T2 remainder) |
+| `spf` | `src/game/engine/resulthandler.rs` | 13 `calculate_play_result` tests (down advance / first-down + marker clamp, turnover-on-downs & in-field turnover with field flip, offensive TD by possession, defensive TD, safety, clock run-down / quarter rollover / final-quarter clamp) |
 | `spf_cli` | — | none yet |
 | `spf_macros` | — | none yet |
 
-**Total: 28 tests**, all in `spf_core`. No integration (`tests/`) directories, no
+**Total: 41 tests** (28 in `spf_core`, 13 in `spf`). No integration (`tests/`) directories, no
 `[dev-dependencies]`, no CI gate yet.
 
 ---
