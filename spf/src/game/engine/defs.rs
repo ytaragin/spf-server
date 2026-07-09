@@ -54,7 +54,11 @@ pub struct RunPlayDefenseImpact {
 }
 
 pub struct DefenseConsts {
+    // TODO: config constants for the "blitz 2-5 players" rule; the validator in
+    // standard_play.rs currently hardcodes 2/5 instead of reading these. Wire them in.
+    #[allow(dead_code)]
     pub blitz_min: i32,
+    #[allow(dead_code)]
     pub blitz_max: i32,
     pub double_cover_defense: i32,
     pub triple_cover_defense: i32,

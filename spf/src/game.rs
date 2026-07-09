@@ -55,6 +55,8 @@ pub enum GamePlayStatus {
 }
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+// unused: superseded by the live `GamePlayStatus` state machine; kept pending removal.
+#[allow(dead_code)]
 pub enum GameStatus {
     Kickoff,
     StandardPlay,
@@ -248,6 +250,8 @@ impl Game {
             .set_defense_call(def_call)
     }
 
+    // unused: duplicate of the used `set_offensive_lineup_from_ids`; kept pending removal.
+    #[allow(dead_code)]
     pub fn set_offense_lineup(&mut self, off_id: OffenseIDLineup) -> Result<(), String> {
         let r = self.get_current_off_roster().clone();
         self.next_play
@@ -258,6 +262,8 @@ impl Game {
         Ok(())
     }
 
+    // unused: duplicate of the used `set_defensive_lineup_from_ids`; kept pending removal.
+    #[allow(dead_code)]
     pub fn set_defense_lineup(&mut self, def_id: DefenseIDLineup) -> Result<(), String> {
         let r = self.get_current_def_roster().clone();
 
@@ -297,10 +303,12 @@ impl Game {
         return Ok(res);
     }
 
+    // unused: abandoned stub (ignores its args and returns a fresh start_state); kept pending removal.
+    #[allow(dead_code)]
     fn gen_new_state(
-        curr_state: &GameState,
-        play: &StandardPlay,
-        result: &PlayResult,
+        _curr_state: &GameState,
+        _play: &StandardPlay,
+        _result: &PlayResult,
     ) -> GameState {
         return GameState::start_state();
     }
@@ -349,6 +357,8 @@ impl Game {
         Ok(())
     }
 
+    // unused: convenience accessor with no callers (see `get_all_plays`); kept pending removal.
+    #[allow(dead_code)]
     pub fn get_last_play(&self) -> Option<&PlayAndState> {
         self.past_plays.last()
     }
@@ -357,6 +367,8 @@ impl Game {
         &self.past_plays
     }
 
+    // unused: convenience accessor with no callers; kept pending removal.
+    #[allow(dead_code)]
     pub fn get_play_counter(&self) -> u32 {
         self.state.play_counter
     }

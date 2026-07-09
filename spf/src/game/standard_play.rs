@@ -60,6 +60,8 @@ pub enum OffensivePlayCategory {
 #[derive(Debug, Clone)]
 pub struct OffensivePlayInfo {
     pub play_type: OffensivePlayCategory,
+    // unused: human-readable label, populated but never read (sibling `code` is used); kept pending removal.
+    #[allow(dead_code)]
     pub name: &'static str,
     pub code: &'static str,
     pub allowed_targets: Vec<OffensiveBox>,

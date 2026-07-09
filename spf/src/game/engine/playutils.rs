@@ -1,11 +1,9 @@
 use crate::game::{
     fac::{FacData, RunNum},
-    lineup::{DefensiveBox, OffensiveBox},
-    standard_play::DefensivePlay,
     GameState,
 };
 
-use super::{defs::RunPlayDefenseImpact, CardResults, CardStreamer, PlayResult};
+use super::{CardStreamer, PlayResult};
 
 // use macro_rules! <name of macro> {<Body>}
 #[macro_export]
@@ -52,6 +50,8 @@ pub struct PlayUtils<'a> {
     details: Vec<String>,
     mechanics: Vec<String>,
     cards: &'a mut CardStreamer<'a>,
+    // unused: stored by the constructor but never read (state access moved elsewhere); kept pending removal.
+    #[allow(dead_code)]
     state: &'a GameState,
 }
 

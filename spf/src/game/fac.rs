@@ -192,6 +192,8 @@ impl FacCard {
     pub fn get_max_rn() -> i32 {
         12
     }
+    // unused: symmetric twin of the used `get_max_rn`; kept pending removal.
+    #[allow(dead_code)]
     pub fn get_max_pn() -> i32 {
         48
     }

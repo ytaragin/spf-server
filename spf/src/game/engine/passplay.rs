@@ -5,14 +5,14 @@ use crate::{
     game::{
         engine::{
             defs::{
-                DefenseConsts, DEFENSE_CONSTS, INTERCEPTION_RETURN_TABLE, INTERCEPTION_TABLE,
-                PASS_DEFENDERS, PASS_PLAY_VALUES, TIMES,
+                DEFENSE_CONSTS, INTERCEPTION_RETURN_TABLE, INTERCEPTION_TABLE, PASS_DEFENDERS,
+                PASS_PLAY_VALUES, TIMES,
             },
             runplay::RunUtils,
         },
         fac::{FacCard, FacData, PassTarget, ScreenResult},
-        lineup::{DefensiveBox, OffensiveBox, StandardDefensiveLineup},
-        players::{BasePlayer, Player, PlayerUtils, Position, QBStats},
+        lineup::{DefensiveBox, OffensiveBox},
+        players::{Player, PlayerUtils, QBStats},
         standard_play::{
             DefensivePlay, DefensiveStrategy, OffensivePlayInfo, OffensivePlayType,
             OffensiveStrategy, PassMetaData, PassResult, PassRushResult, PlaySetup,
@@ -23,10 +23,7 @@ use crate::{
     mechanic,
 };
 
-use super::{
-    defs::SCREEN_DEFENSE, playutils::PlayUtils, CardStreamer, DefenseIDLineup, PlayResult,
-    ResultType,
-};
+use super::{defs::SCREEN_DEFENSE, playutils::PlayUtils, CardStreamer, PlayResult, ResultType};
 
 pub struct PassUtils {}
 impl PassUtils {
@@ -541,6 +538,10 @@ impl<'a> PassContext<'a> {
         };
     }
 
+    // FIXME: name/body mismatch - this returns `true` when the player IS blitzing, so it is
+    // really an `is_blitzer` check. Unused; blitz effects are currently computed inline (~L518).
+    // Verify intended semantics before wiring this in.
+    #[allow(dead_code)]
     fn is_non_blitzer(&mut self, player: String) -> bool {
         self.play.defense_call.defense_type == DefensivePlay::Blitz
             && self.play.defense_call.def_players.contains(&player)

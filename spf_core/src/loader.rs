@@ -4,9 +4,7 @@ use std::fs;
 use crate::players::Position;
 
 use crate::{
-    players::{
-        DLStats, KRStats, KStats, LBStats, OLStats, PRStats, PStats, ReturnStat, Returner, TEStats,
-    },
+    players::{DLStats, KRStats, KStats, LBStats, OLStats, PRStats, ReturnStat, Returner, TEStats},
     stats::{NumStat, Range, RangedStats, TripleStat, TwelveStats},
 };
 
@@ -436,6 +434,9 @@ where
         .collect::<Vec<T>>())
 }
 
+// unused: debug helper never wired in; natural home for reporting the swallowed error in
+// `text_str_to_num` (see FIXME there). Kept pending removal.
+#[allow(dead_code)]
 fn dump_problematic_record(lines: &[&str]) {
     println!("Error Record***********\n{:?}", lines)
 }
@@ -455,7 +456,10 @@ fn text_str_to_num(instr: &str) -> i32 {
 
     let val = match parts[1].parse::<i32>() {
         Ok(number) => number,
-        Err(err) => 0,
+        // FIXME: parse errors on malformed card data are silently coerced to 0 with no
+        // diagnostic (see also the len<2 and unrecognized-sign cases above). Consider logging
+        // the bad record (e.g. via dump_problematic_record) instead of swallowing `err`.
+        Err(_err) => 0,
     };
 
     val * sign

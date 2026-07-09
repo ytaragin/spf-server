@@ -9,6 +9,9 @@ edition = "2021"
 name = "spf-cli"
 path = "src/main.rs"
 
+[lints]
+workspace = true
+
 [dependencies]
 spf_core = { path = "../spf_core" }
 clap = { version = "4", features = ["derive"] }

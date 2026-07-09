@@ -6,8 +6,8 @@ use spf_macros::ToBasePlayer;
 use utoipa::ToSchema;
 
 use crate::players::{
-    BasePlayer, DBStats, DLStats, KRStats, KStats, LBStats, OLStats, Player, QBStats, RBStats,
-    Roster, TEStats, ToBasePlayer, WRStats,
+    BasePlayer, DBStats, DLStats, LBStats, OLStats, Player, QBStats, RBStats, Roster, TEStats,
+    ToBasePlayer, WRStats,
 };
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy, Eq, Hash, ToSchema)]
@@ -751,7 +751,7 @@ impl LineupUtilities {
     fn is_same_player<T: ToBasePlayer>(player: &Option<T>, id: &String) -> bool {
         match player {
             None => false,
-            Some(p) => (p.get_player().get_id() == *id),
+            Some(p) => p.get_player().get_id() == *id,
         }
     }
 
@@ -806,6 +806,8 @@ impl LineupUtilities {
         return Ok(Some(t));
     }
 
+    // unused: by-value twin of the used `get_player_from_id_or_err`; kept pending removal.
+    #[allow(dead_code)]
     fn get_player_from_valid_id<T, F>(
         id_opt: Option<String>,
         pos_str: &str,

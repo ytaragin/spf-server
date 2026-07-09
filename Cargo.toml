@@ -7,3 +7,9 @@ members = [
 ]
 default-members = ["spf"]
 resolver = "2"
+
+# Centralized lint policy for all workspace crates. Members opt in via `[lints] workspace = true`.
+# Kept at `warn` (not `deny`) so local builds are not blocked; CI may escalate with
+# `cargo clippy --workspace -- -D warnings`. See docs/design/code-style.md.
+[workspace.lints.rust]
+unused = "warn"

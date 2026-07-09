@@ -16,6 +16,22 @@ For testing conventions specifically, see [`testing-strategy.md`](testing-strate
 
 ---
 
+## Lints & warnings
+
+- Lint policy is centralized in the root `Cargo.toml` under `[workspace.lints.rust]`; each member
+  crate opts in with `[lints] workspace = true`. Change the policy there, not per-crate.
+- The policy sets `unused = "warn"` (kept at `warn`, not `deny`, so local builds are not blocked).
+  CI may escalate to a hard failure with `cargo clippy --workspace -- -D warnings`.
+- Keep the build **warning-free**. If code must stay in-tree while unused, annotate it narrowly with
+  an item- or field-level `#[allow(dead_code)]` plus a one-line reason:
+  - `// unused: <why> ; kept pending removal.` for leftover/duplicate code,
+  - `// TODO(<feature>): <what unblocks it>` for parked-feature scaffolding,
+  - `// FIXME: <defect>` for a known bug that is being deferred rather than fixed.
+- Prefer fixing the warning (remove the code, wire it up, or rename an unused binding to `_name`)
+  over blanket crate-level `#![allow(...)]`.
+
+---
+
 ## Naming conventions
 
 | Element | Convention |
@@ -40,8 +56,8 @@ violates Rust conventions and triggers Clippy warnings).
 - Use `use crate::...` for absolute intra-crate paths.
 - Use `use super::...` for parent-module relative paths.
 - External crate imports use the crate name directly (`use actix_web::...`, `use serde::...`).
-- `extern crate spf_macros;` is declared in `main.rs` for the proc-macro crate; do not add this
-  declaration elsewhere.
+- Proc-macro derives from `spf_macros` are brought in with `use spf_macros::...` where used (an
+  `extern crate spf_macros;` declaration is *not* needed under edition 2021).
 - Group imports: std first, then external crates, then internal (`crate::`/`super::`).
 - No path aliases are configured; all paths are explicit.
 

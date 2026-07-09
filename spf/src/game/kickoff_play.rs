@@ -40,7 +40,7 @@ impl PlayImpl for KickoffPlay {
         Ok(())
     }
 
-    fn set_defense_call(&mut self, call: DefenseCall) -> Result<(), String> {
+    fn set_defense_call(&mut self, _call: DefenseCall) -> Result<(), String> {
         Ok(())
     }
 

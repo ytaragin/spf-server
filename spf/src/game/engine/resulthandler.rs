@@ -24,7 +24,7 @@ pub fn calculate_play_result(old_state: &GameState, result: &PlayResult) -> Game
     }
 }
 
-fn handle_regular_play(interim_state: &GameState, result: &PlayResult) -> GameState {
+fn handle_regular_play(interim_state: &GameState, _result: &PlayResult) -> GameState {
     if interim_state.yard_line >= 100 {
         return handle_touchdown(interim_state);
     }

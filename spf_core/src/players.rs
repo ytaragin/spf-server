@@ -1,11 +1,10 @@
 use dyn_clone::{clone_trait_object, DynClone};
 // use itertools::Itertools;
-use enum_as_inner::EnumAsInner;
 use erased_serde::serialize_trait_object;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
-use spf_macros::{ImplBasePlayer, IsBlocker, IsReceiver};
-use std::{collections::HashMap, str::FromStr};
+use spf_macros::{ImplBasePlayer, IsBlocker};
+use std::collections::HashMap;
 use strum_macros::Display;
 use utoipa::ToSchema;
 
@@ -649,6 +648,10 @@ pub struct TeamList {
     all_dbs: HashMap<String, DBStats>,
     all_lbs: HashMap<String, LBStats>,
     all_dls: HashMap<String, DLStats>,
+    // FIXME: latent bug - `TeamList::get_player` has no "OL" match arm, so this map is never
+    // queried (hence "never read"). Currently masked because `get_player` has no callers; live
+    // OL lookups go through `Roster::get_player`. Add `"OL" => get_player_from_map(id, &self.all_ols)`.
+    #[allow(dead_code)]
     all_ols: HashMap<String, OLStats>,
     all_ks: HashMap<String, KStats>,
     all_krs: HashMap<String, KRStats>,

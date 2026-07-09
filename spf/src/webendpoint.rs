@@ -576,9 +576,7 @@ pub async fn runserver(league: TeamList) -> std::io::Result<()> {
             .service(get_team_players)
             .split_for_parts();
 
-        app.service(
-            SwaggerUi::new("/swagger-ui/{_:.*}").url("/api-docs/openapi.json", api.clone()),
-        )
+        app.service(SwaggerUi::new("/swagger-ui/{_:.*}").url("/api-docs/openapi.json", api.clone()))
     })
     .bind("127.0.0.1:8080")?
     .run()

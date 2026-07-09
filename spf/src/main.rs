@@ -1,8 +1,6 @@
 mod game;
 mod webendpoint;
 
-extern crate spf_macros;
-
 use std::process::ExitCode;
 
 use spf_core::persist;

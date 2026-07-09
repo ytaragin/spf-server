@@ -13,13 +13,13 @@ use strum_macros::EnumString;
 
 use crate::game::lineup::KickoffIDDefenseLineup;
 
-use self::{kickplay::KickPlayImpl, resulthandler::calculate_play_result};
+use self::resulthandler::calculate_play_result;
 
 use super::{
     fac::{FacCard, FacData, FacManager},
     kickoff_play::KickoffPlay,
     lineup::{KickoffIDOffenseLineup, StandardIDDefenseLineup, StandardIDOffenseLineup},
-    players::{KRStats, KStats, Player, Roster},
+    players::Roster,
     standard_play::{StandardDefenseCall, StandardOffenseCall, StandardPlay},
     GameState, Play, PlayAndState,
 };
@@ -92,6 +92,8 @@ pub trait PlayImpl: Send {
 pub type Yard = i32;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+// unused: leftover from an earlier play-identity data model (see `OffenseIDLineup`); kept pending removal.
+#[allow(dead_code)]
 pub struct IDOffensivePlay {
     pub play_code: String,
     pub strategy: String,
@@ -245,6 +247,8 @@ impl_deserialize!(DefenseIDLineup {
 pub enum DefenseCall {
     StandardDefenseCall(StandardDefenseCall),
     KickoffDefenseCall(KickoffDefenseCall),
+    // TODO(punts): payload consumed once punt handling is implemented (Backlog.md -> Special Teams).
+    #[allow(dead_code)]
     PuntDefenseCall(PuntDefenseCall),
 }
 
@@ -258,6 +262,8 @@ impl_deserialize!(DefenseCall {
 pub enum OffenseCall {
     StandardOffenseCall(StandardOffenseCall),
     KickoffOffenseCall(KickoffOffenseCall),
+    // TODO(punts): payload consumed once punt handling is implemented (Backlog.md -> Special Teams).
+    #[allow(dead_code)]
     PuntOffenseCall(PuntOffenseCall),
 }
 
@@ -336,10 +342,14 @@ pub struct KickoffOffenseCall {
 
 #[derive(Debug, Clone, Deserialize, ToSchema)]
 pub struct PuntDefenseCall {
+    // TODO(punts): read once punt handling is implemented (Backlog.md -> Special Teams).
+    #[allow(dead_code)]
     pub attempt_block: bool,
 }
 
 #[derive(Debug, Clone, Deserialize, ToSchema)]
 pub struct PuntOffenseCall {
+    // TODO(punts): read once punt handling is implemented (Backlog.md -> Special Teams).
+    #[allow(dead_code)]
     pub coffin_corner: i32,
 }

@@ -28,7 +28,7 @@ impl RunUtils {
         play: PlaySetup<'a>,
         cards: &'a mut CardStreamer<'a>,
     ) -> PlayResult {
-        let mut data = RunPlayData::new(play.offense_metadata);
+        let data = RunPlayData::new(play.offense_metadata);
         let mut context = RunContext {
             state,
             play,
@@ -293,6 +293,8 @@ impl<'a> RunContext<'a> {
         }
     }
 
+    // unused: refactor twin of the used `calculate_run_yardage_modifier`; kept pending removal.
+    #[allow(dead_code)]
     fn calculate_run_yardage_modifier2(&mut self, result: &RunDirectionActual) -> i32 {
         detail!(
             self.utils,
@@ -376,6 +378,8 @@ impl<'a> RunContext<'a> {
         return 0;
     }
 
+    // unused: helper with no callers; kept pending removal.
+    #[allow(dead_code)]
     fn handle_bad_play(&mut self) -> PlayResult {
         return self.create_result(0, ResultType::Regular, 10);
     }

@@ -9,6 +9,9 @@ proc-macro = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lints]
+workspace = true
+
 [dependencies]
 proc-macro2 = "1.0.66"
 quote = "1.0.32"
