@@ -145,10 +145,11 @@ expands).
 | `spf_core` | `src/lineup.rs` | 10 tests: `OffensiveBox`/`DefensiveBox` `from_str` (alias maps, case-insensitivity, error paths) and `LineupUtilities` `validate_count` / `count_spots` / `count_array_spots` |
 | `spf_core` | `src/players.rs` | 6 `TeamID::create_from_str` tests (fixup table, unmapped pass-through, `splitn` year/name defaults) |
 | `spf` | `src/game/engine/resulthandler.rs` | 13 `calculate_play_result` tests (down advance / first-down + marker clamp, turnover-on-downs & in-field turnover with field flip, offensive TD by possession, defensive TD, safety, clock run-down / quarter rollover / final-quarter clamp) |
+| `spf` | `src/game.rs` | 1 event-emission test (`test_set_next_play_type_emits_event`): subscribes to a `Game`'s broadcast channel and asserts `set_next_play_type` emits `GameEvent::NextPlayTypeSet`; self-skips when `../cards/fac_cards.csv` is absent |
 | `spf_cli` | — | none yet |
 | `spf_macros` | — | none yet |
 
-**Total: 41 tests** (28 in `spf_core`, 13 in `spf`). No integration (`tests/`) directories, no
+**Total: 42 tests** (28 in `spf_core`, 14 in `spf`). No integration (`tests/`) directories, no
 `[dev-dependencies]`, no CI gate yet.
 
 ---

@@ -1,5 +1,9 @@
 # Stage 1 — Foundation: Dependencies & Event Type (detailed tasks)
 
+> **Status: ✅ Done.** All three files landed as specified below. `cargo build`,
+> `cargo clippy -p spf` (no new warnings), and `cargo fmt -- --check` all pass. This doc is
+> retained as the record of what shipped; the next stage is `ws-events-stage2.md`.
+
 Concrete, file-level task list for **Stage 1** of the WebSocket events rollout
 (`ws-events-stages.md`). Stage 1 introduces the crate dependencies and defines the
 `GameEvent` type. **No behaviour changes** — nothing emits or consumes events yet.
@@ -9,12 +13,12 @@ Prerequisite reading: `../design/ws-events-architecture.md` (§3 explains why `G
 
 ---
 
-## Outcome / definition of done
+## Outcome / definition of done — ✅ all met
 
-- `spf/Cargo.toml` declares `actix-ws`, `tokio`, and `futures-util`.
-- `spf/src/game/events.rs` exists and defines the `GameEvent` enum.
-- `game.rs` registers the `events` module.
-- `cargo build` and `cargo clippy` pass. `GameEvent` compiles but is intentionally unused
+- ✅ `spf/Cargo.toml` declares `actix-ws`, `tokio`, and `futures-util`.
+- ✅ `spf/src/game/events.rs` exists and defines the `GameEvent` enum.
+- ✅ `game.rs` registers the `events` module.
+- ✅ `cargo build` and `cargo clippy` pass. `GameEvent` compiles but is intentionally unused
   (a `#[allow(dead_code)]` on the enum keeps clippy quiet until Stage 2 wires it in).
 
 ---
@@ -158,12 +162,14 @@ body, any handler.
 
 ---
 
-## Verification checklist
+## Verification checklist — ✅ all passed
 
-1. `cargo build` — compiles, new deps resolve/lock.
-2. `cargo clippy` — clean (the `#[allow(dead_code)]` suppresses the unused-enum warning).
-3. `cargo fmt -- --check` — formatting matches repo style.
-4. Sanity: `GameEvent` is importable, e.g. `use crate::game::events::GameEvent;` resolves.
+1. ✅ `cargo build` — compiled, new deps resolved/locked (`actix-ws 0.4.0`, `tokio 1.49.0`,
+   `futures-util 0.3.31`; no new major versions).
+2. ✅ `cargo clippy` — clean (the `#[allow(dead_code)]` suppresses the unused-enum warning;
+   `GameEvent` did not trip `large_enum_variant` thanks to the boxed `PlayRun`).
+3. ✅ `cargo fmt -- --check` — formatting matches repo style.
+4. ✅ Sanity: `GameEvent` is importable, e.g. `use crate::game::events::GameEvent;` resolves.
 
 No runtime behaviour changes; the server starts and serves exactly as before.
 

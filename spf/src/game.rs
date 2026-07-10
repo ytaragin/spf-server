@@ -1,4 +1,5 @@
 pub mod engine;
+pub mod events;
 pub mod fac;
 pub mod kickoff_play;
 pub mod standard_play;
@@ -16,6 +17,7 @@ use std::{
 
 use engine::defs::GAMECONSTANTS;
 use serde::{Deserialize, Serialize};
+use tokio::sync::broadcast;
 use utoipa::ToSchema;
 
 use self::{
@@ -23,6 +25,7 @@ use self::{
         run_play, DefenseCall, DefenseIDLineup, Down, OffenseCall, OffenseIDLineup, PlayImpl,
         PlayResult, PlayType, Yard,
     },
+    events::GameEvent,
     fac::FacManager,
     kickoff_play::KickoffPlay,
     players::Roster,
@@ -159,6 +162,12 @@ pub struct PlayTypeInfo {
     pub next_type: Option<PlayType>,
 }
 
+/// Capacity of the per-`Game` event broadcast channel. Sized well above the largest
+/// single-action burst (`run_current_play` emits 2 events) so normal use never lags; a
+/// slow/absent consumer receives `Lagged` rather than blocking the producer. See
+/// docs/design/ws-events-architecture.md §3.
+const GAME_EVENT_CHANNEL_CAPACITY: usize = 128;
+
 #[derive(Serialize)]
 pub struct Game {
     #[serde(skip_serializing)]
@@ -175,13 +184,26 @@ pub struct Game {
 
     #[serde(skip_serializing)]
     pub fac_deck: FacManager,
+
+    /// Runtime plumbing: broadcasts domain events to transport adapters. Not game data,
+    /// so it is skipped in serialization.
+    #[serde(skip_serializing)]
+    event_tx: broadcast::Sender<GameEvent>,
 }
 
 impl Game {
     pub fn create_game(home: Roster, away: Roster) -> Self {
-        let start_type = PlayType::Kickoff;
+        Self::create_game_with_fac_path(home, away, "cards/fac_cards.csv")
+    }
 
-        return Self {
+    /// Same as [`create_game`](Self::create_game) but with an explicit FAC-deck CSV path.
+    /// Split out so tests (whose CWD is the crate dir) can point at `../cards/...`. A fuller
+    /// deck-injection seam for deterministic play results is testing-plan T3.
+    fn create_game_with_fac_path(home: Roster, away: Roster, fac_path: &str) -> Self {
+        let start_type = PlayType::Kickoff;
+        let (event_tx, _rx) = broadcast::channel(GAME_EVENT_CHANNEL_CAPACITY);
+
+        let game = Self {
             home,
             away,
             state: GameState::start_state(),
@@ -189,8 +211,29 @@ impl Game {
             next_play: Some(start_type.create_impl()),
             offlineup: None,
             deflineup: None,
-            fac_deck: FacManager::new("cards/fac_cards.csv"),
+            fac_deck: FacManager::new(fac_path),
+            event_tx,
         };
+
+        // No subscribers exist yet at creation (see docs/plans/ws-events-stage2.md D2); this
+        // is a deliberate no-op today but preserves the "every mutation emits" invariant.
+        game.emit(GameEvent::GameStarted { state: game.state });
+
+        game
+    }
+
+    /// Publish a domain event to all current subscribers. A send error means "no subscribers
+    /// right now", which is normal and intentionally ignored (architecture §4).
+    fn emit(&self, event: GameEvent) {
+        let _ = self.event_tx.send(event);
+    }
+
+    /// Obtain a receiver for this game's event stream. Each transport adapter (e.g. the WS
+    /// handler in Stage 3) calls this to get its own independent receiver.
+    // Consumed by the Stage 3 WebSocket handler; only the unit test references it today.
+    #[allow(dead_code)]
+    pub fn subscribe(&self) -> broadcast::Receiver<GameEvent> {
+        self.event_tx.subscribe()
     }
 
     fn get_current_off_roster(&self) -> &Roster {
@@ -217,6 +260,9 @@ impl Game {
             .ok_or("No Play Set")?
             .set_offense_lineup(id_lineup, &r)?;
         self.offlineup = Some(id_lineup.clone());
+        self.emit(GameEvent::OffensiveLineupSet {
+            lineup: id_lineup.clone(),
+        });
 
         Ok(())
     }
@@ -232,6 +278,9 @@ impl Game {
             .ok_or("No Play Set")?
             .set_defense_lineup(id_lineup, &r)?;
         self.deflineup = Some(id_lineup.clone());
+        self.emit(GameEvent::DefensiveLineupSet {
+            lineup: id_lineup.clone(),
+        });
 
         Ok(())
     }
@@ -296,9 +345,13 @@ impl Game {
 
         // Update state, ensuring play counter is preserved
         self.state = GameState { ..res.new_state };
-        self.set_next_play_type(self.state.get_next_move_default())?;
+        self.set_next_play_type(self.state.get_next_move_default())?; // emits NextPlayTypeSet
 
-        // if self.next_play.
+        // Then announce the play itself. Net emission order for one play is
+        // NextPlayTypeSet -> PlayRun (see docs/plans/ws-events-stage2.md D3).
+        self.emit(GameEvent::PlayRun {
+            play: Box::new(res.clone()),
+        });
 
         return Ok(res);
     }
@@ -331,6 +384,9 @@ impl Game {
             self.offlineup = None;
             self.deflineup = None;
         }
+        self.emit(GameEvent::NextPlayTypeSet {
+            play_type: playtype,
+        });
         Ok(())
     }
 
@@ -371,5 +427,56 @@ impl Game {
     #[allow(dead_code)]
     pub fn get_play_counter(&self) -> u32 {
         self.state.play_counter
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use spf_core::players::{Player, Roster, TeamID};
+    use std::path::Path;
+
+    fn empty_roster(name: &str) -> Roster {
+        Roster::from_players(
+            TeamID {
+                name: name.into(),
+                year: "1983".into(),
+            },
+            Vec::<Player>::new(),
+        )
+    }
+
+    #[test]
+    fn test_set_next_play_type_emits_event() {
+        // Tests run with CWD = crate dir, so the workspace FAC deck is at `../cards/...`.
+        // Self-skip (rather than panic in FacManager::new) when it is absent, mirroring the
+        // persist.rs round-trip test. See docs/design/testing-strategy.md §6.
+        let fac_path = "../cards/fac_cards.csv";
+        if !Path::new(fac_path).exists() {
+            eprintln!("skipping event-emission test: {} not present", fac_path);
+            return;
+        }
+
+        // Arrange: a game built from empty rosters (no player-card fixtures needed).
+        let mut game =
+            Game::create_game_with_fac_path(empty_roster("Home"), empty_roster("Away"), fac_path);
+
+        // Subscribe *after* creation: the GameStarted emitted inside create_game had no
+        // receiver and is already gone, so the channel is empty here. The next recv will be
+        // whatever we emit below.
+        let mut rx = game.subscribe();
+
+        // Act: a deterministic, non-card state change. From the start state
+        // (last_status == Start) Kickoff is the only legal next type.
+        game.set_next_play_type(PlayType::Kickoff)
+            .expect("Kickoff is a legal next play type from the start state");
+
+        // Assert: the event arrived and carries the right PlayType (PlayType: PartialEq).
+        match rx.try_recv() {
+            Ok(GameEvent::NextPlayTypeSet { play_type }) => {
+                assert_eq!(play_type, PlayType::Kickoff);
+            }
+            other => panic!("expected NextPlayTypeSet, got {:?}", other),
+        }
     }
 }

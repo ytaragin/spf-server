@@ -144,6 +144,9 @@ discriminant via small `is_status` / `is_possession` test helpers rather than `a
 
 **Checkpoint:** a deterministic play-execution test passes repeatably.
 
+**Related:** this seam should also resolve the CWD-relative resource-path divergence logged in
+`tech-debt.md` §1 (option 3 there) — design the deck-injection and the path fix together.
+
 **Natural pairing:** WS Stage 2 (`Game` emits events) needs a deterministic
 "run play → assert event" test, which this unblocks.
 
@@ -210,14 +213,16 @@ emits no warnings ⬜ (clippy pass still pending).
 
 ## Relationship to the WebSocket-events work
 
-The WS feature is parked (its plan is in `ws-events-*.md`), but the intended interplay is:
+The WS feature is in progress (its plan is in `ws-events-*.md`; **Stage 1 landed**), and the
+intended interplay is:
 
 | WS stage | Testing tie-in |
 |---|---|
-| WS Stage 1 (deps + `GameEvent` type) | Inert type; nothing meaningful to unit-test beyond "it compiles". |
-| WS Stage 2 (`Game` emits events) | First testable behavior. Depends on **T3** (FAC seam) for a deterministic "run play → assert event" test. |
+| WS Stage 1 (deps + `GameEvent` type) ✅ | Inert type; nothing meaningful to unit-test beyond "it compiles". Landed with no new tests, as planned. |
+| WS Stage 2 (`Game` emits events) ✅ | First testable behavior. Landed with a card-draw-independent `set_next_play_type` → `NextPlayTypeSet` test (sync `try_recv`, no async/dev-deps). The `run_current_play` → `PlayRun` *contents* assertion still needs **T3** (FAC seam). |
 | WS Stage 3 (WS transport) | Add the end-to-end connect/receive test under **T4** (`spf/tests/`). |
 
-**Recommendation of record:** when WS work resumes, do WS Stage 1 without new tests
-(nothing to assert), then land **T3** alongside WS Stage 2. T2/T4/T5/T6 can proceed
-independently as capacity allows.
+**Recommendation of record:** WS Stage 1 landed without new tests (nothing to assert). For
+WS Stage 2, assert the card-draw-independent emissions immediately; land **T3** to add the
+deterministic `run_current_play` → `PlayRun` assertion. T2/T4/T5/T6 can proceed independently
+as capacity allows.
