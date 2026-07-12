@@ -8,7 +8,7 @@ Concrete, file-level task list for **Stage 1** of the WebSocket events rollout
 (`ws-events-stages.md`). Stage 1 introduces the crate dependencies and defines the
 `GameEvent` type. **No behaviour changes** — nothing emits or consumes events yet.
 
-Prerequisite reading: `../design/ws-events-architecture.md` (§3 explains why `GameEvent` must be
+Prerequisite reading: `../../design/ws-events-architecture.md` (§3 explains why `GameEvent` must be
 `Clone + Serialize`).
 
 ---

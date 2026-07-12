@@ -4,7 +4,8 @@ Reference document for the event-broadcast architecture that lets external clien
 subscribe to real-time game events (lineup set, play result, game lifecycle, …).
 
 This describes the **target design**. Implementation is staged — see
-`../plans/ws-events-stages.md` for the rollout plan and `../plans/ws-events-stage1.md` for the first
+`../plans/completed/ws-events-stages.md` for the rollout plan and
+`../plans/completed/ws-events-stage1.md` for the first
 stage's concrete tasks.
 
 ---

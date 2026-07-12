@@ -278,16 +278,18 @@ emits no warnings ⬜ (clippy pass still pending).
 
 ## Relationship to the WebSocket-events work
 
-The WS feature is in progress (its plan is in `ws-events-*.md`; **Stage 1 landed**), and the
-intended interplay is:
+The WS feature is now **fully complete** (all 4 stages landed; see
+`docs/plans/completed/ws-events-stages.md`). The interplay with this plan, for the record:
 
 | WS stage | Testing tie-in |
 |---|---|
 | WS Stage 1 (deps + `GameEvent` type) ✅ | Inert type; nothing meaningful to unit-test beyond "it compiles". Landed with no new tests, as planned. |
 | WS Stage 2 (`Game` emits events) ✅ | First testable behavior. Landed with a card-draw-independent `set_next_play_type` → `NextPlayTypeSet` test. The `run_current_play` → `PlayRun` *contents* assertion is now **unblocked by T3** (inject a deck via `Game::build`); it rides with T4 once roster fixtures/builders exist. |
-| WS Stage 3 (WS transport) | Add the end-to-end connect/receive test under **T4** (`spf/tests/`). |
+| WS Stage 3 (WS transport) ✅ | Landed with only a manual smoke test. The end-to-end connect/receive test under **T4** (`spf/tests/`) is still open — tracked as a tech-debt item (`docs/plans/tech-debt.md` §2, "No automated test for the WebSocket transport"). |
+| WS Stage 4 (docs/OpenAPI polish) ✅ | No testing tie-in (docs-only stage). |
 
 **Recommendation of record:** WS Stage 1 landed without new tests (nothing to assert). For
 WS Stage 2, assert the card-draw-independent emissions immediately; land **T3** to add the
-deterministic `run_current_play` → `PlayRun` assertion. T2/T4/T5/T6 can proceed independently
-as capacity allows.
+deterministic `run_current_play` → `PlayRun` assertion. The WS Stage 3 transport test rides
+with **T4** whenever that stage is picked up. T2/T5/T6 can proceed independently as capacity
+allows.

@@ -5,7 +5,9 @@ Entry point for the project's documentation. Docs are split by lifespan:
 - **`design/`** — durable design & architecture references. Describe *how things are built*
   and *why*. Long-lived; grow slowly and are revised as the system evolves.
 - **`plans/`** — work plans and staged roadmaps. Describe *what we will do next*.
-  Time-ordered and consumed as work lands; may be archived once complete.
+  Time-ordered and consumed as work lands. Once every stage of a plan is done, its detailed
+  files move to **`plans/completed/`** (see below) to keep this directory focused on
+  what's still in flight.
 
 > Rule of thumb: if it answers "how does this work / why is it this way," it belongs in
 > `design/`. If it answers "what's the next step / in what order," it belongs in `plans/`.
@@ -34,10 +36,16 @@ have their own `design/` doc (see the table below).
 |---|---|---|
 | [`plans/testing-plan.md`](plans/testing-plan.md) | Staged roadmap (T1–T6) for building out the test suite, with status tracking and WS tie-ins. | You are picking up the next testing task or checking testing progress. |
 | [`plans/tech-debt.md`](plans/tech-debt.md) | Running log of cross-cutting rough edges to revisit (e.g. CWD-relative resource paths). | You hit a general problem worth recording, or are picking one up to fix. |
-| [`plans/ws-events-stages.md`](plans/ws-events-stages.md) | High-level staged rollout of the WebSocket events feature (Stages 1–4). **All stages done.** | You are resuming the WS feature and need the stage overview. |
-| [`plans/ws-events-stage1.md`](plans/ws-events-stage1.md) | Detailed, file-level task list for WS Stage 1 (dependencies + `GameEvent` type). **✅ Done** — retained as the record of what shipped. | You want the record of what WS Stage 1 delivered. |
-| [`plans/ws-events-stage2.md`](plans/ws-events-stage2.md) | Detailed, file-level task list for WS Stage 2 (`Game` broadcast `Sender`, `emit()`/`subscribe()`, emission sites, unit test). **✅ Done.** | You want the record of what WS Stage 2 delivered. |
-| [`plans/ws-events-stage3.md`](plans/ws-events-stage3.md) | Detailed, file-level task list for WS Stage 3 (`GET /game/ws` transport: snapshot-then-stream WS handler, route registration). **✅ Done.** | You want the record of what WS Stage 3 delivered. |
+
+### Completed plans
+
+Topics whose plans are **fully done** move to [`plans/completed/`](plans/completed/README.md),
+which is the reference for the detailed history if you need it. At a glance, completed
+topics so far:
+
+- **Adding WebSockets to the server** — a read-only, snapshot-then-stream WebSocket
+  (`GET /game/ws`) pushing live game events to connected clients, alongside the existing
+  REST API.
 
 ---
 
@@ -45,9 +53,14 @@ have their own `design/` doc (see the table below).
 
 - **New design/arch doc** → add to `design/` and link it in the table above.
 - **New work plan** → add to `plans/` and link it in the table above.
+- **A plan finishes (every stage done)** → move its detailed files to `plans/completed/`,
+  add/update its entry in [`plans/completed/README.md`](plans/completed/README.md), and
+  replace its row(s) in the table above with a one-line bullet under "Completed plans"
+  (topic name only, no file links).
 - **Cross-links:** reference sibling docs by relative path
   (`../design/foo.md` from a plan, `../plans/bar.md` from a design doc).
-- Keep this index current: every new doc under `docs/` should appear in one of the tables.
+- Keep this index current: every new active doc under `docs/plans/` (not yet completed)
+  should appear in the table above.
 
 ---
 

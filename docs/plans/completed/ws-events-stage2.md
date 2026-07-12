@@ -15,7 +15,7 @@ broadcast `Sender`, a private `emit()` helper, a public `subscribe()`, and `emit
 each state-mutating method. **Still no transport** — nothing consumes the events yet except
 the Stage 2 unit test.
 
-Prerequisite reading: `../design/ws-events-architecture.md` (§3 the broadcast bridge, §4
+Prerequisite reading: `../../design/ws-events-architecture.md` (§3 the broadcast bridge, §4
 `Game` as emitter) and `ws-events-stage1.md` (the `GameEvent` type, now landed).
 
 ---
@@ -87,7 +87,7 @@ not a bug.
 method returns, the event is already in the channel's ring buffer.
 `broadcast::Receiver::try_recv()` reads it synchronously. Therefore the Stage 2 test needs
 **no** `#[tokio::test]`, no async runtime, and **no `[dev-dependencies]`** — consistent with
-the project's "no speculative deps" stance (`../design/testing-strategy.md` §3). The `tokio`
+the project's "no speculative deps" stance (`../../design/testing-strategy.md` §3). The `tokio`
 `rt`/`macros` features declared in Stage 1 remain reserved for the Stage 3 WS pump.
 
 ### D5 — What the test asserts (determinism)
@@ -99,7 +99,7 @@ non-`PartialEq` types), the primary Stage 2 assertion targets the **card-draw-in
 `NextPlayTypeSet` event, whose payload (`PlayType`) is directly comparable.
 
 The `PlayRun` event depends on a shuffled FAC deck (`fac.rs` `thread_rng()` — the only
-nondeterminism, `../design/testing-strategy.md` §5), so a deterministic
+nondeterminism, `../../design/testing-strategy.md` §5), so a deterministic
 "run play → assert `PlayRun` contents" test is **out of scope here** and is unlocked by
 testing-plan **T3** (the `FacManager::from_cards` seam). Asserting merely that
 `run_current_play` *emits some* `PlayRun` (via `matches!`, without inspecting yardage) is
@@ -340,7 +340,7 @@ unreachable and `FacManager::new` panics on `unwrap()`. Two consequences:
    `create_game_with_fac_path(home, away, fac_path)` (public API unchanged) so the test can
    pass a reachable path.
 2. The test uses `fac_path = "../cards/fac_cards.csv"` and **self-skips** when it is absent
-   (`../design/testing-strategy.md` §6), mirroring the `persist.rs` round-trip test. So the
+   (`../../design/testing-strategy.md` §6), mirroring the `persist.rs` round-trip test. So the
    primary assertion runs whenever the FAC CSV is present (the normal checkout) and skips
    cleanly otherwise — it is not unconditionally always-on as an earlier draft implied.
 

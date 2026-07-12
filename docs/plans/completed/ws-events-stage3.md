@@ -29,7 +29,7 @@
 > WebSocket endpoint that, on connect, pushes the current game state (snapshot) and then
 > streams every subsequent `GameEvent` as a JSON text frame. Client commands stay on REST.
 
-Prerequisite reading: `../design/ws-events-architecture.md` (§2 layering, §5 transport
+Prerequisite reading: `../../design/ws-events-architecture.md` (§2 layering, §5 transport
 adapters) and `ws-events-stage2.md` (the `Game` emitter — `subscribe()` now exists and is
 consumed here).
 

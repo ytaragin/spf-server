@@ -1,7 +1,7 @@
 # WebSocket Events: Staged Rollout Plan
 
 High-level plan for delivering the event-broadcast feature described in
-`../design/ws-events-architecture.md`. The work is split into independent stages that each end at a
+`../../design/ws-events-architecture.md`. The work is split into independent stages that each end at a
 compiling, verifiable checkpoint.
 
 Detailed task breakdowns are written **per stage, when we reach that stage**. Stage 1's

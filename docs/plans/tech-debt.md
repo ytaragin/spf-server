@@ -56,7 +56,7 @@ builds a `Game` cannot supply the right prefix, and `FacManager::new` panics on 
 - **WS Stage 2** hit this: to unit-test event emission we had to refactor `create_game` to
   delegate to a private `create_game_with_fac_path(home, away, fac_path)` and point the test
   at `"../cards/fac_cards.csv"` with a self-skip guard. That is a *local* patch, not a
-  general fix. (See `ws-events-stage2.md` → Task 6 note.)
+  general fix. (See `docs/plans/completed/ws-events-stage2.md` → Task 6 note.)
 
 ### Why it matters
 
@@ -97,7 +97,7 @@ Option 1 is the cheapest partial win if a full DI refactor is deferred.
 
 ### Problem
 
-WS Stage 3 (`docs/plans/ws-events-stage3.md`) shipped `game_ws` with only a **manual**
+WS Stage 3 (`docs/plans/completed/ws-events-stage3.md`) shipped `game_ws` with only a **manual**
 smoke test (`websocat`, verified once during implementation). There is no automated test
 that asserts the handshake, the snapshot-on-connect frame, event forwarding, or the `409`
 when no game is in progress. A regression here (e.g. someone reorders route registration
@@ -135,7 +135,7 @@ and the `/game` scope shadows `/game/ws` again — see item 4 below) would not b
 ### Problem
 
 The `game_ws` pump (`spf/src/webendpoint.rs`) treats `RecvError::Lagged(n)` as "skip and
-continue" (see `ws-events-stage3.md` D4): the client silently misses `n` events and only
+continue" (see `docs/plans/completed/ws-events-stage3.md` D4): the client silently misses `n` events and only
 resumes receiving from whatever event comes next. There is no mechanism to bring a lagged
 client back in sync with a fresh snapshot.
 
@@ -166,7 +166,7 @@ client back in sync with a fresh snapshot.
 
 ## 4. `utoipa` scope vs. plain-route registration is a subtle, undocumented gotcha
 
-**Status:** open (partially mitigated by inline comments + `ws-events-stage3.md`).
+**Status:** open (partially mitigated by inline comments + `docs/plans/completed/ws-events-stage3.md`).
 
 ### Problem
 
@@ -179,7 +179,7 @@ must instead use `UtoipaApp::route(path, Route)` (which has no such bound) — r
 instead of ever reaching the handler.
 
 This is documented today only as inline comments on `game_ws` and in
-`docs/plans/ws-events-stage3.md`'s deviation note — not in the durable
+`docs/plans/completed/ws-events-stage3.md`'s deviation note — not in the durable
 `docs/design/openapi-utoipa.md` reference, where a future contributor adding a similar
 non-REST handler would be more likely to look.
 
@@ -187,7 +187,7 @@ non-REST handler would be more likely to look.
 
 - `spf/src/webendpoint.rs`: `game_ws` registered via
   `.route("/game/ws", web::get().to(game_ws))` ahead of `scope::scope("/game")`.
-- `docs/plans/ws-events-stage3.md` (Task 3's "landed differently" note).
+- `docs/plans/completed/ws-events-stage3.md` (Task 3's "landed differently" note).
 
 ### Why it matters
 
