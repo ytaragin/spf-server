@@ -17,8 +17,9 @@ spf/                  # Workspace root
 │   └── src/
 │       ├── main.rs                 # Loads persistent data (data/1983) then starts server
 │       ├── webendpoint.rs          # HTTP handlers, route scopes, OpenAPI (utoipa) wiring
-│       ├── game.rs                 # Top-level Game struct + GameState; re-exports spf_core model
+│       ├── game.rs                 # Top-level Game struct + GameState; create_game/build + CreateGameError; re-exports spf_core model
 │       └── game/
+│           ├── environment.rs      # GameEnvironment: single resource-loading site (league + FAC deck); see design/game-management.md
 │           ├── engine.rs           # Core play-execution traits and types
 │           ├── engine/
 │           │   ├── defs.rs          # Constants and lookup tables (lazy_static)
@@ -29,7 +30,7 @@ spf/                  # Workspace root
 │           │   └── resulthandler.rs # Post-play state (down, score, possession)
 │           ├── standard_play.rs     # StandardPlay struct + call types (re-exports PassResult etc.)
 │           ├── kickoff_play.rs      # KickoffPlay struct + PlayImpl
-│           └── fac.rs               # FAC card deck: parsing, shuffling, data types
+│           └── fac.rs               # FAC card deck: parsing, shuffle vs. from_cards deterministic seam, data types
 ├── spf_core/         # Shared library crate: data model, loaders, persistence
 │   └── src/
 │       ├── lib.rs

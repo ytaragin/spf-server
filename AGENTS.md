@@ -20,6 +20,7 @@ Jump straight to the reference you need:
 |---|---|
 | Run build / lint / test / format / server / data-conversion commands | [`docs/design/commands.md`](docs/design/commands.md) |
 | Understand the crate & module layout | [`docs/design/workspace-structure.md`](docs/design/workspace-structure.md) |
+| Work on game construction, `GameEnvironment`, or the HTTP-to-domain boundary | [`docs/design/game-management.md`](docs/design/game-management.md) |
 | Understand how card data is ingested & loaded | [`docs/design/data-pipeline.md`](docs/design/data-pipeline.md) |
 | Follow code style, naming, error handling & architectural patterns | [`docs/design/code-style.md`](docs/design/code-style.md) |
 | Work on the HTTP/OpenAPI (utoipa) layer or dev environment | [`docs/design/openapi-utoipa.md`](docs/design/openapi-utoipa.md) |

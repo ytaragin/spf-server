@@ -12,9 +12,27 @@ rough edges we intend to revisit*.
 
 ## 1. Resource paths differ between execution and tests (FAC deck, card data)
 
-**Status:** open.
+**Status:** resolved (testing-plan T3) via dependency injection — `GameEnvironment` +
+`FacManager::from_cards`/`from_csv` (options 3 and 4 below).
 
-### Problem
+### Resolution
+
+- Resource loading is centralized in **`GameEnvironment::load`** (`spf/src/game/environment.rs`),
+  the single disk-loading site, created once in `main`. `Game` no longer knows about paths:
+  `create_game(&env, home, away)` resolves teams and `build(home, away, fac_deck)` takes an
+  owned deck (option 3 — DI).
+- **`FacManager::from_csv`** returns a `Result`, so a missing/mislocated file is a handled
+  startup error instead of a panic (option 4). `FacManager::from_cards` gives tests an
+  in-memory deck with no path at all, removing the CWD-relative-path guesswork and the
+  self-skip guards (the old `create_game_with_fac_path` workaround is gone).
+- See [`../design/game-management.md`](../design/game-management.md) for the layering and the
+  ownership model.
+
+Original write-up retained below for history.
+
+---
+
+### Problem (original)
 
 Code that loads on-disk resources uses **CWD-relative paths**, and the correct prefix
 differs depending on how the code is run:

@@ -203,23 +203,52 @@ impl FacCard {
 pub struct FacManager {
     facs: Vec<FacCard>,
     deck: Vec<FacCard>,
+    /// Whether refilling the draw deck reshuffles it. `true` for real (CSV-loaded) decks —
+    /// the sole source of engine nondeterminism. `false` for decks injected via
+    /// [`from_cards`](Self::from_cards) so tests get a reproducible, ordered draw sequence.
+    shuffle_on_refill: bool,
 }
 
 impl FacManager {
-    pub fn new(filename: &str) -> Self {
-        // return an instance of the struct with the given values
-        let fac_data = read_csv_file(filename).unwrap();
-        let facs = fac_data.into_iter().map(|f| FacCard::from(f)).collect();
+    /// Build a manager from an in-memory, explicitly ordered card list, bypassing the
+    /// shuffle. Cards are drawn in the given order (front to back). This is the
+    /// deterministic testing seam (see `docs/design/testing-strategy.md` §5); it performs
+    /// no I/O.
+    // Test-only seam today; keep the non-test build warning-free (T6).
+    #[cfg_attr(not(test), allow(dead_code))]
+    pub fn from_cards(cards: Vec<FacCard>) -> Self {
+        // `get_fac` pops from the tail, so store reversed to draw in the caller's order.
+        let mut deck: Vec<FacCard> = cards.clone();
+        deck.reverse();
+        Self {
+            facs: cards,
+            deck,
+            shuffle_on_refill: false,
+        }
+    }
 
-        let deck: Vec<FacCard> = vec![];
+    /// Load a shuffling deck from a FAC CSV file, surfacing any I/O / parse error instead of
+    /// panicking. This is the production loading path.
+    pub fn from_csv(filename: &str) -> Result<Self, Box<dyn Error>> {
+        let fac_data = read_csv_file(filename)?;
+        let facs = fac_data.into_iter().map(FacCard::from).collect();
 
-        return Self { facs, deck };
+        Ok(Self {
+            facs,
+            deck: vec![],
+            shuffle_on_refill: true,
+        })
     }
 
     pub fn get_fac(&mut self, force_shuffle: bool) -> FacCard {
         if force_shuffle || self.deck.is_empty() {
             self.deck = self.facs.clone();
-            self.deck.shuffle(&mut thread_rng());
+            if self.shuffle_on_refill {
+                self.deck.shuffle(&mut thread_rng());
+            } else {
+                // Preserve the caller's draw order across refills.
+                self.deck.reverse();
+            }
         }
 
         let c = self.deck.pop().unwrap_or(FacCard::Z);
@@ -244,4 +273,68 @@ pub fn read_csv_file(filename: &str) -> Result<Vec<FacData>, Box<dyn Error>> {
     println!("Done");
 
     return Ok(records);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn data_card(id: i32) -> FacCard {
+        let d = FacData {
+            id,
+            run_num: RunNum { num: 1, ob: false },
+            pass_num: 1,
+            sl: RunDirection::Break,
+            il: RunDirection::Break,
+            ir: RunDirection::Break,
+            sr: RunDirection::Break,
+            er: String::new(),
+            sc: ScreenResult {
+                result: PassResult::Complete,
+                multiplier: 1.0,
+            },
+            sh: PassTarget::Orig,
+            qk: PassTarget::Orig,
+            lg: PassTarget::Orig,
+            z_result: String::new(),
+            solitaire: String::new(),
+        };
+        FacCard::Data(d)
+    }
+
+    fn card_id(c: &FacCard) -> i32 {
+        match c {
+            FacCard::Data(d) => d.id,
+            FacCard::Z => -1,
+        }
+    }
+
+    #[test]
+    fn test_from_cards_draws_in_order_without_shuffle() {
+        let cards = vec![data_card(1), data_card(2), data_card(3)];
+        let mut mgr = FacManager::from_cards(cards);
+
+        // Drawn in the exact order supplied (no shuffle).
+        assert_eq!(card_id(&mgr.get_fac(false)), 1);
+        assert_eq!(card_id(&mgr.get_fac(false)), 2);
+        assert_eq!(card_id(&mgr.get_fac(false)), 3);
+    }
+
+    #[test]
+    fn test_from_cards_refills_in_same_order() {
+        let cards = vec![data_card(10), data_card(20)];
+        let mut mgr = FacManager::from_cards(cards);
+
+        // Exhaust the deck, then the next draw refills — deterministically, same order.
+        assert_eq!(card_id(&mgr.get_fac(false)), 10);
+        assert_eq!(card_id(&mgr.get_fac(false)), 20);
+        assert_eq!(card_id(&mgr.get_fac(false)), 10);
+        assert_eq!(card_id(&mgr.get_fac(false)), 20);
+    }
+
+    #[test]
+    fn test_empty_injected_deck_yields_z() {
+        let mut mgr = FacManager::from_cards(vec![]);
+        assert!(matches!(mgr.get_fac(false), FacCard::Z));
+    }
 }

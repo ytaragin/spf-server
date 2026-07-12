@@ -89,22 +89,29 @@ tables in `../plans/testing-plan.md`.
 
 ## 5. Determinism: the FAC deck seam
 
-The **only** source of nondeterminism in the engine is the FAC deck shuffle:
+The **only** source of nondeterminism in the engine is the FAC deck shuffle in
+`spf/src/game/fac.rs`.
 
-- `spf/src/game/fac.rs:220` — `self.deck.shuffle(&mut thread_rng());`
+The seam now exists. `FacManager` separates *how the deck is sourced* from *whether it
+shuffles*:
 
-Because of this, `Game::run_current_play` cannot currently be asserted deterministically.
-The strategy for testing anything downstream of card draws is to **inject a known deck**
-rather than to assert on shuffled output:
+- **`FacManager::from_cards(Vec<FacCard>)`** — builds a deck from an explicit, ordered card
+  list and draws it in that order **without shuffling** (and re-draws in the same order across
+  refills). This is the injection point for deterministic tests.
+- **`FacManager::from_csv(path)`** — the production path; loads from CSV and shuffles on
+  refill (surfacing I/O errors as a `Result` instead of panicking).
 
-- **Preferred seam:** a constructor such as `FacManager::from_cards(Vec<...>)` /
-  `with_deck(...)` that builds a deck from an explicit, ordered card list, bypassing the
-  shuffle. Tests then get reproducible `PlayResult`s.
-- **Alternative (heavier, not currently pursued):** inject a seeded RNG
-  (`StdRng::seed_from_u64`) in place of `thread_rng()`.
+Downstream, `Game::build(home, away, fac_deck)` is a pure constructor that accepts an owned
+`FacManager`, so a test can build a fully deterministic game:
 
-This seam does not exist yet; see `../plans/testing-plan.md` for when it lands. Until then, tests
-must avoid asserting on card-draw-dependent output.
+```rust
+let deck = FacManager::from_cards(vec![/* known, ordered cards */]);
+let game = Game::build(home_roster, away_roster, deck); // reproducible draws
+```
+
+See [`game-management.md`](game-management.md) for how construction and the environment are
+wired. Tests that don't inject a deck must still avoid asserting on card-draw-dependent
+output.
 
 ---
 

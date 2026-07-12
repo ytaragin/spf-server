@@ -1,4 +1,5 @@
 pub mod engine;
+pub mod environment;
 pub mod events;
 pub mod fac;
 pub mod kickoff_play;
@@ -25,12 +26,20 @@ use self::{
         run_play, DefenseCall, DefenseIDLineup, Down, OffenseCall, OffenseIDLineup, PlayImpl,
         PlayResult, PlayType, Yard,
     },
+    environment::GameEnvironment,
     events::GameEvent,
     fac::FacManager,
     kickoff_play::KickoffPlay,
-    players::Roster,
+    players::{Roster, TeamID},
     standard_play::StandardPlay,
 };
+
+/// Error returned by [`Game::create_game`] when the requested teams can't be resolved.
+#[derive(Debug)]
+pub enum CreateGameError {
+    /// The given team id is not present in the league.
+    UnknownTeam(TeamID),
+}
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, ToSchema)]
 pub enum GameTeams {
@@ -192,14 +201,34 @@ pub struct Game {
 }
 
 impl Game {
-    pub fn create_game(home: Roster, away: Roster) -> Self {
-        Self::create_game_with_fac_path(home, away, "cards/fac_cards.csv")
+    /// Create a game from the shared [`GameEnvironment`] and the two teams' ids.
+    ///
+    /// Resolves each team against the environment's league (moving the membership check out
+    /// of the HTTP layer), then builds the game with its own cloned FAC deck. The environment
+    /// is only borrowed, so one environment can back many games.
+    pub fn create_game(
+        env: &GameEnvironment,
+        home: &TeamID,
+        away: &TeamID,
+    ) -> Result<Self, CreateGameError> {
+        let home_roster = env
+            .roster(home)
+            .ok_or_else(|| CreateGameError::UnknownTeam(home.clone()))?;
+        let away_roster = env
+            .roster(away)
+            .ok_or_else(|| CreateGameError::UnknownTeam(away.clone()))?;
+
+        Ok(Self::build(
+            home_roster.clone(),
+            away_roster.clone(),
+            env.new_deck(),
+        ))
     }
 
-    /// Same as [`create_game`](Self::create_game) but with an explicit FAC-deck CSV path.
-    /// Split out so tests (whose CWD is the crate dir) can point at `../cards/...`. A fuller
-    /// deck-injection seam for deterministic play results is testing-plan T3.
-    fn create_game_with_fac_path(home: Roster, away: Roster, fac_path: &str) -> Self {
+    /// Pure dependency-injected constructor: builds a game from already-resolved rosters and
+    /// an owned FAC deck. No disk access. This is the seam tests use to inject a deterministic
+    /// deck (see `docs/design/testing-strategy.md` §5).
+    fn build(home: Roster, away: Roster, fac_deck: FacManager) -> Self {
         let start_type = PlayType::Kickoff;
         let (event_tx, _rx) = broadcast::channel(GAME_EVENT_CHANNEL_CAPACITY);
 
@@ -211,7 +240,7 @@ impl Game {
             next_play: Some(start_type.create_impl()),
             offlineup: None,
             deflineup: None,
-            fac_deck: FacManager::new(fac_path),
+            fac_deck,
             event_tx,
         };
 
@@ -434,7 +463,6 @@ impl Game {
 mod tests {
     use super::*;
     use spf_core::players::{Player, Roster, TeamID};
-    use std::path::Path;
 
     fn empty_roster(name: &str) -> Roster {
         Roster::from_players(
@@ -446,22 +474,23 @@ mod tests {
         )
     }
 
+    /// A game built from empty rosters and an empty (Z-only) injected deck. Needs no fixture
+    /// files and no shuffle, so it is fully deterministic. The deck is irrelevant to the
+    /// card-independent behaviors exercised here.
+    fn game_with_injected_deck() -> Game {
+        Game::build(
+            empty_roster("Home"),
+            empty_roster("Away"),
+            fac::FacManager::from_cards(vec![]),
+        )
+    }
+
     #[test]
     fn test_set_next_play_type_emits_event() {
-        // Tests run with CWD = crate dir, so the workspace FAC deck is at `../cards/...`.
-        // Self-skip (rather than panic in FacManager::new) when it is absent, mirroring the
-        // persist.rs round-trip test. See docs/design/testing-strategy.md §6.
-        let fac_path = "../cards/fac_cards.csv";
-        if !Path::new(fac_path).exists() {
-            eprintln!("skipping event-emission test: {} not present", fac_path);
-            return;
-        }
+        // Arrange: a game with an injected deck (no disk, no shuffle, no self-skip).
+        let mut game = game_with_injected_deck();
 
-        // Arrange: a game built from empty rosters (no player-card fixtures needed).
-        let mut game =
-            Game::create_game_with_fac_path(empty_roster("Home"), empty_roster("Away"), fac_path);
-
-        // Subscribe *after* creation: the GameStarted emitted inside create_game had no
+        // Subscribe *after* creation: the GameStarted emitted inside build had no
         // receiver and is already gone, so the channel is empty here. The next recv will be
         // whatever we emit below.
         let mut rx = game.subscribe();
@@ -477,6 +506,46 @@ mod tests {
                 assert_eq!(play_type, PlayType::Kickoff);
             }
             other => panic!("expected NextPlayTypeSet, got {:?}", other),
+        }
+    }
+
+    fn team_id(name: &str) -> TeamID {
+        TeamID {
+            name: name.into(),
+            year: "1983".into(),
+        }
+    }
+
+    fn env_with_teams(names: &[&str]) -> environment::GameEnvironment {
+        let rosters: Vec<Roster> = names.iter().map(|n| empty_roster(n)).collect();
+        let league = spf_core::players::TeamList::from_rosters(rosters);
+        environment::GameEnvironment::from_parts(league, fac::FacManager::from_cards(vec![]))
+    }
+
+    #[test]
+    fn test_create_game_resolves_known_teams() {
+        let env = env_with_teams(&["Home", "Away"]);
+        let game = Game::create_game(&env, &team_id("Home"), &team_id("Away"))
+            .expect("both teams are in the league");
+        assert_eq!(game.home.get_team_name().name, "Home");
+        assert_eq!(game.away.get_team_name().name, "Away");
+    }
+
+    #[test]
+    fn test_create_game_unknown_home_team() {
+        let env = env_with_teams(&["Away"]);
+        match Game::create_game(&env, &team_id("Nope"), &team_id("Away")) {
+            Err(CreateGameError::UnknownTeam(t)) => assert_eq!(t.name, "Nope"),
+            Ok(_) => panic!("expected UnknownTeam(Nope), got Ok(game)"),
+        }
+    }
+
+    #[test]
+    fn test_create_game_unknown_away_team() {
+        let env = env_with_teams(&["Home"]);
+        match Game::create_game(&env, &team_id("Home"), &team_id("Nope")) {
+            Err(CreateGameError::UnknownTeam(t)) => assert_eq!(t.name, "Nope"),
+            Ok(_) => panic!("expected UnknownTeam(Nope), got Ok(game)"),
         }
     }
 }

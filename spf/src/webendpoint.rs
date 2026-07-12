@@ -10,8 +10,9 @@ use utoipa_swagger_ui::SwaggerUi;
 
 use crate::game::{
     engine::{DefenseCall, DefenseIDLineup, OffenseCall, OffenseIDLineup, PlayResult, PlayType},
-    players::{Serializable_Roster, TeamID, TeamList},
-    Game, GameState, PlayAndState, PlayTypeInfo,
+    environment::GameEnvironment,
+    players::{Serializable_Roster, TeamID},
+    CreateGameError, Game, GameState, PlayAndState, PlayTypeInfo,
 };
 
 #[derive(Deserialize, ToSchema)]
@@ -454,7 +455,7 @@ async fn get_all_plays(
 }
 
 struct AppState {
-    league: TeamList,
+    env: GameEnvironment,
     game: Mutex<Option<Game>>,
 }
 
@@ -480,20 +481,12 @@ async fn start_game(
         return HttpResponse::Conflict().body("A game is already in progress");
     }
 
-    let home = match appstate.league.get_team(&req.home) {
-        Some(r) => r,
-        None => {
-            return HttpResponse::NotFound().body(format!("Unknown team: {}", req.home.to_string()))
+    let game = match Game::create_game(&appstate.env, &req.home, &req.away) {
+        Ok(g) => g,
+        Err(CreateGameError::UnknownTeam(team)) => {
+            return HttpResponse::NotFound().body(format!("Unknown team: {}", team.to_string()))
         }
     };
-    let away = match appstate.league.get_team(&req.away) {
-        Some(r) => r,
-        None => {
-            return HttpResponse::NotFound().body(format!("Unknown team: {}", req.away.to_string()))
-        }
-    };
-
-    let game = Game::create_game(home.clone(), away.clone());
     let json_data =
         serde_json::to_string(&game.state).expect("Error while serializing State to JSON.");
     *guard = Some(game);
@@ -527,9 +520,9 @@ async fn start_game(
 struct ApiDoc;
 
 #[actix_web::main]
-pub async fn runserver(league: TeamList) -> std::io::Result<()> {
+pub async fn runserver(env: GameEnvironment) -> std::io::Result<()> {
     let app_state = web::Data::new(AppState {
-        league,
+        env,
         game: Mutex::new(None),
     });
 

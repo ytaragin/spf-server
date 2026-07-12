@@ -37,11 +37,12 @@ There were no `tests/` integration directories, no `[dev-dependencies]`, and no 
 | `spf_core` | `src/lineup.rs` | 10 tests: `OffensiveBox`/`DefensiveBox` `from_str` (alias maps, case-insensitivity, error paths) and `LineupUtilities` `validate_count` / `count_spots` / `count_array_spots` |
 | `spf_core` | `src/players.rs` | 6 `TeamID::create_from_str` tests (fixup table, unmapped pass-through, `splitn` year/name defaults) |
 | `spf` | `src/game/engine/resulthandler.rs` | 13 `calculate_play_result` tests (down advance / first-down + marker clamp, turnover-on-downs & in-field turnover with field flip, offensive TD by possession, defensive TD, safety, clock run-down / quarter rollover / final-quarter clamp) |
-| `spf` | `src/game.rs` | 1 event-emission test (`test_set_next_play_type_emits_event`): subscribes to a `Game`'s broadcast channel and asserts `set_next_play_type` emits `GameEvent::NextPlayTypeSet`; self-skips when `../cards/fac_cards.csv` is absent |
+| `spf` | `src/game.rs` | `test_set_next_play_type_emits_event` (now uses an injected deck via `Game::build`, no fixture/self-skip) + 3 `create_game` tests (known teams resolve; unknown home/away → `CreateGameError::UnknownTeam`) |
+| `spf` | `src/game/fac.rs` | 3 `FacManager::from_cards` tests: draws in order, refills in same order, empty deck → `Z` |
 | `spf_cli` | — | none yet |
 | `spf_macros` | — | none yet |
 
-**Total: 42 tests** (28 in `spf_core`, 14 in `spf`). No integration (`tests/`) directories, no
+**Total: 48 tests** (28 in `spf_core`, 20 in `spf`). No integration (`tests/`) directories, no
 `[dev-dependencies]`, no CI gate yet.
 
 ---
@@ -74,7 +75,7 @@ heuristic this table applies.
 |---|---|---|---|
 | T1 | Harness bootstrap | ✅ Done | `cargo test` runs real assertions in a leaf module; loop proven. |
 | T2 | Pure-logic unit tests | ✅ Done | `spf_core` targets + `resulthandler.rs` (spf crate) covered; 41 tests. `is_legal_lineup` full-lineup path still needs builders (carried to T4). |
-| T3 | Deterministic FAC seam | ⬜ Not started | `FacManager` buildable from an explicit deck; play execution reproducible. |
+| T3 | Deterministic FAC seam | ✅ Done | `FacManager` buildable from an explicit deck (`from_cards`); `Game::build` DI constructor; `GameEnvironment` centralizes loading. |
 | T4 | HTTP / integration tests | ⬜ Not started | `spf/tests/` exercising the real actix `App` via `test::init_service`. |
 | T5 | CI gate | ⬜ Not started | `.github/workflows` running fmt-check + clippy + test on every push. |
 | T6 | Warning cleanup | 🟡 Partly done | `cargo build --workspace` is warning-free + `[workspace.lints]` added; `cargo clippy` still emits ~200 style lints, so the `-D warnings` clippy gate is not yet unblocked. |
@@ -177,21 +178,42 @@ discriminant via small `is_status` / `is_possession` test helpers rather than `a
 
 ---
 
-## Stage T3 — Deterministic FAC seam ⬜
+## Stage T3 — Deterministic FAC seam ✅
 
-**Goal:** make card-draw-dependent logic testable by injecting a known deck.
+**Goal:** make card-draw-dependent logic testable by injecting a known deck, and untangle the
+resource-loading boundary while doing so.
 
-- Introduce `FacManager::from_cards(...)` (or `with_deck(...)`) that builds a deck from an
-  explicit ordered list, bypassing `thread_rng()` (see `../design/testing-strategy.md` §5).
-- Add a focused test asserting a known deck yields a known `PlayResult`.
+**What landed:**
+- **`FacManager` seam** (`spf/src/game/fac.rs`): added a `shuffle_on_refill` flag plus two
+  constructors — `from_cards(Vec<FacCard>)` (in-memory, ordered, **no shuffle**, re-draws in
+  the same order across refills — the test seam) and `from_csv(&str) -> Result<..>` (the
+  production shuffling path, surfacing I/O errors instead of panicking). Dropped `new(path)`.
+- **`GameEnvironment`** (new `spf/src/game/environment.rs`): the single disk-loading site
+  (`load(data_dir, fac_path)`), holding the league + FAC deck template. Created once in
+  `main`, borrowed thereafter so one environment can back many games.
+- **`Game` construction refactor**: `create_game(&GameEnvironment, &TeamID, &TeamID) ->
+  Result<Game, CreateGameError>` resolves teams (membership check moved out of the HTTP
+  handler) and delegates to a private, pure `build(home, away, fac_deck)` DI constructor —
+  the deterministic seam. Deleted the old `create_game_with_fac_path` workaround.
+- **Thin endpoint**: `webendpoint::start_game` now just calls `create_game` and maps
+  `CreateGameError::UnknownTeam` → `404`; `AppState` holds a `GameEnvironment`. `main` loads
+  the environment once and handles load errors.
+- **Docs**: new [`../design/game-management.md`](../design/game-management.md) (construction /
+  environment / layering); `../design/testing-strategy.md` §5 updated (seam landed);
+  `tech-debt.md` §1 resolved.
 
-**Checkpoint:** a deterministic play-execution test passes repeatably.
+**Tests added (all deterministic, no fixtures):**
+- `fac.rs` — `from_cards` draws in order, refills in the same order, empty deck → `Z`.
+- `game.rs` — `create_game` resolves known teams; unknown home/away team → `UnknownTeam`; the
+  event-emission test migrated onto `build(...)` with an injected deck (dropped the path +
+  self-skip guard).
 
-**Related:** this seam should also resolve the CWD-relative resource-path divergence logged in
-`tech-debt.md` §1 (option 3 there) — design the deck-injection and the path fix together.
+**Verification:** `cargo build --workspace` warning-free; `cargo fmt --all -- --check` clean;
+`cargo test --workspace` → 48 passed (20 in `spf`, 28 in `spf_core`).
 
-**Natural pairing:** WS Stage 2 (`Game` emits events) needs a deterministic
-"run play → assert event" test, which this unblocks.
+**Deferred:** a full end-to-end `run_current_play → PlayResult` assertion needs rosters with
+real player stats (fixture-ish), so it rides with **T4**; the seam itself is proven at the
+`FacManager` / `build` level here.
 
 ---
 
@@ -262,7 +284,7 @@ intended interplay is:
 | WS stage | Testing tie-in |
 |---|---|
 | WS Stage 1 (deps + `GameEvent` type) ✅ | Inert type; nothing meaningful to unit-test beyond "it compiles". Landed with no new tests, as planned. |
-| WS Stage 2 (`Game` emits events) ✅ | First testable behavior. Landed with a card-draw-independent `set_next_play_type` → `NextPlayTypeSet` test (sync `try_recv`, no async/dev-deps). The `run_current_play` → `PlayRun` *contents* assertion still needs **T3** (FAC seam). |
+| WS Stage 2 (`Game` emits events) ✅ | First testable behavior. Landed with a card-draw-independent `set_next_play_type` → `NextPlayTypeSet` test. The `run_current_play` → `PlayRun` *contents* assertion is now **unblocked by T3** (inject a deck via `Game::build`); it rides with T4 once roster fixtures/builders exist. |
 | WS Stage 3 (WS transport) | Add the end-to-end connect/receive test under **T4** (`spf/tests/`). |
 
 **Recommendation of record:** WS Stage 1 landed without new tests (nothing to assert). For
