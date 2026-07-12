@@ -1,9 +1,14 @@
 use std::{str::FromStr, sync::Mutex};
 
 use actix_cors::Cors;
-use actix_web::{get, http::header, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{
+    get, http::header, post, rt, web, App, HttpRequest, HttpResponse, HttpServer, Responder,
+};
+use actix_ws::Message;
+use futures_util::StreamExt;
 use serde::Deserialize;
 use serde_json::json;
+use tokio::sync::broadcast::error::RecvError;
 use utoipa::{IntoParams, OpenApi, ToSchema};
 use utoipa_actix_web::{scope, AppExt};
 use utoipa_swagger_ui::SwaggerUi;
@@ -11,6 +16,7 @@ use utoipa_swagger_ui::SwaggerUi;
 use crate::game::{
     engine::{DefenseCall, DefenseIDLineup, OffenseCall, OffenseIDLineup, PlayResult, PlayType},
     environment::GameEnvironment,
+    events::GameEvent,
     players::{Serializable_Roster, TeamID},
     CreateGameError, Game, GameState, PlayAndState, PlayTypeInfo,
 };
@@ -459,6 +465,75 @@ struct AppState {
     game: Mutex<Option<Game>>,
 }
 
+/// Read-only WebSocket endpoint (`GET /game/ws`). On connect the client immediately
+/// receives the current game state (as a `GameStarted`-shaped `GameEvent`), then every
+/// subsequent `GameEvent` as a JSON text frame. Client commands stay on REST. Returns
+/// `409 Conflict` when no game is in progress. See `docs/design/ws-events-architecture.md`.
+///
+/// Registered via `App::route` (not `#[get]`/utoipa `service`) because a WebSocket upgrade
+/// cannot be described by `#[utoipa::path]`, and the utoipa scope's `service` bound requires
+/// `OpenApiFactory`. Registering it on the utoipa app *before* the `/game` scope also avoids
+/// the scope greedily shadowing the `/game/ws` path.
+async fn game_ws(
+    req: HttpRequest,
+    body: web::Payload,
+    appstate: web::Data<AppState>,
+) -> Result<HttpResponse, actix_web::Error> {
+    // Briefly lock: read the snapshot and mint a receiver, then release the guard before
+    // any async WS work (the Mutex guard must not be held across await points).
+    let (snapshot, mut rx) = {
+        let mut guard = appstate.game.lock().unwrap();
+        let game = match guard.as_mut() {
+            Some(g) => g,
+            None => return Ok(HttpResponse::Conflict().body("No game in progress")),
+        };
+        (game.state, game.subscribe())
+    };
+
+    let (res, mut session, mut msg_stream) = actix_ws::handle(&req, body)?;
+
+    rt::spawn(async move {
+        // Snapshot-then-stream: send the current state first.
+        let snapshot_ev = GameEvent::GameStarted { state: snapshot };
+        if let Ok(txt) = serde_json::to_string(&snapshot_ev) {
+            if session.text(txt).await.is_err() {
+                return; // client already gone
+            }
+        }
+
+        // Multiplex broadcast events and inbound client frames.
+        loop {
+            tokio::select! {
+                event = rx.recv() => match event {
+                    Ok(ev) => {
+                        if let Ok(txt) = serde_json::to_string(&ev) {
+                            if session.text(txt).await.is_err() {
+                                break; // client disconnected mid-send
+                            }
+                        }
+                    }
+                    Err(RecvError::Lagged(_)) => continue, // skip & resync
+                    Err(RecvError::Closed) => break,       // game dropped
+                },
+                msg = msg_stream.next() => match msg {
+                    Some(Ok(Message::Ping(bytes))) => {
+                        if session.pong(&bytes).await.is_err() {
+                            break;
+                        }
+                    }
+                    Some(Ok(Message::Close(_))) | None => break, // client closed / stream ended
+                    Some(Ok(_)) => {} // read-only: ignore Text/Binary/etc.
+                    Some(Err(_)) => break, // protocol error
+                },
+            }
+        }
+
+        let _ = session.close(None).await;
+    });
+
+    Ok(res)
+}
+
 #[utoipa::path(
     tag = "game",
     request_body = StartGameRequest,
@@ -543,6 +618,7 @@ pub async fn runserver(env: GameEnvironment) -> std::io::Result<()> {
             .openapi(ApiDoc::openapi())
             .app_data(app_state.clone())
             .map(|a| a.wrap(cors))
+            .route("/game/ws", web::get().to(game_ws))
             .service(
                 scope::scope("/game")
                     .service(start_game)

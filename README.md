@@ -66,3 +66,28 @@ curl http://127.0.0.1:8080/api-docs/openapi.json -o openapi.json
 ```
 
 Endpoints are grouped into `game`, `offense`, `defense`, and `players` tags in the UI.
+
+## Live Events (WebSocket)
+
+In addition to the REST API, the server pushes live game events over a **read-only**
+WebSocket at `GET /game/ws`. On connect the client immediately receives a snapshot of the
+current game state, then a JSON frame for every subsequent change (lineup set, next play
+type selected, play run, …). Commands are still issued via REST; the socket is for
+notifications only. Returns `409 Conflict` if no game is in progress.
+
+You can smoke-test it with [`websocat`](https://github.com/vi/websocat) (a command-line
+WebSocket client — install with `cargo install websocat`):
+
+```bash
+# 1. Start a game first (via Swagger UI or curl), then connect:
+websocat ws://127.0.0.1:8080/game/ws
+```
+
+Each message is a tagged JSON object, e.g.:
+
+```json
+{"event":"GameStarted","data":{"state":{ "quarter":1, "possession":"Away", "...":"..." }}}
+```
+
+Drive the game via REST (e.g. `POST /game/nexttype`, `POST /game/play`) in another terminal
+and watch the corresponding `NextPlayTypeSet` / `PlayRun` events arrive on the socket.

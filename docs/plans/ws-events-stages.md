@@ -26,7 +26,7 @@ high level.
 |---|---|---|---|
 | 1 | Foundation: deps + event type | ✅ Done | `GameEvent` enum exists and compiles; dependencies added. Nothing wired yet. |
 | 2 | Domain emitter | ✅ Done | `Game` owns a broadcast `Sender`, emits on every state change, and exposes `subscribe()`. Verified via a unit test. |
-| 3 | WebSocket transport | ⬜ Not started | `GET /game/ws` streams live events to connected clients. End-to-end manual smoke test passes. |
+| 3 | WebSocket transport | ✅ Done | `GET /game/ws` streams live events to connected clients (snapshot-then-stream). Verified: build/clippy/fmt/test clean. |
 | 4 | Docs & polish | ⬜ Not started | `GameEvent` documented in OpenAPI; `AGENTS.md`/Postman updated; final lint/format pass. |
 
 **Confirmed decisions (settled during Stage 1 planning, apply at Stage 3):**
@@ -90,7 +90,7 @@ is a minimal path seam, **not** the full T3 deck-injection work.
 
 ---
 
-## Stage 3 — WebSocket transport: `GET /game/ws`
+## Stage 3 — WebSocket transport: `GET /game/ws` ✅ Done
 
 **Goal:** expose the first transport adapter.
 
@@ -110,6 +110,17 @@ confirm JSON events arrive.
 - WS route path: **`GET /game/ws`** (nested under `/game`), not top-level `GET /ws`.
 - Snapshot-on-connect: **snapshot then stream** — push the current state immediately, then
   future events.
+
+**What landed:** `game_ws` handler + `subscribe()` `#[allow(dead_code)]` removed. Snapshot
+sent as `GameEvent::GameStarted { state }`; a `tokio::select!` pump multiplexes broadcast
+events and inbound client frames (`Ping`→`Pong`, `Lagged`→skip, `Closed`/`Close`→exit).
+Verified: `cargo build/clippy/fmt` clean, `cargo test --workspace` (48 tests), and a live
+smoke test (WS upgrade → `101`, `GameStarted` snapshot received, `409` with no game).
+**Deviation:** `game_ws` is a plain `async fn` registered via
+`.route("/game/ws", web::get().to(game_ws))` on the `UtoipaApp` **before** the `/game` scope
+— it cannot be a utoipa scope `service` (that bound requires `OpenApiFactory`, which a
+non-`#[utoipa::path]` WS handler lacks), and it must precede the `/game` scope or that scope
+shadows the path with a 404. Detailed record: `ws-events-stage3.md`.
 
 ---
 

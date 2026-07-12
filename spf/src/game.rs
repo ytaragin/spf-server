@@ -258,9 +258,7 @@ impl Game {
     }
 
     /// Obtain a receiver for this game's event stream. Each transport adapter (e.g. the WS
-    /// handler in Stage 3) calls this to get its own independent receiver.
-    // Consumed by the Stage 3 WebSocket handler; only the unit test references it today.
-    #[allow(dead_code)]
+    /// handler) calls this to get its own independent receiver.
     pub fn subscribe(&self) -> broadcast::Receiver<GameEvent> {
         self.event_tx.subscribe()
     }
