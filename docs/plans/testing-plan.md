@@ -25,6 +25,49 @@ There were no `tests/` integration directories, no `[dev-dependencies]`, and no 
 
 ---
 
+## Current inventory (snapshot)
+
+> Refresh when tests are added or removed. Command: `cargo test --workspace` (see
+> per-crate breakdown with `cargo test -p <crate> -- --list`).
+
+| Crate | Location | Tests |
+|---|---|---|
+| `spf_core` | `src/persist.rs` | `test_sanitize_file_stem_replaces_unsafe_chars`, `test_convert_and_reload_round_trip` (self-skips without card data) |
+| `spf_core` | `src/stats.rs` | 7 `Range` unit tests (parsing, `in_range` inclusivity, `get_tag_and_range`) + 3 `RangedStats<PassResult>` tests (`create_from_strs`, `get_category` with/without boundary shift) |
+| `spf_core` | `src/lineup.rs` | 10 tests: `OffensiveBox`/`DefensiveBox` `from_str` (alias maps, case-insensitivity, error paths) and `LineupUtilities` `validate_count` / `count_spots` / `count_array_spots` |
+| `spf_core` | `src/players.rs` | 6 `TeamID::create_from_str` tests (fixup table, unmapped pass-through, `splitn` year/name defaults) |
+| `spf` | `src/game/engine/resulthandler.rs` | 13 `calculate_play_result` tests (down advance / first-down + marker clamp, turnover-on-downs & in-field turnover with field flip, offensive TD by possession, defensive TD, safety, clock run-down / quarter rollover / final-quarter clamp) |
+| `spf` | `src/game.rs` | 1 event-emission test (`test_set_next_play_type_emits_event`): subscribes to a `Game`'s broadcast channel and asserts `set_next_play_type` emits `GameEvent::NextPlayTypeSet`; self-skips when `../cards/fac_cards.csv` is absent |
+| `spf_cli` | — | none yet |
+| `spf_macros` | — | none yet |
+
+**Total: 42 tests** (28 in `spf_core`, 14 in `spf`). No integration (`tests/`) directories, no
+`[dev-dependencies]`, no CI gate yet.
+
+---
+
+## Candidate targets (logic-dense modules)
+
+The most logic-dense modules are the highest-value targets (pure functions,
+`Result<_, String>` returns, little or no I/O). Update this table as modules are covered or
+as the code evolves; see `../design/testing-strategy.md` §4 for the general prioritization
+heuristic this table applies.
+
+| File | Lines | Test-worthy logic |
+|---|---|---|
+| `spf_core/src/lineup.rs` | 887 | `is_legal_lineup`, `validate_count`, `count_array_spots`, `OffensiveBox`/`DefensiveBox` `from_str` |
+| `spf_core/src/players.rs` | 834 | `TeamID::create_from_str` (hardcoded name-fixup table), stat lookups |
+| `spf/src/game/engine/passplay.rs` | 548 | pass resolution |
+| `spf_core/src/loader.rs` | 508 | text parsers for player stat files |
+| `spf/src/game/engine/runplay.rs` | 435 | run resolution |
+| `spf/src/game/engine/defs.rs` | 412 | lookup tables / constants |
+| `spf/src/game/standard_play.rs` | 369 | play validation |
+| `spf/src/game.rs` | 363 | `GameState` transitions (`get_next_move_types`, `set_next_play_type` legality) |
+| `spf_core/src/stats.rs` | 298 | `Range` / `RangedStats` parsing (e.g. `"12-18"`) |
+| `spf/src/game/engine/resulthandler.rs` | 130 | `calculate_play_result`: `(GameState, PlayResult)` → new `GameState` (down/score/possession) — **covered (T2)** |
+
+---
+
 ## Stage overview
 
 | Stage | Theme | Status | Outcome |

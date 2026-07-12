@@ -1,8 +1,10 @@
 # Testing Strategy
 
 Living reference for how we test the SPF workspace. This document describes the *approach*
-— philosophy, structure, conventions, and current inventory — and is expected to grow and
-be revised as the testing framework matures.
+— philosophy, structure, conventions — and is expected to grow and be revised as the testing
+framework matures. It deliberately does **not** track which modules or how many tests exist
+today; for that, run `cargo test --workspace` (or `cargo test -p <crate> -- --list`), or see
+the time-ordered history in `../plans/testing-plan.md`.
 
 The concrete, time-ordered roadmap of testing work lives separately in
 `../plans/testing-plan.md`; keep forward-looking "we will do X next" items there, and keep
@@ -12,9 +14,9 @@ durable "how we test" guidance here.
 
 ## 1. Philosophy
 
-- **Safety net first, coverage second.** The codebase is ~8,000 lines with a rich rules
-  engine. The immediate goal is a fast, reliable net that catches regressions in the pure
-  logic, then broadening outward to integration and end-to-end.
+- **Safety net first, coverage second.** The codebase has a rich rules engine. The immediate
+  goal is a fast, reliable net that catches regressions in the pure logic, then broadening
+  outward to integration and end-to-end.
 - **Highest ROI first.** Prefer pure, dependency-free functions (parsers, validators, state
   transitions) before I/O- or network-bound paths. They are the cheapest to test and the
   most likely to harbor subtle rules bugs.
@@ -63,31 +65,25 @@ are introduced.
 
 ## 4. What we prioritize testing
 
-The most logic-dense modules are the highest-value targets (pure functions,
-`Result<_, String>` returns, little or no I/O):
+When deciding what to cover next, favor (in rough order):
 
-| File | Lines | Test-worthy logic |
-|---|---|---|
-| `spf_core/src/lineup.rs` | 887 | `is_legal_lineup`, `validate_count`, `count_array_spots`, `OffensiveBox`/`DefensiveBox` `from_str` |
-| `spf_core/src/players.rs` | 834 | `TeamID::create_from_str` (hardcoded name-fixup table), stat lookups |
-| `spf/src/game/engine/passplay.rs` | 548 | pass resolution |
-| `spf_core/src/loader.rs` | 508 | text parsers for player stat files |
-| `spf/src/game/engine/runplay.rs` | 435 | run resolution |
-| `spf/src/game/engine/defs.rs` | 412 | lookup tables / constants |
-| `spf/src/game/standard_play.rs` | 369 | play validation |
-| `spf/src/game.rs` | 363 | `GameState` transitions (`get_next_move_types`, `set_next_play_type` legality) |
-| `spf_core/src/stats.rs` | 298 | `Range` / `RangedStats` parsing (e.g. `"12-18"`) |
-| `spf/src/game/engine/resulthandler.rs` | 130 | `calculate_play_result`: `(GameState, PlayResult)` → new `GameState` (down/score/possession) — **covered (T2)** |
+1. **Pure functions over I/O-bound code.** Parsers, validators, and state-transition
+   functions (e.g. anything returning `Result<_, String>` from plain data) are cheap to test
+   and the most likely to harbor subtle rules bugs.
+2. **Hand-written parsing/validation over generated or trivial code.** Hardcoded fixup
+   tables, `from_str` implementations with alias maps, and range/format parsing are exactly
+   the places off-by-one and typo bugs hide.
+3. **State machines over one-shot calculations.** Functions that take a `State` and produce a
+   new `State` (down/score/possession/clock transitions) benefit most from table-driven case
+   coverage because the branch count is high and easy to under-test.
+4. **Larger, denser modules over small ones**, all else equal — more logic per file means
+   more latent bugs per test written.
+5. **Defer** anything that needs real fixture data, a full HTTP harness, or the FAC
+   nondeterminism seam (see §5) until those seams exist; track such work in
+   `../plans/testing-plan.md` rather than testing around the gap ad hoc.
 
-Update this table as modules are covered or as the code evolves.
-
-> **T2 progress (done):** `lineup.rs` (`from_str` parsers + `LineupUtilities`
-> count/validation helpers), `players.rs` (`TeamID::create_from_str`), and `stats.rs`
-> (`RangedStats<PassResult>`) are covered in `spf_core`; a stale trailing-space alias literal
-> in `OffensiveBox::from_str` (`"fl1 "` → `"fl1"`) was corrected (test-driven bugfix). The
-> `spf`-crate `resulthandler.rs` transitions (`calculate_play_result`) are now covered too —
-> the first tests in the `spf` crate. The full `is_legal_lineup` path (needs
-> `Standard*Lineup`/`Roster` builders) is carried to T4. See `../plans/testing-plan.md` §T2.
+Concrete "next up" targets are a planning concern, not a strategy concern — see the stage
+tables in `../plans/testing-plan.md`.
 
 ---
 
@@ -132,29 +128,7 @@ expands).
 
 ---
 
-## 7. Current inventory
-
-> Snapshot; refresh when tests are added or removed. Command:
-> `cargo test --workspace` (see per-crate breakdown with
-> `cargo test -p <crate> -- --list`).
-
-| Crate | Location | Tests |
-|---|---|---|
-| `spf_core` | `src/persist.rs` | `test_sanitize_file_stem_replaces_unsafe_chars`, `test_convert_and_reload_round_trip` (self-skips without card data) |
-| `spf_core` | `src/stats.rs` | 7 `Range` unit tests (parsing, `in_range` inclusivity, `get_tag_and_range`) + 3 `RangedStats<PassResult>` tests (`create_from_strs`, `get_category` with/without boundary shift) |
-| `spf_core` | `src/lineup.rs` | 10 tests: `OffensiveBox`/`DefensiveBox` `from_str` (alias maps, case-insensitivity, error paths) and `LineupUtilities` `validate_count` / `count_spots` / `count_array_spots` |
-| `spf_core` | `src/players.rs` | 6 `TeamID::create_from_str` tests (fixup table, unmapped pass-through, `splitn` year/name defaults) |
-| `spf` | `src/game/engine/resulthandler.rs` | 13 `calculate_play_result` tests (down advance / first-down + marker clamp, turnover-on-downs & in-field turnover with field flip, offensive TD by possession, defensive TD, safety, clock run-down / quarter rollover / final-quarter clamp) |
-| `spf` | `src/game.rs` | 1 event-emission test (`test_set_next_play_type_emits_event`): subscribes to a `Game`'s broadcast channel and asserts `set_next_play_type` emits `GameEvent::NextPlayTypeSet`; self-skips when `../cards/fac_cards.csv` is absent |
-| `spf_cli` | — | none yet |
-| `spf_macros` | — | none yet |
-
-**Total: 42 tests** (28 in `spf_core`, 14 in `spf`). No integration (`tests/`) directories, no
-`[dev-dependencies]`, no CI gate yet.
-
----
-
-## 8. Running tests
+## 7. Running tests
 
 - Whole workspace: `cargo test --workspace`
 - One crate: `cargo test -p spf_core`
