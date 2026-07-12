@@ -37,6 +37,11 @@ Jump straight to the reference you need:
 - **Data flow:** card `.txt` files are converted **offline** by `spf_cli` into
   `data/1983/*.json`, which the server loads at startup. `fac_cards.csv` is still parsed at
   runtime. Details: [`docs/design/data-pipeline.md`](docs/design/data-pipeline.md).
+- **Live events:** in addition to the REST API, the server pushes live game events over a
+  read-only WebSocket at `GET /game/ws` (snapshot-on-connect, then a `GameEvent` per state
+  change). See [`docs/design/ws-events-architecture.md`](docs/design/ws-events-architecture.md)
+  for the domain/transport layering and the top-level [`README.md`](README.md) for a
+  `websocat` usage example.
 - **Commands** (full list in [`docs/design/commands.md`](docs/design/commands.md)):
   - Format: `cargo fmt` (check: `cargo fmt -- --check`)
   - Lint: `cargo clippy` (the devcontainer runs this on save)

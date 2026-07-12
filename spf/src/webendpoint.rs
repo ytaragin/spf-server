@@ -576,7 +576,12 @@ async fn start_game(
     info(
         title = "Statis Pro Football API",
         version = "0.1.0",
-        description = "HTTP API for running Statis Pro Football game simulations"
+        description = "HTTP API for running Statis Pro Football game simulations.\n\n\
+                       In addition to the REST endpoints below, the server exposes a \
+                       read-only WebSocket at `GET /game/ws` that streams live `GameEvent`s \
+                       (see the `GameEvent` schema). utoipa cannot describe WebSocket \
+                       upgrades natively, so this endpoint does not appear as a path here; \
+                       see the top-level README for a `websocat` usage example."
     ),
     servers(
         (url = "http://127.0.0.1:8080", description = "Local dev server")
@@ -590,6 +595,7 @@ async fn start_game(
         crate::game::engine::PuntOffenseCall,
         crate::game::engine::KickoffDefenseCall,
         crate::game::engine::PuntDefenseCall,
+        GameEvent,
     ))
 )]
 struct ApiDoc;

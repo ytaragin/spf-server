@@ -34,7 +34,7 @@ have their own `design/` doc (see the table below).
 |---|---|---|
 | [`plans/testing-plan.md`](plans/testing-plan.md) | Staged roadmap (T1–T6) for building out the test suite, with status tracking and WS tie-ins. | You are picking up the next testing task or checking testing progress. |
 | [`plans/tech-debt.md`](plans/tech-debt.md) | Running log of cross-cutting rough edges to revisit (e.g. CWD-relative resource paths). | You hit a general problem worth recording, or are picking one up to fix. |
-| [`plans/ws-events-stages.md`](plans/ws-events-stages.md) | High-level staged rollout of the WebSocket events feature (Stages 1–4). **Stages 1–3 done; Stage 4 next.** | You are resuming the WS feature and need the stage overview. |
+| [`plans/ws-events-stages.md`](plans/ws-events-stages.md) | High-level staged rollout of the WebSocket events feature (Stages 1–4). **All stages done.** | You are resuming the WS feature and need the stage overview. |
 | [`plans/ws-events-stage1.md`](plans/ws-events-stage1.md) | Detailed, file-level task list for WS Stage 1 (dependencies + `GameEvent` type). **✅ Done** — retained as the record of what shipped. | You want the record of what WS Stage 1 delivered. |
 | [`plans/ws-events-stage2.md`](plans/ws-events-stage2.md) | Detailed, file-level task list for WS Stage 2 (`Game` broadcast `Sender`, `emit()`/`subscribe()`, emission sites, unit test). **✅ Done.** | You want the record of what WS Stage 2 delivered. |
 | [`plans/ws-events-stage3.md`](plans/ws-events-stage3.md) | Detailed, file-level task list for WS Stage 3 (`GET /game/ws` transport: snapshot-then-stream WS handler, route registration). **✅ Done.** | You want the record of what WS Stage 3 delivered. |

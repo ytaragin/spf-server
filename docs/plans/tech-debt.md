@@ -90,3 +90,119 @@ seam) — option 3 addresses both the path divergence and the determinism need w
 Option 1 is the cheapest partial win if a full DI refactor is deferred.
 
 ---
+
+## 2. No automated test for the WebSocket transport (`GET /game/ws`)
+
+**Status:** open.
+
+### Problem
+
+WS Stage 3 (`docs/plans/ws-events-stage3.md`) shipped `game_ws` with only a **manual**
+smoke test (`websocat`, verified once during implementation). There is no automated test
+that asserts the handshake, the snapshot-on-connect frame, event forwarding, or the `409`
+when no game is in progress. A regression here (e.g. someone reorders route registration
+and the `/game` scope shadows `/game/ws` again — see item 4 below) would not be caught by
+`cargo test --workspace`.
+
+### Where it shows up today
+
+- `spf/src/webendpoint.rs` — `game_ws` handler has zero test coverage.
+
+### Why it matters
+
+- The registration-order bug we hit during Stage 3 (utoipa's `/game` scope shadowing
+  `/game/ws` with a 404) is exactly the kind of regression a test would catch immediately.
+- As more transports/events are added (Stage 4+, or new event variants), an automated
+  contract test would give confidence without a manual `websocat` session each time.
+
+### Sketch of a more elegant approach (to design later)
+
+- Use `actix_web::test` with a real (or minimal) app builder plus an actix WS test client
+  (`actix_ws` supports server-side testing via `actix_web::test::TestRequest` +
+  `actix_web::test::call_service`, or a small `awc`-based WS client) to: start a game, open
+  `/game/ws`, assert the first frame is `GameStarted` with the expected state, drive a
+  REST mutation, and assert the corresponding event frame arrives.
+- At minimum, add a lighter-weight test that exercises the route registration/ordering
+  (e.g. asserts `/game/ws` returns `409`, not `404`, when no game is running) to guard
+  against the specific shadowing regression.
+
+---
+
+## 3. No resync after a lagged WebSocket client (`RecvError::Lagged`)
+
+**Status:** open.
+
+### Problem
+
+The `game_ws` pump (`spf/src/webendpoint.rs`) treats `RecvError::Lagged(n)` as "skip and
+continue" (see `ws-events-stage3.md` D4): the client silently misses `n` events and only
+resumes receiving from whatever event comes next. There is no mechanism to bring a lagged
+client back in sync with a fresh snapshot.
+
+### Where it shows up today
+
+- `game_ws`'s `tokio::select!` loop: `Err(RecvError::Lagged(_)) => continue`.
+
+### Why it matters
+
+- A client that lags (slow network, brief disconnect, GC pause) can end up silently missing
+  state-changing events (e.g. a lineup set or a play result) with no signal that it happened
+  and no way to recover other than a full reconnect.
+- Channel capacity (`GAME_EVENT_CHANNEL_CAPACITY = 128`) makes this unlikely under normal
+  single-play/single-lineup bursts, but it is not impossible, especially as more event
+  variants are added.
+
+### Sketch of a more elegant approach (to design later)
+
+- On `Lagged(n)`, re-send a snapshot frame (`GameEvent::GameStarted { state: <current
+  game.state> }`) before resuming the stream, so the client can always recover full state
+  even after missing intermediate events. Requires re-locking the game briefly inside the
+  pump task (mirroring the connect-time snapshot logic) — a small, self-contained change,
+  but deferred until this is prioritized.
+- Alternatively (or additionally), emit a distinct `Lagged`/`Resynced` event so the client
+  can visibly log/handle the gap rather than silently continuing.
+
+---
+
+## 4. `utoipa` scope vs. plain-route registration is a subtle, undocumented gotcha
+
+**Status:** open (partially mitigated by inline comments + `ws-events-stage3.md`).
+
+### Problem
+
+`utoipa-actix-web`'s `Scope::service()`/`UtoipaApp::service()` require the service to
+implement `OpenApiFactory`, which utoipa only provides for `#[utoipa::path]`-annotated
+handlers. Any handler that *cannot* carry `#[utoipa::path]` (WebSocket upgrades today; any
+future streaming/non-REST handler tomorrow) cannot be added to a utoipa scope at all, and
+must instead use `UtoipaApp::route(path, Route)` (which has no such bound) — registered
+**before** any overlapping scope, or that scope will shadow the path and return a `404`
+instead of ever reaching the handler.
+
+This is documented today only as inline comments on `game_ws` and in
+`docs/plans/ws-events-stage3.md`'s deviation note — not in the durable
+`docs/design/openapi-utoipa.md` reference, where a future contributor adding a similar
+non-REST handler would be more likely to look.
+
+### Where it shows up today
+
+- `spf/src/webendpoint.rs`: `game_ws` registered via
+  `.route("/game/ws", web::get().to(game_ws))` ahead of `scope::scope("/game")`.
+- `docs/plans/ws-events-stage3.md` (Task 3's "landed differently" note).
+
+### Why it matters
+
+- The failure mode (silent 404, not a compile error) is confusing: the code compiles fine
+  either way, and the ordering requirement is not enforced by the type system.
+- The next person adding a second non-REST endpoint (e.g. an SSE stream, a raw file
+  upload) is likely to hit the exact same two-step trap (compile error inside a scope, then
+  a 404 after moving it out) without this write-up.
+
+### Sketch of a more elegant approach (to design later)
+
+- Add a short subsection to `docs/design/openapi-utoipa.md` documenting: (a) the
+  `OpenApiFactory` bound and why WS/streaming handlers can't satisfy it, (b) the
+  `UtoipaApp::route` escape hatch, and (c) the registration-order requirement relative to
+  overlapping scopes. This turns a "discovered the hard way" gotcha into a durable reference
+  so it isn't rediscovered per-feature.
+
+---

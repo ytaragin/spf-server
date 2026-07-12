@@ -27,7 +27,7 @@ high level.
 | 1 | Foundation: deps + event type | ✅ Done | `GameEvent` enum exists and compiles; dependencies added. Nothing wired yet. |
 | 2 | Domain emitter | ✅ Done | `Game` owns a broadcast `Sender`, emits on every state change, and exposes `subscribe()`. Verified via a unit test. |
 | 3 | WebSocket transport | ✅ Done | `GET /game/ws` streams live events to connected clients (snapshot-then-stream). Verified: build/clippy/fmt/test clean. |
-| 4 | Docs & polish | ⬜ Not started | `GameEvent` documented in OpenAPI; `AGENTS.md`/Postman updated; final lint/format pass. |
+| 4 | Docs & polish | ✅ Done | `GameEvent` registered in the OpenAPI schema (with a description note on the WS endpoint since utoipa can't describe upgrades); `AGENTS.md` updated; final lint/format pass clean. |
 
 **Confirmed decisions (settled during Stage 1 planning, apply at Stage 3):**
 - WS route: **`GET /game/ws`** (nested under the existing `/game` scope).
@@ -124,7 +124,7 @@ shadows the path with a 404. Detailed record: `ws-events-stage3.md`.
 
 ---
 
-## Stage 4 — Documentation & polish
+## Stage 4 — Documentation & polish ✅ Done
 
 **Goal:** make the feature discoverable and keep repo conventions intact.
 
@@ -136,6 +136,19 @@ shadows the path with a 404. Detailed record: `ws-events-stage3.md`.
 - Final `cargo fmt`, `cargo clippy`, `cargo build`.
 
 **Checkpoint:** docs reflect reality; lints clean.
+
+**What landed:** `GameEvent` added to `ApiDoc`'s `components(schemas(...))` — its inner
+types (`GameState`, `PlayAndState`, `OffenseIDLineup`, `DefenseIDLineup`, `PlayType`) were
+already reachable via other endpoints' schemas, so no additional types needed registering.
+The `ApiDoc` `info.description` gained a paragraph noting the `GET /game/ws` endpoint and
+pointing to the README's `websocat` example, since utoipa has no path entry for it.
+`AGENTS.md`'s "Quick orientation" section gained a "Live events" bullet linking to
+`ws-events-architecture.md` and the README. `spf.postman_collection.json` was **not**
+touched — it already predates the current REST routes (e.g. `/getstate` vs. today's
+`/game/state`) and updating it was out of scope for this pass. Verified live: started the
+server and confirmed `GET /api-docs/openapi.json` contains a `GameEvent` schema and the
+updated description. `cargo build/clippy/fmt` clean (209 baseline warnings, unchanged),
+`cargo test --workspace` (48 tests) pass.
 
 ---
 
